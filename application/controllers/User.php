@@ -32,6 +32,14 @@ class User extends CI_Controller {
             'email' => 'nurliaha@gmail.com'
         ]);
         dd($user);
+    }
 
+    public function update()
+    {
+        $user = User_model::find(4);
+        $user->first_name = "Fulan";
+        $user->last_name = "Juga";
+        $user->email = "sadsds@m.n";
+        $user->save();
     }
 }
