@@ -45,7 +45,7 @@ class Artikel extends CI_Controller {
                 // dd($artikel);
 
                 if($artikel) {
-                    $this->session->set_flashdata('sukses', 'Artikel Berasil Disimpan');
+                    $this->session->set_flashdata('sukses', 'Artikel Berhasil Disimpan');
                 } else {
                     $this->session->set_flashdata('gagal', 'Artikel Tidak Berhasil Disimpan');
                 }
@@ -93,7 +93,7 @@ class Artikel extends CI_Controller {
                 dd($artikel);
 
                 if($artikel) {
-                    $this->session->set_flashdata('sukses', 'Artikel Berasil Diperbarui');
+                    $this->session->set_flashdata('sukses', 'Artikel Berhasil Diperbarui');
                 } else {
                     $this->session->set_flashdata('gagal', 'Artikel Tidak Berhasil Diperbarui');
                 }
@@ -106,7 +106,7 @@ class Artikel extends CI_Controller {
     {
         $artikel = M_Artikel::destroy($id);
         if($artikel) {
-            $this->session->set_flashdata('sukses', 'Artikel Berasil Dihapus');
+            $this->session->set_flashdata('sukses', 'Artikel Berhasil Dihapus');
         } else {
             $this->session->set_flashdata('gagal', 'Artikel Tidak Berhasil Dihapus');
         }
