@@ -39,7 +39,7 @@ class Artikel extends CI_Controller {
                     'judul' => $this->input->post('judul'),
                     'isi' => empty($this->input->post('isi')) ? NULL : $this->input->post('isi'),
                     // 'tanggal' => 'nurliaha@gmail.com',
-                    'penulis' => $user->id,
+                    'id_penulis' => $user->id,
                     'status' => empty($this->input->post('status')) ? NULL : $this->input->post('status'),
                 ]);
                 // dd($artikel);
@@ -86,7 +86,7 @@ class Artikel extends CI_Controller {
                 $artikel = M_Artikel::find($this->input->post('id'));
                 $artikel->judul = $this->input->post('judul');
                 $artikel->isi = empty($this->input->post('isi')) ? NULL : $this->input->post('isi');
-                $artikel->penulis = empty($this->input->post('penulis')) ? NULL : $this->input->post('penulis');
+                $artikel->id_penulis = empty($this->input->post('id_penulis')) ? NULL : $this->input->post('id_penulis');
                 $artikel->status = empty($this->input->post('status')) ? NULL : $this->input->post('status');
                 $artikel->save();
 
@@ -119,7 +119,7 @@ class Artikel extends CI_Controller {
         $artikel = M_Artikel::create([
             'judul' => 'barang naik2!',
             'isi' => 'komoditi pada naik cuyiii',
-            'penulis' => 1,
+            'id_penulis' => 1,
             'status' => 1,
         ]);
         dd($artikel);
@@ -130,7 +130,7 @@ class Artikel extends CI_Controller {
         $artikel = M_Artikel::find($id);
         $artikel->judul = 'Test Update1';
         $artikel->isi = 'ini boy isinyaa';
-        $artikel->penulis = 1;
+        $artikel->id_penulis = 1;
         $artikel->status = 0;
         $artikel->save();
         dd($artikel);

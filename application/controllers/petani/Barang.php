@@ -38,7 +38,7 @@ class Barang extends CI_Controller {
                 $barang = M_barang::create([
                     'nama_barang' => $this->input->post('nama_barang'),
                     'berat_barang' => empty($this->input->post('berat_barang')) ? NULL : $this->input->post('berat_barang'),
-                    'petani' => $user->id,
+                    'id_petani' => $user->id,
                     'tgl_pengajuan' => date("Y-m-d"),
                 ]);
                 // dd($barang);
@@ -103,9 +103,9 @@ class Barang extends CI_Controller {
     {
         $barang = M_barang::destroy($id);
         if($barang) {
-            $this->session->set_flashdata('sukses', 'Artikel Berhasil Dihapus');
+            $this->session->set_flashdata('sukses', 'Barang Berhasil Dihapus');
         } else {
-            $this->session->set_flashdata('gagal', 'Artikel Tidak Berhasil Dihapus');
+            $this->session->set_flashdata('gagal', 'Barang Tidak Berhasil Dihapus');
         }
     }
 
@@ -116,7 +116,7 @@ class Barang extends CI_Controller {
         $barang = M_barang::create([
             'nama_barang' => 'Padi Karawitan 2',
             'berat_barang' => 4,
-            'petani' => 1,
+            'id_petani' => 1,
             'tgl_pengajuan' => date("Y-m-d"),
         ]);
         dd($barang);
@@ -127,7 +127,7 @@ class Barang extends CI_Controller {
         $barang = M_barang::find($id);
         $barang->nama_barang = 'Update Barang test';
         $barang->berat_barang = 3;
-        $barang->petani = 1;
+        $barang->id_petani = 1;
         $barang->tgl_pengajuan = date("Y-m-d");
         $barang->save();
         dd($barang);

@@ -13,6 +13,6 @@ class M_Barang extends Eloquent
     // const CREATED_AT = 'created_at';
     // const UPDATED_AT = 'updated_at';
 
-    protected $fillable = ['nama_barang', 'berat_barang', 'petani', 'tgl_pengajuan'];
+    protected $fillable = ['nama_barang', 'berat_barang', 'id_petani', 'tgl_pengajuan'];
 
 }

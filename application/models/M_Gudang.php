@@ -13,6 +13,6 @@ class M_Gudang extends Eloquent
     // const CREATED_AT = 'created_at';
     // const UPDATED_AT = 'updated_at';
 
-    protected $fillable = ['nama', 'kapasitas', 'pengelola'];
+    protected $fillable = ['nama', 'kapasitas', 'id_pengelola'];
 
 }
