@@ -30,20 +30,30 @@ class Pengujian extends CI_Controller {
             $user = $this->ion_auth->user()->row();
 
             $this->form_validation->set_rules('id_barang', 'Barang Pengujian', 'required|integer');
-            $this->form_validation->set_rules('hsl_pengujian', 'Hasil Pengujian Pengujian', 'required');
+            $this->form_validation->set_rules('hsl_pengujian', 'Hasil Pengujian', 'required');
+
+            $this->form_validation->set_rules('isi_catatan', 'Catatan Pengujian Barang', 'required');
+            $this->form_validation->set_rules('status', 'Status Catatan Pengujian Barang', 'required|integer');
+
 
             if ($this->form_validation->run() == FALSE) {
                 // $this->load->view('myform');
             } else {
                 $pengujian = M_Pengujian::create([
                     'id_pengelola' => $user->id,
-                    'id_barang' => empty($this->input->post('id_barang')) ? NULL : $this->input->post('id_barang'),
+                    'id_barang' => $this->input->post('id_barang'),
                     'tgl_pengujian' => date("Y-m-d"),
                     'hsl_pengujian' => empty($this->input->post('hsl_pengujian')) ? NULL : $this->input->post('hsl_pengujian'),
                 ]);
+
+                $catatan = M_Catatan::create([
+                    'id_pengujian' => $id_pengujian->id,
+                    'isi_catatan' => empty($this->input->post('isi_catatan')) ? NULL : $this->input->post('isi_catatan'),
+                    'status' => $this->input->post('status'),
+                ]);
                 // dd($pengujian);
 
-                if($pengujian) {
+                if($pengujian && $catatan) {
                     $this->session->set_flashdata('sukses', 'Pengujian Barang Berhasil Disimpan');
                 } else {
                     $this->session->set_flashdata('gagal', 'Pengujian Barang Tidak Berhasil Disimpan');
@@ -79,6 +89,9 @@ class Pengujian extends CI_Controller {
             $this->form_validation->set_rules('id_barang', 'Barang Pengujian', 'required|integer');
             $this->form_validation->set_rules('hsl_pengujian', 'Hasil Pengujian Pengujian', 'required');
 
+            $this->form_validation->set_rules('isi_catatan', 'Catatan Pengujian Barang', 'required');
+            $this->form_validation->set_rules('status', 'Status Catatan Pengujian Barang', 'required|integer');
+
             if ($this->form_validation->run() == FALSE) {
                 // $this->load->view('myform');
             } else {
@@ -87,9 +100,14 @@ class Pengujian extends CI_Controller {
                 $pengujian->hsl_pengujian = empty($this->input->post('hsl_pengujian')) ? NULL : $this->input->post('hsl_pengujian');
                 $pengujian->save();
 
-                // dd($pengujian);
+                $catatan = M_Catatan::where('id_pengujian', $pengujian->id)->first();
+                $catatan->isi_catatan = empty($this->input->post('isi_catatan')) ? NULL : $this->input->post('isi_catatan');
+                $catatan->status = $this->input->post('status');
 
-                if($pengujian) {
+                // dd($pengujian);
+                // dd($catatan);
+
+                if($pengujian && $catatan) {
                     $this->session->set_flashdata('sukses', 'Pengujian Barang Berhasil Diperbarui');
                 } else {
                     $this->session->set_flashdata('gagal', 'Pengujian Barang Tidak Berhasil Diperbarui');
