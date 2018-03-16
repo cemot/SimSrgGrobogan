@@ -40,12 +40,12 @@ class Gudang extends CI_Controller {
                     'kapasitas' => empty($this->input->post('kapasitas')) ? NULL : $this->input->post('kapasitas'),
                     'id_pengelola' => $user->id
                 ]);
-                // dd($artikel);
+                // dd($gudang);
 
-                if($artikel) {
+                if($gudang) {
                     $this->session->set_flashdata('sukses', 'Gudang Berhasil Disimpan');
                 } else {
-                    $this->session->set_flashdata('gagal', 'Artikel Tidak Berhasil Disimpan');
+                    $this->session->set_flashdata('gagal', 'Gudang Tidak Berhasil Disimpan');
                 }
                 // $this->load->view('myform');
             }
@@ -90,9 +90,9 @@ class Gudang extends CI_Controller {
                 dd($gudang);
 
                 if($gudang) {
-                    $this->session->set_flashdata('sukses', 'Artikel Berhasil Diperbarui');
+                    $this->session->set_flashdata('sukses', 'Gudang Berhasil Diperbarui');
                 } else {
-                    $this->session->set_flashdata('gagal', 'Artikel Tidak Berhasil Diperbarui');
+                    $this->session->set_flashdata('gagal', 'Gudang Tidak Berhasil Diperbarui');
                 }
                 // $this->load->view('myform');
             }
@@ -103,9 +103,9 @@ class Gudang extends CI_Controller {
     {
         $gudang = M_Gudang::destroy($id);
         if($gudang) {
-            $this->session->set_flashdata('sukses', 'Artikel Berhasil Dihapus');
+            $this->session->set_flashdata('sukses', 'Gudang Berhasil Dihapus');
         } else {
-            $this->session->set_flashdata('gagal', 'Artikel Tidak Berhasil Dihapus');
+            $this->session->set_flashdata('gagal', 'Gudang Tidak Berhasil Dihapus');
         }
     }
 
