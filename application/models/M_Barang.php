@@ -15,4 +15,9 @@ class M_Barang extends Eloquent
 
     protected $fillable = ['nama_barang', 'berat_barang', 'id_petani', 'tgl_pengajuan'];
 
+    public function petani()
+    {
+        return $this->belongsTo('M_User', 'id_petani', 'id');
+    }
+
 }

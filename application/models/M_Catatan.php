@@ -15,4 +15,9 @@ class M_Catatan extends Eloquent
 
     protected $fillable = ['id_pengujian', 'isi_catatan', 'status'];
 
+    public function pengujian()
+    {
+        return $this->belongsTo('M_Pengujian', 'id_pengujian', 'id');
+    }
+
 }

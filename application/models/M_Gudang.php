@@ -15,4 +15,9 @@ class M_Gudang extends Eloquent
 
     protected $fillable = ['nama', 'kapasitas', 'id_pengelola'];
 
+    public function pengelola()
+    {
+        return $this->belongsTo('M_User', 'id_pengelola', 'id');
+    }
+
 }

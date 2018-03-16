@@ -15,4 +15,9 @@ class M_Artikel extends Eloquent
 
     protected $fillable = ['judul', 'isi', 'tanggal', 'id_penulis', 'status'];
 
+    public function penulis()
+    {
+        return $this->belongsTo('M_User', 'id_penulis', 'id');
+    }
+
 }

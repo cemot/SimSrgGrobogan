@@ -15,4 +15,19 @@ class M_Pengujian extends Eloquent
 
     protected $fillable = ['id_pengelola', 'id_barang', 'tgl_pengujian', 'hsl_pengujian'];
 
+    public function barang()
+    {
+        return $this->belongsTo('M_Barang', 'id_barang', 'id');
+    }
+
+    public function pengelola()
+    {
+        return $this->belongsTo('M_User', 'id_pengelola', 'id');
+    }
+
+    public function catatan()
+    {
+        return $this->hasOne('M_Catatan', 'id_pengujian', 'id_pengujian');
+    }
+
 }
