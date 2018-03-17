@@ -10,16 +10,28 @@ class Auth extends CI_Controller {
 
 	public function index()
 	{
-         
+        if (!$this->session->has_userdata('logged_in')) {
+            $this->load->view('auth/login'); 
+        } else {
+            if ($this->session->userdata('role') == 0) {
+                redirect('admin/dashboard');
+            } elseif ($this->session->userdata('role') == 1) {
+                redirect('pengelola/dashboard');
+            } elseif ($this->session->userdata('role') == 2) {
+                redirect('dinas/dashboard');
+            } else {
+                redirect('petani/dashboard');
+            }
+        }        
 	}
 
     public function login()
     {
-        $username = 'fakhrifauzan';
-        $password = 'password';
+        // $username = 'fakhrifauzan';
+        // $password = 'password';
 
-        // $username = $this->input->post('username');
-        // $password = md5($this->input->post('password'));
+        $username = $this->input->post('username');
+        $password = md5($this->input->post('password'));
 
         $user = M_User::where('username', $username)->where('password', $password)->first();
         // dd($user);

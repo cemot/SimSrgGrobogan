@@ -1,0 +1,70 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Admin extends CI_Controller {
+
+	public function __construct()
+    {
+        parent::__construct();
+    }
+
+	public function index()
+	{
+		$this->dashboard();
+	}
+
+	public function dashboard()
+    {
+        $data['sidebar'] = 'admin/sidebar';
+        $data['content'] = 'admin/dashboard';
+        $this->load->view('layouts/app', $data);
+    }
+
+    public function profile()
+    {
+        $data['sidebar'] = 'admin/sidebar';
+        $data['content'] = 'admin/profile';
+        $data['user'] = M_User::find($this->session->id);
+        $this->load->view('layouts/app', $data);
+    }
+
+    public function update_profile()
+    {
+        
+        if (!$this->input->post()) {
+            redirect('admin/profile');
+        } else {
+            // $this->form_validation->set_rules('username', 'Username', 'required');        
+            $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');
+            // $this->form_validation->set_rules('tmpt_lahir', 'Tempat Lahir', 'required');
+            // $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required');
+            // $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+            $this->form_validation->set_rules('no_tlp', 'No Telepon / No HP', 'required');  
+
+            if ($this->form_validation->run() == FALSE) {
+                redirect('admin/profile');
+                // dd(validation_errors());
+            } else {
+                $user = M_User::find($this->session->id);
+                $user->nama     = $this->input->post('nama');
+                $user->email    = $this->input->post('email');
+                $user->tmpt_lahir   = empty($this->input->post('tmpt_lahir')) ? NULL : $this->input->post('tmpt_lahir');  
+                $user->tgl_lahir    = empty($this->input->post('tgl_lahir')) ? NULL : $this->input->post('tgl_lahir');  
+                $user->alamat   = empty($this->input->post('alamat')) ? NULL : $this->input->post('alamat');
+                $user->no_tlp  = $this->input->post('no_tlp');
+
+                $user->save();
+
+                // dd($user);
+
+                if($user) {
+                    $this->session->set_flashdata('sukses', 'User Berhasil Diperbarui');
+                } else {
+                    $this->session->set_flashdata('gagal', 'User Tidak Berhasil Diperbarui');
+                }
+                // $this->load->view('myform');
+                redirect('admin/profile');
+            }
+        }
+    }
+}
