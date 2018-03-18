@@ -84,22 +84,20 @@ class Artikel extends CI_Controller {
                 redirect('admin/artikel');
                 // $this->load->view('myform');
             } else {
-                dd('sampe sini');
+                // dd('sampe sini');
                 $artikel = M_Artikel::find($this->input->post('id_artikel'));
                 $artikel->judul = $this->input->post('judul');
                 $artikel->isi = empty($this->input->post('isi')) ? NULL : $this->input->post('isi');
-                $artikel->id_penulis = empty($this->input->post('id_penulis')) ? NULL : $this->input->post('id_penulis');
+                // $artikel->id_penulis = empty($this->input->post('id_penulis')) ? NULL : $this->input->post('id_penulis');
                 $artikel->status = $this->input->post('status');
                 $artikel->save();
-
-                dd($artikel);
 
                 if($artikel) {
                     $this->session->set_flashdata('sukses', 'Artikel Berhasil Diperbarui');
                 } else {
                     $this->session->set_flashdata('gagal', 'Artikel Tidak Berhasil Diperbarui');
                 }
-                // $this->load->view('myform');
+                redirect('admin/artikel');
             }
         }
     }
@@ -112,6 +110,7 @@ class Artikel extends CI_Controller {
         } else {
             $this->session->set_flashdata('gagal', 'Artikel Tidak Berhasil Dihapus');
         }
+        redirect('admin/artikel');
     }
 
 
