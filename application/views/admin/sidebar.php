@@ -1,27 +1,27 @@
 <ul class="nav">
-    <li class="active">
-        <a href="#">
+    <li class="<?php if($this->uri->segment(2) == "dashboard"){ echo "active"; } ?>">
+        <a href="<?php echo base_url('admin/dashboard'); ?>">
             <i class="material-icons">dashboard</i>
             <p> Dashboard </p>
         </a>
     </li>
-    <li>
+    <li class="<?php if($this->uri->segment(2) == "artikel"){ echo "active"; } ?>">
         <a data-toggle="collapse" href="#artikel">
             <i class="material-icons">pages</i>
             <p> Artikel
                 <b class="caret"></b>
             </p>
         </a>
-        <div class="collapse" id="artikel">
+        <div class="collapse <?php if($this->uri->segment(2) == "artikel"){ echo "in"; } ?>" id="artikel">
             <ul class="nav">
-                <li>
-                    <a href="#">
+                <li class="<?php if($this->uri->segment(2) == "artikel" && empty($this->uri->segment(3))){ echo "active"; } ?>">
+                    <a href="<?php echo base_url('admin/artikel'); ?>">
                         <span class="sidebar-mini"> DA </span>
                         <span class="sidebar-normal"> Daftar Artikel </span>
                     </a>
                 </li>
-                 <li>
-                    <a href="#">
+                <li class="<?php if($this->uri->segment(2) == "artikel" && $this->uri->segment(3) == "create"){ echo "active"; } ?>">
+                    <a href="<?php echo base_url('admin/artikel/create'); ?>">
                         <span class="sidebar-mini"> + </span>
                         <span class="sidebar-normal"> Tambah Artikel </span>
                     </a>
@@ -29,22 +29,22 @@
             </ul>
         </div>
     </li>
-    <li>
+    <li class="<?php if($this->uri->segment(2) == "user"){ echo "active"; } ?>">
         <a data-toggle="collapse" href="#user">
             <i class="material-icons">widgets</i>
             <p> Managemen user
                 <b class="caret"></b>
             </p>
         </a>
-        <div class="collapse" id="user">
+        <div class="collapse <?php if($this->uri->segment(2) == "user"){ echo "in"; } ?>" id="user">
             <ul class="nav">
-                <li>
+                <li class="<?php if($this->uri->segment(2) == "user" && empty($this->uri->segment(3))){ echo "active"; } ?>">
                     <a href="#">
                         <span class="sidebar-mini"> DU </span>
                         <span class="sidebar-normal"> Daftar User</span>
                     </a>
                 </li>
-                <li>
+                <li class="<?php if($this->uri->segment(2) == "user" && $this->uri->segment(3) == "create"){ echo "active"; } ?>">
                     <a href="#">
                         <span class="sidebar-mini"> + </span>
                         <span class="sidebar-normal"> Tambah User </span>

@@ -13,16 +13,18 @@
                     <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                         <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>Judul</th>
                                 <th>Isi</th>
                                 <th>Status</th>
-                                <th class="disabled-sorting text-right">Actions</th>
+                                <th class="disabled-sorting text-right">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                                 foreach ($data as $artikel):?>
                                     <tr>
+                                        <td><?php echo $artikel->id_artikel ?></td>
                                         <td><?php echo $artikel->judul ?></td>
                                         <td><?php echo $artikel->isi ?></td>
                                         <td><?php echo $artikel->status ?></td>
