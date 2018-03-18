@@ -10,25 +10,27 @@ class Artikel extends CI_Controller {
 
 	public function index()
 	{
-		$data['data'] = M_Artikel::all();
-        dd($data);
+		// dd('sampesini');
+        $data['data'] = M_Artikel::all();
+        // dd($data);
+        $data['sidebar'] = 'admin/sidebar';
         $data['content'] = 'admin/artikel';
-        $this->load->view('layout_admin/master', $data); 
+        $this->load->view('layouts/app', $data); 
 	}
 
 	public function create()
     {
-        $data['content'] = 'admin/create_artikel';
-        $this->load->view('layout_admin/master', $data);
+        $data['sidebar'] = 'admin/sidebar';
+        $data['content'] = 'admin/artikel_create';
+        $this->load->view('layouts/app', $data);
     }
 
     public function store()
     {
         if (!$this->input->post()) {
-            redirect('/admin/artikel');
+            redirect('admin/artikel');
         } else {
-            $user = $this->ion_auth->user()->row();
-
+            // dd($this->input->post());
             $this->form_validation->set_rules('judul', 'Judul Artikel', 'required');
             $this->form_validation->set_rules('isi', 'Isi Artikel', 'required');
 
@@ -39,8 +41,8 @@ class Artikel extends CI_Controller {
                     'judul' => $this->input->post('judul'),
                     'isi' => empty($this->input->post('isi')) ? NULL : $this->input->post('isi'),
                     // 'tanggal' => 'nurliaha@gmail.com',
-                    'id_penulis' => $user->id,
-                    'status' => empty($this->input->post('status')) ? NULL : $this->input->post('status'),
+                    'id_penulis' => $this->session->id,
+                    'status' => $this->input->post('status'),
                 ]);
                 // dd($artikel);
 
@@ -49,7 +51,7 @@ class Artikel extends CI_Controller {
                 } else {
                     $this->session->set_flashdata('gagal', 'Artikel Tidak Berhasil Disimpan');
                 }
-                // $this->load->view('myform');
+                redirect('admin/artikel');
             }
         }
     }
@@ -64,30 +66,30 @@ class Artikel extends CI_Controller {
 
     public function edit($id)
     {
-        $data['data'] = M_Artikel::find($id);
-        // dd($data['data']);
-        $data['content'] = 'admin/edit_artikel';
-        $this->load->view('layout_admin/master', $data);
+        $data['artikel'] = M_Artikel::find($id);
+        $data['sidebar'] = 'admin/sidebar';
+        $data['content'] = 'admin/artikel_edit';
+        $this->load->view('layouts/app', $data);
     }
 
     public function update()
     {
         if (!$this->input->post()) {
-            redirect('/admin/artikel');
+            redirect('admin/artikel');
         } else {
-            // $user = $this->ion_auth->user()->row();
-
             $this->form_validation->set_rules('judul', 'Judul Artikel', 'required');
             $this->form_validation->set_rules('isi', 'Isi Artikel', 'required');
 
             if ($this->form_validation->run() == FALSE) {
+                redirect('admin/artikel');
                 // $this->load->view('myform');
             } else {
-                $artikel = M_Artikel::find($this->input->post('id'));
+                dd('sampe sini');
+                $artikel = M_Artikel::find($this->input->post('id_artikel'));
                 $artikel->judul = $this->input->post('judul');
                 $artikel->isi = empty($this->input->post('isi')) ? NULL : $this->input->post('isi');
                 $artikel->id_penulis = empty($this->input->post('id_penulis')) ? NULL : $this->input->post('id_penulis');
-                $artikel->status = empty($this->input->post('status')) ? NULL : $this->input->post('status');
+                $artikel->status = $this->input->post('status');
                 $artikel->save();
 
                 dd($artikel);

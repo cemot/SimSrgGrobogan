@@ -35,13 +35,13 @@
                         <div class="col-md-6">
                             <div class="form-group label-floating <?php (empty($user->tmpt_lahir) || ($user->tmpt_lahir == NULL))? 'is-empty' : '' ?>">
                                 <label class="control-label">Tempat Lahir</label>
-                                <input type="text" class="form-control" name="tmpt_lahir" value="<?php echo $user->tmpt; ?>">
+                                <input type="text" class="form-control" name="tmpt_lahir" value="<?php echo $user->tmpt_lahir; ?>">
                             <span class="material-input"></span></div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group label-floating <?php (empty($user->tgl_lahir) || ($user->tgl_lahir == NULL))? 'is-empty' : '' ?>">
                                 <label class="control-label">Tanggal Lahir</label>
-                                <input type="date" class="form-control" name="tgl_lahir" value="<?php echo $user->tgl_lahir; ?>">
+                                <input type="date" class="form-control datepicker" name="tgl_lahir" value="<?php echo $user->tgl_lahir; ?>">
                             <span class="material-input"></span></div>
                         </div>
                     </div>

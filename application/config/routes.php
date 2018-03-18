@@ -53,12 +53,20 @@ $route['default_controller'] = 'auth';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+//ADMINISTRATOR
+$route['admin'] = 'AdminController/dashboard';
+$route['admin/dashboard'] = 'AdminController/dashboard';
+$route['admin/profile'] = 'AdminController/profile';
+$route['admin/profile/update'] = 'AdminController/update_profile';
+$route['admin/artikel'] = 'admin/artikel/index';
+$route['admin/artikel/create'] = 'admin/artikel/create';
+$route['admin/artikel/store'] = 'admin/artikel/store';
+$route['admin/artikel/edit/(:any)'] = 'admin/artikel/edit/$1';
+$route['admin/artikel/update)'] = 'admin/artikel/update';
+$route['admin/artikel/delete/(:any)'] = 'admin/artikel/delete/$1';
+
 // Auth
 $route['login'] = 'Auth/login';
-// $route['register'] = 'Auth/signup';
 $route['logout'] = 'Auth/logout';
 
-//ADMINISTRATOR
-$route['admin/dashboard'] = 'Admin/dashboard';
-$route['admin/profile'] = 'Admin/profile';
-$route['admin/profile/update'] = 'Admin/update_profile';
+

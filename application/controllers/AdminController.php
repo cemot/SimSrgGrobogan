@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class AdminController extends CI_Controller {
 
 	public function __construct()
     {
@@ -54,6 +54,20 @@ class Admin extends CI_Controller {
                 $user->no_tlp  = $this->input->post('no_tlp');
 
                 $user->save();
+
+                $session_data = array(
+                    'id'        => $user->id,
+                    'nama'      => $user->nama,
+                    'email'     => $user->email,
+                    'jabatan'   => $user->jabatan,
+                    'role'      => $user->role,
+                    'tmpt_lahir'=> $user->tmpt_lahir,
+                    'tgl_lahir' => $user->tgl_lahir,
+                    'alamat'    => $user->alamat,
+                    'logged_in' => TRUE
+                );
+
+                $this->session->set_userdata($session_data);
 
                 // dd($user);
 
