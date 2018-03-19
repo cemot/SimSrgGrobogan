@@ -15,7 +15,7 @@
 </div>
 <div class="collapse navbar-collapse">
     <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
+        <!-- <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="material-icons">notifications</i>
                 <span class="notification">5</span>
@@ -41,7 +41,7 @@
                     <a href="#">Another One</a>
                 </li>
             </ul>
-        </li>
+        </li> -->
         <li>
             <a href="<?php echo base_url('logout'); ?>">
                <i class="material-icons">exit_to_app</i>                   

@@ -11,21 +11,22 @@ class User extends CI_Controller {
 	public function index()
 	{
 		$data['data'] = M_User::all();
-        // dd($data);
+        $data['sidebar'] = 'admin/sidebar';
         $data['content'] = 'admin/user';
-        $this->load->view('layout_admin/master', $data); 
+        $this->load->view('layouts/app', $data);
 	}
 
 	public function create()
     {
-        $data['content'] = 'admin/create_user';
-        $this->load->view('layout_admin/master', $data);
+        $data['sidebar'] = 'admin/sidebar';
+        $data['content'] = 'admin/user_create';
+        $this->load->view('layouts/app', $data);
     }
 
     public function store()
     {
         if (!$this->input->post()) {
-            redirect('/admin/user');
+            redirect('admin/user');
         } else {
             $this->form_validation->set_rules('username', 'Username', 'required');
             $this->form_validation->set_rules('password', 'Password', 'required');
@@ -34,13 +35,14 @@ class User extends CI_Controller {
             $this->form_validation->set_rules('email', 'E-Mail', 'required|valid_email|is_unique[users.email]');
             // $this->form_validation->set_rules('jabatan', 'Jabatan', 'required');
             $this->form_validation->set_rules('role', 'Role User', 'required');
-            // $this->form_validation->set_rules('tmpt_lahir', 'Tempat Lahir', 'required');
-            // $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required');
-            // $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+            $this->form_validation->set_rules('tmpt_lahir', 'Tempat Lahir', 'required');
+            $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required');
+            $this->form_validation->set_rules('alamat', 'Alamat', 'required');
             $this->form_validation->set_rules('no_tlp', 'No Telepon / No HP', 'required');
 
 
             if ($this->form_validation->run() == FALSE) {
+
                 // $this->load->view('myform');
             } else {
                 $user = M_User::create([
@@ -48,11 +50,11 @@ class User extends CI_Controller {
                     'password'  => md5($this->input->post('password')),  
                     'nama'      => $this->input->post('nama'),
                     'email'     => $this->input->post('email'),  
-                    'jabatan'   => empty($this->input->post('jabatan')) ? NULL : $this->input->post('jabatan'),  
+                    // 'jabatan'   => empty($this->input->post('jabatan')) ? NULL : $this->input->post('jabatan'),  
                     'role'      => $this->input->post('role'),  
-                    'tmpt_lahir'=> empty($this->input->post('tmpt_lahir')) ? NULL : $this->input->post('tmpt_lahir'),  
-                    'tgl_lahir' => empty($this->input->post('tgl_lahir')) ? NULL : $this->input->post('tgl_lahir'),  
-                    'alamat'    => empty($this->input->post('alamat')) ? NULL : $this->input->post('alamat'),  
+                    'tmpt_lahir'=> $this->input->post('tmpt_lahir'),  
+                    'tgl_lahir' => $this->input->post('tgl_lahir'),  
+                    'alamat'    => $this->input->post('alamat'),  
                     'no_tlp'    => $this->input->post('no_tlp')
                 ]);
                 // dd($user);
@@ -62,7 +64,7 @@ class User extends CI_Controller {
                 } else {
                     $this->session->set_flashdata('gagal', 'User Tidak Berhasil Disimpan');
                 }
-                // $this->load->view('myform');
+                redirect('admin/user');
             }
         }
     }
@@ -77,51 +79,44 @@ class User extends CI_Controller {
 
     public function edit($id)
     {
-        $data['data'] = M_User::find($id);
-        // dd($data['data']);
-        $data['content'] = 'admin/edit_user';
-        $this->load->view('layout_admin/master', $data);
+        if ($id == $this->session->id) {
+            redirect('admin/profile');
+        } else {
+            $data['user'] = M_User::find($id);
+            if(!$data['user']) {
+                redirect('admin/user');
+            } else {
+                $data['sidebar'] = 'admin/sidebar';
+                $data['content'] = 'admin/user_edit';
+                $this->load->view('layouts/app', $data);
+            }            
+        }
+        
     }
 
     public function update()
-    {
+    {   
         if (!$this->input->post()) {
-            redirect('/admin/artikel');
-        } else {
-            // $this->form_validation->set_rules('username', 'Username', 'required');        
+            redirect('admin/profile');
+        } else {      
             $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');
-            $this->form_validation->set_rules('email', 'E-Mail', 'required|valid_email|is_unique[users.email]');
-            // $this->form_validation->set_rules('jabatan', 'Jabatan', 'required');
-            // $this->form_validation->set_rules('role', 'Role User', 'required');
-            // $this->form_validation->set_rules('tmpt_lahir', 'Tempat Lahir', 'required');
-            // $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required');
-            // $this->form_validation->set_rules('alamat', 'Alamat', 'required');
-            $this->form_validation->set_rules('no_telp', 'No Telepon / No HP', 'required');
-            if ($this->input->post('password') && !empty($this->input->post('password'))) {
-                $this->form_validation->set_rules('password', 'Password', 'required');
-                $this->form_validation->set_rules('password_confirm', 'Password Confirmation', 'required|matches[password]');
-            }    
+            $this->form_validation->set_rules('no_tlp', 'No Telepon / No HP', 'required');  
 
             if ($this->form_validation->run() == FALSE) {
-                // $this->load->view('myform');
+                dd(validation_errors());
+                redirect('admin/user');
             } else {
                 $user = M_User::find($this->input->post('id'));
                 $user->nama     = $this->input->post('nama');
                 $user->email    = $this->input->post('email');
-                $user->jabatan  = empty($this->input->post('jabatan')) ? NULL : $this->input->post('jabatan');
-                // $user->role     = $this->input->post('role');
                 $user->tmpt_lahir   = empty($this->input->post('tmpt_lahir')) ? NULL : $this->input->post('tmpt_lahir');  
                 $user->tgl_lahir    = empty($this->input->post('tgl_lahir')) ? NULL : $this->input->post('tgl_lahir');  
                 $user->alamat   = empty($this->input->post('alamat')) ? NULL : $this->input->post('alamat');
-                $user->no_telp  = $this->input->post('no_tlp');
-
-                if ($this->input->post('password') && !empty($this->input->post('password'))) {
-                    $user->password = $this->input->post('password');
-                }
+                $user->no_tlp   = $this->input->post('no_tlp');
 
                 $user->save();
 
-                dd($user);
+                // dd($user);
 
                 if($user) {
                     $this->session->set_flashdata('sukses', 'User Berhasil Diperbarui');
@@ -129,6 +124,7 @@ class User extends CI_Controller {
                     $this->session->set_flashdata('gagal', 'User Tidak Berhasil Diperbarui');
                 }
                 // $this->load->view('myform');
+                redirect('admin/user');
             }
         }
     }
@@ -141,6 +137,7 @@ class User extends CI_Controller {
         } else {
             $this->session->set_flashdata('gagal', 'User Tidak Berhasil Dihapus');
         }
+        redirect('admin/user');
     }
 
 

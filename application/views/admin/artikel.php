@@ -30,7 +30,7 @@
                                         <td><?php echo $artikel->status ?></td>
                                         <td class="text-right">
                                             <!-- <a href="#" class="btn btn-simple btn-info btn-icon like"><i class="material-icons">favorite</i></a> -->
-                                            <a href="<?php echo base_url('admin/artikel/edit/'.$artikel->id_artikel); ?>" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">dvr</i></a>
+                                            <a href="<?php echo base_url('admin/artikel/edit/'.$artikel->id_artikel); ?>" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">mode_edit</i></a>
                                             <a href="<?php echo base_url('admin/artikel/delete/'.$artikel->id_artikel); ?>" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a>
                                         </td>
                                     </tr>

@@ -7,12 +7,18 @@
             <div class="card-content">
                 <h4 class="card-title">Tambah Artikel</h4>
                 <form class="form-horizontal" method="post" action="<?php echo base_url('admin/artikel/store'); ?>">
+                    <?php if (validation_errors()) {?>
+                    <div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="material-icons">close</i></button>
+                        <spans><?php echo validation_errors(); ?></span>
+                    </div>
+                    <?php }?>
                     <div class="row">
                         <label class="col-md-2 label-on-left">Judul</label>
                         <div class="col-md-10">
                             <div class="form-group label-floating is-empty">
                                 <label class="control-label"></label>
-                                <input type="text" class="form-control" name="judul" required>
+                                <input type="text" class="form-control" name="judul" value="<?php echo set_value('judul'); ?>" required>
                             <span class="material-input"></span></div>
                         </div>
                     </div>
@@ -21,7 +27,7 @@
                         <div class="col-md-10">
                             <div class="form-group label-floating is-empty">
                                 <label class="control-label"></label>
-                                <textarea class="form-control" rows="5" name="isi" required></textarea>
+                                <textarea class="form-control" rows="5" name="isi" value="<?php echo set_value('isi'); ?>" required></textarea>
                             <span class="material-input"></span></div>
                         </div>
                     </div>

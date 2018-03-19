@@ -31,11 +31,11 @@ class Artikel extends CI_Controller {
             redirect('admin/artikel');
         } else {
             // dd($this->input->post());
-            $this->form_validation->set_rules('judul', 'Judul Artikel', 'required');
+            $this->form_validation->set_rules('judul', 'Judul Artikel', 'required|min_length[5]');
             $this->form_validation->set_rules('isi', 'Isi Artikel', 'required');
 
             if ($this->form_validation->run() == FALSE) {
-                // $this->load->view('myform');
+                redirect('admin/artikel/create');
             } else {
                 $artikel = M_Artikel::create([
                     'judul' => $this->input->post('judul'),
@@ -67,6 +67,9 @@ class Artikel extends CI_Controller {
     public function edit($id)
     {
         $data['artikel'] = M_Artikel::find($id);
+        if(!$data['artikel']) {
+            redirect('admin/artikel');
+        }
         $data['sidebar'] = 'admin/sidebar';
         $data['content'] = 'admin/artikel_edit';
         $this->load->view('layouts/app', $data);
@@ -82,7 +85,6 @@ class Artikel extends CI_Controller {
 
             if ($this->form_validation->run() == FALSE) {
                 redirect('admin/artikel');
-                // $this->load->view('myform');
             } else {
                 // dd('sampe sini');
                 $artikel = M_Artikel::find($this->input->post('id_artikel'));

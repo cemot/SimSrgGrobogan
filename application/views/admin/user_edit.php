@@ -5,10 +5,11 @@
                 <i class="material-icons">perm_identity</i>
             </div>
             <div class="card-content">
-                <h4 class="card-title">Profil Saya
+                <h4 class="card-title">Edit User
                     <!-- <small class="category">Complete your profile</small> -->
                 </h4>
-                <form method="post" action="<?php echo base_url('admin/profile/update'); ?>">
+                <form method="post" action="<?php echo base_url('admin/user/update'); ?>">
+                    <input type="hidden" class="form-control" name="id" value="<?php echo $user->id; ?>" required>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group label-floating <?php (empty($user->username) || ($user->username == NULL))? 'is-empty' : '' ?>">

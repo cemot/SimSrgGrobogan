@@ -64,6 +64,12 @@ $route['admin/artikel/store'] = 'admin/artikel/store';
 $route['admin/artikel/edit/(:any)'] = 'admin/artikel/edit/$1';
 $route['admin/artikel/update'] = 'admin/artikel/update';
 $route['admin/artikel/delete/(:any)'] = 'admin/artikel/destroy/$1';
+$route['admin/user'] = 'admin/user/index';
+$route['admin/user/create'] = 'admin/user/create';
+$route['admin/user/store'] = 'admin/user/store';
+$route['admin/user/edit/(:any)'] = 'admin/user/edit/$1';
+$route['admin/user/update'] = 'admin/user/update';
+$route['admin/user/delete/(:any)'] = 'admin/user/destroy/$1';
 
 // Auth
 $route['login'] = 'Auth/login';
