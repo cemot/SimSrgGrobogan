@@ -22,7 +22,7 @@
                         <div class="col-md-10">
                             <div class="form-group label-floating is-empty">
                                 <label class="control-label"></label>
-                                <textarea class="form-control" rows="5" name="isi" required><?php echo $artikel->isi; ?></textarea>
+                                <textarea class="form-control" rows="10" name="isi" required><?php echo $artikel->isi; ?></textarea>
                             <span class="material-input"></span></div>
                         </div>
                     </div>

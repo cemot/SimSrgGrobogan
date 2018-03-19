@@ -15,6 +15,10 @@ class AdminController extends CI_Controller {
 
 	public function dashboard()
     {
+        $data['artikel'] = M_Artikel::all()->count();
+        $data['pengelola'] = M_User::where('role', 1)->get()->count();
+        $data['dinas'] = M_User::where('role', 2)->get()->count();
+        $data['petani'] = M_User::where('role', 3)->get()->count();
         $data['sidebar'] = 'admin/sidebar';
         $data['content'] = 'admin/dashboard';
         $this->load->view('layouts/app', $data);

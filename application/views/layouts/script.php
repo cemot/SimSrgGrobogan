@@ -43,6 +43,14 @@
 <script src="<?php echo base_url(); ?>assets/js/material-dashboard23cd.js?v=1.2.1"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="<?php echo base_url(); ?>assets/js/demo.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/tinymce/tinymce.min.js"></script>
+<script>
+    $(document).ready(function() {
+      tinymce.init({ 
+            selector:'textarea',
+        });
+    });    
+</script>
 <script type="text/javascript">
     $(document).ready(function() {
         md.initSliders()

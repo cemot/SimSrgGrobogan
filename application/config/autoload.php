@@ -39,7 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |  $autoload['packages'] = array(APPPATH.'third_party', '/usr/local/shared');
 |
 */
-$autoload['packages'] = array(APPPATH.'third_party/ion_auth');
+$autoload['packages'] = array();
 
 /*
 | -------------------------------------------------------------------
@@ -58,7 +58,7 @@ $autoload['packages'] = array(APPPATH.'third_party/ion_auth');
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database', 'ion_auth', 'session', 'form_validation');
+$autoload['libraries'] = array('database', 'session', 'form_validation');
 
 /*
 | -------------------------------------------------------------------
