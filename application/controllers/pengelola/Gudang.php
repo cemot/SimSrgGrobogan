@@ -10,103 +10,118 @@ class Gudang extends CI_Controller {
 
 	public function index()
 	{
-		$data['data'] = M_Gudang::all();
-        dd($data);
+        $data['data_saya'] = M_Gudang::where('id_pengelola', $this->session->id)->get();
+		$data['data'] = M_Gudang::where('id_pengelola', '!=', $this->session->id)->get();
+        $data['sidebar'] = 'pengelola/sidebar';
         $data['content'] = 'pengelola/gudang';
-        $this->load->view('layout_pengelola/master', $data); 
+        $this->load->view('layouts/app', $data); 
 	}
 
 	public function create()
     {
-        $data['content'] = 'pengelola/create_gudang';
-        $this->load->view('layout_pengelola/master', $data);
+        $data['sidebar'] = 'pengelola/sidebar';
+        $data['content'] = 'pengelola/gudang_create';
+        $this->load->view('layouts/app', $data);
     }
 
     public function store()
     {
         if (!$this->input->post()) {
-            redirect('/pengelola/gudang');
+            redirect('pengelola/gudang');
         } else {
-            $user = $this->ion_auth->user()->row();
-
             $this->form_validation->set_rules('nama', 'Nama Gudang', 'required');
             $this->form_validation->set_rules('kapasitas', 'Kapasitas Gudang', 'required|integer');
 
             if ($this->form_validation->run() == FALSE) {
-                // $this->load->view('myform');
+                redirect('/pengelola/gudang');
             } else {
                 $gudang = M_Gudang::create([
                     'nama' => $this->input->post('nama'),
-                    'kapasitas' => empty($this->input->post('kapasitas')) ? NULL : $this->input->post('kapasitas'),
-                    'id_pengelola' => $user->id
+                    'kapasitas' => $this->input->post('kapasitas'),
+                    'id_pengelola' => $this->session->id
                 ]);
-                // dd($gudang);
 
                 if($gudang) {
-                    $this->session->set_flashdata('sukses', 'Gudang Berhasil Disimpan');
+                    $this->session->set_flashdata('class', 'success');
+                    $this->session->set_flashdata('message', 'Gudang Berhasil Disimpan');
                 } else {
-                    $this->session->set_flashdata('gagal', 'Gudang Tidak Berhasil Disimpan');
+                    $this->session->set_flashdata('class', 'danger');
+                    $this->session->set_flashdata('message', 'Gudang Tidak Berhasil Diperbarui');
                 }
-                // $this->load->view('myform');
+                redirect('pengelola/gudang');
             }
         }
     }
 
     public function show($id)
     {
-        $data['data'] = M_Gudang::find($id);
-        // dd($data['data']);
-        $data['content'] = 'pengelola/show_gudang';
-        $this->load->view('layout_pengelola/master', $data);
+        $data['data'] = M_Gudang::where('id_gudang', $id)->where('id_pengelola', $this->session->id)->first();
+        if (!$data['data']) {
+            redirect('pengelola/gudang');
+        } else {
+            $data['sidebar'] = 'pengelola/sidebar';
+            $data['content'] = 'pengelola/gudang_show';
+            $this->load->view('layouts/app', $data);
+        }        
     }
 
     public function edit($id)
     {
-        $data['data'] = M_Gudang::find($id);
-        // dd($data['data']);
-        $data['content'] = 'pengelola/edit_gudang';
-        $this->load->view('layout_pengelola/master', $data);
+        $data['gudang'] = M_Gudang::where('id_gudang', $id)->where('id_pengelola', $this->session->id)->first();
+        if (!$data['gudang']) {
+            redirect('pengelola/gudang');
+        } else {
+            $data['sidebar'] = 'pengelola/sidebar';
+            $data['content'] = 'pengelola/gudang_edit';
+            $this->load->view('layouts/app', $data);
+        } 
     }
 
     public function update()
     {
         if (!$this->input->post()) {
-            redirect('/pengelola/gudang');
+            redirect('pengelola/gudang');
         } else {
-            // $user = $this->ion_auth->user()->row();
-
             $this->form_validation->set_rules('nama', 'Nama Gudang', 'required');
             $this->form_validation->set_rules('kapasitas', 'Kapasitas Gudang', 'required|integer');
 
             if ($this->form_validation->run() == FALSE) {
                 // $this->load->view('myform');
             } else {
-                $gudang = M_Gudang::find($this->input->post('id'));
+                $gudang = M_Gudang::find($this->input->post('id_gudang'));
                 $gudang->nama = $this->input->post('nama');
-                $gudang->kapasitas = empty($this->input->post('kapasitas')) ? NULL : $this->input->post('kapasitas');
-                $gudang->id_pengelola = empty($this->input->post('pengelola')) ? NULL : $this->input->post('pengelola');
+                $gudang->kapasitas = $this->input->post('kapasitas');
                 $gudang->save();
 
-                dd($gudang);
-
                 if($gudang) {
-                    $this->session->set_flashdata('sukses', 'Gudang Berhasil Diperbarui');
+                    $this->session->set_flashdata('class', 'success');
+                    $this->session->set_flashdata('message', 'Gudang Berhasil Diperbarui');
                 } else {
-                    $this->session->set_flashdata('gagal', 'Gudang Tidak Berhasil Diperbarui');
+                    $this->session->set_flashdata('class', 'danger');
+                    $this->session->set_flashdata('message', 'Gudang Tidak Berhasil Diperbarui');
                 }
-                // $this->load->view('myform');
+                redirect('pengelola/gudang');
             }
         }
     }
 
     public function destroy($id)
     {
-        $gudang = M_Gudang::destroy($id);
-        if($gudang) {
-            $this->session->set_flashdata('sukses', 'Gudang Berhasil Dihapus');
+        $gudang = M_Gudang::find($id);
+        if ($gudang->pengelola->id != $this->session->id) {
+            $this->session->set_flashdata('class', 'danger');
+            $this->session->set_flashdata('message', 'Gudang Tidak Berhasil Dihapus');
         } else {
-            $this->session->set_flashdata('gagal', 'Gudang Tidak Berhasil Dihapus');
+            $gudang = $gudang->delete();
+            if($gudang) {
+                $this->session->set_flashdata('class', 'success');
+                $this->session->set_flashdata('message', 'Gudang Berhasil Dihapus');
+            } else {
+                $this->session->set_flashdata('class', 'danger');
+                $this->session->set_flashdata('message', 'Gudang Tidak Berhasil Dihapus');
+            }
         }
+        redirect('pengelola/gudang');
     }
 
 

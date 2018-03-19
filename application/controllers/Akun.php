@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class AdminController extends CI_Controller {
+class Akun extends CI_Controller {
 
 	public function __construct()
     {
@@ -15,19 +15,28 @@ class AdminController extends CI_Controller {
 
 	public function dashboard()
     {
-        $data['artikel'] = M_Artikel::all()->count();
-        $data['pengelola'] = M_User::where('role', 1)->get()->count();
-        $data['dinas'] = M_User::where('role', 2)->get()->count();
-        $data['petani'] = M_User::where('role', 3)->get()->count();
-        $data['sidebar'] = 'admin/sidebar';
-        $data['content'] = 'admin/dashboard';
+        if ($this->session->role == 0) {
+            $data['artikel'] = M_Artikel::all()->count();
+            $data['pengelola'] = M_User::where('role', 1)->get()->count();
+            $data['dinas'] = M_User::where('role', 2)->get()->count();
+            $data['petani'] = M_User::where('role', 3)->get()->count();
+            $data['sidebar'] = 'admin/sidebar';
+            $data['content'] = 'admin/dashboard';
+        } elseif ($this->session->role == 1) {
+            $data['sidebar'] = 'pengelola/sidebar';
+            $data['content'] = 'pengelola/dashboard';
+        }        
         $this->load->view('layouts/app', $data);
     }
 
     public function profile()
     {
-        $data['sidebar'] = 'admin/sidebar';
-        $data['content'] = 'admin/profile';
+        if ($this->session->role == 0) {
+            $data['sidebar'] = 'admin/sidebar';
+        } elseif ($this->session->role == 1) {
+            $data['sidebar'] = 'pengelola/sidebar';
+        }
+        $data['content'] = 'layouts/profile';     
         $data['user'] = M_User::find($this->session->id);
         $this->load->view('layouts/app', $data);
     }
@@ -36,7 +45,15 @@ class AdminController extends CI_Controller {
     {
         
         if (!$this->input->post()) {
-            redirect('admin/profile');
+            if ($this->session->role == 0) {
+                redirect('admin/profile');
+            } elseif ($this->session->role == 1) {
+                redirect('pengelola/profile');
+            } elseif ($this->session->role == 2) {
+                redirect('dinas/profile');
+            } else {
+                redirect('petani/profile');
+            }
         } else {
             // $this->form_validation->set_rules('username', 'Username', 'required');        
             $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');

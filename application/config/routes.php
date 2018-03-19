@@ -54,10 +54,10 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 //ADMINISTRATOR
-$route['admin'] = 'AdminController/dashboard';
-$route['admin/dashboard'] = 'AdminController/dashboard';
-$route['admin/profile'] = 'AdminController/profile';
-$route['admin/profile/update'] = 'AdminController/update_profile';
+$route['admin'] = 'akun/dashboard';
+$route['admin/dashboard'] = 'akun/dashboard';
+$route['admin/profile'] = 'akun/profile';
+$route['admin/profile/update'] = 'akun/update_profile';
 $route['admin/artikel'] = 'admin/artikel/index';
 $route['admin/artikel/create'] = 'admin/artikel/create';
 $route['admin/artikel/store'] = 'admin/artikel/store';
@@ -70,6 +70,36 @@ $route['admin/user/store'] = 'admin/user/store';
 $route['admin/user/edit/(:any)'] = 'admin/user/edit/$1';
 $route['admin/user/update'] = 'admin/user/update';
 $route['admin/user/delete/(:any)'] = 'admin/user/destroy/$1';
+
+//PENGELOLA
+$route['pengelola'] = 'akun/dashboard';
+$route['pengelola/dashboard'] = 'akun/dashboard';
+$route['pengelola/profile'] = 'akun/profile';
+$route['pengelola/profile/update'] = 'akun/update_profile';
+$route['pengelola/gudang'] = 'pengelola/gudang/index';
+$route['pengelola/gudang/create'] = 'pengelola/gudang/create';
+$route['pengelola/gudang/store'] = 'pengelola/gudang/store';
+$route['pengelola/gudang/edit/(:any)'] = 'pengelola/gudang/edit/$1';
+$route['pengelola/gudang/update'] = 'pengelola/gudang/update';
+$route['pengelola/gudang/delete/(:any)'] = 'pengelola/gudang/destroy/$1';
+
+//DINAS
+$route['dinas'] = 'akun/dashboard';
+$route['dinas/dashboard'] = 'akun/dashboard';
+$route['dinas/profile'] = 'akun/profile';
+$route['dinas/profile/update'] = 'akun/update_profile';
+
+//BANK
+$route['bank'] = 'akun/dashboard';
+$route['bank/dashboard'] = 'akun/dashboard';
+$route['bank/profile'] = 'akun/profile';
+$route['bank/profile/update'] = 'akun/update_profile';
+
+//PETANI
+$route['petani'] = 'akun/dashboard';
+$route['petani/dashboard'] = 'akun/dashboard';
+$route['petani/profile'] = 'akun/profile';
+$route['petani/profile/update'] = 'akun/update_profile';
 
 // Auth
 $route['login'] = 'Auth/login';

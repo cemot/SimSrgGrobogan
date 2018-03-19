@@ -44,9 +44,30 @@
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="<?php echo base_url(); ?>assets/js/demo.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/tinymce/tinymce.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        <?php if($this->session->flashdata('class') && $this->session->flashdata('message')) : ?>
+            notification('<?php echo $this->session->flashdata('class');?>' , '<?php echo $this->session->flashdata('message');?>');
+        <?php endif; ?>
+        function notification(type, message) {
+            $.notify({
+                icon: "notifications",
+                message: message
+            }, {
+                type: type,
+                timer: 500,
+                placement: {
+                    from: 'bottom',
+                    align: 'right'
+                }
+            });
+        }
+    });  
+</script>
 <script>
     $(document).ready(function() {
-      tinymce.init({ 
+        tinymce.init({ 
             selector:'textarea',
         });
     });    
@@ -66,7 +87,7 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#datatables').DataTable({
+        $('.datatables').DataTable({
             "pagingType": "full_numbers",
             "lengthMenu": [
                 [10, 25, 50, -1],

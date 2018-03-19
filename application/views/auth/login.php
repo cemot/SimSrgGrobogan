@@ -47,12 +47,7 @@
                                         <h4 class="card-title">Login</h4>
                                     </div>
                                     <p class="category text-center">
-                                    <?php if ($this->session->flashdata('gagal')) {?>
-                                    <div class="alert alert-danger">
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
-                                        <span data-notify="message"><?php echo $this->session->flashdata('gagal'); ?> </span>
-                                    </div>
-                                    <?php }?>
+                                                                           
                                     </p>
                                     <div class="card-content">
                                         <div class="input-group">
@@ -90,7 +85,7 @@
                         <script>
                             document.write(new Date().getFullYear())
                         </script>
-                        <a href="#"> DexTeam </a>, made with love
+                        <a href="#"> DexTeam </a>, made with <i class="fa fa-heart" aria-hidden="true"></i>
                     </p>
                 </div>
             </footer>
@@ -151,6 +146,27 @@
             $('.card').removeClass('card-hidden');
         }, 700)
     });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        <?php if($this->session->flashdata('class') && $this->session->flashdata('message')) : ?>
+            notification('<?php echo $this->session->flashdata('class');?>' , '<?php echo $this->session->flashdata('message');?>');
+        <?php endif; ?>
+        function notification(type, message) {
+            $.notify({
+                icon: "notifications",
+                message: message
+            }, {
+                type: type,
+                timer: 250,
+                placement: {
+                    from: 'bottom',
+                    align: 'right'
+                }
+            });
+        }
+    });  
 </script>
 
 </html>

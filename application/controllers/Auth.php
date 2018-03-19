@@ -36,8 +36,9 @@ class Auth extends CI_Controller {
         $user = M_User::where('username', $username)->where('password', $password)->first();
         // dd($user);
 
-        if ($user == NULL) {
-            $this->session->set_flashdata('gagal', 'Username atau password salah!');
+        if (!$user) {
+            $this->session->set_flashdata('class', 'danger');
+            $this->session->set_flashdata('message', 'Username / Password salah!');
             redirect(base_url());
         } else {
             $session_data = array(

@@ -14,10 +14,10 @@
             Tip 3: you can change the color of the sidebar with data-background-color="white | black"
         -->
             <div class="logo">
-                <a href="#" class="simple-text logo-mini">
+                <a href="<?php echo base_url(); ?>" class="simple-text logo-mini">
                     RG
                 </a>
-                <a href="#" class="simple-text logo-normal">
+                <a href="<?php echo base_url(); ?>" class="simple-text logo-normal">
                     Kab. Grobogan
                 </a>
             </div>
@@ -34,12 +34,20 @@
                             </span>
                         </a>
                         <div class="clearfix"></div>
-                        <div class="collapse" id="collapseExample">
+                        <div class="collapse <?php if($this->uri->segment(2) == "profile"){ echo "in"; } ?>" id="collapseExample">
                             <ul class="nav">
-                                <li>
-                                    <a href="#">
-                                        <span class="sidebar-mini"> PS </span>
-                                        <span class="sidebar-normal"> Profil saya </span>
+                                <li class="<?php if($this->uri->segment(2) == "profile"){ echo "active"; } ?>">
+                                    <?php if ($this->session->role == 0): ?>
+                                        <a href="<?php echo base_url('admin/profile'); ?>">
+                                    <?php elseif ($this->session->role == 1): ?>
+                                        <a href="<?php echo base_url('pengelola/profile'); ?>">
+                                    <?php elseif ($this->session->role == 2): ?>
+                                        <a href="<?php echo base_url('dinas/profile'); ?>">
+                                    <?php else : ?>
+                                        <a href="<?php echo base_url('petani/profile'); ?>">
+                                    <?php endif ?>
+                                            <span class="sidebar-mini"> PS </span>
+                                            <span class="sidebar-normal"> Profil saya </span>
                                     </a>
                                 </li>
                                 <li>
