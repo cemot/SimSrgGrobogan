@@ -17,7 +17,7 @@ class M_Pengujian extends Eloquent
 
     public function barang()
     {
-        return $this->belongsTo('M_Barang', 'id_barang', 'id');
+        return $this->belongsTo('M_Barang', 'id_barang', 'id_barang');
     }
 
     public function pengelola()

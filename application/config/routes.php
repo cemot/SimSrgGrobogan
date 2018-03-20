@@ -82,6 +82,12 @@ $route['pengelola/gudang/store'] = 'pengelola/gudang/store';
 $route['pengelola/gudang/edit/(:any)'] = 'pengelola/gudang/edit/$1';
 $route['pengelola/gudang/update'] = 'pengelola/gudang/update';
 $route['pengelola/gudang/delete/(:any)'] = 'pengelola/gudang/destroy/$1';
+$route['pengelola/pengujian'] = 'pengelola/pengujian/index';
+$route['pengelola/pengujian/create'] = 'pengelola/pengujian/create';
+$route['pengelola/pengujian/store'] = 'pengelola/pengujian/store';
+$route['pengelola/pengujian/edit/(:any)'] = 'pengelola/pengujian/edit/$1';
+$route['pengelola/pengujian/update'] = 'pengelola/pengujian/update';
+$route['pengelola/pengujian/delete/(:any)'] = 'pengelola/pengujian/destroy/$1';
 
 //DINAS
 $route['dinas'] = 'akun/dashboard';

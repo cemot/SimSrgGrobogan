@@ -44,7 +44,15 @@
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="<?php echo base_url(); ?>assets/js/demo.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/tinymce/tinymce.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/select2.min.js"></script>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.select2').select2({
+            theme: "bootstrap"
+        });
+    });
+</script>
 <script type="text/javascript">
     $(document).ready(function() {
         <?php if($this->session->flashdata('class') && $this->session->flashdata('message')) : ?>

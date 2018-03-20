@@ -39,7 +39,7 @@ class Gudang extends CI_Controller {
                     'nama' => $this->input->post('nama'),
                     'kapasitas' => $this->input->post('kapasitas'),
                     'id_pengelola' => $this->session->id
-                ]);
+                ]); 
 
                 if($gudang) {
                     $this->session->set_flashdata('class', 'success');

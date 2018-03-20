@@ -20,4 +20,9 @@ class M_Barang extends Eloquent
         return $this->belongsTo('M_User', 'id_petani', 'id');
     }
 
+    public function pengujian()
+    {
+        return $this->hasOne('M_Pengujian', 'id_barang', 'id_barang');
+    }
+
 }

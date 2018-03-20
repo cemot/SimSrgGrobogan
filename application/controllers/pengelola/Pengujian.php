@@ -10,16 +10,19 @@ class Pengujian extends CI_Controller {
 
 	public function index()
 	{
-		$data['data'] = M_Pengujian::all();
-        dd($data);
+        $data['data_saya'] = M_Pengujian::where('id_pengelola', $this->session->id)->get();
+        $data['data'] = M_Pengujian::where('id_pengelola', '!=', $this->session->id)->get();
+        $data['sidebar'] = 'pengelola/sidebar';
         $data['content'] = 'pengelola/pengujian';
-        $this->load->view('layout_pengelola/master', $data); 
+        $this->load->view('layouts/app', $data);
 	}
 
 	public function create()
     {
-        $data['content'] = 'pengelola/create_gudang';
-        $this->load->view('layout_pengelola/master', $data);
+        $data['data'] = M_Barang::all();
+        $data['sidebar'] = 'pengelola/sidebar';
+        $data['content'] = 'pengelola/pengujian_create';
+        $this->load->view('layouts/app', $data);
     }
 
     public function store()

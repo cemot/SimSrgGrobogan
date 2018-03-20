@@ -30,6 +30,30 @@
             </ul>
         </div>
     </li>
+    <li class="<?php if($this->uri->segment(2) == "pengujian"){ echo "active"; } ?>">
+        <a data-toggle="collapse" href="#catpengujian">
+            <i class="material-icons">description</i>
+            <p> Data Pengujian
+                <b class="caret"></b>
+            </p>
+        </a>
+        <div class="collapse <?php if($this->uri->segment(2) == "pengujian"){ echo "in"; } ?>" id="catpengujian">
+            <ul class="nav">
+                <li class="<?php if($this->uri->segment(2) == "pengujian" && (empty($this->uri->segment(3)) || $this->uri->segment(3) == "edit")){ echo "active"; } ?>">
+                    <a href="<?php echo base_url('pengelola/pengujian'); ?>">
+                        <span class="sidebar-mini"> DC </span>
+                        <span class="sidebar-normal"> Daftar Pengujian</span>
+                    </a>
+                </li>
+                <li class="<?php if($this->uri->segment(2) == "pengujian" && $this->uri->segment(3) == "create"){ echo "active"; } ?>">
+                    <a href="<?php echo base_url('pengelola/pengujian/create'); ?>">
+                        <span class="sidebar-mini"> + </span>
+                        <span class="sidebar-normal"> Tambah Pengujian </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </li>
     <li>
         <a data-toggle="collapse" href="#hrgkomoditi">
             <i class="material-icons">local_offer</i>
@@ -108,30 +132,6 @@
             <p> Artikel
             </p>
         </a>
-    </li>
-    <li>
-        <a data-toggle="collapse" href="#catpengujian">
-            <i class="material-icons">description</i>
-            <p> Catatan Pengujian
-                <b class="caret"></b>
-            </p>
-        </a>
-        <div class="collapse" id="catpengujian">
-            <ul class="nav">
-                <li>
-                    <a href="#">
-                        <span class="sidebar-mini"> DC </span>
-                        <span class="sidebar-normal"> Daftar Catatan</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="sidebar-mini"> + </span>
-                        <span class="sidebar-normal"> Tambah Catatan </span>
-                    </a>
-                </li>
-            </ul>
-        </div>
     </li>
     <li>
         <a data-toggle="collapse" href="#rekapHU">

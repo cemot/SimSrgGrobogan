@@ -17,5 +17,7 @@
 <link href="<?php echo base_url(); ?>assets/css/demo.css" rel="stylesheet" />
 <!--     Fonts and icons     -->
 <link href="<?php echo base_url(); ?>assets/css/font-awesome.min.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>assets/css/select2.min.css" rel="stylesheet" />
+<link href="<?php echo base_url(); ?>assets/css/select2-bootstrap.min.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
