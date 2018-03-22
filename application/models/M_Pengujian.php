@@ -32,7 +32,7 @@ class M_Pengujian extends Eloquent
 
     public function harga()
     {
-        return $this->hasOne('M_Catatan', 'id_pengujian', 'id_pengujian');
+        return $this->hasOne('M_Harga', 'id_pengujian', 'id_pengujian');
     }
 
 }

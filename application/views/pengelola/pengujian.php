@@ -17,9 +17,8 @@
                                 <th>Barang</th>
                                 <th>Petani</th>
                                 <th>Tanggal</th>
-                                <th>Hasil Pengujian</th>
-                                <th>Catatan</th>
-                                <th>Status</th>
+                                <th>Hasil</th>
+                                <th>Status Catatan</th>
                                 <th class="disabled-sorting text-right">Aksi</th>
                             </tr>
                         </thead>
@@ -32,13 +31,14 @@
                                         <td><?php echo $pengujian->barang->nama_barang ?></td>
                                         <td><?php echo $pengujian->barang->petani->nama ?></td>
                                         <td><?php echo $pengujian->tgl_pengujian ?></td>
-                                        <td><?php echo $pengujian->hsl_pengujian ?></td>
-                                        <td><?php echo $pengujian->catatan->isi_catatan ?></td>
-                                        <td><?php echo $pengujian->catatan->status ?></td>
-                                        <td class="text-right">
-                                            <!-- <a href="#" class="btn btn-simple btn-info btn-icon like"><i class="material-icons">favorite</i></a> -->
-                                            <a href="<?php echo base_url('pengelola/pengujian/edit/'.$pengujian->id_pengujian); ?>" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">mode_edit</i></a>
-                                            <a href="<?php echo base_url('pengelola/pengujian/delete/'.$pengujian->id_pengujian); ?>" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a>
+                                        <td><span class="label label-<?php if($pengujian->hsl_pengujian == 'Diterima'){ echo 'success';} else { echo 'danger';} ?>"><?php echo $pengujian->hsl_pengujian ?></span>
+                                        </td>
+                                        <td><span class="label label-<?php if($pengujian->catatan->status == 0){ echo 'default';} else { echo 'success';} ?>"><?php if($pengujian->catatan->status == 0){ echo 'Pending';} else { echo 'Published';} ?></span>
+                                        </td>
+                                        <td class="td-actions text-right">
+                                            <a class="btn btn-info" href="<?php echo base_url('pengelola/pengujian/show/'.$pengujian->id_pengujian); ?>"><i class="material-icons">assignment</i> Detail Catatan</a>
+                                            <a class="btn btn-success" href="<?php echo base_url('pengelola/pengujian/edit/'.$pengujian->id_pengujian); ?>"><i class="material-icons">mode_edit</i> Edit</a>
+                                            <a class="btn btn-danger" href="<?php echo base_url('pengelola/pengujian/delete/'.$pengujian->id_pengujian); ?>"><i class="material-icons">close</i> Hapus</a>
                                         </td>
                                     </tr>
                             <?php endforeach ;?>
@@ -73,8 +73,6 @@
                                 <th>Petani</th>
                                 <th>Tanggal</th>
                                 <th>Hasil Pengujian</th>
-                                <th>Catatan</th>
-                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -88,8 +86,6 @@
                                         <td><?php echo $pengujian->barang->petani->nama ?></td>
                                         <td><?php echo $pengujian->tgl_pengujian ?></td>
                                         <td><?php echo $pengujian->hsl_pengujian ?></td>
-                                        <td><?php echo $pengujian->catatan->isi_catatan ?></td>
-                                        <td><?php echo $pengujian->catatan->status ?></td>
                                     </tr>
                             <?php endforeach ;?>
                         </tbody>

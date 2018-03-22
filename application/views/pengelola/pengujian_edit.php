@@ -5,28 +5,22 @@
                 <i class="material-icons">description</i>
             </div>
             <div class="card-content">
-                <h4 class="card-title">Tambah Pengujian</h4>
+                <h4 class="card-title">Edit Pengujian</h4>
                 <div class="row">
-                    <form class="form-horizontal" method="post" action="<?php echo base_url('pengelola/pengujian/store'); ?>">
+                    <form class="form-horizontal" method="post" action="<?php echo base_url('pengelola/pengujian/update'); ?>">
                     <div class="col-md-6 col-sm-12">
                         <div class="row">
+                            <input type="hidden" class="form-control" name="id_pengujian" value="<?php echo $data->id_pengujian; ?>" required>
                             <label class="col-md-3 label-on-left"></label>
                             <div class="col-md-9">
                                 <h3>Data Pengujian</h3>
                             </div>
                         </div>
                         <div class="row">
-                            <label class="col-md-3 label-on-left">Barang</label>
+                            <label class="col-md-3 label-on-left">Pilih Barang</label>
                             <div class="col-md-9">
                                 <div class="form-group label-floating">
-                                    <select class="form-control select2" data-style="select-with-transition" name="id_barang" required>
-                                        <option disabled selected>Pilih Barang</option>
-                                        <?php foreach ($data as $barang): ?>
-                                            <option value="<?php echo $barang->id_barang ?>">
-                                                <?php echo $barang->petani->id . " | " .$barang->petani->nama . " | " . $barang->nama_barang; ?>        
-                                            </option>
-                                        <?php endforeach ;?>
-                                    </select>
+                                    <input type="text" class="form-control" value="<?php echo $data->barang->petani->id . " | " .$data->barang->petani->nama . " | " . $data->barang->nama_barang; ?>" disabled>
                                     <span class="material-input"></span>
                                 </div>
                             </div>
@@ -37,9 +31,9 @@
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
                                     <select class="selectpicker" data-style="select-with-transition" name="hsl_pengujian" required>
-                                        <option selected disabled>Pilih Hasil Pengujian</option>
-                                        <option value="Diterima">Diterima (Lolos)</option>
-                                        <option value="Ditolak">Ditolak (Tidak Lolos)</option>
+                                        <option disabled>Pilih Hasil Pengujian</option>
+                                        <option value="Diterima" <?php ($data->hsl_pengujian == 'Diterima' ? 'selected' : '') ?>>Diterima (Lolos)</option>
+                                        <option value="Ditolak" <?php ($data->hsl_pengujian == 'Ditolak' ? 'selected' : '') ?>>Ditolak (Tidak Lolos)</option>
                                     </select>
                                 <span class="material-input"></span></div>
                             </div>
@@ -67,7 +61,7 @@
                             <div class="col-md-6">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <input class="form-control" type="number" name="harga_barang" placeholder="contoh : 8000" required>
+                                    <input class="form-control" type="text" name="harga_barang" value="<?php echo $data->harga->harga_barang ?>" required>
                                 <span class="material-input"></span></div>
                             </div>
                         </div>
@@ -84,7 +78,7 @@
                             <div class="col-md-10">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <textarea class="form-control" name="isi_catatan" rows="5"></textarea>
+                                    <textarea class="form-control" name="isi_catatan" rows="5"><?php echo htmlspecialchars($data->catatan->isi_catatan); ?></textarea>
                                 <span class="material-input"></span></div>
                             </div>
                         </div>
@@ -94,14 +88,14 @@
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
                                     <select class="selectpicker" data-style="select-with-transition" name="status">
-                                        <option selected disabled>Pilih Status</option>
-                                        <option value="0">Pending </option>
-                                        <option value="1">Published</option>
+                                        <option disabled>Pilih Status</option>
+                                        <option value="0" <?php ($data->catatan->status == 0 ? 'selected' : '') ?>>Pending </option>
+                                        <option value="1" <?php ($data->catatan->status == 1 ? 'selected' : '') ?>>Published</option>
                                     </select>
                                 <span class="material-input"></span></div>
                             </div>
                         </div>
-                    ac</div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">

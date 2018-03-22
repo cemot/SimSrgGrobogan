@@ -73,7 +73,7 @@ class Barang extends CI_Controller {
 
     public function edit($id)
     {
-        $data['data'] = M_Barang::find($id);
+        $data['barang'] = M_Barang::find($id);
         $data['petani'] = M_User::where('role', 4)->get();
         // dd($data['petani']);
         $data['sidebar'] = 'pengelola/sidebar';
@@ -94,7 +94,7 @@ class Barang extends CI_Controller {
             if ($this->form_validation->run() == FALSE) {
                 dd(validation_errors());
             } else {
-                $barang = M_barang::find($this->input->post('id'));
+                $barang = M_Barang::find($this->input->post('id_barang'));
                 $barang->nama_barang = $this->input->post('nama_barang');
                 $barang->berat_barang = $this->input->post('berat_barang');
                 $barang->jenis_barang = $this->input->post('jenis_barang');

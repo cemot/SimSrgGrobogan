@@ -9,11 +9,11 @@ class M_Harga extends Eloquent
     protected $table = 'harga';
     protected $primaryKey = 'id_harga';
 
-    // public $timestamps = false;
+    public $timestamps = false;
     // const CREATED_AT = 'created_at';
     // const UPDATED_AT = 'updated_at';
 
-    protected $fillable = ['id_pengujian', 'jenis_barang', 'satuan_barang', 'harga_barang'];
+    protected $fillable = ['id_pengujian', 'satuan_barang', 'harga_barang'];
 
     public function pengujian()
     {

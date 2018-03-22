@@ -7,12 +7,13 @@
             <div class="card-content">
                 <h4 class="card-title">Edit Pengajuan Barang</h4>
                 <form class="form-horizontal" method="post" action="<?php echo base_url('pengelola/barang/update'); ?>">
+                    <input type="hidden" class="form-control" name="id_barang" value="<?php echo $barang->id_barang; ?>" required>
                     <div class="row">
                         <label class="col-md-2 label-on-left">Nama Barang</label>
                         <div class="col-md-10">
                             <div class="form-group label-floating is-empty">
                                 <label class="control-label"></label>
-                                <input type="text" class="form-control" name="nama_barang" value="<?php echo $data->nama_barang; ?>" required>
+                                <input type="text" class="form-control" name="nama_barang" value="<?php echo $barang->nama_barang; ?>" required>
                             <span class="material-input"></span></div>
                         </div>
                     </div>
@@ -25,7 +26,7 @@
                                     <option disabled>Pilih Jenis Barang</option>
                                     <?php $jenis = ['Beras', 'Jagung', 'Gabah'];
                                         foreach ($jenis as $jenis) : ?>
-                                            <option value="<?php echo $jenis; ?>" <?php ($data->barang == $jenis ? 'selected' : '') ?>><?php echo $jenis; ?></option>
+                                            <option value="<?php echo $jenis; ?>" <?php ($barang->barang == $jenis ? 'selected' : '') ?>><?php echo $jenis; ?></option>
                                         <?php endforeach; ?>
                                 </select>
                             <span class="material-input"></span></div>
@@ -36,18 +37,18 @@
                         <div class="col-md-2">
                             <div class="form-group label-floating is-empty">
                                 <label class="control-label"></label>
-                                <input type="number" class="form-control" name="berat_barang" min="1" max="1500" value="<?php echo $data->berat_barang; ?>" required>
+                                <input type="number" class="form-control" name="berat_barang" min="1" max="1500" value="<?php echo $barang->berat_barang; ?>" required>
                             <span class="material-input"></span></div>
                         </div>
                     </div>
                     <div class="row">
-                        <label class="col-md-2 label-on-left">Pemilik Barang (Petani) <?php echo $data->id_petani ?></label>
+                        <label class="col-md-2 label-on-left">Pemilik Barang (Petani)</label>
                         <div class="col-md-6">
                             <div class="form-group label-floating">
                                 <select class="form-control select2" data-style="select-with-transition" name="id_petani" required>
                                     <option disabled>Pilih Petani</option>
                                     <?php foreach ($petani as $petani): ?>
-                                        <option value="<?php echo $petani->id ?>" <?php ($petani->id == $data->id_petani ? 'selected' : '') ?>>
+                                        <option value="<?php echo $petani->id ?>" <?php ($petani->id == $barang->id_petani ? 'selected' : '') ?>>
                                             <?php echo $petani->id . " | " . $petani->nama ?>        
                                         </option>
                                     <?php endforeach ;?>

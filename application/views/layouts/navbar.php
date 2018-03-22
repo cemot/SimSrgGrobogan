@@ -43,6 +43,12 @@
             </ul>
         </li> -->
         <li>
+            <a href="#">
+               <i class="material-icons">shcedule</i>
+               <?php echo date('d M Y h:i:s a', time()); ?>
+            </a>
+        </li>
+        <li>
             <a href="<?php echo base_url('logout'); ?>">
                <i class="material-icons">exit_to_app</i>                   
                <p class="hidden-lg hidden-md">Keluar</p>
