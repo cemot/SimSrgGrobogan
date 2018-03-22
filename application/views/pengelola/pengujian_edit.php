@@ -5,7 +5,7 @@
                 <i class="material-icons">description</i>
             </div>
             <div class="card-content">
-                <h4 class="card-title">Edit Pengujian</h4>
+                <h4 class="card-title">Ubah Pengujian</h4>
                 <div class="row">
                     <form class="form-horizontal" method="post" action="<?php echo base_url('pengelola/pengujian/update'); ?>">
                     <div class="col-md-6 col-sm-12">
@@ -26,14 +26,14 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label class="col-md-3 label-on-left">Hasil Pengujian</label>
+                            <label class="col-md-3 label-on-left">Hasil Pengujian <?php echo $data->hsl_pengujian?></label>
                             <div class="col-md-6">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
                                     <select class="selectpicker" data-style="select-with-transition" name="hsl_pengujian" required>
                                         <option disabled>Pilih Hasil Pengujian</option>
-                                        <option value="Diterima" <?php ($data->hsl_pengujian == 'Diterima' ? 'selected' : '') ?>>Diterima (Lolos)</option>
-                                        <option value="Ditolak" <?php ($data->hsl_pengujian == 'Ditolak' ? 'selected' : '') ?>>Ditolak (Tidak Lolos)</option>
+                                        <option value="Diterima" <?php if($data->hsl_pengujian == 'Diterima'){ echo "selected";} ?>>Diterima (Lolos)</option>
+                                        <option value="Ditolak" <?php if($data->hsl_pengujian == 'Ditolak'){ echo "selected";} ?>>Ditolak (Tidak Lolos)</option>
                                     </select>
                                 <span class="material-input"></span></div>
                             </div>
@@ -100,8 +100,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group form-button text-center">
-                            <button type="submit" class="btn btn-fill btn-rose">Tambah</button>
-                        </div>
+                            <button type="submit" class="btn btn-fill btn-rose">Simpan</button>
                     </div>
                 </div>
             </div>

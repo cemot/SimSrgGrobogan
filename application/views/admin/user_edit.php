@@ -5,7 +5,7 @@
                 <i class="material-icons">perm_identity</i>
             </div>
             <div class="card-content">
-                <h4 class="card-title">Edit User
+                <h4 class="card-title">Ubah User
                     <!-- <small class="category">Complete your profile</small> -->
                 </h4>
                 <form method="post" action="<?php echo base_url('admin/user/update'); ?>">

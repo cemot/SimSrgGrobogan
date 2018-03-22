@@ -5,7 +5,7 @@
                 <i class="material-icons">books</i>
             </div>
             <div class="card-content">
-                <h4 class="card-title">Edit Gudang</h4>
+                <h4 class="card-title">Ubah Gudang</h4>
                 <form class="form-horizontal" method="post" action="<?php echo base_url('pengelola/gudang/update'); ?>">
                     <div class="row">
                         <input type="hidden" class="form-control" name="id_gudang" value="<?php echo $gudang->id_gudang; ?>" required>

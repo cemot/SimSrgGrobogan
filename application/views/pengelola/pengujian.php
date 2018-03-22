@@ -37,7 +37,7 @@
                                         </td>
                                         <td class="td-actions text-right">
                                             <a class="btn btn-info" href="<?php echo base_url('pengelola/pengujian/show/'.$pengujian->id_pengujian); ?>"><i class="material-icons">assignment</i> Detail Catatan</a>
-                                            <a class="btn btn-success" href="<?php echo base_url('pengelola/pengujian/edit/'.$pengujian->id_pengujian); ?>"><i class="material-icons">mode_edit</i> Edit</a>
+                                            <a class="btn btn-success" href="<?php echo base_url('pengelola/pengujian/edit/'.$pengujian->id_pengujian); ?>"><i class="material-icons">mode_edit</i> Ubah</a>
                                             <a class="btn btn-danger" href="<?php echo base_url('pengelola/pengujian/delete/'.$pengujian->id_pengujian); ?>"><i class="material-icons">close</i> Hapus</a>
                                         </td>
                                     </tr>

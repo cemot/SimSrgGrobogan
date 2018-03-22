@@ -5,7 +5,7 @@
                 <i class="material-icons">assignment</i>
             </div>
             <div class="card-content">
-                <h4 class="card-title">Edit Artikel</h4>
+                <h4 class="card-title">Ubah Artikel</h4>
                 <form class="form-horizontal" method="post" action="<?php echo base_url('admin/artikel/update'); ?>">
                     <input type="hidden" class="form-control" name="id_artikel" value="<?php echo $artikel->id_artikel; ?>" required>
                     <div class="row">
