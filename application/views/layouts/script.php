@@ -93,6 +93,35 @@
         demo.initVectorMap();
     });
 </script>
+<!-- <script type="text/javascript">
+    $(document).ready(function() {
+        var i = 1;
+        $('.datatables').DataTable({
+            "ajax": "<?php echo base_url('admin/user/all'); ?>",
+            "columns": [
+                { "data": i++ },
+                { "data": "username" },
+                { "data": "nama" },
+                { "data": "no_tlp" },
+                { "data": "updated_at" },
+                { "data": "created_at" }
+            ],
+            "pagingType": "full_numbers",
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+            responsive: true,
+            language: {
+                search: "_INPUT_",
+                searchPlaceholder: "Search records",
+            }
+
+        });
+
+        $('.card .material-datatables label').addClass('form-group');
+    });
+</script> -->
 <script type="text/javascript">
     $(document).ready(function() {
         $('.datatables').DataTable({

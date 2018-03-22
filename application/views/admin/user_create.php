@@ -77,14 +77,31 @@
                         <label class="col-md-2">Role</label>
                         <div class="col-md-10">
                             <div class="col-md-4">
-                                <select class="selectpicker" data-style="btn btn-primary btn-round" title="Single Select" data-size="7" name="role" required>
-                                    <option disabled selected>Choose Role</option>
+                                <select class="selectpicker" data-style="btn btn-primary btn-round" title="Single Select" data-size="7">
+                                    <option selected disabled>Pilih Role</option>
                                     <option value="0">Admin</option>
                                     <option value="1">Pengelola</option>
                                     <option value="2">Dinas</option>
-                                    <option value="3">Petani</option>
+                                    <option value="3">Bank</option>
+                                    <option value="4">Petani</option>
                                 </select>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-2 label-on-left">Role</label>
+                        <div class="col-md-3">
+                            <div class="form-group label-floating is-empty">
+                                <label class="control-label"></label>
+                                <select class="selectpicker" data-style="select-with-transition" name="role" required>
+                                    <option selected disabled>Pilih Role</option>
+                                    <option value="0">Admin</option>
+                                    <option value="1">Pengelola</option>
+                                    <option value="2">Dinas</option>
+                                    <option value="3">Bank</option>
+                                    <option value="4">Petani</option>
+                                </select>
+                            <span class="material-input"></span></div>
                         </div>
                     </div>
                     <div class="clearfix"></div>

@@ -13,11 +13,16 @@ class M_Barang extends Eloquent
     // const CREATED_AT = 'created_at';
     // const UPDATED_AT = 'updated_at';
 
-    protected $fillable = ['nama_barang', 'berat_barang', 'id_petani', 'tgl_pengajuan'];
+    protected $fillable = ['nama_barang', 'berat_barang', 'jenis_barang', 'id_petani', 'id_pengelola', 'tgl_pengajuan'];
 
     public function petani()
     {
         return $this->belongsTo('M_User', 'id_petani', 'id');
+    }
+
+    public function pengelola()
+    {
+        return $this->belongsTo('M_User', 'id_pengelola', 'id');
     }
 
     public function pengujian()

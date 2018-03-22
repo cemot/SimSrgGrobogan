@@ -32,7 +32,7 @@
                                         <td><?php echo $user->nama ?></td>
                                         <td><?php echo $user->no_tlp ?></td>
                                         <td class="text-right">
-                                            <!-- <a href="#" class="btn btn-simple btn-info btn-icon like"><i class="material-icons">favorite</i></a> -->
+                                            <a href="#" class="btn btn-simple btn-info btn-icon like"><i class="material-icons">favorite</i></a>
                                             <a href="<?php echo base_url('admin/user/edit/'.$user->id); ?>" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">mode_edit</i></a>
                                             <a href="<?php echo base_url('admin/user/delete/'.$user->id); ?>" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a>
                                         </td>

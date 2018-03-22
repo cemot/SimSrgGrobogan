@@ -17,11 +17,11 @@
                         </div>
                     </div>
                     <div class="row">
-                        <label class="col-md-2 label-on-left">Kapasitas</label>
-                        <div class="col-md-10">
+                        <label class="col-md-2 label-on-left">Kapasitas (Kg)</label>
+                        <div class="col-md-2">
                             <div class="form-group label-floating is-empty">
                                 <label class="control-label"></label>
-                                <input type="number" class="form-control" name="kapasitas" min="1" value="<?php echo set_value('kapasitas'); ?>" required>
+                                <input type="number" class="form-control" name="kapasitas" min="1" value="1500" required>
                             <span class="material-input"></span></div>
                         </div>
                     </div>
