@@ -18,7 +18,7 @@
                                 <th>Petani</th>
                                 <th>Tanggal</th>
                                 <th>Hasil</th>
-                                <th>Status Catatan</th>
+                                <th>Gudang</th>
                                 <th class="disabled-sorting text-right">Aksi</th>
                             </tr>
                         </thead>
@@ -33,8 +33,9 @@
                                         <td><?php echo $pengujian->tgl_pengujian ?></td>
                                         <td><span class="label label-<?php if($pengujian->hsl_pengujian == 'Diterima'){ echo 'success';} else { echo 'danger';} ?>"><?php echo $pengujian->hsl_pengujian ?></span>
                                         </td>
-                                        <td><span class="label label-<?php if($pengujian->catatan->status == 0){ echo 'default';} else { echo 'success';} ?>"><?php if($pengujian->catatan->status == 0){ echo 'Pending';} else { echo 'Published';} ?></span>
-                                        </td>
+                                        <!-- <td><span class="label label-<?php if($pengujian->catatan->status == 0){ echo 'default';} else { echo 'success';} ?>"><?php if($pengujian->catatan->status == 0){ echo 'Pending';} else { echo 'Published';} ?></span>
+                                        </td> -->
+                                        <td><?php if($pengujian->gudang){ echo $pengujian->gudang->nama;} ?></td>
                                         <td class="td-actions text-right">
                                             <a class="btn btn-info" href="<?php echo base_url('pengelola/pengujian/show/'.$pengujian->id_pengujian); ?>"><i class="material-icons">assignment</i> Detail Catatan</a>
                                             <a class="btn btn-success" href="<?php echo base_url('pengelola/pengujian/edit/'.$pengujian->id_pengujian); ?>"><i class="material-icons">mode_edit</i> Ubah</a>
@@ -85,7 +86,7 @@
                                         <td><?php echo $pengujian->barang->nama_barang ?></td>
                                         <td><?php echo $pengujian->barang->petani->nama ?></td>
                                         <td><?php echo $pengujian->tgl_pengujian ?></td>
-                                        <td><?php echo $pengujian->hsl_pengujian ?></td>
+                                        <td><span class="label label-<?php if($pengujian->hsl_pengujian == 'Diterima'){ echo 'success';} else { echo 'danger';} ?>"><?php echo $pengujian->hsl_pengujian ?></td>
                                     </tr>
                             <?php endforeach ;?>
                         </tbody>

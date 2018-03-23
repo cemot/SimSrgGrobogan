@@ -94,6 +94,8 @@ $route['pengelola/pengujian/store'] = 'pengelola/pengujian/store';
 $route['pengelola/pengujian/edit/(:any)'] = 'pengelola/pengujian/edit/$1';
 $route['pengelola/pengujian/update'] = 'pengelola/pengujian/update';
 $route['pengelola/pengujian/delete/(:any)'] = 'pengelola/pengujian/destroy/$1';
+$route['pengelola/artikel'] = 'pengelola/artikel/index';
+$route['pengelola/artikel/(:any)'] = 'pengelola/artikel/show/$1';
 
 //DINAS
 $route['dinas'] = 'akun/dashboard';

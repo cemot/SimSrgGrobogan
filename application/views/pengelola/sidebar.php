@@ -5,6 +5,12 @@
             <p> Dashboard </p>
         </a>
     </li>
+    <li class="<?php if($this->uri->segment(2) == "artikel"){ echo "active"; } ?>">
+        <a href="<?php echo base_url('pengelola/artikel'); ?>">
+            <i class="material-icons">dashboard</i>
+            <p> Artikel </p>
+        </a>
+    </li>
     <li class="<?php if($this->uri->segment(2) == "gudang"){ echo "active"; } ?>">
         <a data-toggle="collapse" href="#datagudang">
             <i class="material-icons">book</i>
@@ -148,13 +154,6 @@
                 </li>
             </ul>
         </div>
-    </li>
-    <li>
-        <a data-toggle="collapse" href="#artikel"> 
-            <i class="material-icons">local_offer</i>
-            <p> Artikel
-            </p>
-        </a>
     </li>
     <li>
         <a data-toggle="collapse" href="#rekapHU">

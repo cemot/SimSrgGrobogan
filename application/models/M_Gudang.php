@@ -20,4 +20,9 @@ class M_Gudang extends Eloquent
         return $this->belongsTo('M_User', 'id_pengelola', 'id');
     }
 
+    public function pengujian()
+    {
+        return $this->belongsTo('M_Pengujian', 'id_gudang', 'id_gudang');
+    }
+
 }

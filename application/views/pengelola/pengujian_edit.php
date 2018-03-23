@@ -8,17 +8,17 @@
                 <h4 class="card-title">Ubah Pengujian</h4>
                 <div class="row">
                     <form class="form-horizontal" method="post" action="<?php echo base_url('pengelola/pengujian/update'); ?>">
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-5 col-sm-12">
                         <div class="row">
                             <input type="hidden" class="form-control" name="id_pengujian" value="<?php echo $data->id_pengujian; ?>" required>
-                            <label class="col-md-3 label-on-left"></label>
-                            <div class="col-md-9">
+                            <label class="col-md-4 label-on-left"></label>
+                            <div class="col-md-8">
                                 <h3>Data Pengujian</h3>
                             </div>
                         </div>
                         <div class="row">
-                            <label class="col-md-3 label-on-left">Pilih Barang</label>
-                            <div class="col-md-9">
+                            <label class="col-md-4 label-on-left">Pilih Barang</label>
+                            <div class="col-md-8">
                                 <div class="form-group label-floating">
                                     <input type="text" class="form-control" value="<?php echo $data->barang->petani->id . " | " .$data->barang->petani->nama . " | " . $data->barang->nama_barang; ?>" disabled>
                                     <span class="material-input"></span>
@@ -26,11 +26,11 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label class="col-md-3 label-on-left">Hasil Pengujian <?php echo $data->hsl_pengujian?></label>
-                            <div class="col-md-6">
+                            <label class="col-md-4 label-on-left">Hasil Pengujian</label>
+                            <div class="col-md-8">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <select class="selectpicker" data-style="select-with-transition" name="hsl_pengujian" required>
+                                    <select class="selectpicker" data-style="select-with-transition" id="hsl_pengujian" name="hsl_pengujian" required>
                                         <option disabled>Pilih Hasil Pengujian</option>
                                         <option value="Diterima" <?php if($data->hsl_pengujian == 'Diterima'){ echo "selected";} ?>>Diterima (Lolos)</option>
                                         <option value="Ditolak" <?php if($data->hsl_pengujian == 'Ditolak'){ echo "selected";} ?>>Ditolak (Tidak Lolos)</option>
@@ -38,53 +38,69 @@
                                 <span class="material-input"></span></div>
                             </div>
                         </div>
-                        <div class="row">
-                            <label class="col-md-3 label-on-left"></label>
-                            <div class="col-md-9">
+                        <div class="row" id="pilGudang" style="visibility: <?php if($data->gudang){ echo 'visible';} else { echo 'hidden'; } ?>">
+                            <label class="col-md-4 label-on-left">Gudang</label>
+                            <div class="col-md-8">
+                                <div class="form-group label-floating">
+                                    <select class="form-control select2" data-style="select-with-transition" id="id_gudang" name="id_gudang" required="">
+                                        <option disabled>Pilih Gudang</option>
+                                        <?php foreach ($gudang as $gudang): ?>
+                                            <option value="<?php echo $gudang->id_gudang ?>" <?php ($gudang->id_gudang == $data->gudang->id_gudang ? 'selecteed' : ''); ?>>
+                                                <?php echo $gudang->id_gudang . " | " .$gudang->nama ;?>        
+                                            </option>
+                                        <?php endforeach ;?>
+                                    </select>
+                                    <span class="material-input"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row harga" style="visibility: <?php if($data->harga){ echo 'visible';} else { echo 'hidden'; } ?>;">
+                            <label class="col-md-4 label-on-left"></label>
+                            <div class="col-md-8">
                                 <h3>Harga</h3>
                             </div>
                         </div>
-                        <div class="row">
-                            <label class="col-md-3 label-on-left">Satuan Barang</label>
-                            <div class="col-md-6">
+                        <div class="row harga" style="visibility: <?php if($data->harga){ echo 'visible';} else { echo 'hidden'; } ?>;">
+                            <label class="col-md-4 label-on-left">Satuan Barang</label>
+                            <div class="col-md-8">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <select class="selectpicker" data-style="select-with-transition" name="satuan_barang" required>
+                                    <select class="selectpicker" data-style="select-with-transition" id="satuan_barang" name="satuan_barang" required="">
                                         <option disabled>Pilih Satuan</option>
                                         <option value="kg" selected>Kilogram (kg)</option>
                                     </select>
                                 <span class="material-input"></span></div>
                             </div>
                         </div>
-                        <div class="row">
-                            <label class="col-md-3 label-on-left">Harga Barang (kg)</label>
-                            <div class="col-md-6">
+                        <div class="row harga" style="visibility: <?php if($data->harga){ echo 'visible';} else { echo 'hidden'; } ?>;">
+                            <label class="col-md-4 label-on-left">Harga Barang (kg)</label>
+                            <div class="col-md-8">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <input class="form-control" type="text" name="harga_barang" value="<?php echo $data->harga->harga_barang ?>" required>
+                                    <input class="form-control" type="text" id="harga_barang" name="harga_barang" value="<?php echo $data->harga->harga_barang ?>" required="">
                                 <span class="material-input"></span></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-7 col-sm-12">
                         <div class="row">
-                            <label class="col-md-2 label-on-left"></label>
-                            <div class="col-md-10">
+                            <label class="col-md-3 label-on-left"></label>
+                            <div class="col-md-9">
                                 <h3>Catatan Pengujian</h3>
                             </div>
                         </div>
                         <div class="row">
-                            <label class="col-md-2 label-on-left">Isi Catatan</label>
-                            <div class="col-md-10">
+                            <label class="col-md-3 label-on-left">Isi Catatan</label>
+                            <div class="col-md-9">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <textarea class="form-control" name="isi_catatan" rows="5"><?php echo htmlspecialchars($data->catatan->isi_catatan); ?></textarea>
+                                    <textarea class="form-control" name="isi_catatan" rows="9"><?php echo htmlspecialchars($data->catatan->isi_catatan); ?></textarea>
                                 <span class="material-input"></span></div>
                             </div>
                         </div>
                         <div class="row">
-                            <label class="col-md-2 label-on-left">Status Catatan</label>
-                            <div class="col-md-6">
+                            <label class="col-md-3 label-on-left">Status Catatan</label>
+                            <div class="col-md-9">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
                                     <select class="selectpicker" data-style="select-with-transition" name="status">

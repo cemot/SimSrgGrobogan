@@ -9,11 +9,11 @@ class M_Pengujian extends Eloquent
     protected $table = 'pengujian';
     protected $primaryKey = 'id_pengujian';
 
-    public $timestamps = false;
+    // public $timestamps = false;
     // const CREATED_AT = 'created_at';
     // const UPDATED_AT = 'updated_at';
 
-    protected $fillable = ['id_pengelola', 'id_barang', 'tgl_pengujian', 'hsl_pengujian'];
+    protected $fillable = ['id_pengelola', 'id_barang', 'id_gudang', 'tgl_pengujian', 'hsl_pengujian', 'created_by', 'updated_by'];
 
     public function barang()
     {
@@ -23,6 +23,11 @@ class M_Pengujian extends Eloquent
     public function pengelola()
     {
         return $this->belongsTo('M_User', 'id_pengelola', 'id');
+    }
+
+    public function gudang()
+    {
+        return $this->hasOne('M_Gudang', 'id_gudang', 'id_gudang');
     }
 
     public function catatan()

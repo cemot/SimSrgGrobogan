@@ -43,7 +43,6 @@ class Akun extends CI_Controller {
 
     public function update_profile()
     {
-        
         if (!$this->input->post()) {
             if ($this->session->role == 0) {
                 redirect('admin/profile');

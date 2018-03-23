@@ -47,6 +47,23 @@
 <script src="<?php echo base_url(); ?>assets/js/select2.min.js"></script>
 
 <script type="text/javascript">
+    $("#hsl_pengujian").change(function() {
+        if ($("#hsl_pengujian").val() == 'Diterima') {
+            $("#id_gudang").prop('required', true);  
+            $("#satuan_barang").prop('required', true);  
+            $("#harga_barang").prop('required', true);  
+            $("#pilGudang").css('visibility', 'visible');  
+            $(".harga").css('visibility', 'visible');
+        } else {
+            $("#id_gudang").prop('required', false);
+            $("#satuan_barang").prop('required', false);  
+            $("#harga_barang").prop('required', false); 
+            $("#pilGudang").css('visibility', 'hidden');
+            $(".harga").css('visibility', 'hidden');
+        }
+    });
+</script>
+<script type="text/javascript">
     $(document).ready(function() {
         $('.select2').select2({
             theme: "bootstrap"

@@ -21,6 +21,7 @@ class Pengujian extends CI_Controller {
     {
         $data['data'] = M_Barang::where('id_pengelola', $this->session->id)
                         ->whereNotIn('id_barang', M_Pengujian::get(['id_barang']))->get();
+        $data['gudang'] = M_Gudang::where('id_pengelola', $this->session->id)->get();
         $data['sidebar'] = 'pengelola/sidebar';
         $data['content'] = 'pengelola/pengujian_create';
         $this->load->view('layouts/app', $data);
@@ -37,8 +38,8 @@ class Pengujian extends CI_Controller {
             $this->form_validation->set_rules('satuan_barang', 'Satuan Barang', 'required');
             $this->form_validation->set_rules('harga_barang', 'Harga Barang', 'required');
 
-            $this->form_validation->set_rules('isi_catatan', 'Catatan Pengujian Barang', 'required');
-            $this->form_validation->set_rules('status', 'Status Catatan Pengujian Barang', 'required|integer');
+            // $this->form_validation->set_rules('isi_catatan', 'Catatan Pengujian Barang', 'required');
+            // $this->form_validation->set_rules('status', 'Status Catatan Pengujian Barang', 'required|integer');
 
             if ($this->form_validation->run() == FALSE) {
                 dd(validation_errors());
@@ -46,8 +47,10 @@ class Pengujian extends CI_Controller {
                 $pengujian = M_Pengujian::create([
                     'id_pengelola' => $this->session->id,
                     'id_barang' => $this->input->post('id_barang'),
+                    'id_gudang' => ($this->input->post('hsl_pengujian') == 'Ditolak') ? NULL : $this->input->post('id_gudang'),
                     'tgl_pengujian' => date("Y-m-d"),
                     'hsl_pengujian' => $this->input->post('hsl_pengujian'),
+                    'created_by' => $this->session->id,
                 ]);
 
                 $catatan = M_Catatan::create([
@@ -56,18 +59,20 @@ class Pengujian extends CI_Controller {
                     'status' => $this->input->post('status'),
                 ]);
 
-                $harga = M_Harga::create([
+                if ($this->input->post('hsl_pengujian') == 'Diterima') {
+                    $harga = M_Harga::create([
                     'id_pengujian' => $pengujian->id_pengujian,
                     'satuan_barang' => $this->input->post('satuan_barang'),
                     'harga_barang' => $this->input->post('harga_barang'),
-                ]);
+                    ]);
+                }                
 
-                if($pengujian && $catatan && $harga) {
+                if($pengujian && $catatan) {
                     $this->session->set_flashdata('class', 'success');
                     $this->session->set_flashdata('message', 'Pengujian Barang Berhasil Disimpan');
                 } else {
                     $this->session->set_flashdata('class', 'danger');
-                    $this->session->set_flashdata('message', 'Pengujian Barang Berhasil Disimpan');
+                    $this->session->set_flashdata('message', 'Pengujian Barang Gagal Disimpan');
                 }
                 redirect('pengelola/pengujian');
             }
@@ -85,7 +90,7 @@ class Pengujian extends CI_Controller {
     public function edit($id)
     {
         $data['data'] = M_Pengujian::find($id);
-        // dd($data['data']);
+        $data['gudang'] = M_Gudang::where('id_pengelola', $this->session->id)->get();
         $data['sidebar'] = 'pengelola/sidebar';
         $data['content'] = 'pengelola/pengujian_edit';
         $this->load->view('layouts/app', $data);
@@ -97,7 +102,6 @@ class Pengujian extends CI_Controller {
             redirect('/pengelola/pengujian');
         } else {
             $this->form_validation->set_rules('hsl_pengujian', 'Hasil Pengujian', 'required');
-
             $this->form_validation->set_rules('satuan_barang', 'Satuan Barang', 'required');
             $this->form_validation->set_rules('harga_barang', 'Harga Barang', 'required');
 
@@ -109,10 +113,16 @@ class Pengujian extends CI_Controller {
             } else {
                 $pengujian = M_Pengujian::find($this->input->post('id_pengujian'));
                 $pengujian->hsl_pengujian = $this->input->post('hsl_pengujian');
-                $pengujian->harga->satuan_barang = $this->input->post('satuan_barang');
-                $pengujian->harga->harga_barang = $this->input->post('harga_barang');
-                $pengujian->catatan->isi_catatan = $this->input->post('isi_catatan');
+                $pengujian->id_gudang = ($this->input->post('hsl_pengujian') == 'Ditolak') ? NULL : $this->input->post('id_gudang');
+                if ($this->input->post('hsl_pengujian') == 'Diterima') {
+                    $pengujian->harga->satuan_barang = $this->input->post('satuan_barang');
+                    $pengujian->harga->harga_barang = $this->input->post('harga_barang');
+                } else {
+                    $harga = M_Harga::destroy($pengujian->harga->id_harga);
+                }                
+                $pengujian->catatan->isi_catatan = empty($this->input->post('isi_catatan')) ? NULL : $this->input->post('isi_catatan');
                 $pengujian->catatan->status = $this->input->post('status');
+                $pengujian->updated_by = $this->session->id;
                 $pengujian->save();
 
                 if($pengujian) {
@@ -129,35 +139,20 @@ class Pengujian extends CI_Controller {
 
     public function destroy($id)
     {
-        $pengujian = M_Pengujian::destroy($id);
-        if($pengujian) {
-            $this->session->set_flashdata('sukses', 'Pengujian Barang Berhasil Dihapus');
-        } else {
-            $this->session->set_flashdata('gagal', 'Pengujian Barang Tidak Berhasil Dihapus');
-        }
-    }
-
-
-    // UNTUK TESTING ELOQUENT
-    public function test_insert()
-    {
-        $pengujian = M_Pengujian::create([
-            'id_barang' => 3,
-            'id_pengelola' => 1,
-            'tgl_pengujian' => date("Y-m-d"),
-            'hsl_pengujian' => 'Mantap broooo airnya'
-        ]);
-        dd($pengujian);
-    }
-
-    public function test_update($id=1)
-    {
         $pengujian = M_Pengujian::find($id);
-        $pengujian->id_barang = 3;
-        $pengujian->id_pengelola = 1;
-        $pengujian->tgl_pengujian = date("Y-m-d");
-        $pengujian->hsl_pengujian = 'Mantab Bro Edit';
-        $pengujian->save();
-        dd($pengujian);
+        if ($pengujian->pengelola->id != $this->session->id) {
+            $this->session->set_flashdata('class', 'danger');
+            $this->session->set_flashdata('message', 'Pengujian Tidak Berhasil Dihapus');
+        } else {
+            $pengujian = $pengujian->delete();
+            if($pengujian) {
+                $this->session->set_flashdata('class', 'success');
+                $this->session->set_flashdata('message', 'Pengujian Berhasil Dihapus');
+            } else {
+                $this->session->set_flashdata('class', 'danger');
+                $this->session->set_flashdata('message', 'Pengujian Tidak Berhasil Dihapus');
+            }
+        }
+        redirect('pengelola/pengujian');
     }
 }
