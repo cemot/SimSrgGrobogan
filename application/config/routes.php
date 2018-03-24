@@ -59,6 +59,7 @@ $route['admin/dashboard'] = 'akun/dashboard';
 $route['admin/profile'] = 'akun/profile';
 $route['admin/profile/update'] = 'akun/update_profile';
 $route['admin/artikel'] = 'admin/artikel/index';
+$route['admin/artikel/(:any)'] = 'admin/artikel/show/$1';
 $route['admin/artikel/create'] = 'admin/artikel/create';
 $route['admin/artikel/store'] = 'admin/artikel/store';
 $route['admin/artikel/edit/(:any)'] = 'admin/artikel/edit/$1';

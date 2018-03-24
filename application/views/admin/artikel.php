@@ -26,12 +26,17 @@
                                     <tr>
                                         <td><?php echo $artikel->id_artikel ?></td>
                                         <td><?php echo $artikel->judul ?></td>
-                                        <td><?php echo $artikel->isi ?></td>
-                                        <td><?php echo $artikel->status ?></td>
-                                        <td class="text-right">
-                                            <!-- <a href="#" class="btn btn-simple btn-info btn-icon like"><i class="material-icons">favorite</i></a> -->
-                                            <a href="<?php echo base_url('admin/artikel/edit/'.$artikel->id_artikel); ?>" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">mode_edit</i></a>
-                                            <a href="<?php echo base_url('admin/artikel/delete/'.$artikel->id_artikel); ?>" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a>
+                                        <td>
+                                            <?php echo substr(htmlspecialchars(strip_tags($artikel->isi)), 0, 70); ?>
+                                        </td>
+                                        <td>
+                                            <span class="label label-<?php if($artikel->status == 0){ echo 'default';} else { echo 'success';} ?>"><?php if($artikel->status == 0){ echo 'Pending';} else { echo 'Published';} ?></span>
+                                        </td>
+
+                                        <td class="td-actions text-right">
+                                            <a href="<?php echo base_url('admin/artikel/'.$artikel->id_artikel); ?>" class="btn btn-info"><i class="material-icons">assignment</i> Lihat</a>
+                                            <a href="<?php echo base_url('admin/artikel/edit/'.$artikel->id_artikel); ?>" class="btn btn-warning"><i class="material-icons">mode_edit</i> Ubah</a>
+                                            <a href="<?php echo base_url('admin/artikel/delete/'.$artikel->id_artikel); ?>" class="btn btn-danger"><i class="material-icons">close</i> Hapus</a>
                                         </td>
                                     </tr>
                             <?php endforeach ;?>

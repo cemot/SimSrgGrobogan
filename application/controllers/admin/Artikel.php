@@ -58,10 +58,10 @@ class Artikel extends CI_Controller {
 
     public function show($id)
     {
-        $data['data'] = M_Artikel::find($id);
-        // dd($data['data']);
-        $data['content'] = 'admin/show_artikel';
-        $this->load->view('layout_admin/master', $data);
+        $data['artikel'] = M_Artikel::find($id);
+        $data['sidebar'] = 'admin/sidebar';
+        $data['content'] = 'admin/artikel_show';
+        $this->load->view('layouts/app', $data);
     }
 
     public function edit($id)
