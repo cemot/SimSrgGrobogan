@@ -22,12 +22,11 @@
                         <div class="col-md-3">
                             <div class="form-group label-floating is-empty">
                                 <label class="control-label"></label>
-                                <select class="selectpicker" data-style="select-with-transition" name="jenis_barang" required>
+                                <select class="selectpicker" data-style="select-with-transition" name="id_komoditi" required>
                                     <option disabled>Pilih Jenis Barang</option>
-                                    <?php $jenis = ['Beras', 'Jagung', 'Gabah'];
-                                        foreach ($jenis as $jenis) : ?>
-                                            <option value="<?php echo $jenis; ?>" <?php ($barang->barang == $jenis ? 'selected' : '') ?>><?php echo $jenis; ?></option>
-                                        <?php endforeach; ?>
+                                    <?php foreach ($komoditi as $komoditi) : ?>
+                                        <option value="<?php echo $komoditi->id_komoditi; ?>" <?php ($barang->id_komoditi == $komoditi->id_komoditi ? 'selected' : '') ?>><?php echo $komoditi->nama_komoditi; ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             <span class="material-input"></span></div>
                         </div>

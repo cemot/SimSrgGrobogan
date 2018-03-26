@@ -34,4 +34,14 @@ class M_User extends Eloquent
         return $this->hasMany('M_Pengujian', 'id_pengelola', 'id');
     }
 
+    public function komoditiCreate()
+    {
+        return $this->hasMany('M_Komoditi', 'created_by', 'id');
+    }
+
+    public function komoditiUpdate()
+    {
+        return $this->hasMany('M_Komoditi', 'updated_by', 'id');
+    }
+
 }

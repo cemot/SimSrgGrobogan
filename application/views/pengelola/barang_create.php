@@ -21,11 +21,13 @@
                         <div class="col-md-3">
                             <div class="form-group label-floating is-empty">
                                 <label class="control-label"></label>
-                                <select class="selectpicker" data-style="select-with-transition" name="jenis_barang" required>
+                                <select class="selectpicker" data-style="select-with-transition" name="id_komoditi" required>
                                     <option selected disabled>Pilih Jenis Barang</option>
-                                    <option value="Beras">Beras</option>
-                                    <option value="Jagung">Jagung</option>
-                                    <option value="Gabah">Gabah</option>
+                                    <?php foreach ($komoditi as $komoditi): ?>
+                                        <option value="<?php echo $komoditi->id_komoditi ?>">
+                                            <?php echo $komoditi->nama_komoditi ?>        
+                                        </option>
+                                    <?php endforeach ;?>
                                 </select>
                             <span class="material-input"></span></div>
                         </div>

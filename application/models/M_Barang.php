@@ -13,7 +13,7 @@ class M_Barang extends Eloquent
     // const CREATED_AT = 'created_at';
     // const UPDATED_AT = 'updated_at';
 
-    protected $fillable = ['nama_barang', 'berat_barang', 'jenis_barang', 'id_petani', 'id_pengelola', 'tgl_pengajuan'];
+    protected $fillable = ['nama_barang', 'berat_barang', 'id_komoditi', 'id_petani', 'id_pengelola', 'tgl_pengajuan'];
 
     public function petani()
     {
@@ -28,6 +28,11 @@ class M_Barang extends Eloquent
     public function pengujian()
     {
         return $this->hasOne('M_Pengujian', 'id_barang', 'id_barang');
+    }
+
+    public function jenis()
+    {
+        return $this->hasOne('M_Komoditi', 'id_komoditi', 'id_komoditi');
     }
 
 }

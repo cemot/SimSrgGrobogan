@@ -23,6 +23,7 @@ class Barang extends CI_Controller {
         // dd("<pre> $teruji </pre>");
         // $data['data'] = M_Barang::whereNotIn('id_barang', M_Pengujian::get(['id_barang']))->get();
         $data['data'] = M_User::where('role', 4)->get();
+        $data['komoditi'] = M_Komoditi::all();
         // dd("<pre>". $data['data'] ."</pre>");
         $data['sidebar'] = 'pengelola/sidebar';
         $data['content'] = 'pengelola/barang_create';
@@ -36,7 +37,7 @@ class Barang extends CI_Controller {
         } else {
             $this->form_validation->set_rules('nama_barang', 'Nama Barang', 'required');
             $this->form_validation->set_rules('berat_barang', 'Berat Barang', 'required|integer');
-            $this->form_validation->set_rules('jenis_barang', 'Jenis Barang', 'required');
+            $this->form_validation->set_rules('id_komoditi', 'Jenis Komoditi Barang', 'required');
             $this->form_validation->set_rules('id_petani', 'Pemilik Barang (Petani)', 'required');
 
             if ($this->form_validation->run() == FALSE) {
@@ -45,7 +46,7 @@ class Barang extends CI_Controller {
                 $barang = M_Barang::create([
                     'nama_barang' => $this->input->post('nama_barang'),
                     'berat_barang' => $this->input->post('berat_barang'),
-                    'jenis_barang' => $this->input->post('jenis_barang'),
+                    'id_komoditi' => $this->input->post('id_komoditi'),
                     'id_petani' => $this->input->post('id_petani'),
                     'id_pengelola' => $this->session->id,
                     'tgl_pengajuan' => date("Y-m-d"),
@@ -74,6 +75,7 @@ class Barang extends CI_Controller {
     public function edit($id)
     {
         $data['barang'] = M_Barang::find($id);
+        $data['komoditi'] = M_Komoditi::all();
         $data['petani'] = M_User::where('role', 4)->get();
         // dd($data['petani']);
         $data['sidebar'] = 'pengelola/sidebar';
@@ -88,7 +90,7 @@ class Barang extends CI_Controller {
         } else {
             $this->form_validation->set_rules('nama_barang', 'Nama Barang', 'required');
             $this->form_validation->set_rules('berat_barang', 'Berat Barang', 'required|integer');
-            $this->form_validation->set_rules('jenis_barang', 'Jenis Barang', 'required');
+            $this->form_validation->set_rules('id_komoditi', 'Jenis Komoditi Barang', 'required');
             $this->form_validation->set_rules('id_petani', 'Pemilik Barang (Petani)', 'required');
 
             if ($this->form_validation->run() == FALSE) {
@@ -97,7 +99,7 @@ class Barang extends CI_Controller {
                 $barang = M_Barang::find($this->input->post('id_barang'));
                 $barang->nama_barang = $this->input->post('nama_barang');
                 $barang->berat_barang = $this->input->post('berat_barang');
-                $barang->jenis_barang = $this->input->post('jenis_barang');
+                $barang->id_komoditi = $this->input->post('id_komoditi');
                 $barang->id_petani = $this->input->post('id_petani');
                 $barang->save();
 

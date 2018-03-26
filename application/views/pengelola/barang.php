@@ -30,7 +30,7 @@
                                         <td><?php echo $no++ ?></td>
                                         <td><?php echo $barang->nama_barang ?></td>
                                         <td><?php echo $barang->berat_barang ?></td>
-                                        <td><?php echo $barang->jenis_barang ?></td>
+                                        <td><?php echo $barang->jenis->nama_komoditi ?></td>
                                         <td><?php echo $barang->petani->nama ?></td>
                                         <td><?php echo $barang->tgl_pengajuan ?></td>
                                         <td class="td-actions text-right">
@@ -82,7 +82,7 @@
                                         <td><?php echo $no++ ?></td>
                                         <td><?php echo $barang->nama_barang ?></td>
                                         <td><?php echo $barang->berat_barang ?></td>
-                                        <td><?php echo $barang->jenis_barang ?></td>
+                                        <td><?php echo $barang->jenis->nama_komoditi ?></td>
                                         <td><?php echo $barang->petani->nama ?></td>
                                         <td><?php echo $barang->pengelola->nama ?></td>
                                         <td><?php echo $barang->tgl_pengajuan ?></td>
