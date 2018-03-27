@@ -10,7 +10,7 @@
                     <form class="form-horizontal" method="post" action="<?php echo base_url('pengelola/pengujian/update'); ?>">
                     <div class="col-md-5 col-sm-12">
                         <div class="row">
-                            <input type="hidden" class="form-control" name="id_pengujian" value="<?php echo $data->id_pengujian; ?>" required>
+                            <input type="hidden" class="form-control" name="id_pengujian" value="<?php echo $data->id_pengujian; ?>" required readonly>
                             <label class="col-md-4 label-on-left"></label>
                             <div class="col-md-8">
                                 <h3>Data Pengujian</h3>
@@ -81,22 +81,22 @@
                                 <span class="material-input"></span></div>
                             </div>
                         </div>
-                        <div class="row resi" style="visibility: hidden;">
+                        <div class="row resi" style="visibility: <?php if($data->resi){ echo 'visible';} else { echo 'hidden'; } ?>;">
                             <label class="col-md-4 label-on-left"></label>
                             <div class="col-md-8">
                                 <h3>Resi</h3>
                             </div>
                         </div>
-                        <div class="row resi" style="visibility: hidden;">
+                        <div class="row resi" style="visibility: <?php if($data->resi){ echo 'visible';} else { echo 'hidden'; } ?>;">
                             <label class="col-md-4 label-on-left">No Resi</label>
                             <div class="col-md-8">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <input class="form-control" type="text" id="no_resi" name="no_resi" placeholder="contoh : INV/10/2/3.2018" value="<?php echo $data->resi->no_resi ?>" required="">
+                                    <input class="form-control" type="text" id="no_resi" name="no_resi" placeholder="contoh : INV/10/2/3.2018" value="<?php echo $data->resi->first()->no_resi ?>" required="">
                                 <span class="material-input"></span></div>
                             </div>
                         </div>
-                        <div class="row resi" style="visibility: hidden;">
+                        <div class="row resi" style="visibility: <?php if($data->resi){ echo 'visible';} else { echo 'hidden'; } ?>;">
                             <label class="col-md-4 label-on-left">Masa Aktif</label>
                             <div class="col-md-8">
                                 <div class="form-group label-floating is-empty">
@@ -104,19 +104,12 @@
                                     <select class="selectpicker" data-style="select-with-transition" id="masa_aktif" name="masa_aktif" required="">
                                         <option disabled>Pilih Satuan</option>
                                         <?php 
-                                            $masa_aktif = array(
-                                                '3' => '3 Bulan', 
-                                                '6' => '6 Bulan', 
-                                                '9' => '9 Bulan', 
-                                                '12' => '12 Bulan', 
-                                                '15' => '15 Bulan', 
-                                                '18' => '18 Bulan', 
-                                            );
-                                            foreach ($masa_aktif as $masa_aktif => $keterangan) :
+                                            $masa_aktif = [3,6,9,12,15,18];
+                                            foreach ($masa_aktif as $masa_aktif) :
                                         ?>
-                                         <option value="<?php echo $masa_aktif ?>" <?php ($data->resi->masa_aktif == $masa_aktif ? 'selected' : ''); ?>>
-                                            <?php echo $keterangan ;?>        
-                                        </option>
+                                            <option value="<?php echo $masa_aktif ?>" <?php if($data->resi->first()->masa_aktif == $masa_aktif) { echo 'selected'; } ?>>
+                                                <?php echo $masa_aktif.' Bulan' ;?>        
+                                            </option>
                                         <?php endforeach; ?>
                                     </select>
                                 <span class="material-input"></span></div>
@@ -135,7 +128,7 @@
                             <div class="col-md-9">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <textarea class="form-control" name="isi_catatan" rows="17"><?php echo htmlspecialchars($data->catatan->isi_catatan); ?></textarea>
+                                    <textarea class="form-control" name="isi_catatan" rows="18"><?php echo htmlspecialchars($data->catatan->isi_catatan); ?></textarea>
                                 <span class="material-input"></span></div>
                             </div>
                         </div>

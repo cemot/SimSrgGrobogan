@@ -110,18 +110,11 @@
                                     <select class="selectpicker" data-style="select-with-transition" id="masa_aktif" name="masa_aktif" required="">
                                         <option disabled>Pilih Satuan</option>
                                         <?php 
-                                            $masa_aktif = array(
-                                                '3' => '3 Bulan', 
-                                                '6' => '6 Bulan', 
-                                                '9' => '9 Bulan', 
-                                                '12' => '12 Bulan', 
-                                                '15' => '15 Bulan', 
-                                                '18' => '18 Bulan', 
-                                            );
-                                            foreach ($masa_aktif as $masa_aktif => $keterangan) :
+                                            $masa_aktif = [3,6,9,12,15,18];
+                                            foreach ($masa_aktif as $masa_aktif) :
                                         ?>
                                          <option value="<?php echo $masa_aktif ?>">
-                                            <?php echo $keterangan ;?>        
+                                            <?php echo $masa_aktif.' Bulan' ;?>        
                                         </option>
                                         <?php endforeach; ?>
                                     </select>

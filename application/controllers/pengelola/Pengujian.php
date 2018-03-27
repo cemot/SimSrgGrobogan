@@ -99,6 +99,7 @@ class Pengujian extends CI_Controller {
     public function edit($id)
     {
         $data['data'] = M_Pengujian::find($id);
+        // dd('<pre>'.$data['data']->resi->first()->no_resi.'</pre>');
         $data['gudang'] = M_Gudang::where('id_pengelola', $this->session->id)->get();
         $data['sidebar'] = 'pengelola/sidebar';
         $data['content'] = 'pengelola/pengujian_edit';
@@ -110,6 +111,7 @@ class Pengujian extends CI_Controller {
         if (!$this->input->post()) {
             redirect('/pengelola/pengujian');
         } else {
+            // dd($this->input->post());
             $this->form_validation->set_rules('hsl_pengujian', 'Hasil Pengujian', 'required');
             $this->form_validation->set_rules('satuan_barang', 'Satuan Barang', 'required');
             $this->form_validation->set_rules('harga_barang', 'Harga Barang', 'required');
@@ -126,8 +128,18 @@ class Pengujian extends CI_Controller {
                 if ($this->input->post('hsl_pengujian') == 'Diterima') {
                     $pengujian->harga->satuan_barang = $this->input->post('satuan_barang');
                     $pengujian->harga->harga_barang = $this->input->post('harga_barang');
+                    // dd($pengujian->resi->first()->id_resi);
+                    $resi = M_Resi::find($pengujian->resi->first()->id_resi);
+                    // dd($resi);
+                    $resi->no_resi = $this->input->post('no_resi');
+                    $resi->masa_aktif = $this->input->post('masa_aktif');
+                    $resi->jatuh_tempo = strtotime("+".$this->input->post('masa_aktif')." months", strtotime(date("Y-m-d")));
+                    $resi->save();
                 } else {
                     $harga = M_Harga::destroy($pengujian->harga->id_harga);
+                    foreach ($pengujian->resi as $resi) {
+                        $resi = M_Resi::destroy($resi->id_resi);
+                    }
                 }                
                 $pengujian->catatan->isi_catatan = empty($this->input->post('isi_catatan')) ? NULL : $this->input->post('isi_catatan');
                 $pengujian->catatan->status = $this->input->post('status');
