@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2018 at 06:49 AM
+-- Generation Time: Mar 27, 2018 at 04:10 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -61,7 +61,7 @@ CREATE TABLE `barang` (
   `id_barang` int(11) NOT NULL,
   `nama_barang` varchar(191) NOT NULL,
   `berat_barang` int(11) NOT NULL,
-  `jenis_barang` varchar(50) NOT NULL,
+  `id_komoditi` int(11) NOT NULL,
   `id_petani` int(11) NOT NULL,
   `id_pengelola` int(11) NOT NULL,
   `tgl_pengajuan` date NOT NULL
@@ -71,13 +71,14 @@ CREATE TABLE `barang` (
 -- Dumping data for table `barang`
 --
 
-INSERT INTO `barang` (`id_barang`, `nama_barang`, `berat_barang`, `jenis_barang`, `id_petani`, `id_pengelola`, `tgl_pengajuan`) VALUES
-(1, 'Update Barang test', 3, '', 1, 7, '2018-03-15'),
-(2, 'Padi Karawitan 2', 4, '', 1, 7, '2018-03-15'),
-(3, 'Padi Karawitan 2 Lalalalalalala', 80, 'Beras', 10, 9, '2018-03-15'),
-(4, 'Gabah Bersih cuyyyy', 69, 'Beras', 10, 9, '2018-03-22'),
-(5, 'jagung bakar', 15, 'Jagung', 10, 9, '2018-03-22'),
-(6, 'barang yuk', 1400, 'Beras', 10, 9, '2018-03-23');
+INSERT INTO `barang` (`id_barang`, `nama_barang`, `berat_barang`, `id_komoditi`, `id_petani`, `id_pengelola`, `tgl_pengajuan`) VALUES
+(1, 'Update Barang test', 3, 1, 1, 7, '2018-03-15'),
+(2, 'Padi Karawitan 2', 4, 1, 1, 7, '2018-03-15'),
+(3, 'Padi Karawitan 2 Lalalalalalala', 80, 2, 10, 9, '2018-03-15'),
+(4, 'Gabah Bersih cuyyyy', 69, 1, 10, 9, '2018-03-22'),
+(5, 'jagung bakar', 15, 1, 10, 9, '2018-03-22'),
+(6, 'barang yuk', 1400, 2, 10, 9, '2018-03-23'),
+(7, 'Beras Rojolele', 500, 1, 10, 9, '2018-03-26');
 
 -- --------------------------------------------------------
 
@@ -100,10 +101,8 @@ CREATE TABLE `catatan` (
 
 INSERT INTO `catatan` (`id_catatan`, `id_pengujian`, `isi_catatan`, `status`, `created_at`, `updated_at`) VALUES
 (1, 1, 'bagus', 1, NULL, NULL),
-(4, 5, '<p>ijknklsndlanklsan</p>', 2, '2018-03-22 08:12:19', '2018-03-22 08:12:19'),
-(9, 10, '<p>sdsadsadsad</p>', 1, '2018-03-22 18:08:07', '2018-03-22 18:08:07'),
-(11, 12, '<p>sadsadsadas</p>', 1, '2018-03-22 18:17:11', '2018-03-22 18:17:11'),
-(16, 17, '<p>dsdasadasd</p>', 0, '2018-03-23 14:07:43', '2018-03-23 14:07:43');
+(18, 19, '<p>dsadsdasd</p>', 1, '2018-03-27 09:34:49', '2018-03-27 09:34:49'),
+(19, 20, '<p>sadaadad</p>', 1, '2018-03-27 12:57:58', '2018-03-27 12:57:58');
 
 -- --------------------------------------------------------
 
@@ -169,10 +168,32 @@ CREATE TABLE `harga` (
 --
 
 INSERT INTO `harga` (`id_harga`, `id_pengujian`, `satuan_barang`, `harga_barang`) VALUES
-(1, 5, 'kg', 9000),
-(6, 10, 'kg', 7000),
-(8, 12, 'kg', 5000),
-(9, 17, 'kg', 90000);
+(11, 19, 'kg', 8000),
+(12, 20, 'kg', 9000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `komoditi_jenis`
+--
+
+CREATE TABLE `komoditi_jenis` (
+  `id_komoditi` int(11) NOT NULL,
+  `nama_komoditi` varchar(100) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `komoditi_jenis`
+--
+
+INSERT INTO `komoditi_jenis` (`id_komoditi`, `nama_komoditi`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Beras', 8, 8, '2018-03-26 15:14:06', '2018-03-26 15:26:32'),
+(2, 'Jagung', 8, NULL, '2018-03-26 15:26:46', '2018-03-26 15:26:46'),
+(3, 'Gabah', 8, NULL, '2018-03-26 15:27:05', '2018-03-26 15:27:05');
 
 -- --------------------------------------------------------
 
@@ -212,10 +233,33 @@ CREATE TABLE `pengujian` (
 
 INSERT INTO `pengujian` (`id_pengujian`, `id_pengelola`, `id_barang`, `id_gudang`, `tgl_pengujian`, `hsl_pengujian`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
 (1, 1, 2, NULL, '2018-03-16', 'Mantab Bro Edit', 1, NULL, NULL, NULL),
-(5, 9, 4, 26, '2018-03-22', 'Diterima', 9, NULL, NULL, NULL),
-(10, 9, 6, 26, '2018-03-23', 'Diterima', 9, NULL, NULL, NULL),
-(12, 9, 3, NULL, '2018-03-23', 'Ditolak', 9, NULL, NULL, NULL),
-(17, 9, 5, 26, '2018-03-23', 'Diterima', 9, NULL, '2018-03-23 14:07:43', '2018-03-23 14:07:43');
+(19, 9, 3, 26, '2018-03-27', 'Diterima', 9, 9, '2018-03-27 09:34:48', '2018-03-27 09:57:02'),
+(20, 9, 4, 26, '2018-03-27', 'Diterima', 9, NULL, '2018-03-27 12:57:58', '2018-03-27 12:57:58');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `resi`
+--
+
+CREATE TABLE `resi` (
+  `id_resi` int(11) NOT NULL,
+  `no_resi` varchar(191) NOT NULL,
+  `id_pengujian` int(11) NOT NULL,
+  `tgl_penerbitan` date NOT NULL,
+  `masa_aktif` int(11) NOT NULL,
+  `jatuh_tempo` date NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `resi`
+--
+
+INSERT INTO `resi` (`id_resi`, `no_resi`, `id_pengujian`, `tgl_penerbitan`, `masa_aktif`, `jatuh_tempo`, `created_at`, `updated_at`) VALUES
+(2, 'INV/20/1111', 19, '2018-03-27', 9, '0000-00-00', '2018-03-27 09:34:49', '2018-03-27 10:17:49'),
+(3, 'INV/20/1092', 20, '2018-03-27', 18, '0000-00-00', '2018-03-27 12:57:58', '2018-03-27 12:57:58');
 
 -- --------------------------------------------------------
 
@@ -328,7 +372,8 @@ ALTER TABLE `artikel`
 ALTER TABLE `barang`
   ADD PRIMARY KEY (`id_barang`),
   ADD KEY `barang_petani_FK` (`id_petani`),
-  ADD KEY `barang_pengelola_FK` (`id_pengelola`);
+  ADD KEY `barang_pengelola_FK` (`id_pengelola`),
+  ADD KEY `barang_komoditi_FK` (`id_komoditi`);
 
 --
 -- Indexes for table `catatan`
@@ -358,6 +403,14 @@ ALTER TABLE `harga`
   ADD KEY `harga_pengujian_FK` (`id_pengujian`);
 
 --
+-- Indexes for table `komoditi_jenis`
+--
+ALTER TABLE `komoditi_jenis`
+  ADD PRIMARY KEY (`id_komoditi`),
+  ADD KEY `created_user_FK` (`created_by`),
+  ADD KEY `updated_user_FK` (`updated_by`);
+
+--
 -- Indexes for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
@@ -370,6 +423,14 @@ ALTER TABLE `pengujian`
   ADD PRIMARY KEY (`id_pengujian`),
   ADD KEY `pengujian_barang_FK` (`id_barang`),
   ADD KEY `pengujian_pengelola_FK` (`id_pengelola`);
+
+--
+-- Indexes for table `resi`
+--
+ALTER TABLE `resi`
+  ADD PRIMARY KEY (`id_resi`),
+  ADD UNIQUE KEY `no_resi` (`no_resi`),
+  ADD KEY `resi_penguian_FK` (`id_pengujian`);
 
 --
 -- Indexes for table `users`
@@ -407,13 +468,13 @@ ALTER TABLE `artikel`
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `catatan`
 --
 ALTER TABLE `catatan`
-  MODIFY `id_catatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_catatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `groups`
@@ -431,7 +492,13 @@ ALTER TABLE `gudang`
 -- AUTO_INCREMENT for table `harga`
 --
 ALTER TABLE `harga`
-  MODIFY `id_harga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_harga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `komoditi_jenis`
+--
+ALTER TABLE `komoditi_jenis`
+  MODIFY `id_komoditi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `login_attempts`
@@ -443,7 +510,13 @@ ALTER TABLE `login_attempts`
 -- AUTO_INCREMENT for table `pengujian`
 --
 ALTER TABLE `pengujian`
-  MODIFY `id_pengujian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_pengujian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `resi`
+--
+ALTER TABLE `resi`
+  MODIFY `id_resi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -477,6 +550,7 @@ ALTER TABLE `artikel`
 -- Constraints for table `barang`
 --
 ALTER TABLE `barang`
+  ADD CONSTRAINT `barang_komoditi_FK` FOREIGN KEY (`id_komoditi`) REFERENCES `komoditi_jenis` (`id_komoditi`),
   ADD CONSTRAINT `barang_pengelola_FK` FOREIGN KEY (`id_pengelola`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `barang_petani_FK` FOREIGN KEY (`id_petani`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -499,11 +573,24 @@ ALTER TABLE `harga`
   ADD CONSTRAINT `harga_pengujian_FK` FOREIGN KEY (`id_pengujian`) REFERENCES `pengujian` (`id_pengujian`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `komoditi_jenis`
+--
+ALTER TABLE `komoditi_jenis`
+  ADD CONSTRAINT `created_user_FK` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `updated_user_FK` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `pengujian`
 --
 ALTER TABLE `pengujian`
   ADD CONSTRAINT `pengujian_barang_FK` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `pengujian_pengelola_FK` FOREIGN KEY (`id_pengelola`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `resi`
+--
+ALTER TABLE `resi`
+  ADD CONSTRAINT `resi_penguian_FK` FOREIGN KEY (`id_pengujian`) REFERENCES `pengujian` (`id_pengujian`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `users_groups`
