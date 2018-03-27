@@ -52,14 +52,20 @@
             $("#id_gudang").prop('required', true);  
             $("#satuan_barang").prop('required', true);  
             $("#harga_barang").prop('required', true);  
+            $("#no_resi").prop('required', true);  
+            $("#masa_aktif").prop('required', true);  
             $("#pilGudang").css('visibility', 'visible');  
             $(".harga").css('visibility', 'visible');
+            $(".resi").css('visibility', 'visible');
         } else {
             $("#id_gudang").prop('required', false);
             $("#satuan_barang").prop('required', false);  
             $("#harga_barang").prop('required', false); 
+            $("#no_resi").prop('required', false);  
+            $("#masa_aktif").prop('required', false);
             $("#pilGudang").css('visibility', 'hidden');
             $(".harga").css('visibility', 'hidden');
+            $(".resi").css('visibility', 'hidden');
         }
     });
 </script>

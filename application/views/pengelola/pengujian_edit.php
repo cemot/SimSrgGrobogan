@@ -45,7 +45,7 @@
                                     <select class="form-control select2" data-style="select-with-transition" id="id_gudang" name="id_gudang" required="">
                                         <option disabled>Pilih Gudang</option>
                                         <?php foreach ($gudang as $gudang): ?>
-                                            <option value="<?php echo $gudang->id_gudang ?>" <?php ($gudang->id_gudang == $data->gudang->id_gudang ? 'selecteed' : ''); ?>>
+                                            <option value="<?php echo $gudang->id_gudang ?>" <?php ($gudang->id_gudang == $data->gudang->id_gudang ? 'selected' : ''); ?>>
                                                 <?php echo $gudang->id_gudang . " | " .$gudang->nama ;?>        
                                             </option>
                                         <?php endforeach ;?>
@@ -81,6 +81,47 @@
                                 <span class="material-input"></span></div>
                             </div>
                         </div>
+                        <div class="row resi" style="visibility: hidden;">
+                            <label class="col-md-4 label-on-left"></label>
+                            <div class="col-md-8">
+                                <h3>Resi</h3>
+                            </div>
+                        </div>
+                        <div class="row resi" style="visibility: hidden;">
+                            <label class="col-md-4 label-on-left">No Resi</label>
+                            <div class="col-md-8">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                    <input class="form-control" type="text" id="no_resi" name="no_resi" placeholder="contoh : INV/10/2/3.2018" value="<?php echo $data->resi->no_resi ?>" required="">
+                                <span class="material-input"></span></div>
+                            </div>
+                        </div>
+                        <div class="row resi" style="visibility: hidden;">
+                            <label class="col-md-4 label-on-left">Masa Aktif</label>
+                            <div class="col-md-8">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                    <select class="selectpicker" data-style="select-with-transition" id="masa_aktif" name="masa_aktif" required="">
+                                        <option disabled>Pilih Satuan</option>
+                                        <?php 
+                                            $masa_aktif = array(
+                                                '3' => '3 Bulan', 
+                                                '6' => '6 Bulan', 
+                                                '9' => '9 Bulan', 
+                                                '12' => '12 Bulan', 
+                                                '15' => '15 Bulan', 
+                                                '18' => '18 Bulan', 
+                                            );
+                                            foreach ($masa_aktif as $masa_aktif => $keterangan) :
+                                        ?>
+                                         <option value="<?php echo $masa_aktif ?>" <?php ($data->resi->masa_aktif == $masa_aktif ? 'selected' : ''); ?>>
+                                            <?php echo $keterangan ;?>        
+                                        </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                <span class="material-input"></span></div>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-7 col-sm-12">
                         <div class="row">
@@ -94,7 +135,7 @@
                             <div class="col-md-9">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <textarea class="form-control" name="isi_catatan" rows="9"><?php echo htmlspecialchars($data->catatan->isi_catatan); ?></textarea>
+                                    <textarea class="form-control" name="isi_catatan" rows="17"><?php echo htmlspecialchars($data->catatan->isi_catatan); ?></textarea>
                                 <span class="material-input"></span></div>
                             </div>
                         </div>

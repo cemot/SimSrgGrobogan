@@ -40,4 +40,9 @@ class M_Pengujian extends Eloquent
         return $this->hasOne('M_Harga', 'id_pengujian', 'id_pengujian');
     }
 
+    public function resi()
+    {
+        return $this->hasMany('M_Resi', 'id_pengujian', 'id_pengujian');
+    }
+
 }

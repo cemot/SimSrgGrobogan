@@ -61,10 +61,19 @@ class Pengujian extends CI_Controller {
 
                 if ($this->input->post('hsl_pengujian') == 'Diterima') {
                     $harga = M_Harga::create([
-                    'id_pengujian' => $pengujian->id_pengujian,
-                    'satuan_barang' => $this->input->post('satuan_barang'),
-                    'harga_barang' => $this->input->post('harga_barang'),
+                        'id_pengujian' => $pengujian->id_pengujian,
+                        'satuan_barang' => $this->input->post('satuan_barang'),
+                        'harga_barang' => $this->input->post('harga_barang'),
                     ]);
+
+                    $resi = M_Resi::create([
+                        'no_resi' => $this->input->post('no_resi'),
+                        'id_pengujian' => $pengujian->id_pengujian,
+                        'tgl_penerbitan' => date("Y-m-d"),
+                        'masa_aktif' => $this->input->post('masa_aktif'),
+                        'jatuh_tempo' => strtotime("+".$this->input->post('masa_aktif')." months", strtotime(date("Y-m-d"))),
+                    ]);
+
                 }                
 
                 if($pengujian && $catatan) {

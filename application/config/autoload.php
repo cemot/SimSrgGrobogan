@@ -140,5 +140,6 @@ $autoload['model'] = array(
 	'M_Pengujian',
 	'M_Catatan',
 	'M_Harga',
-	'M_Komoditi'
+	'M_Komoditi',
+	'M_Resi'
 );
