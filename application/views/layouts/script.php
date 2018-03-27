@@ -180,6 +180,10 @@
     });
 </script>
 <script type="text/javascript">
+    $(document).ready(function () {
+        setInterval(startTime, 1000);
+    });
+
     function belumAda(){
       swal({
         title: "Mohon Maaf!",
@@ -189,5 +193,41 @@
         showConfirmButton: false
       });
     }
+
+    function startTime() {
+        var strDate = $('#serverTime').val();
+        var today = new Date(strDate);
+        today.setSeconds(today.getSeconds() + 1);
+        $('#serverTime').val(today);
+
+        //var today = new Date();
+        var hour = today.getHours();
+        var min = today.getMinutes();
+        var sec = today.getSeconds();
+
+        var months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+        var date = new Date();
+        var day = zeroPad(date.getDate(), 2);
+        var month = date.getMonth();
+        var yy = date.getYear();
+        var year = (yy < 1000) ? yy + 1900 : yy;
+
+        hour = checkTime(hour);
+        min = checkTime(min);
+        sec = checkTime(sec);
+        document.getElementById('clock').innerHTML = "<i class='fa fa-clock-o'></i>&nbsp;&nbsp;" + day + "/" + months[month] + "/" + year + "  " + hour + ":" + min + ":" + sec + "&nbsp;WIB";
+    }
+
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
+    function zeroPad(num, places) {
+        var zero = places - num.toString().length + 1;
+        return Array(+(zero > 0 && zero)).join("0") + num;
+    }
+
 </script>
 

@@ -44,6 +44,11 @@
         </li> -->
         <li>
             <a href="#">
+               <span id="clock" class="pull-right lbl last-child" style="cursor: default;"></span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
                <i class="material-icons">schedule</i>
                <?php echo date('d M Y h:i:s a', time()); ?>
             </a>

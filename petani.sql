@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2018 at 04:10 PM
+-- Generation Time: Mar 27, 2018 at 04:59 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -170,6 +170,24 @@ CREATE TABLE `harga` (
 INSERT INTO `harga` (`id_harga`, `id_pengujian`, `satuan_barang`, `harga_barang`) VALUES
 (11, 19, 'kg', 8000),
 (12, 20, 'kg', 9000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `komoditi_harga`
+--
+
+CREATE TABLE `komoditi_harga` (
+  `id_komoditi_harga` int(11) NOT NULL,
+  `id_komoditi` int(11) NOT NULL,
+  `harga` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
+  `keterangan` varchar(50) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -403,6 +421,15 @@ ALTER TABLE `harga`
   ADD KEY `harga_pengujian_FK` (`id_pengujian`);
 
 --
+-- Indexes for table `komoditi_harga`
+--
+ALTER TABLE `komoditi_harga`
+  ADD PRIMARY KEY (`id_komoditi_harga`),
+  ADD KEY `harga_komoditi_FK` (`id_komoditi`),
+  ADD KEY `buat_harga_FK` (`created_by`),
+  ADD KEY `edit_harga_FK` (`updated_by`);
+
+--
 -- Indexes for table `komoditi_jenis`
 --
 ALTER TABLE `komoditi_jenis`
@@ -571,6 +598,14 @@ ALTER TABLE `gudang`
 --
 ALTER TABLE `harga`
   ADD CONSTRAINT `harga_pengujian_FK` FOREIGN KEY (`id_pengujian`) REFERENCES `pengujian` (`id_pengujian`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `komoditi_harga`
+--
+ALTER TABLE `komoditi_harga`
+  ADD CONSTRAINT `buat_harga_FK` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `edit_harga_FK` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `harga_komoditi_FK` FOREIGN KEY (`id_komoditi`) REFERENCES `komoditi_jenis` (`id_komoditi`);
 
 --
 -- Constraints for table `komoditi_jenis`
