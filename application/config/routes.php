@@ -71,6 +71,12 @@ $route['admin/user/store'] = 'admin/user/store';
 $route['admin/user/edit/(:any)'] = 'admin/user/edit/$1';
 $route['admin/user/update'] = 'admin/user/update';
 $route['admin/user/delete/(:any)'] = 'admin/user/destroy/$1';
+$route['admin/komoditi'] = 'admin/komoditi/index';
+$route['admin/komoditi/create'] = 'admin/komoditi/create';
+$route['admin/komoditi/store'] = 'admin/komoditi/store';
+$route['admin/komoditi/edit/(:any)'] = 'admin/komoditi/edit/$1';
+$route['admin/komoditi/update'] = 'admin/komoditi/update';
+$route['admin/komoditi/delete/(:any)'] = 'admin/komoditi/destroy/$1';
 
 //PENGELOLA
 $route['pengelola'] = 'akun/dashboard';
@@ -95,8 +101,11 @@ $route['pengelola/pengujian/store'] = 'pengelola/pengujian/store';
 $route['pengelola/pengujian/edit/(:any)'] = 'pengelola/pengujian/edit/$1';
 $route['pengelola/pengujian/update'] = 'pengelola/pengujian/update';
 $route['pengelola/pengujian/delete/(:any)'] = 'pengelola/pengujian/destroy/$1';
+$route['pengelola/resi'] = 'pengelola/resi/index';
+$route['pengelola/komoditi'] = 'pengelola/komoditi/index';
 $route['pengelola/artikel'] = 'pengelola/artikel/index';
 $route['pengelola/artikel/(:any)'] = 'pengelola/artikel/show/$1';
+
 
 //DINAS
 $route['dinas'] = 'akun/dashboard';

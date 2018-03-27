@@ -32,7 +32,7 @@
                                         <td><?php echo $gudang->kapasitas ?></td>
                                         <td><?php echo $gudang->kapasitas ?></td>
                                         <td class="td-actions text-right">
-                                            <a class="btn btn-info" href="<?php echo base_url('pengelola/gudang/show/'.$gudang->id_gudang); ?>"><i class="material-icons">assignment</i> Detail</a>
+                                            <button class="btn btn-info" onclick="belumAda()"><i class="material-icons">assignment</i> Detail</button>
                                             <a class="btn btn-success" href="<?php echo base_url('pengelola/gudang/edit/'.$gudang->id_gudang); ?>"><i class="material-icons">mode_edit</i> Ubah</a>
                                             <a class="btn btn-danger" href="<?php echo base_url('pengelola/gudang/delete/'.$gudang->id_gudang); ?>"><i class="material-icons">close</i> Hapus</a>
                                         </td>

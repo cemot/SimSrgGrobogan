@@ -3,30 +3,43 @@
 <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/material.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+
 <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
 <script src="../../../cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+
 <!-- Library for adding dinamically elements -->
 <script src="<?php echo base_url(); ?>assets/js/arrive.min.js" type="text/javascript"></script>
+
 <!-- Forms Validations Plugin -->
-<script src="<?php echo base_url(); ?>assets/js/jquery.validate.min.js"></script>
+<!-- <script src="<?php echo base_url(); ?>assets/js/jquery.validate.min.js"></script> -->
+
 <!--  Plugin for Date Time Picker and Full Calendar Plugin-->
 <script src="<?php echo base_url(); ?>assets/js/moment.min.js"></script>
+
 <!--  Charts Plugin, full documentation here: https://gionkunz.github.io/chartist-js/ -->
 <script src="<?php echo base_url(); ?>assets/js/chartist.min.js"></script>
+
 <!--  Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-<script src="<?php echo base_url(); ?>assets/js/jquery.bootstrap-wizard.js"></script>
+<!-- <script src="<?php echo base_url(); ?>assets/js/jquery.bootstrap-wizard.js"></script> -->
+
 <!--  Notifications Plugin, full documentation here: http://bootstrap-notify.remabledesigns.com/    -->
 <script src="<?php echo base_url(); ?>assets/js/bootstrap-notify.js"></script>
+
 <!--   Sharrre Library    -->
-<script src="<?php echo base_url(); ?>assets/js/jquery.sharrre.js"></script>
+<!-- <script src="<?php echo base_url(); ?>assets/js/jquery.sharrre.js"></script> -->
+
 <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
 <script src="<?php echo base_url(); ?>assets/js/bootstrap-datetimepicker.js"></script>
+
 <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-<script src="<?php echo base_url(); ?>assets/js/jquery-jvectormap.js"></script>
+<!-- <script src="<?php echo base_url(); ?>assets/js/jquery-jvectormap.js"></script> -->
+
 <!-- Sliders Plugin, full documentation here: https://refreshless.com/nouislider/ -->
-<script src="<?php echo base_url(); ?>assets/js/nouislider.min.js"></script>
+<!-- <script src="<?php echo base_url(); ?>assets/js/nouislider.min.js"></script> -->
+
 <!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1_8C5Xz9RpEeJSaJ3E_DeBv8i7j_p6Aw"></script>
+<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1_8C5Xz9RpEeJSaJ3E_DeBv8i7j_p6Aw"></script> -->
+
 <!--  Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
 <script src="<?php echo base_url(); ?>assets/js/jquery.select-bootstrap.js"></script>
 <!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
@@ -38,7 +51,7 @@
 <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
 <script src="<?php echo base_url(); ?>assets/js/fullcalendar.min.js"></script>
 <!-- Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-<script src="<?php echo base_url(); ?>assets/js/jquery.tagsinput.js"></script>
+<!-- <script src="<?php echo base_url(); ?>assets/js/jquery.tagsinput.js"></script> -->
 <!-- Material Dashboard javascript methods -->
 <script src="<?php echo base_url(); ?>assets/js/material-dashboard23cd.js?v=1.2.1"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
@@ -165,5 +178,16 @@
 
         $('.card .material-datatables label').addClass('form-group');
     });
+</script>
+<script type="text/javascript">
+    function belumAda(){
+      swal({
+        title: "Mohon Maaf!",
+        text: "Fitur ini belum tersedia",
+        type: "error",
+        timer: 1250,
+        showConfirmButton: false
+      });
+    }
 </script>
 

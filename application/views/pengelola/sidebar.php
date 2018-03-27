@@ -83,49 +83,49 @@
             </ul>
         </div>
     </li>
-    <li>
-        <a data-toggle="collapse" href="#hrgkomoditi">
-            <i class="material-icons">local_offer</i>
-            <p> Data Harga Komoditi
-                <b class="caret"></b>
-            </p>
-        </a>
-        <div class="collapse" id="hrgkomoditi">
-            <ul class="nav">
-                <li>
-                    <a href="#">
-                        <span class="sidebar-mini"> DHK </span>
-                        <span class="sidebar-normal"> Daftar Harga Komoditi</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="sidebar-mini"> + </span>
-                        <span class="sidebar-normal"> Tambah Harga </span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </li>
-    <li>
+    <li class="<?php if($this->uri->segment(2) == "resi"){ echo "active"; } ?>">
         <a data-toggle="collapse" href="#resigd">
             <i class="material-icons">receipt</i>
             <p> Resi Gudang
                 <b class="caret"></b>
             </p>
         </a>
-        <div class="collapse" id="resigd">
+        <div class="collapse <?php if($this->uri->segment(2) == "resi"){ echo "in"; } ?>" id="resigd">
             <ul class="nav">
-                <li>
-                    <a href="#">
+                <li class="<?php if($this->uri->segment(2) == "resi" && (empty($this->uri->segment(3)) || $this->uri->segment(3) == "edit")){ echo "active"; } ?>">
+                    <a href="<?php echo base_url('pengelola/resi'); ?>">
                         <span class="sidebar-mini"> DR </span>
                         <span class="sidebar-normal"> Daftar Resi</span>
                     </a>
                 </li>
-                <li>
+            </ul>
+        </div>
+    </li>
+    <li class="<?php if($this->uri->segment(2) == "komoditi"){ echo "active"; } ?>">
+        <a data-toggle="collapse" href="#hrgkomoditi">
+            <i class="material-icons">local_offer</i>
+            <p> Data Komoditi
+                <b class="caret"></b>
+            </p>
+        </a>
+        <div class="collapse <?php if($this->uri->segment(2) == "komoditi"){ echo "in"; } ?>" id="hrgkomoditi">
+            <ul class="nav">
+                <li class="<?php if($this->uri->segment(2) == "komoditi" && (empty($this->uri->segment(3)) || $this->uri->segment(3) == "edit")){ echo "active"; } ?>">
+                    <a href="<?php echo base_url('pengelola/komoditi'); ?>">
+                        <span class="sidebar-mini"> DK </span>
+                        <span class="sidebar-normal"> Daftar Komoditi</span>
+                    </a>
+                </li>
+                <li class="<?php if($this->uri->segment(2) == "komoditi" && $this->uri->segment(3) == "harga"){ echo "active"; } ?>">
+                    <a href="<?php echo base_url('pengelola/komoditi/harga'); ?>">
+                        <span class="sidebar-mini"> DHK </span>
+                        <span class="sidebar-normal"> Daftar Harga Komoditi</span>
+                    </a>
+                </li>
+                <li class="<?php if($this->uri->segment(2) == "komoditi" && $this->uri->segment(3) == "create"){ echo "active"; } ?>">
                     <a href="#">
                         <span class="sidebar-mini"> + </span>
-                        <span class="sidebar-normal"> Tambah Resi </span>
+                        <span class="sidebar-normal"> Tambah Harga </span>
                     </a>
                 </li>
             </ul>
