@@ -141,5 +141,6 @@ $autoload['model'] = array(
 	'M_Catatan',
 	'M_Harga',
 	'M_Komoditi',
+	'M_Komoditi_Harga',
 	'M_Resi'
 );

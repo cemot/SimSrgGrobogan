@@ -7,7 +7,7 @@
             </div>
             <div class="card-content">
                 <h4 class="card-title">Tambah Harga Komoditi</h4>
-                <form class="form-horizontal" method="post" action="<?php echo base_url('pengelola/komoditi/harga/store'); ?>">
+                <form class="form-horizontal" method="post" action="<?php echo base_url('pengelola/komoditi/store_harga'); ?>">
                     <div class="row">
                         <label class="col-md-2 label-on-left">Komoditi</label>
                         <div class="col-md-10">

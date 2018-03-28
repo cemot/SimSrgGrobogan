@@ -112,18 +112,12 @@
             <ul class="nav">
                 <li class="<?php if($this->uri->segment(2) == "komoditi" && (empty($this->uri->segment(3)) || $this->uri->segment(3) == "edit")){ echo "active"; } ?>">
                     <a href="<?php echo base_url('pengelola/komoditi'); ?>">
-                        <span class="sidebar-mini"> DK </span>
-                        <span class="sidebar-normal"> Daftar Komoditi</span>
-                    </a>
-                </li>
-                <li class="<?php if($this->uri->segment(2) == "komoditi" && $this->uri->segment(3) == "harga" && empty($this->uri->segment(4))){ echo "active"; } ?>">
-                    <a href="<?php echo base_url('pengelola/komoditi/harga'); ?>">
                         <span class="sidebar-mini"> DHK </span>
                         <span class="sidebar-normal"> Daftar Harga Komoditi</span>
                     </a>
                 </li>
-                <li class="<?php if($this->uri->segment(2) == "komoditi" && $this->uri->segment(3) == "harga" && $this->uri->segment(4) == "create"){ echo "active"; } ?>">
-                    <a href="<?php echo base_url('pengelola/komoditi/harga/create'); ?>">
+                <li class="<?php if($this->uri->segment(2) == "komoditi" && $this->uri->segment(3) == "create_harga"){ echo "active"; } ?>">
+                    <a href="<?php echo base_url('pengelola/komoditi/create_harga'); ?>">
                         <span class="sidebar-mini"> + </span>
                         <span class="sidebar-normal"> Tambah Harga Komoditi </span>
                     </a>
@@ -131,7 +125,7 @@
             </ul>
         </div>
     </li>
-    <li>
+    <!-- <li>
         <a data-toggle="collapse" href="#laporangd">
             <i class="material-icons">chrome_reader_mode</i>
             <p> Laporan Gudang
@@ -178,5 +172,5 @@
                 </li>
             </ul>
         </div>
-    </li>
+    </li> -->
 </ul>

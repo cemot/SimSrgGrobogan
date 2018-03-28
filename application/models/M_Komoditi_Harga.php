@@ -17,6 +17,6 @@ class M_Komoditi_Harga extends Eloquent
 
     public function komoditi()
     {
-        return $this->belongsTo('M_User', 'created_by', 'id');
+        return $this->belongsTo('M_Komoditi', 'id_komoditi', 'id_komoditi');
     }
 }

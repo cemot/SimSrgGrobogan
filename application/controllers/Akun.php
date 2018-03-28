@@ -23,6 +23,8 @@ class Akun extends CI_Controller {
             $data['sidebar'] = 'admin/sidebar';
             $data['content'] = 'admin/dashboard';
         } elseif ($this->session->role == 1) {
+            $data['gudang'] = M_Gudang::where('id_pengelola', $this->session->id)->get()->count();
+            $data['pengujian'] = M_Pengujian::where('id_pengelola', $this->session->id)->get()->count();
             $data['sidebar'] = 'pengelola/sidebar';
             $data['content'] = 'pengelola/dashboard';
         }        

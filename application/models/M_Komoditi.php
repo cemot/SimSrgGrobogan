@@ -27,7 +27,7 @@ class M_Komoditi extends Eloquent
 
     public function harga()
     {
-        // return $this->hasOne('M_Komoditi_Harga', 'id_komoditi', 'id_komoditi');
+        return $this->hasMany('M_Komoditi_Harga', 'id_komoditi', 'id_komoditi');
     }
 
 }
