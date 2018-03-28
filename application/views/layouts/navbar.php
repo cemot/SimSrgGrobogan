@@ -42,11 +42,11 @@
                 </li>
             </ul>
         </li> -->
-        <li>
+        <!-- <li>
             <a href="#">
                <span id="clock" class="pull-right lbl last-child" style="cursor: default;"></span>
             </a>
-        </li>
+        </li> -->
         <li>
             <a href="#">
                <i class="material-icons">schedule</i>

@@ -103,6 +103,9 @@ $route['pengelola/pengujian/update'] = 'pengelola/pengujian/update';
 $route['pengelola/pengujian/delete/(:any)'] = 'pengelola/pengujian/destroy/$1';
 $route['pengelola/resi'] = 'pengelola/resi/index';
 $route['pengelola/komoditi'] = 'pengelola/komoditi/index';
+$route['pengelola/komoditi/harga'] = 'pengelola/komoditi_harga/index';
+$route['pengelola/komoditi/harga/create'] = 'pengelola/komoditi_harga/create';
+
 $route['pengelola/artikel'] = 'pengelola/artikel/index';
 $route['pengelola/artikel/(:any)'] = 'pengelola/artikel/show/$1';
 

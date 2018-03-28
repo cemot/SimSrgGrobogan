@@ -11,34 +11,35 @@
 <script src="<?php echo base_url(); ?>assets/js/arrive.min.js" type="text/javascript"></script>
 
 <!-- Forms Validations Plugin -->
-<!-- <script src="<?php echo base_url(); ?>assets/js/jquery.validate.min.js"></script> -->
+<script src="<?php echo base_url(); ?>assets/js/jquery.validate.min.js"></script>
 
 <!--  Plugin for Date Time Picker and Full Calendar Plugin-->
 <script src="<?php echo base_url(); ?>assets/js/moment.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/moment-with-locales.js"></script>
 
 <!--  Charts Plugin, full documentation here: https://gionkunz.github.io/chartist-js/ -->
 <script src="<?php echo base_url(); ?>assets/js/chartist.min.js"></script>
 
 <!--  Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-<!-- <script src="<?php echo base_url(); ?>assets/js/jquery.bootstrap-wizard.js"></script> -->
+<script src="<?php echo base_url(); ?>assets/js/jquery.bootstrap-wizard.js"></script>
 
 <!--  Notifications Plugin, full documentation here: http://bootstrap-notify.remabledesigns.com/    -->
 <script src="<?php echo base_url(); ?>assets/js/bootstrap-notify.js"></script>
 
 <!--   Sharrre Library    -->
-<!-- <script src="<?php echo base_url(); ?>assets/js/jquery.sharrre.js"></script> -->
+<script src="<?php echo base_url(); ?>assets/js/jquery.sharrre.js"></script>
 
 <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
 <script src="<?php echo base_url(); ?>assets/js/bootstrap-datetimepicker.js"></script>
 
 <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-<!-- <script src="<?php echo base_url(); ?>assets/js/jquery-jvectormap.js"></script> -->
+<script src="<?php echo base_url(); ?>assets/js/jquery-jvectormap.js"></script>
 
 <!-- Sliders Plugin, full documentation here: https://refreshless.com/nouislider/ -->
-<!-- <script src="<?php echo base_url(); ?>assets/js/nouislider.min.js"></script> -->
+<script src="<?php echo base_url(); ?>assets/js/nouislider.min.js"></script>
 
 <!--  Google Maps Plugin    -->
-<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1_8C5Xz9RpEeJSaJ3E_DeBv8i7j_p6Aw"></script> -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1_8C5Xz9RpEeJSaJ3E_DeBv8i7j_p6Aw"></script>
 
 <!--  Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
 <script src="<?php echo base_url(); ?>assets/js/jquery.select-bootstrap.js"></script>
@@ -51,7 +52,7 @@
 <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
 <script src="<?php echo base_url(); ?>assets/js/fullcalendar.min.js"></script>
 <!-- Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-<!-- <script src="<?php echo base_url(); ?>assets/js/jquery.tagsinput.js"></script> -->
+<script src="<?php echo base_url(); ?>assets/js/jquery.tagsinput.js"></script>
 <!-- Material Dashboard javascript methods -->
 <script src="<?php echo base_url(); ?>assets/js/material-dashboard23cd.js?v=1.2.1"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
@@ -84,16 +85,35 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function() {
-        $('.select2').select2({
-            theme: "bootstrap"
-        });
-    });
-</script>
-<script type="text/javascript">
-    $(document).ready(function() {
         <?php if($this->session->flashdata('class') && $this->session->flashdata('message')) : ?>
             notification('<?php echo $this->session->flashdata('class');?>' , '<?php echo $this->session->flashdata('message');?>');
         <?php endif; ?>
+
+        var date = new Date();
+        var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+        $('.select2').select2({
+            theme: "bootstrap"
+        });
+
+        $('.datepicker').datetimepicker({
+            format: 'MM/DD/YYYY',
+            locale: 'id',
+            minDate: today,
+            maxDate: new Date(new Date().setDate(date.getDate() + 14)),
+            icons: {
+                time: "fa fa-clock-o",
+                date: "fa fa-calendar",
+                up: "fa fa-chevron-up",
+                down: "fa fa-chevron-down",
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-clock-o',
+                clear: 'fa fa-trash',
+                close: 'fa fa-remove'
+            }
+        });
+
         function notification(type, message) {
             $.notify({
                 icon: "notifications",
@@ -107,7 +127,8 @@
                 }
             });
         }
-    });  
+
+    });
 </script>
 <script>
     $(document).ready(function() {
@@ -181,7 +202,7 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function () {
-        setInterval(startTime, 1000);
+        // setInterval(startTime, 1000);
     });
 
     function belumAda(){
@@ -194,40 +215,40 @@
       });
     }
 
-    function startTime() {
-        var strDate = $('#serverTime').val();
-        var today = new Date(strDate);
-        today.setSeconds(today.getSeconds() + 1);
-        $('#serverTime').val(today);
+    // function startTime() {
+    //     var strDate = $('#serverTime').val();
+    //     var today = new Date(strDate);
+    //     today.setSeconds(today.getSeconds() + 1);
+    //     $('#serverTime').val(today);
 
-        //var today = new Date();
-        var hour = today.getHours();
-        var min = today.getMinutes();
-        var sec = today.getSeconds();
+    //     //var today = new Date();
+    //     var hour = today.getHours();
+    //     var min = today.getMinutes();
+    //     var sec = today.getSeconds();
 
-        var months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
-        var date = new Date();
-        var day = zeroPad(date.getDate(), 2);
-        var month = date.getMonth();
-        var yy = date.getYear();
-        var year = (yy < 1000) ? yy + 1900 : yy;
+    //     var months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+    //     var date = new Date();
+    //     var day = zeroPad(date.getDate(), 2);
+    //     var month = date.getMonth();
+    //     var yy = date.getYear();
+    //     var year = (yy < 1000) ? yy + 1900 : yy;
 
-        hour = checkTime(hour);
-        min = checkTime(min);
-        sec = checkTime(sec);
-        document.getElementById('clock').innerHTML = "<i class='fa fa-clock-o'></i>&nbsp;&nbsp;" + day + "/" + months[month] + "/" + year + "  " + hour + ":" + min + ":" + sec + "&nbsp;WIB";
-    }
+    //     hour = checkTime(hour);
+    //     min = checkTime(min);
+    //     sec = checkTime(sec);
+    //     document.getElementById('clock').innerHTML = "<i class='fa fa-clock-o'></i>&nbsp;&nbsp;" + day + "/" + months[month] + "/" + year + "  " + hour + ":" + min + ":" + sec + "&nbsp;WIB";
+    // }
 
-    function checkTime(i) {
-        if (i < 10) {
-            i = "0" + i;
-        }
-        return i;
-    }
-    function zeroPad(num, places) {
-        var zero = places - num.toString().length + 1;
-        return Array(+(zero > 0 && zero)).join("0") + num;
-    }
+    // function checkTime(i) {
+    //     if (i < 10) {
+    //         i = "0" + i;
+    //     }
+    //     return i;
+    // }
+    // function zeroPad(num, places) {
+    //     var zero = places - num.toString().length + 1;
+    //     return Array(+(zero > 0 && zero)).join("0") + num;
+    // }
 
 </script>
 

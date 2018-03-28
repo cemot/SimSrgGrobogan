@@ -116,16 +116,16 @@
                         <span class="sidebar-normal"> Daftar Komoditi</span>
                     </a>
                 </li>
-                <li class="<?php if($this->uri->segment(2) == "komoditi" && $this->uri->segment(3) == "harga"){ echo "active"; } ?>">
+                <li class="<?php if($this->uri->segment(2) == "komoditi" && $this->uri->segment(3) == "harga" && empty($this->uri->segment(4))){ echo "active"; } ?>">
                     <a href="<?php echo base_url('pengelola/komoditi/harga'); ?>">
                         <span class="sidebar-mini"> DHK </span>
                         <span class="sidebar-normal"> Daftar Harga Komoditi</span>
                     </a>
                 </li>
-                <li class="<?php if($this->uri->segment(2) == "komoditi" && $this->uri->segment(3) == "create"){ echo "active"; } ?>">
-                    <a href="#">
+                <li class="<?php if($this->uri->segment(2) == "komoditi" && $this->uri->segment(3) == "harga" && $this->uri->segment(4) == "create"){ echo "active"; } ?>">
+                    <a href="<?php echo base_url('pengelola/komoditi/harga/create'); ?>">
                         <span class="sidebar-mini"> + </span>
-                        <span class="sidebar-normal"> Tambah Harga </span>
+                        <span class="sidebar-normal"> Tambah Harga Komoditi </span>
                     </a>
                 </li>
             </ul>
