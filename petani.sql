@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2018 at 04:59 PM
+-- Generation Time: Mar 30, 2018 at 06:44 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -188,6 +188,18 @@ CREATE TABLE `komoditi_harga` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `komoditi_harga`
+--
+
+INSERT INTO `komoditi_harga` (`id_komoditi_harga`, `id_komoditi`, `harga`, `tanggal`, `keterangan`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 2, 7000, '2018-03-28', 'sdada', 9, NULL, '2018-03-28 08:35:56', '2018-03-28 08:35:56'),
+(2, 2, 8000, '2018-03-29', 'sadsdasd', 9, NULL, '2018-03-28 08:40:37', '2018-03-28 08:40:37'),
+(3, 1, 7000, '2018-03-30', 'sladjaskld', 9, 9, '2018-03-28 09:06:06', '2018-03-28 09:06:06'),
+(4, 1, 6000, '2018-03-31', 'sdds', 9, 9, '2018-03-28 11:04:19', '2018-03-28 11:04:19'),
+(5, 3, 8000, '2018-04-01', 'hjgjghjghj', 9, 9, '2018-03-28 11:07:41', '2018-03-28 11:07:41'),
+(6, 2, 9000, '2018-04-01', 'sdadasda', 9, 9, '2018-03-28 11:08:29', '2018-03-28 11:08:29');
 
 -- --------------------------------------------------------
 
@@ -520,6 +532,12 @@ ALTER TABLE `gudang`
 --
 ALTER TABLE `harga`
   MODIFY `id_harga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `komoditi_harga`
+--
+ALTER TABLE `komoditi_harga`
+  MODIFY `id_komoditi_harga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `komoditi_jenis`
