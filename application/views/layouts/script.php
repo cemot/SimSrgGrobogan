@@ -87,14 +87,45 @@
     $(document).ready(function() {
         <?php if($this->session->flashdata('class') && $this->session->flashdata('message')) : ?>
             notification('<?php echo $this->session->flashdata('class');?>' , '<?php echo $this->session->flashdata('message');?>');
-        <?php endif; ?>
+        <?php endif; ?>        
 
-        var date = new Date();
-        var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-
+        function notification(type, message) {
+            $.notify({
+                icon: "notifications",
+                message: message
+            }, {
+                type: type,
+                timer: 500,
+                placement: {
+                    from: 'bottom',
+                    align: 'right'
+                }
+            });
+        }
+    });
+</script>
+<script type="text/javascript">
+    new Chartist.Line('.ct-chart', {
+        labels: [1,2,3],
+        series: [
+            [1,2,3,4]
+        ]
+    }, {
+        low: 0,
+        // fullWidth: true,
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
         $('.select2').select2({
             theme: "bootstrap"
         });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var date = new Date();
+        var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
 
         $('.datepicker').datetimepicker({
             format: 'MM/DD/YYYY',
@@ -113,21 +144,6 @@
                 close: 'fa fa-remove'
             }
         });
-
-        function notification(type, message) {
-            $.notify({
-                icon: "notifications",
-                message: message
-            }, {
-                type: type,
-                timer: 500,
-                placement: {
-                    from: 'bottom',
-                    align: 'right'
-                }
-            });
-        }
-
     });
 </script>
 <script>

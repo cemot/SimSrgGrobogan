@@ -105,10 +105,11 @@ $route['pengelola/resi'] = 'pengelola/resi/index';
 $route['pengelola/komoditi'] = 'pengelola/komoditi/index';
 $route['pengelola/komoditi/create_harga'] = 'pengelola/komoditi/create_harga';
 $route['pengelola/komoditi/store_harga'] = 'pengelola/komoditi/store_harga';
-
 $route['pengelola/artikel'] = 'pengelola/artikel/index';
 $route['pengelola/artikel/(:any)'] = 'pengelola/artikel/show/$1';
 
+//AJAX API
+$route['ajax/dataJagung'] = 'ajaxapi/getdatajagung';
 
 //DINAS
 $route['dinas'] = 'akun/dashboard';

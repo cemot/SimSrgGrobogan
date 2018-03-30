@@ -15,6 +15,18 @@ class Akun extends CI_Controller {
 
 	public function dashboard()
     {
+        // $count = M_Komoditi::get()->count();
+        
+        // foreach ($count as $komoditi) {
+        //     $series[] = M_Komoditi_Harga::where('id_komoditi', $komoditi->id_komoditi)->get()->pluck('harga');
+        //     $labels[] = M_Komoditi_Harga::where('id_komoditi', $komoditi->id_komoditi)->get()->pluck('tanggal');
+        // }
+        // $chart = M_Komoditi_Harga::where('id_komoditi', 2)->get();
+        // $data['series'] = $chart->pluck('harga');
+        // $data['labels'] = $chart->pluck('tanggal');
+        // echo $data['series'];
+        // echo $chart;
+        // echo $series;
         if ($this->session->role == 0) {
             $data['artikel'] = M_Artikel::all()->count();
             $data['pengelola'] = M_User::where('role', 1)->get()->count();
