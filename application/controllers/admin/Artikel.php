@@ -15,12 +15,12 @@ class Artikel extends CI_Controller {
         // dd($data);
         $data['sidebar'] = 'admin/sidebar';
         $data['content'] = 'admin/artikel';
-        $this->load->view('layouts/app', $data); 
+        $this->load->view('layouts/app', $data);
 	}
 
 	public function create()
     {
-        $data['sidebar'] = 'admin/sidebar';
+		$data['sidebar'] = 'admin/sidebar';
         $data['content'] = 'admin/artikel_create';
         $this->load->view('layouts/app', $data);
     }
@@ -58,7 +58,7 @@ class Artikel extends CI_Controller {
 
     public function show($id)
     {
-        $data['artikel'] = M_Artikel::find($id);
+		$data['artikel'] = M_Artikel::find($id);
         $data['sidebar'] = 'admin/sidebar';
         $data['content'] = 'admin/artikel_show';
         $this->load->view('layouts/app', $data);
