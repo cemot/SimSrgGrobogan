@@ -8,15 +8,45 @@ class AjaxAPI extends CI_Controller {
         parent::__construct();
     }
 
+	public function getDataBeras()
+    {
+        $data = M_Komoditi_Harga::where('id_komoditi', 1)->get();
+        $json = array(
+            // 'series' => array(
+			// 	'meta' => $data->pluck('tanggal'),
+			// 	'value' => $data->pluck('harga')
+			// ),
+			'labels' => $data->pluck('tanggal'),
+			'series' => $data->pluck('harga'),
+        );
+        echo json_encode($json);
+    }
+
 	public function getDataJagung()
     {
-        $series = M_Komoditi_Harga::where('id_komoditi', 2)->get();
-        // echo $series->pluck('harga');
-        // echo $series->pluck('tanggal');
-        $data = array(
-            'harga' => $series->pluck('harga'), 
-            'tanggal' => $series->pluck('tanggal'), 
+        $data = M_Komoditi_Harga::where('id_komoditi', 2)->get();
+        $json = array(
+            // 'series' => array(
+			// 	'meta' => $data->pluck('tanggal'),
+			// 	'value' => $data->pluck('harga')
+			// ),
+			'labels' => $data->pluck('tanggal'),
+			'series' => $data->pluck('harga'),
         );
-        echo json_encode($data);
+        echo json_encode($json);
+    }
+
+	public function getDataGabah()
+    {
+        $data = M_Komoditi_Harga::where('id_komoditi', 3)->get();
+        $json = array(
+            // 'series' => array(
+			// 	'meta' => $data->pluck('tanggal'),
+			// 	'value' => $data->pluck('harga')
+			// ),
+			'labels' => $data->pluck('tanggal'),
+			'series' => $data->pluck('harga'),
+        );
+        echo json_encode($json);
     }
 }

@@ -19,6 +19,7 @@
 
 <!--  Charts Plugin, full documentation here: https://gionkunz.github.io/chartist-js/ -->
 <script src="<?php echo base_url(); ?>assets/js/chartist.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/chartist-plugin-tooltip.min.js"></script>
 
 <!--  Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
 <script src="<?php echo base_url(); ?>assets/js/jquery.bootstrap-wizard.js"></script>
@@ -63,19 +64,19 @@
 <script type="text/javascript">
     $("#hsl_pengujian").change(function() {
         if ($("#hsl_pengujian").val() == 'Diterima') {
-            $("#id_gudang").prop('required', true);  
-            $("#satuan_barang").prop('required', true);  
-            $("#harga_barang").prop('required', true);  
-            $("#no_resi").prop('required', true);  
-            $("#masa_aktif").prop('required', true);  
-            $("#pilGudang").css('visibility', 'visible');  
+            $("#id_gudang").prop('required', true);
+            $("#satuan_barang").prop('required', true);
+            $("#harga_barang").prop('required', true);
+            $("#no_resi").prop('required', true);
+            $("#masa_aktif").prop('required', true);
+            $("#pilGudang").css('visibility', 'visible');
             $(".harga").css('visibility', 'visible');
             $(".resi").css('visibility', 'visible');
         } else {
             $("#id_gudang").prop('required', false);
-            $("#satuan_barang").prop('required', false);  
-            $("#harga_barang").prop('required', false); 
-            $("#no_resi").prop('required', false);  
+            $("#satuan_barang").prop('required', false);
+            $("#harga_barang").prop('required', false);
+            $("#no_resi").prop('required', false);
             $("#masa_aktif").prop('required', false);
             $("#pilGudang").css('visibility', 'hidden');
             $(".harga").css('visibility', 'hidden');
@@ -87,7 +88,7 @@
     $(document).ready(function() {
         <?php if($this->session->flashdata('class') && $this->session->flashdata('message')) : ?>
             notification('<?php echo $this->session->flashdata('class');?>' , '<?php echo $this->session->flashdata('message');?>');
-        <?php endif; ?>        
+        <?php endif; ?>
 
         function notification(type, message) {
             $.notify({
@@ -105,14 +106,68 @@
     });
 </script>
 <script type="text/javascript">
-    new Chartist.Line('.ct-chart', {
-        labels: [1,2,3],
-        series: [
-            [1,2,3,4]
-        ]
-    }, {
-        low: 0,
-        // fullWidth: true,
+    $.ajax({
+        url: "<?php echo base_url('ajaxAPI/getDataBeras'); ?>",
+        dataType: "json",
+        success: function(data)
+        {
+            var dataChart = {
+              labels: data.labels,
+              series: [data.series]
+            };
+            var settingChart = {
+                // fullWidth: true,
+                chartPadding: {
+                    right: 40
+                },
+                plugins: [
+                    Chartist.plugins.tooltip()
+                ]
+            };
+            var chart = new Chartist.Line('#chartBeras', dataChart, settingChart);
+        }
+    });
+    $.ajax({
+        url: "<?php echo base_url('ajaxAPI/getDataJagung'); ?>",
+        dataType: "json",
+        success: function(data)
+        {
+            var dataChart = {
+              labels: data.labels,
+              series: [data.series]
+            };
+            var settingChart = {
+                // fullWidth: true,
+                chartPadding: {
+                    right: 40
+                },
+                plugins: [
+                    Chartist.plugins.tooltip()
+                ]
+            };
+            var chart = new Chartist.Line('#chartJagung', dataChart, settingChart);
+        }
+    });
+    $.ajax({
+        url: "<?php echo base_url('ajaxAPI/getDataGabah'); ?>",
+        dataType: "json",
+        success: function(data)
+        {
+            var dataChart = {
+              labels: data.labels,
+              series: [data.series]
+            };
+            var settingChart = {
+                // fullWidth: true,
+                chartPadding: {
+                    right: 40
+                },
+                plugins: [
+                    Chartist.plugins.tooltip()
+                ]
+            };
+            var chart = new Chartist.Line('#chartGabah', dataChart, settingChart);
+        }
     });
 </script>
 <script type="text/javascript">
@@ -148,12 +203,12 @@
 </script>
 <script>
     $(document).ready(function() {
-        tinymce.init({ 
+        tinymce.init({
             selector:'textarea',
             // menubar : false,
             // toolbar : false,
         });
-    });    
+    });
 </script>
 <script type="text/javascript">
     $(document).ready(function() {
@@ -267,4 +322,3 @@
     // }
 
 </script>
-
