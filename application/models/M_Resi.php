@@ -14,7 +14,7 @@ class M_Resi extends Eloquent
     // const UPDATED_AT = 'updated_at';
 
     protected $fillable = ['no_resi', 'id_pengujian', 'tgl_penerbitan', 'masa_aktif', 'jatuh_tempo'];
-    
+
     public function pengujian()
     {
         return $this->belongsTo('M_Pengujian', 'id_pengujian', 'id_pengujian');

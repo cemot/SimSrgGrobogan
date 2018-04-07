@@ -22,7 +22,7 @@ class M_Gudang extends Eloquent
 
     public function pengujian()
     {
-        return $this->belongsTo('M_Pengujian', 'id_gudang', 'id_gudang');
+        return $this->hasMany('M_Pengujian', 'id_gudang', 'id_gudang');
     }
 
 }

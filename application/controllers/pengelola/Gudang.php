@@ -14,7 +14,7 @@ class Gudang extends CI_Controller {
 		$data['data'] = M_Gudang::where('id_pengelola', '!=', $this->session->id)->get();
         $data['sidebar'] = 'pengelola/sidebar';
         $data['content'] = 'pengelola/gudang';
-        $this->load->view('layouts/app', $data); 
+        $this->load->view('layouts/app', $data);
 	}
 
 	public function create()
@@ -39,7 +39,7 @@ class Gudang extends CI_Controller {
                     'nama' => $this->input->post('nama'),
                     'kapasitas' => $this->input->post('kapasitas'),
                     'id_pengelola' => $this->session->id
-                ]); 
+                ]);
 
                 if($gudang) {
                     $this->session->set_flashdata('class', 'success');
@@ -55,14 +55,14 @@ class Gudang extends CI_Controller {
 
     public function show($id)
     {
-        $data['data'] = M_Gudang::where('id_gudang', $id)->where('id_pengelola', $this->session->id)->first();
-        if (!$data['data']) {
+        $data['gudang'] = M_Gudang::where('id_gudang', $id)->where('id_pengelola', $this->session->id)->first();
+        if (!$data['gudang']) {
             redirect('pengelola/gudang');
         } else {
             $data['sidebar'] = 'pengelola/sidebar';
-            $data['content'] = 'pengelola/gudang_show';
+            $data['content'] = 'pengelola/gudang_detail';
             $this->load->view('layouts/app', $data);
-        }        
+        }
     }
 
     public function edit($id)
@@ -74,7 +74,7 @@ class Gudang extends CI_Controller {
             $data['sidebar'] = 'pengelola/sidebar';
             $data['content'] = 'pengelola/gudang_edit';
             $this->load->view('layouts/app', $data);
-        } 
+        }
     }
 
     public function update()

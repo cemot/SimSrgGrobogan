@@ -74,7 +74,7 @@ class Pengujian extends CI_Controller {
                         'jatuh_tempo' => strtotime("+".$this->input->post('masa_aktif')." months", strtotime(date("Y-m-d"))),
                     ]);
 
-                }                
+                }
 
                 if($pengujian && $catatan) {
                     $this->session->set_flashdata('class', 'success');
@@ -90,10 +90,14 @@ class Pengujian extends CI_Controller {
 
     public function show($id)
     {
-        $data['data'] = M_Pengujian::find($id);
-        $data['sidebar'] = 'pengelola/sidebar';
-        $data['content'] = 'pengelola/pengujian_show';
-        $this->load->view('layouts/app', $data);
+		$data['pengujian'] = M_Pengujian::where('id_pengujian', $id)->where('id_pengelola', $this->session->id)->first();
+        if (!$data['pengujian']) {
+            redirect('pengelola/pengujian');
+        } else {
+            $data['sidebar'] = 'pengelola/sidebar';
+            $data['content'] = 'pengelola/pengujian_detail';
+            $this->load->view('layouts/app', $data);
+        }
     }
 
     public function edit($id)
@@ -140,7 +144,7 @@ class Pengujian extends CI_Controller {
                     foreach ($pengujian->resi as $resi) {
                         $resi = M_Resi::destroy($resi->id_resi);
                     }
-                }                
+                }
                 $pengujian->catatan->isi_catatan = empty($this->input->post('isi_catatan')) ? NULL : $this->input->post('isi_catatan');
                 $pengujian->catatan->status = $this->input->post('status');
                 $pengujian->updated_by = $this->session->id;

@@ -20,7 +20,7 @@
         </a>
         <div class="collapse <?php if($this->uri->segment(2) == "gudang"){ echo "in"; } ?>" id="datagudang">
             <ul class="nav">
-                <li class="<?php if($this->uri->segment(2) == "gudang" && (empty($this->uri->segment(3)) || $this->uri->segment(3) == "edit")){ echo "active"; } ?>">
+                <li class="<?php if($this->uri->segment(2) == "gudang" && (empty($this->uri->segment(3)) || $this->uri->segment(3) == "edit" || $this->uri->segment(3) == "detail")){ echo "active"; } ?>">
                     <a href="<?php echo base_url('pengelola/gudang'); ?>">
                         <span class="sidebar-mini"> DG </span>
                         <span class="sidebar-normal"> Daftar Gudang </span>
@@ -68,7 +68,7 @@
         </a>
         <div class="collapse <?php if($this->uri->segment(2) == "pengujian"){ echo "in"; } ?>" id="catpengujian">
             <ul class="nav">
-                <li class="<?php if($this->uri->segment(2) == "pengujian" && (empty($this->uri->segment(3)) || $this->uri->segment(3) == "edit")){ echo "active"; } ?>">
+                <li class="<?php if($this->uri->segment(2) == "pengujian" && (empty($this->uri->segment(3)) || $this->uri->segment(3) == "edit" || $this->uri->segment(3) == "detail")){ echo "active"; } ?>">
                     <a href="<?php echo base_url('pengelola/pengujian'); ?>">
                         <span class="sidebar-mini"> DC </span>
                         <span class="sidebar-normal"> Daftar Pengujian</span>

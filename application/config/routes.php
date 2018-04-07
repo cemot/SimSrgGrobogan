@@ -87,6 +87,7 @@ $route['pengelola/gudang'] = 'pengelola/gudang/index';
 $route['pengelola/gudang/create'] = 'pengelola/gudang/create';
 $route['pengelola/gudang/store'] = 'pengelola/gudang/store';
 $route['pengelola/gudang/edit/(:any)'] = 'pengelola/gudang/edit/$1';
+$route['pengelola/gudang/detail/(:any)'] = 'pengelola/gudang/show/$1';
 $route['pengelola/gudang/update'] = 'pengelola/gudang/update';
 $route['pengelola/gudang/delete/(:any)'] = 'pengelola/gudang/destroy/$1';
 $route['pengelola/pengajuan'] = 'pengelola/barang/index';
@@ -99,6 +100,7 @@ $route['pengelola/pengujian'] = 'pengelola/pengujian/index';
 $route['pengelola/pengujian/create'] = 'pengelola/pengujian/create';
 $route['pengelola/pengujian/store'] = 'pengelola/pengujian/store';
 $route['pengelola/pengujian/edit/(:any)'] = 'pengelola/pengujian/edit/$1';
+$route['pengelola/pengujian/detail/(:any)'] = 'pengelola/pengujian/show/$1';
 $route['pengelola/pengujian/update'] = 'pengelola/pengujian/update';
 $route['pengelola/pengujian/delete/(:any)'] = 'pengelola/pengujian/destroy/$1';
 $route['pengelola/resi'] = 'pengelola/resi/index';
@@ -132,5 +134,3 @@ $route['petani/profile/update'] = 'akun/update_profile';
 // Auth
 $route['login'] = 'Auth/login';
 $route['logout'] = 'Auth/logout';
-
-

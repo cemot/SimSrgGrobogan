@@ -27,7 +27,7 @@ class M_Pengujian extends Eloquent
 
     public function gudang()
     {
-        return $this->hasOne('M_Gudang', 'id_gudang', 'id_gudang');
+        return $this->belongsTo('M_Gudang', 'id_gudang', 'id_gudang');
     }
 
     public function catatan()

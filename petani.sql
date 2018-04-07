@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2018 at 06:44 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Generation Time: Apr 07, 2018 at 08:57 AM
+-- Server version: 10.1.25-MariaDB
+-- PHP Version: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -199,7 +199,11 @@ INSERT INTO `komoditi_harga` (`id_komoditi_harga`, `id_komoditi`, `harga`, `tang
 (3, 1, 7000, '2018-03-30', 'sladjaskld', 9, 9, '2018-03-28 09:06:06', '2018-03-28 09:06:06'),
 (4, 1, 6000, '2018-03-31', 'sdds', 9, 9, '2018-03-28 11:04:19', '2018-03-28 11:04:19'),
 (5, 3, 8000, '2018-04-01', 'hjgjghjghj', 9, 9, '2018-03-28 11:07:41', '2018-03-28 11:07:41'),
-(6, 2, 9000, '2018-04-01', 'sdadasda', 9, 9, '2018-03-28 11:08:29', '2018-03-28 11:08:29');
+(6, 2, 9000, '2018-04-01', 'sdadasda', 9, 9, '2018-03-28 11:08:29', '2018-03-28 11:08:29'),
+(7, 1, 8000, '2018-04-07', 'mantap', 9, 9, '2018-04-07 04:22:18', '2018-04-07 04:22:18'),
+(8, 3, 6000, '2018-04-07', 'naik', 9, 9, '2018-04-07 04:22:35', '2018-04-07 04:22:35'),
+(9, 2, 2000, '2018-04-07', 'Naik broooo', 9, 9, '2018-04-07 05:29:43', '2018-04-07 05:29:43'),
+(10, 3, 6000, '2018-04-08', 'naik brooo', 9, 9, '2018-04-07 05:55:48', '2018-04-07 05:55:48');
 
 -- --------------------------------------------------------
 
@@ -502,85 +506,71 @@ ALTER TABLE `users_groups`
 --
 ALTER TABLE `artikel`
   MODIFY `id_artikel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
 --
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
   MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
 --
 -- AUTO_INCREMENT for table `catatan`
 --
 ALTER TABLE `catatan`
   MODIFY `id_catatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
   MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `gudang`
 --
 ALTER TABLE `gudang`
   MODIFY `id_gudang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
-
 --
 -- AUTO_INCREMENT for table `harga`
 --
 ALTER TABLE `harga`
   MODIFY `id_harga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
 --
 -- AUTO_INCREMENT for table `komoditi_harga`
 --
 ALTER TABLE `komoditi_harga`
-  MODIFY `id_komoditi_harga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
+  MODIFY `id_komoditi_harga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `komoditi_jenis`
 --
 ALTER TABLE `komoditi_jenis`
   MODIFY `id_komoditi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `pengujian`
 --
 ALTER TABLE `pengujian`
   MODIFY `id_pengujian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
 --
 -- AUTO_INCREMENT for table `resi`
 --
 ALTER TABLE `resi`
   MODIFY `id_resi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
 --
 -- AUTO_INCREMENT for table `usersion`
 --
 ALTER TABLE `usersion`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `users_groups`
 --
 ALTER TABLE `users_groups`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 --
 -- Constraints for dumped tables
 --
