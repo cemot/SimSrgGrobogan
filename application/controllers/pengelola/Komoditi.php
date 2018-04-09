@@ -6,6 +6,9 @@ class Komoditi extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
+		if (!$this->session->logged_in || !$this->session->role == 1){
+			redirect('login');
+		}
     }
 
 	public function index()
@@ -19,7 +22,7 @@ class Komoditi extends CI_Controller {
 
     public function create()
     {
-        // 
+        //
     }
 
     public function create_harga()
@@ -27,12 +30,12 @@ class Komoditi extends CI_Controller {
         $data['data'] = M_Komoditi::all();
         $data['sidebar'] = 'pengelola/sidebar';
         $data['content'] = 'pengelola/komoditi_harga_create';
-        $this->load->view('layouts/app', $data); 
+        $this->load->view('layouts/app', $data);
     }
 
     public function store()
     {
-        // 
+        //
     }
 
     public function store_harga()
@@ -77,21 +80,21 @@ class Komoditi extends CI_Controller {
 
     public function show($id)
     {
-        // 
+        //
     }
 
     public function edit($id)
     {
-        // 
+        //
     }
 
     public function update()
     {
-        // 
+        //
     }
 
     public function destroy($id)
     {
-        // 
+        //
     }
 }

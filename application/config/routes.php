@@ -118,18 +118,28 @@ $route['dinas'] = 'akun/dashboard';
 $route['dinas/dashboard'] = 'akun/dashboard';
 $route['dinas/profile'] = 'akun/profile';
 $route['dinas/profile/update'] = 'akun/update_profile';
+$route['dinas/artikel'] = 'dinas/artikel/index';
+$route['dinas/artikel/(:any)'] = 'dinas/artikel/show/$1';
+$route['dinas/gudang'] = 'dinas/gudang/index';
+$route['dinas/gudang/detail/(:any)'] = 'dinas/gudang/show/$1';
 
 //BANK
 $route['bank'] = 'akun/dashboard';
 $route['bank/dashboard'] = 'akun/dashboard';
 $route['bank/profile'] = 'akun/profile';
 $route['bank/profile/update'] = 'akun/update_profile';
+$route['bank/artikel'] = 'bank/artikel/index';
+$route['bank/artikel/(:any)'] = 'bank/artikel/show/$1';
 
 //PETANI
 $route['petani'] = 'akun/dashboard';
 $route['petani/dashboard'] = 'akun/dashboard';
 $route['petani/profile'] = 'akun/profile';
 $route['petani/profile/update'] = 'akun/update_profile';
+$route['petani/artikel'] = 'petani/artikel/index';
+$route['petani/artikel/(:any)'] = 'petani/artikel/show/$1';
+$route['petani/pengujian'] = 'petani/pengujian/index';
+$route['petani/pengujian/detail/(:any)'] = 'petani/pengujian/show/$1';
 
 // Auth
 $route['login'] = 'Auth/login';

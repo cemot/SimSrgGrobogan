@@ -55,7 +55,7 @@
                         <div class="col-md-6">
                             <div class="form-group label-floating is-empty">
                                 <label class="control-label">Tanggal Lahir</label>
-                                <input type="date" class="form-control datepicker" name="tgl_lahir" value="<?php echo set_value('tgl_lahir'); ?>" required>
+                                <input type="text" class="form-control datepicker" name="tgl_lahir" value="<?php echo set_value('tgl_lahir'); ?>" required>
                             <span class="material-input"></span></div>
                         </div>
                     </div>

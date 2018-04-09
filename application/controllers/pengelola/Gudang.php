@@ -6,6 +6,9 @@ class Gudang extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
+		if (!$this->session->logged_in || !$this->session->role == 1){
+			redirect('login');
+		}
     }
 
 	public function index()
@@ -122,27 +125,5 @@ class Gudang extends CI_Controller {
             }
         }
         redirect('pengelola/gudang');
-    }
-
-
-    // UNTUK TESTING ELOQUENT
-    public function test_insert()
-    {
-        $gudang = M_Gudang::create([
-            'nama' => 'Gudang A Sindang Sari',
-            'kapasitas' => 160,
-            'id_pengelola' => 1
-        ]);
-        dd($gudang);
-    }
-
-    public function test_update($id=1)
-    {
-        $gudang = M_Gudang::find($id);
-        $gudang->nama = 'Update Gudang test';
-        $gudang->kapasitas = 156;
-        $gudang->id_pengelola = 1;
-        $gudang->save();
-        dd($gudang);
     }
 }

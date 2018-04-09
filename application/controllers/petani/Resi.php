@@ -6,19 +6,17 @@ class Resi extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
-		if (!$this->session->logged_in || !$this->session->role == 1){
+		if (!$this->session->logged_in || !$this->session->role == 4){
 			redirect('login');
 		}
     }
 
 	public function index()
 	{
-		$own = M_Pengujian::select('id_pengujian')->where('id_pengelola', $this->session->id)->get();
-        // dd('<pre>'.$own.'</pre>');
+		$own = M_Pengujian::select('id_pengujian')->whereIn('id_barang', M_Barang::select('id_barang')->where('id_petani', $this->session->id))->get();
         $data['data'] = M_Resi::whereIn('id_pengujian', $own)->get();
-        // dd($data['data']);
-        $data['sidebar'] = 'pengelola/sidebar';
-        $data['content'] = 'pengelola/resi';
+        $data['sidebar'] = 'petani/sidebar';
+        $data['content'] = 'petani/resi';
         $this->load->view('layouts/app', $data);
 	}
 

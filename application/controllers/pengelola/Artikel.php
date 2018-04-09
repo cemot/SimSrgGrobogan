@@ -6,6 +6,9 @@ class Artikel extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
+		if (!$this->session->logged_in || !$this->session->role == 1){
+			redirect('login');
+		}
     }
 
 	public function index()
@@ -13,17 +16,17 @@ class Artikel extends CI_Controller {
         $data['data'] = M_Artikel::all();
         $data['sidebar'] = 'pengelola/sidebar';
         $data['content'] = 'pengelola/artikel';
-        $this->load->view('layouts/app', $data); 
+        $this->load->view('layouts/app', $data);
 	}
 
 	public function create()
     {
-        // 
+        //
     }
 
     public function store()
     {
-        // 
+        //
     }
 
     public function show($id)
@@ -36,7 +39,7 @@ class Artikel extends CI_Controller {
 
     public function edit($id)
     {
-        // 
+        //
     }
 
     public function update()
@@ -46,6 +49,6 @@ class Artikel extends CI_Controller {
 
     public function destroy($id)
     {
-        // 
+        //
     }
 }

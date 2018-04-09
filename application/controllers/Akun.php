@@ -6,9 +6,9 @@ class Akun extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
-		if (!$this->session->logged_in){
-			redirect('login');
-		}
+		if (!$this->session->has_userdata('logged_in')) {
+            redirect('login');
+        }
     }
 
 	public function index()
@@ -18,26 +18,37 @@ class Akun extends CI_Controller {
 
 	public function dashboard()
     {
-        if ($this->session->role == 0) {
+		$data['beras'] = M_Komoditi_Harga::where('id_komoditi', 1)->orderBy('tanggal', 'desc')->limit(2)->get()->reverse();
+		$data['jagung'] = M_Komoditi_Harga::where('id_komoditi', 2)->orderBy('tanggal', 'desc')->limit(2)->get()->reverse();
+		$data['gabah'] = M_Komoditi_Harga::where('id_komoditi', 3)->orderBy('tanggal', 'desc')->limit(2)->get()->reverse();
+		// print_r('<pre>'.$data['beras'].'</pre>');
+		if ($this->session->role == 0) { // ADMINISTRATOR
             $data['artikel'] = M_Artikel::all()->count();
             $data['pengelola'] = M_User::where('role', 1)->get()->count();
             $data['dinas'] = M_User::where('role', 2)->get()->count();
-            $data['petani'] = M_User::where('role', 3)->get()->count();
-			$data['beras'] = M_Komoditi_Harga::where('id_komoditi', 1)->orderBy('tanggal', 'desc')->limit(2)->get()->reverse();
-			$data['jagung'] = M_Komoditi_Harga::where('id_komoditi', 2)->orderBy('tanggal', 'desc')->limit(2)->get()->reverse();
-			$data['gabah'] = M_Komoditi_Harga::where('id_komoditi', 3)->orderBy('tanggal', 'desc')->limit(2)->get()->reverse();
-			// print_r('<pre>'.$data['beras'].'</pre>');
+            $data['petani'] = M_User::where('role', 4)->get()->count();
             $data['sidebar'] = 'admin/sidebar';
             $data['content'] = 'admin/dashboard';
-        } elseif ($this->session->role == 1) {
+        } elseif ($this->session->role == 1) { //PENGELOLA GUDANG
             $data['gudang'] = M_Gudang::where('id_pengelola', $this->session->id)->get()->count();
             $data['pengujian'] = M_Pengujian::where('id_pengelola', $this->session->id)->get()->count();
-			$data['beras'] = M_Komoditi_Harga::where('id_komoditi', 1)->orderBy('tanggal', 'desc')->limit(2)->get()->reverse();
-			$data['jagung'] = M_Komoditi_Harga::where('id_komoditi', 2)->orderBy('tanggal', 'desc')->limit(2)->get()->reverse();
-			$data['gabah'] = M_Komoditi_Harga::where('id_komoditi', 3)->orderBy('tanggal', 'desc')->limit(2)->get()->reverse();
-			// print_r('<pre>'.$data['beras'].'</pre>');
             $data['sidebar'] = 'pengelola/sidebar';
             $data['content'] = 'pengelola/dashboard';
+        } elseif ($this->session->role == 2) { //PEGAWAI DINAS
+            $data['gudang'] = M_Gudang::all()->count();
+            $data['resi'] = M_Resi::all()->count();
+            $data['sidebar'] = 'dinas/sidebar';
+            $data['content'] = 'dinas/dashboard';
+        } elseif ($this->session->role == 3) { //BANK
+            $data['resi'] = M_Resi::all()->count();
+            $data['sidebar'] = 'bank/sidebar';
+            $data['content'] = 'bank/dashboard';
+        } elseif ($this->session->role == 4) { // PETANI
+            $data['barang'] = M_Barang::where('id_petani', $this->session->id)->get()->count();
+			$data['pengujian'] = M_Pengujian::whereIn('id_barang', M_Barang::where('id_petani', $this->session->id)->get(['id_barang']))->get()->count();
+			$data['lolos'] = M_Pengujian::where('hsl_pengujian', 'Diterima')->whereIn('id_barang', M_Barang::where('id_petani', $this->session->id)->get(['id_barang']))->get()->count();
+            $data['sidebar'] = 'petani/sidebar';
+            $data['content'] = 'petani/dashboard';
         }
         $this->load->view('layouts/app', $data);
     }
@@ -48,6 +59,12 @@ class Akun extends CI_Controller {
             $data['sidebar'] = 'admin/sidebar';
         } elseif ($this->session->role == 1) {
             $data['sidebar'] = 'pengelola/sidebar';
+        } elseif ($this->session->role == 2) {
+            $data['sidebar'] = 'dinas/sidebar';
+        } elseif ($this->session->role == 3) {
+            $data['sidebar'] = 'bank/sidebar';
+        } elseif ($this->session->role == 4) {
+            $data['sidebar'] = 'petani/sidebar';
         }
         $data['content'] = 'layouts/profile';
         $data['user'] = M_User::find($this->session->id);
@@ -61,9 +78,11 @@ class Akun extends CI_Controller {
                 redirect('admin/profile');
             } elseif ($this->session->role == 1) {
                 redirect('pengelola/profile');
-            } elseif ($this->session->role == 2) {
+            } else if ($this->session->role == 2) {
                 redirect('dinas/profile');
-            } else {
+            } else if ($this->session->role == 3) {
+                redirect('bank/profile');
+            } else if ($this->session->role == 4) {
                 redirect('petani/profile');
             }
         } else {

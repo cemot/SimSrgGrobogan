@@ -6,6 +6,9 @@ class User extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
+		if (!$this->session->logged_in || !$this->session->role == 0){
+			redirect('login');
+		}
     }
 
 	public function index()
@@ -31,7 +34,7 @@ class User extends CI_Controller {
         }
         echo json_encode($data);
         // foreach ($user as $user) {
-            
+
         // }
         // echo '<pre>' . $user . '</pre>';
 
@@ -69,15 +72,15 @@ class User extends CI_Controller {
                 dd(validation_errors());
             } else {
                 $user = M_User::create([
-                    'username'  => $this->input->post('username'), 
-                    'password'  => md5($this->input->post('password')),  
+                    'username'  => $this->input->post('username'),
+                    'password'  => md5($this->input->post('password')),
                     'nama'      => $this->input->post('nama'),
-                    'email'     => $this->input->post('email'),  
-                    // 'jabatan'   => empty($this->input->post('jabatan')) ? NULL : $this->input->post('jabatan'),  
-                    'role'      => $this->input->post('role'),  
-                    'tmpt_lahir'=> $this->input->post('tmpt_lahir'),  
-                    'tgl_lahir' => $this->input->post('tgl_lahir'),  
-                    'alamat'    => $this->input->post('alamat'),  
+                    'email'     => $this->input->post('email'),
+                    // 'jabatan'   => empty($this->input->post('jabatan')) ? NULL : $this->input->post('jabatan'),
+                    'role'      => $this->input->post('role'),
+                    'tmpt_lahir'=> $this->input->post('tmpt_lahir'),
+                    'tgl_lahir' => $this->input->post('tgl_lahir'),
+                    'alamat'    => $this->input->post('alamat'),
                     'no_tlp'    => $this->input->post('no_tlp')
                 ]);
                 // dd($user);
@@ -112,18 +115,18 @@ class User extends CI_Controller {
                 $data['sidebar'] = 'admin/sidebar';
                 $data['content'] = 'admin/user_edit';
                 $this->load->view('layouts/app', $data);
-            }            
+            }
         }
-        
+
     }
 
     public function update()
-    {   
+    {
         if (!$this->input->post()) {
             redirect('admin/profile');
-        } else {      
+        } else {
             $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');
-            $this->form_validation->set_rules('no_tlp', 'No Telepon / No HP', 'required');  
+            $this->form_validation->set_rules('no_tlp', 'No Telepon / No HP', 'required');
 
             if ($this->form_validation->run() == FALSE) {
                 dd(validation_errors());
@@ -132,8 +135,8 @@ class User extends CI_Controller {
                 $user = M_User::find($this->input->post('id'));
                 $user->nama     = $this->input->post('nama');
                 $user->email    = $this->input->post('email');
-                $user->tmpt_lahir   = empty($this->input->post('tmpt_lahir')) ? NULL : $this->input->post('tmpt_lahir');  
-                $user->tgl_lahir    = empty($this->input->post('tgl_lahir')) ? NULL : $this->input->post('tgl_lahir');  
+                $user->tmpt_lahir   = empty($this->input->post('tmpt_lahir')) ? NULL : $this->input->post('tmpt_lahir');
+                $user->tgl_lahir    = empty($this->input->post('tgl_lahir')) ? NULL : $this->input->post('tgl_lahir');
                 $user->alamat   = empty($this->input->post('alamat')) ? NULL : $this->input->post('alamat');
                 $user->no_tlp   = $this->input->post('no_tlp');
 
@@ -168,15 +171,15 @@ class User extends CI_Controller {
     public function test_insert()
     {
         $user = M_User::create([
-            'username'  => 'demo', 
-            'password'  => md5('demo'),  
+            'username'  => 'demo',
+            'password'  => md5('demo'),
             'nama'      => 'demo',
-            'email'     => 'demo@demo.com',  
-            'jabatan'   => NULL,  
-            'role'      => 0,  
-            'tmpt_lahir'=> 'Jakarta',  
-            'tgl_lahir' => '2018-06-06',  
-            'alamat'    => 'Pamulang',  
+            'email'     => 'demo@demo.com',
+            'jabatan'   => NULL,
+            'role'      => 0,
+            'tmpt_lahir'=> 'Jakarta',
+            'tgl_lahir' => '2018-06-06',
+            'alamat'    => 'Pamulang',
             'no_tlp'    => '08567018044'
         ]);
         dd($user);
