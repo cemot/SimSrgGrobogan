@@ -49,13 +49,13 @@
                                     <?php endforeach;?>
                                     <td>
                                     <?php
-                                    if ($harga[1] > $harga[0]) {
-                                        echo "<i class='fa fa-caret-up' aria-hidden='true'></i> <strong>Naik</strong>";
-                                    } elseif($harga[1] < $harga[0]) {
-                                        echo "<i class='fa fa-caret-down' aria-hidden='true'></i> <strong>Turun</strong>";
-                                    } else {
-                                        echo "<i class='fa fa-minus' aria-hidden='true'></i> <strong>Sama</strong>";
-                                    }
+                                        if ($harga[1] > $harga[0]) {
+                                            echo "<i class='fa fa-caret-up text-danger' aria-hidden='true'></i> <strong class='text-danger'>Naik</strong>";
+                                        } elseif($harga[1] < $harga[0]) {
+                                            echo "<i class='fa fa-caret-down text-success' aria-hidden='true'></i> <strong class='text-success'>Turun</strong>";
+                                        } else {
+                                            echo "<i class='fa fa-minus text-default' aria-hidden='true'></i> <strong class='text-default'>Sama</strong>";
+                                        }
                                     ?>
                                     </td>
                                 </tr>
@@ -93,11 +93,11 @@
                                         <td>
                                         <?php
                                             if ($harga[1] > $harga[0]) {
-                                                echo "<i class='fa fa-caret-up' aria-hidden='true'></i> <strong>Naik</strong>";
+                                                echo "<i class='fa fa-caret-up text-danger' aria-hidden='true'></i> <strong class='text-danger'>Naik</strong>";
                                             } elseif($harga[1] < $harga[0]) {
-                                                echo "<i class='fa fa-caret-down' aria-hidden='true'></i> <strong>Turun</strong>";
+                                                echo "<i class='fa fa-caret-down text-success' aria-hidden='true'></i> <strong class='text-success'>Turun</strong>";
                                             } else {
-                                                echo "<i class='fa fa-minus' aria-hidden='true'></i> <strong>Sama</strong>";
+                                                echo "<i class='fa fa-minus text-default' aria-hidden='true'></i> <strong class='text-default'>Sama</strong>";
                                             }
                                         ?>
                                         </td>
@@ -138,11 +138,11 @@
                                         <td>
                                         <?php
                                             if ($harga[1] > $harga[0]) {
-                                                echo "<i class='fa fa-caret-up' aria-hidden='true'></i> <strong>Naik</strong>";
+                                                echo "<i class='fa fa-caret-up text-danger' aria-hidden='true'></i> <strong class='text-danger'>Naik</strong>";
                                             } elseif($harga[1] < $harga[0]) {
-                                                echo "<i class='fa fa-caret-down' aria-hidden='true'></i> <strong>Turun</strong>";
+                                                echo "<i class='fa fa-caret-down text-success' aria-hidden='true'></i> <strong class='text-success'>Turun</strong>";
                                             } else {
-                                                echo "<i class='fa fa-minus' aria-hidden='true'></i> <strong>Sama</strong>";
+                                                echo "<i class='fa fa-minus text-default' aria-hidden='true'></i> <strong class='text-default'>Sama</strong>";
                                             }
                                         ?>
                                         </td>

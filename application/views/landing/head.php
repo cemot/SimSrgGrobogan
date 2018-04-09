@@ -10,3 +10,4 @@
 
 <!-- Custom styles for this template -->
 <link href="<?php echo base_url(); ?>assets/landing/css/blog-home.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>assets/css/font-awesome.min.css" rel="stylesheet">
