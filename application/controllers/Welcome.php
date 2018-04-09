@@ -18,8 +18,31 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	public function __construct()
+	{
+	 	parent::__construct();
+
+	}
+
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$data['beras'] = M_Komoditi_Harga::where('id_komoditi', 1)->orderBy('tanggal', 'desc')->limit(2)->get()->reverse();
+		$data['jagung'] = M_Komoditi_Harga::where('id_komoditi', 2)->orderBy('tanggal', 'desc')->limit(2)->get()->reverse();
+		$data['gabah'] = M_Komoditi_Harga::where('id_komoditi', 3)->orderBy('tanggal', 'desc')->limit(2)->get()->reverse();
+		$data['data'] = M_Artikel::where('status', 1)->get();
+		$this->load->view('landing/index', $data);
 	}
+
+	public function show($id)
+    {
+		$data['beras'] = M_Komoditi_Harga::where('id_komoditi', 1)->orderBy('tanggal', 'desc')->limit(2)->get()->reverse();
+		$data['jagung'] = M_Komoditi_Harga::where('id_komoditi', 2)->orderBy('tanggal', 'desc')->limit(2)->get()->reverse();
+		$data['gabah'] = M_Komoditi_Harga::where('id_komoditi', 3)->orderBy('tanggal', 'desc')->limit(2)->get()->reverse();
+		$data['artikel'] = M_Artikel::where('id_artikel', $id)->where('status', 1)->first();
+		if (!$data['artikel']) {
+			redirect(base_url());
+		}
+        $this->load->view('landing/view', $data);
+    }
 }

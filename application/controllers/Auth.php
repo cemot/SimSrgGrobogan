@@ -11,7 +11,7 @@ class Auth extends CI_Controller {
 	public function index()
 	{
         if (!$this->session->has_userdata('logged_in')) {
-            $this->load->view('auth/login'); 
+            $this->load->view('auth/login');
         } else {
             if ($this->session->userdata('role') == 0) {
                 redirect('admin/dashboard');
@@ -19,10 +19,12 @@ class Auth extends CI_Controller {
                 redirect('pengelola/dashboard');
             } elseif ($this->session->userdata('role') == 2) {
                 redirect('dinas/dashboard');
-            } else {
+            } elseif ($this->session->userdata('role') == 3) {
+                redirect('bank/dashboard');
+            } elseif ($this->session->userdata('role') == 4) {
                 redirect('petani/dashboard');
             }
-        }        
+		}
 	}
 
     public function login()
@@ -54,13 +56,15 @@ class Auth extends CI_Controller {
             );
             $this->session->set_userdata($session_data);
 
-            if ($this->session->userdata('role') == 0) {
+			if ($this->session->userdata('role') == 0) {
                 redirect('admin/dashboard');
             } elseif ($this->session->userdata('role') == 1) {
                 redirect('pengelola/dashboard');
             } elseif ($this->session->userdata('role') == 2) {
                 redirect('dinas/dashboard');
-            } else {
+            } elseif ($this->session->userdata('role') == 3) {
+                redirect('bank/dashboard');
+            } elseif ($this->session->userdata('role') == 4) {
                 redirect('petani/dashboard');
             }
         }
@@ -69,7 +73,7 @@ class Auth extends CI_Controller {
     public function logout()
     {
         $this->session->sess_destroy();
-        redirect(base_url());       
+        redirect(base_url());
     }
 
     public function cek_id()

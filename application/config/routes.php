@@ -49,9 +49,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'auth';
+$route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+//LANDING
+$route['artikel/(:any)'] = 'welcome/show/$1';
+
+// AUTH
+$route['auth'] = 'Auth/index';
+$route['login'] = 'Auth/login';
+$route['logout'] = 'Auth/logout';
 
 //ADMINISTRATOR
 $route['admin'] = 'akun/dashboard';
@@ -140,7 +148,3 @@ $route['petani/artikel'] = 'petani/artikel/index';
 $route['petani/artikel/(:any)'] = 'petani/artikel/show/$1';
 $route['petani/pengujian'] = 'petani/pengujian/index';
 $route['petani/pengujian/detail/(:any)'] = 'petani/pengujian/show/$1';
-
-// Auth
-$route['login'] = 'Auth/login';
-$route['logout'] = 'Auth/logout';

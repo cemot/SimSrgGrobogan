@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2018 at 08:57 AM
+-- Generation Time: Apr 09, 2018 at 03:05 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -308,7 +308,7 @@ CREATE TABLE `users` (
   `nama` varchar(191) NOT NULL,
   `email` varchar(191) NOT NULL,
   `jabatan` varchar(50) DEFAULT NULL,
-  `role` tinyint(4) NOT NULL COMMENT '0 = admin, 1 = pengelola, 2 = pegawai dinas, 3 = petani',
+  `role` tinyint(4) NOT NULL COMMENT '0 = admin, 1 = pengelola, 2 = pegawai dinas, 3 = Bank, 4 = petani',
   `tmpt_lahir` varchar(191) DEFAULT NULL,
   `tgl_lahir` date DEFAULT NULL,
   `alamat` text,
@@ -329,7 +329,9 @@ INSERT INTO `users` (`id`, `username`, `password`, `nama`, `email`, `jabatan`, `
 (7, 'demo1', '5f4dcc3b5aa765d61d8327deb882cf99', 'Demo Pengelola', 'demo1@m.c', NULL, 1, 'Jakarta', '2018-03-08', 'Gudang', '09878', '2018-03-19 09:03:50', '2018-03-19 09:03:50'),
 (8, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', 'admin@fazan.my.id', NULL, 0, 'Jakarta', '2018-03-20', 'Antamulya No 2', '08567018044', '2018-03-20 02:10:59', '2018-03-20 02:10:59'),
 (9, 'pengelola', '3c7913bc17671596a43dcb4581992bdf', 'Pengelola', 'pengelola@fazan.my.id', NULL, 1, 'Jakarta', '2018-03-20', 'Antamulya No 2', '08567018045', '2018-03-20 02:12:11', '2018-03-20 02:12:11'),
-(10, 'petani', 'd180e8e96956e056f23a05fadda0e2bd', 'Petani', 'petani@gmail.com', NULL, 4, 'Bandung', '2018-03-16', 'Antamulya No 2', '09878', '2018-03-22 03:44:57', '2018-03-22 03:44:57');
+(10, 'petani', 'd180e8e96956e056f23a05fadda0e2bd', 'Petani', 'petani@gmail.com', NULL, 4, 'Bandung', '2018-03-16', 'Antamulya No 2', '09878', '2018-03-22 03:44:57', '2018-03-22 03:44:57'),
+(11, 'dinas', '097dad4a551e3cb88ed7afc7a6c0de40', 'Dinas Perdagangan', 'dinas@fazan.my.id', NULL, 2, 'Jakarta', '0000-00-00', 'dsfsfsf', '324234', '2018-04-08 23:59:48', '2018-04-08 23:59:48'),
+(12, 'bank', 'bd5af1f610a12434c9128e4a399cef8a', 'Bank', 'bank@fazan.my.id', NULL, 3, 'Jakarta', '0000-00-00', 'sjabdjksdvbsakvsdasdsa', '189879', '2018-04-09 00:46:39', '2018-04-09 00:46:39');
 
 -- --------------------------------------------------------
 
@@ -560,7 +562,7 @@ ALTER TABLE `resi`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `usersion`
 --
