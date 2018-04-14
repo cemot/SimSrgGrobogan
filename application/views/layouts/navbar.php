@@ -47,16 +47,16 @@
                <span id="clock" class="pull-right lbl last-child" style="cursor: default;"></span>
             </a>
         </li> -->
-        <li>
+        <li class="text-center">
             <a href="#">
                <i class="material-icons">schedule</i>
                <?php echo date('d M Y h:i:s a', time()); ?>
             </a>
         </li>
-        <li>
+        <li class="text-center">
             <a href="<?php echo base_url('logout'); ?>">
-               <i class="material-icons">exit_to_app</i>                   
-               <p class="hidden-lg hidden-md">Keluar</p>
+               <i class="material-icons">exit_to_app</i>
+               Keluar
             </a>
         </li>
         <li class="separator hidden-lg hidden-md"></li>

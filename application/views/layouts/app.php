@@ -56,11 +56,17 @@
                                         <span class="sidebar-normal"> Ubah Password </span>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="<?php echo base_url('logout'); ?>">
+                                        <span class="sidebar-mini"> KL </span>
+                                        <span class="sidebar-normal"> Keluar </span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <?php $this->load->view($sidebar); ?> 
+                <?php $this->load->view($sidebar); ?>
             </div>
         </div>
         <div class="main-panel">
@@ -71,18 +77,18 @@
             </nav>
             <div class="content">
                 <div class="container-fluid">
-                   <?php $this->load->view($content); ?> 
+                   <?php $this->load->view($content); ?>
                 </div>
             </div>
             <footer class="footer">
                 <div class="container-fluid">
-                    <?php $this->load->view('layouts/footer'); ?>    
+                    <?php $this->load->view('layouts/footer'); ?>
                 </div>
             </footer>
         </div>
     </div>
 </body>
 
-<?php $this->load->view('layouts/script'); ?>    
+<?php $this->load->view('layouts/script'); ?>
 
 </html>

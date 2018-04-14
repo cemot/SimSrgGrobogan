@@ -43,7 +43,7 @@ class Artikel extends CI_Controller {
                 $artikel = M_Artikel::create([
                     'judul' => $this->input->post('judul'),
                     'isi' => empty($this->input->post('isi')) ? NULL : $this->input->post('isi'),
-                    // 'tanggal' => 'nurliaha@gmail.com',
+                    'tanggal' => date("Y-m-d"),
                     'id_penulis' => $this->session->id,
                     'status' => $this->input->post('status'),
                 ]);

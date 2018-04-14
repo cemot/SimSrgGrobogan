@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2018 at 03:05 AM
+-- Generation Time: Apr 14, 2018 at 07:53 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -49,7 +49,7 @@ INSERT INTO `artikel` (`id_artikel`, `judul`, `isi`, `tanggal`, `id_penulis`, `s
 (3, 'asd', 'asdas', '2018-03-20 00:00:00', 1, NULL, '2018-03-18 16:07:27', '2018-03-18 16:07:27'),
 (4, 'sadasdd', 'sadasdsad', '2018-03-21 00:00:00', 1, 1, '2018-03-18 16:08:05', '2018-03-18 16:08:05'),
 (6, 'sadasds', 'sadas', '2018-03-15 00:00:00', 1, NULL, '2018-03-19 02:23:57', '2018-03-19 02:23:57'),
-(7, 'Artikel Baruu cuuyyyy', '<p style=\"text-align: left;\"><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</strong></p>\r\n<p style=\"text-align: left;\"><strong>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</strong></p>\r\n<p style=\"text-align: left;\"><strong>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</strong></p>\r\n<p style=\"text-align: left;\"><strong>consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</strong></p>\r\n<p style=\"text-align: left;\"><strong>cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non</strong></p>\r\n<p style=\"text-align: left;\"><strong>proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</strong></p>\r\n<p style=\"text-align: right;\"><em>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</em></p>\r\n<p style=\"text-align: right;\"><em>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</em></p>\r\n<p style=\"text-align: right;\"><em>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</em></p>\r\n<p style=\"text-align: right;\"><em>consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</em></p>\r\n<p style=\"text-align: right;\"><em>cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non</em></p>\r\n<p style=\"text-align: right;\"><em>proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</em></p>\r\n<p style=\"text-align: center;\"><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</strong></p>\r\n<p style=\"text-align: center;\"><strong>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</strong></p>\r\n<p style=\"text-align: center;\"><strong>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</strong></p>\r\n<p style=\"text-align: center;\"><strong>consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</strong></p>\r\n<p style=\"text-align: center;\"><strong>cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non</strong></p>\r\n<p style=\"text-align: center;\"><strong>proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</strong></p>\r\n<p style=\"text-align: justify;\"><em>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod&nbsp;</em><em>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,&nbsp;</em><em>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo&nbsp;</em><em>consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse&nbsp;</em><em>cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non&nbsp;</em><em>proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</em></p>', NULL, 8, 1, '2018-03-23 15:49:20', '2018-03-23 15:49:20');
+(10, 'malam minggu cuy', '<p>kuyy malmingan</p>', '2018-04-15 00:00:00', 8, 1, '2018-04-14 17:52:29', '2018-04-14 17:52:29');
 
 -- --------------------------------------------------------
 
@@ -102,7 +102,9 @@ CREATE TABLE `catatan` (
 INSERT INTO `catatan` (`id_catatan`, `id_pengujian`, `isi_catatan`, `status`, `created_at`, `updated_at`) VALUES
 (1, 1, 'bagus', 1, NULL, NULL),
 (18, 19, '<p>dsadsdasd</p>', 1, '2018-03-27 09:34:49', '2018-03-27 09:34:49'),
-(19, 20, '<p>sadaadad</p>', 1, '2018-03-27 12:57:58', '2018-03-27 12:57:58');
+(19, 20, '<p>sadaadad</p>', 1, '2018-03-27 12:57:58', '2018-03-27 12:57:58'),
+(22, 23, '<p>kurang baik</p>', 1, '2018-04-14 17:31:32', '2018-04-14 17:31:32'),
+(23, 24, '<p>mantap jiwa</p>', 1, '2018-04-14 17:37:46', '2018-04-14 17:37:46');
 
 -- --------------------------------------------------------
 
@@ -169,7 +171,8 @@ CREATE TABLE `harga` (
 
 INSERT INTO `harga` (`id_harga`, `id_pengujian`, `satuan_barang`, `harga_barang`) VALUES
 (11, 19, 'kg', 8000),
-(12, 20, 'kg', 9000);
+(12, 20, 'kg', 9000),
+(13, 24, 'kg', 9000);
 
 -- --------------------------------------------------------
 
@@ -268,7 +271,9 @@ CREATE TABLE `pengujian` (
 INSERT INTO `pengujian` (`id_pengujian`, `id_pengelola`, `id_barang`, `id_gudang`, `tgl_pengujian`, `hsl_pengujian`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
 (1, 1, 2, NULL, '2018-03-16', 'Mantab Bro Edit', 1, NULL, NULL, NULL),
 (19, 9, 3, 26, '2018-03-27', 'Diterima', 9, 9, '2018-03-27 09:34:48', '2018-03-27 09:57:02'),
-(20, 9, 4, 26, '2018-03-27', 'Diterima', 9, NULL, '2018-03-27 12:57:58', '2018-03-27 12:57:58');
+(20, 9, 4, 26, '2018-03-27', 'Diterima', 9, 9, '2018-03-27 12:57:58', '2018-04-14 17:43:47'),
+(23, 9, 6, NULL, '2018-04-15', 'Ditolak', 9, NULL, '2018-04-14 17:31:32', '2018-04-14 17:31:32'),
+(24, 9, 5, 26, '2018-04-15', 'Diterima', 9, 9, '2018-04-14 17:37:46', '2018-04-14 17:43:27');
 
 -- --------------------------------------------------------
 
@@ -292,8 +297,9 @@ CREATE TABLE `resi` (
 --
 
 INSERT INTO `resi` (`id_resi`, `no_resi`, `id_pengujian`, `tgl_penerbitan`, `masa_aktif`, `jatuh_tempo`, `created_at`, `updated_at`) VALUES
-(2, 'INV/20/1111', 19, '2018-03-27', 9, '0000-00-00', '2018-03-27 09:34:49', '2018-03-27 10:17:49'),
-(3, 'INV/20/1092', 20, '2018-03-27', 18, '0000-00-00', '2018-03-27 12:57:58', '2018-03-27 12:57:58');
+(2, 'INV/20/1111', 19, '2018-03-27', 9, '2018-12-27', '2018-03-27 09:34:49', '2018-04-14 17:46:54'),
+(3, 'INV/20/1092', 20, '2018-03-27', 12, '2019-03-27', '2018-03-27 12:57:58', '2018-04-14 17:45:49'),
+(4, 'INV/20/10998', 24, '2018-04-15', 3, '2018-07-15', '2018-04-14 17:37:47', '2018-04-14 17:47:11');
 
 -- --------------------------------------------------------
 
@@ -507,7 +513,7 @@ ALTER TABLE `users_groups`
 -- AUTO_INCREMENT for table `artikel`
 --
 ALTER TABLE `artikel`
-  MODIFY `id_artikel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_artikel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `barang`
 --
@@ -517,7 +523,7 @@ ALTER TABLE `barang`
 -- AUTO_INCREMENT for table `catatan`
 --
 ALTER TABLE `catatan`
-  MODIFY `id_catatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_catatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `groups`
 --
@@ -532,7 +538,7 @@ ALTER TABLE `gudang`
 -- AUTO_INCREMENT for table `harga`
 --
 ALTER TABLE `harga`
-  MODIFY `id_harga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_harga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `komoditi_harga`
 --
@@ -552,12 +558,12 @@ ALTER TABLE `login_attempts`
 -- AUTO_INCREMENT for table `pengujian`
 --
 ALTER TABLE `pengujian`
-  MODIFY `id_pengujian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_pengujian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `resi`
 --
 ALTER TABLE `resi`
-  MODIFY `id_resi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_resi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `users`
 --

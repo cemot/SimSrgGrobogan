@@ -199,6 +199,24 @@
                 close: 'fa fa-remove'
             }
         });
+
+        $('#datepicker').datetimepicker({
+            format: 'MM/DD/YYYY',
+            locale: 'id',
+            // minDate: new Date(new Date().setDate(date.getYear()),
+            maxDate: today,
+            icons: {
+                time: "fa fa-clock-o",
+                date: "fa fa-calendar",
+                up: "fa fa-chevron-up",
+                down: "fa fa-chevron-down",
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-clock-o',
+                clear: 'fa fa-trash',
+                close: 'fa fa-remove'
+            }
+        });
     });
 </script>
 <script>
@@ -207,6 +225,11 @@
             selector:'textarea',
             // menubar : false,
             // toolbar : false,
+            setup: function (editor) {
+                    editor.on('change', function () {
+                    tinymce.triggerSave();
+                });
+            }
         });
     });
 </script>
@@ -223,35 +246,6 @@
         demo.initVectorMap();
     });
 </script>
-<!-- <script type="text/javascript">
-    $(document).ready(function() {
-        var i = 1;
-        $('.datatables').DataTable({
-            "ajax": "<?php echo base_url('admin/user/all'); ?>",
-            "columns": [
-                { "data": i++ },
-                { "data": "username" },
-                { "data": "nama" },
-                { "data": "no_tlp" },
-                { "data": "updated_at" },
-                { "data": "created_at" }
-            ],
-            "pagingType": "full_numbers",
-            "lengthMenu": [
-                [10, 25, 50, -1],
-                [10, 25, 50, "All"]
-            ],
-            responsive: true,
-            language: {
-                search: "_INPUT_",
-                searchPlaceholder: "Search records",
-            }
-
-        });
-
-        $('.card .material-datatables label').addClass('form-group');
-    });
-</script> -->
 <script type="text/javascript">
     $(document).ready(function() {
         $('.datatables').DataTable({
@@ -285,40 +279,4 @@
         showConfirmButton: false
       });
     }
-
-    // function startTime() {
-    //     var strDate = $('#serverTime').val();
-    //     var today = new Date(strDate);
-    //     today.setSeconds(today.getSeconds() + 1);
-    //     $('#serverTime').val(today);
-
-    //     //var today = new Date();
-    //     var hour = today.getHours();
-    //     var min = today.getMinutes();
-    //     var sec = today.getSeconds();
-
-    //     var months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
-    //     var date = new Date();
-    //     var day = zeroPad(date.getDate(), 2);
-    //     var month = date.getMonth();
-    //     var yy = date.getYear();
-    //     var year = (yy < 1000) ? yy + 1900 : yy;
-
-    //     hour = checkTime(hour);
-    //     min = checkTime(min);
-    //     sec = checkTime(sec);
-    //     document.getElementById('clock').innerHTML = "<i class='fa fa-clock-o'></i>&nbsp;&nbsp;" + day + "/" + months[month] + "/" + year + "  " + hour + ":" + min + ":" + sec + "&nbsp;WIB";
-    // }
-
-    // function checkTime(i) {
-    //     if (i < 10) {
-    //         i = "0" + i;
-    //     }
-    //     return i;
-    // }
-    // function zeroPad(num, places) {
-    //     var zero = places - num.toString().length + 1;
-    //     return Array(+(zero > 0 && zero)).join("0") + num;
-    // }
-
 </script>

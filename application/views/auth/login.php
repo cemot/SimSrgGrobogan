@@ -13,7 +13,7 @@
     <!--  Social tags      -->
     <meta name="keywords" content="">
     <meta name="description" content="">
-    
+
     <!-- Bootstrap core CSS     -->
     <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet" />
     <!--  Material Dashboard CSS    -->
@@ -47,7 +47,7 @@
                                         <h4 class="card-title">Login</h4>
                                     </div>
                                     <p class="category text-center">
-                                                                           
+
                                     </p>
                                     <div class="card-content">
                                         <div class="input-group">
@@ -70,7 +70,8 @@
                                         </div>
                                     </div>
                                     <div class="footer text-center">
-                                        <button type="submit" class="btn btn-rose btn-simple btn-wd btn-lg">Let's go</button>
+                                        <button type="submit" class="btn btn-rose btn-wd btn-lg">Login</button>
+                                        <a href="<?php echo base_url(); ?>" class="btn btn-default btn-simple btn-sm">.:: Kembali Ke Halaman Utama ::.</a>
                                     </div>
                                 </div>
                             </form>
@@ -166,7 +167,7 @@
                 }
             });
         }
-    });  
+    });
 </script>
 
 </html>

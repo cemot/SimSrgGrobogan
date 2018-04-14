@@ -30,7 +30,7 @@ class Welcome extends CI_Controller {
 		$data['beras'] = M_Komoditi_Harga::where('id_komoditi', 1)->orderBy('tanggal', 'desc')->limit(2)->get()->reverse();
 		$data['jagung'] = M_Komoditi_Harga::where('id_komoditi', 2)->orderBy('tanggal', 'desc')->limit(2)->get()->reverse();
 		$data['gabah'] = M_Komoditi_Harga::where('id_komoditi', 3)->orderBy('tanggal', 'desc')->limit(2)->get()->reverse();
-		$data['data'] = M_Artikel::where('status', 1)->get();
+		$data['data'] = M_Artikel::where('status', 1)->get()->reverse();
 		$this->load->view('landing/index', $data);
 	}
 

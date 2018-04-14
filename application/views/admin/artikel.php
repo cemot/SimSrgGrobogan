@@ -13,7 +13,7 @@
                     <table class="table table-striped table-no-bordered table-hover datatables" cellspacing="0" width="100%" style="width:100%">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>No</th>
                                 <th>Judul</th>
                                 <th>Isi</th>
                                 <th>Status</th>
@@ -22,9 +22,10 @@
                         </thead>
                         <tbody>
                             <?php
+                                $i = 1;
                                 foreach ($data as $artikel):?>
                                     <tr>
-                                        <td><?php echo $artikel->id_artikel ?></td>
+                                        <td><?php echo $i++ ?></td>
                                         <td><?php echo $artikel->judul ?></td>
                                         <td>
                                             <?php echo substr(htmlspecialchars(strip_tags($artikel->isi)), 0, 70); ?>

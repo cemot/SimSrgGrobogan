@@ -37,15 +37,19 @@ class Pengujian extends CI_Controller {
         } else {
             $this->form_validation->set_rules('id_barang', 'Barang Pengujian', 'required|integer');
             $this->form_validation->set_rules('hsl_pengujian', 'Hasil Pengujian', 'required');
+			$this->form_validation->set_rules('isi_catatan', 'Catatan Pengujian Barang', 'required');
+            $this->form_validation->set_rules('status', 'Status Catatan Pengujian Barang', 'required|integer');
 
-            $this->form_validation->set_rules('satuan_barang', 'Satuan Barang', 'required');
-            $this->form_validation->set_rules('harga_barang', 'Harga Barang', 'required');
-
-            // $this->form_validation->set_rules('isi_catatan', 'Catatan Pengujian Barang', 'required');
-            // $this->form_validation->set_rules('status', 'Status Catatan Pengujian Barang', 'required|integer');
+			if ($this->input->post('hsl_pengujian') == 'Diterima') {
+				$this->form_validation->set_rules('harga_barang', 'Harga Barang', 'required');
+				$this->form_validation->set_rules('satuan_barang', 'Satuan Barang', 'required');
+			}
 
             if ($this->form_validation->run() == FALSE) {
-                dd(validation_errors());
+                // dd(validation_errors());
+				$this->session->set_flashdata('class', 'danger');
+				$this->session->set_flashdata('message', 'Data Pengujian Tidak Lengkap. Pengujian Barang Gagal Disimpan');
+				redirect(base_url('pengelola/pengujian'));
             } else {
                 $pengujian = M_Pengujian::create([
                     'id_pengelola' => $this->session->id,
@@ -74,7 +78,7 @@ class Pengujian extends CI_Controller {
                         'id_pengujian' => $pengujian->id_pengujian,
                         'tgl_penerbitan' => date("Y-m-d"),
                         'masa_aktif' => $this->input->post('masa_aktif'),
-                        'jatuh_tempo' => strtotime("+".$this->input->post('masa_aktif')." months", strtotime(date("Y-m-d"))),
+                        'jatuh_tempo' =>  date("Y-m-d", strtotime("+". $this->input->post('masa_aktif') ." months", strtotime(date("Y-m-d")))),
                     ]);
 
                 }
@@ -140,7 +144,7 @@ class Pengujian extends CI_Controller {
                     // dd($resi);
                     $resi->no_resi = $this->input->post('no_resi');
                     $resi->masa_aktif = $this->input->post('masa_aktif');
-                    $resi->jatuh_tempo = strtotime("+".$this->input->post('masa_aktif')." months", strtotime(date("Y-m-d")));
+                    $resi->jatuh_tempo = date("Y-m-d", strtotime("+". $this->input->post('masa_aktif') ." months", strtotime($resi->tgl_penerbitan)));
                     $resi->save();
                 } else {
                     $harga = M_Harga::destroy($pengujian->harga->id_harga);

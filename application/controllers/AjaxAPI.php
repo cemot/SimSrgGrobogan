@@ -49,4 +49,9 @@ class AjaxAPI extends CI_Controller {
         );
         echo json_encode($json);
     }
+
+	public function lalala()
+	{
+		dd(date("Y-m-d", strtotime("+". 18 ." months", strtotime(date("Y-m-d")))));
+	}
 }

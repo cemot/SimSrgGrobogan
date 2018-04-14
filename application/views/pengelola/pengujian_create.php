@@ -23,7 +23,7 @@
                                         <option disabled selected>Pilih Barang</option>
                                         <?php foreach ($data as $barang): ?>
                                             <option value="<?php echo $barang->id_barang ?>">
-                                                <?php echo $barang->petani->id . " | " .$barang->petani->nama . " | " . $barang->nama_barang; ?>        
+                                                <?php echo $barang->petani->id . " | " .$barang->petani->nama . " | " . $barang->nama_barang; ?>
                                             </option>
                                         <?php endforeach ;?>
                                     </select>
@@ -52,7 +52,7 @@
                                         <option disabled selected>Pilih Gudang</option>
                                         <?php foreach ($gudang as $gudang): ?>
                                             <option value="<?php echo $gudang->id_gudang ?>">
-                                                <?php echo $gudang->id_gudang . " | " .$gudang->nama ;?>        
+                                                <?php echo $gudang->id_gudang . " | " .$gudang->nama ;?>
                                             </option>
                                         <?php endforeach ;?>
                                     </select>
@@ -109,12 +109,12 @@
                                     <label class="control-label"></label>
                                     <select class="selectpicker" data-style="select-with-transition" id="masa_aktif" name="masa_aktif" required="">
                                         <option disabled>Pilih Satuan</option>
-                                        <?php 
+                                        <?php
                                             $masa_aktif = [3,6,9,12,15,18];
                                             foreach ($masa_aktif as $masa_aktif) :
                                         ?>
                                          <option value="<?php echo $masa_aktif ?>">
-                                            <?php echo $masa_aktif.' Bulan' ;?>        
+                                            <?php echo $masa_aktif.' Bulan' ;?>
                                         </option>
                                         <?php endforeach; ?>
                                     </select>
@@ -134,7 +134,7 @@
                             <div class="col-md-9">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <textarea class="form-control" name="isi_catatan" rows="17"></textarea>
+                                    <textarea class="form-control" name="isi_catatan" rows="17" required></textarea>
                                 <span class="material-input"></span></div>
                             </div>
                         </div>
@@ -143,7 +143,7 @@
                             <div class="col-md-9">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <select class="selectpicker" data-style="select-with-transition" name="status">
+                                    <select class="selectpicker" data-style="select-with-transition" name="status" required>
                                         <option selected disabled>Pilih Status</option>
                                         <option value="0">Pending </option>
                                         <option value="1">Published</option>
