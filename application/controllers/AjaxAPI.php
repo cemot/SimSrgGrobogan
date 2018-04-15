@@ -59,4 +59,17 @@ class AjaxAPI extends CI_Controller {
 	{
 		unlink('./assets/img/uploads/'.'halo123.jpg');
 	}
+
+	public function cetak()
+	{
+		$data = array(
+		   "data" => array(
+			   "nama" => "Fakhri Fauzan",
+			   "url" => "http://fazan.my.id"
+		   )
+   		);
+	   $this->pdf->setPaper('A4', 'potrait');
+	   $this->pdf->filename = "laporan-petanikode.pdf";
+	   $this->pdf->load_view('print', $data);
+	}
 }
