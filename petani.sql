@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2018 at 07:53 PM
+-- Generation Time: Apr 15, 2018 at 09:24 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -32,6 +32,7 @@ CREATE TABLE `artikel` (
   `id_artikel` int(11) NOT NULL,
   `judul` varchar(191) NOT NULL,
   `isi` text NOT NULL,
+  `gambar` varchar(200) NOT NULL DEFAULT 'image_placeholder.jpg',
   `tanggal` datetime DEFAULT NULL,
   `id_penulis` int(11) NOT NULL,
   `status` tinyint(4) DEFAULT '0' COMMENT '0 = pending, 1 = published',
@@ -43,13 +44,14 @@ CREATE TABLE `artikel` (
 -- Dumping data for table `artikel`
 --
 
-INSERT INTO `artikel` (`id_artikel`, `judul`, `isi`, `tanggal`, `id_penulis`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Test Update1', 'ini boy isinyaa', '2018-03-17 00:00:00', 1, 0, '2018-03-14 16:17:43', '2018-03-15 00:38:46'),
-(2, 'Ubah judul bosq', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2018-03-08 00:00:00', 1, 1, '2018-03-14 16:20:11', '2018-03-18 16:54:53'),
-(3, 'asd', 'asdas', '2018-03-20 00:00:00', 1, NULL, '2018-03-18 16:07:27', '2018-03-18 16:07:27'),
-(4, 'sadasdd', 'sadasdsad', '2018-03-21 00:00:00', 1, 1, '2018-03-18 16:08:05', '2018-03-18 16:08:05'),
-(6, 'sadasds', 'sadas', '2018-03-15 00:00:00', 1, NULL, '2018-03-19 02:23:57', '2018-03-19 02:23:57'),
-(10, 'malam minggu cuy', '<p>kuyy malmingan</p>', '2018-04-15 00:00:00', 8, 1, '2018-04-14 17:52:29', '2018-04-14 17:52:29');
+INSERT INTO `artikel` (`id_artikel`, `judul`, `isi`, `gambar`, `tanggal`, `id_penulis`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Test Update1', 'ini boy isinyaa', 'image_placeholder.jpg', '2018-03-17 00:00:00', 1, 0, '2018-03-14 16:17:43', '2018-03-15 00:38:46'),
+(2, 'Ubah judul bosq', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'image_placeholder.jpg', '2018-03-08 00:00:00', 1, 1, '2018-03-14 16:20:11', '2018-03-18 16:54:53'),
+(3, 'asd', 'asdas', 'image_placeholder.jpg', '2018-03-20 00:00:00', 1, NULL, '2018-03-18 16:07:27', '2018-03-18 16:07:27'),
+(4, 'sadasdd', 'sadasdsad', 'image_placeholder.jpg', '2018-03-21 00:00:00', 1, 1, '2018-03-18 16:08:05', '2018-03-18 16:08:05'),
+(6, 'sadasds', 'sadas', 'image_placeholder.jpg', '2018-03-15 00:00:00', 1, NULL, '2018-03-19 02:23:57', '2018-03-19 02:23:57'),
+(10, 'malam minggu cuy', '<p>kuyy malmingan</p>', 'image_placeholder.jpg', '2018-04-15 00:00:00', 8, 1, '2018-04-14 17:52:29', '2018-04-14 17:52:29'),
+(20, 'cobaa edit ya', '<p>kepo aja lau</p>', 'cobaa_edit_ya.jpg', '2018-04-15 00:00:00', 8, 1, '2018-04-15 06:37:36', '2018-04-15 06:49:02');
 
 -- --------------------------------------------------------
 
@@ -318,6 +320,7 @@ CREATE TABLE `users` (
   `tmpt_lahir` varchar(191) DEFAULT NULL,
   `tgl_lahir` date DEFAULT NULL,
   `alamat` text,
+  `kecamatan` varchar(50) DEFAULT NULL,
   `no_tlp` varchar(15) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -327,75 +330,18 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `nama`, `email`, `jabatan`, `role`, `tmpt_lahir`, `tgl_lahir`, `alamat`, `no_tlp`, `created_at`, `updated_at`) VALUES
-(1, 'fakhrifauzan', '5f4dcc3b5aa765d61d8327deb882cf99', 'Fakhri Fauzan', 'fazan697@gmail.com', '', 0, 'Jakarta', '2018-03-01', 'BPI F16/3', '08567018044', NULL, '2018-03-17 16:58:19'),
-(2, 'Fauzan', '', 'Fakhri', 'dexterhack@gmail.com', '', 0, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, 'Nurliah', '', 'Nurliah Awaliah', 'nurliaha@gmail.com', '', 0, NULL, NULL, NULL, '085670180442', NULL, '2018-03-19 01:38:14'),
-(6, 'demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 'demo', 'demo@demo.com', NULL, 0, 'Jakarta', '2018-06-06', 'Pamulang', '08567018044', '2018-03-16 15:08:23', '2018-03-16 15:12:19'),
-(7, 'demo1', '5f4dcc3b5aa765d61d8327deb882cf99', 'Demo Pengelola', 'demo1@m.c', NULL, 1, 'Jakarta', '2018-03-08', 'Gudang', '09878', '2018-03-19 09:03:50', '2018-03-19 09:03:50'),
-(8, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', 'admin@fazan.my.id', NULL, 0, 'Jakarta', '2018-03-20', 'Antamulya No 2', '08567018044', '2018-03-20 02:10:59', '2018-03-20 02:10:59'),
-(9, 'pengelola', '3c7913bc17671596a43dcb4581992bdf', 'Pengelola', 'pengelola@fazan.my.id', NULL, 1, 'Jakarta', '2018-03-20', 'Antamulya No 2', '08567018045', '2018-03-20 02:12:11', '2018-03-20 02:12:11'),
-(10, 'petani', 'd180e8e96956e056f23a05fadda0e2bd', 'Petani', 'petani@gmail.com', NULL, 4, 'Bandung', '2018-03-16', 'Antamulya No 2', '09878', '2018-03-22 03:44:57', '2018-03-22 03:44:57'),
-(11, 'dinas', '097dad4a551e3cb88ed7afc7a6c0de40', 'Dinas Perdagangan', 'dinas@fazan.my.id', NULL, 2, 'Jakarta', '0000-00-00', 'dsfsfsf', '324234', '2018-04-08 23:59:48', '2018-04-08 23:59:48'),
-(12, 'bank', 'bd5af1f610a12434c9128e4a399cef8a', 'Bank', 'bank@fazan.my.id', NULL, 3, 'Jakarta', '0000-00-00', 'sjabdjksdvbsakvsdasdsa', '189879', '2018-04-09 00:46:39', '2018-04-09 00:46:39');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `usersion`
---
-
-CREATE TABLE `usersion` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `ip_address` varchar(45) NOT NULL,
-  `username` varchar(100) DEFAULT NULL,
-  `password` varchar(255) NOT NULL,
-  `salt` varchar(255) DEFAULT NULL,
-  `email` varchar(254) NOT NULL,
-  `activation_code` varchar(40) DEFAULT NULL,
-  `forgotten_password_code` varchar(40) DEFAULT NULL,
-  `forgotten_password_time` int(11) UNSIGNED DEFAULT NULL,
-  `remember_code` varchar(40) DEFAULT NULL,
-  `created_on` int(11) UNSIGNED NOT NULL,
-  `last_login` int(11) UNSIGNED DEFAULT NULL,
-  `active` tinyint(1) UNSIGNED DEFAULT NULL,
-  `first_name` varchar(50) DEFAULT NULL,
-  `last_name` varchar(50) DEFAULT NULL,
-  `company` varchar(100) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `usersion`
---
-
-INSERT INTO `usersion` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', 'oW8MgYmQGqOEY9-dzWhdXu7553f15d590a15db39', 1520225030, NULL, 1268889823, 1521121887, 1, 'Admin', 'istrator', 'ADMIN', '0'),
-(2, '::1', 'sda@gmail.com', '$2y$08$YjriBpvWClDKaS/7vfhPd.Qrf3nOpiWHZ2dpvmNFetKJ3CRocrj4C', NULL, 'sda@gmail.com', NULL, NULL, NULL, NULL, 1520212504, 1520225195, 1, 'sdad', 'sadsad', 'asadsa', '21321132'),
-(3, '::1', 'fakhrifauzan@telkomuniversity.ac.id', '$2y$08$JafTSbDs.rkYObSGNf7INePxaNk8FFyDkFhz5YxatSyTQj1e3iFuO', NULL, 'fakhrifauzan@telkomuniversity.ac.id', NULL, NULL, NULL, NULL, 1521060731, NULL, 1, 'Fakhri', 'Fauzan', 'fazanID', '08567018044');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users_groups`
---
-
-CREATE TABLE `users_groups` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `user_id` int(11) UNSIGNED NOT NULL,
-  `group_id` mediumint(8) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `users_groups`
---
-
-INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
-(1, 1, 1),
-(2, 1, 2),
-(3, 2, 2),
-(5, 3, 2),
-(6, 3, 3);
+INSERT INTO `users` (`id`, `username`, `password`, `nama`, `email`, `jabatan`, `role`, `tmpt_lahir`, `tgl_lahir`, `alamat`, `kecamatan`, `no_tlp`, `created_at`, `updated_at`) VALUES
+(1, 'fakhrifauzan', '5f4dcc3b5aa765d61d8327deb882cf99', 'Fakhri Fauzan', 'fazan697@gmail.com', '', 0, 'Jakarta', '2018-03-01', 'BPI F16/3', NULL, '08567018044', NULL, '2018-03-17 16:58:19'),
+(2, 'Fauzan', '', 'Fakhri', 'dexterhack@gmail.com', '', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 'Nurliah', '', 'Nurliah Awaliah', 'nurliaha@gmail.com', '', 0, NULL, NULL, NULL, NULL, '085670180442', NULL, '2018-03-19 01:38:14'),
+(6, 'demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 'demo', 'demo@demo.com', NULL, 0, 'Jakarta', '2018-06-06', 'Pamulang', NULL, '08567018044', '2018-03-16 15:08:23', '2018-03-16 15:12:19'),
+(7, 'demo1', '5f4dcc3b5aa765d61d8327deb882cf99', 'Demo Pengelola', 'demo1@m.c', NULL, 1, 'Jakarta', '2018-03-08', 'Gudang', NULL, '09878', '2018-03-19 09:03:50', '2018-03-19 09:03:50'),
+(8, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', 'admin@fazan.my.id', NULL, 0, 'Jakarta', '2018-03-20', 'Antamulya No 2', NULL, '08567018044', '2018-03-20 02:10:59', '2018-03-20 02:10:59'),
+(9, 'pengelola', '3c7913bc17671596a43dcb4581992bdf', 'Pengelola', 'pengelola@fazan.my.id', NULL, 1, 'Jakarta', '2018-03-20', 'Antamulya No 2', NULL, '08567018045', '2018-03-20 02:12:11', '2018-03-20 02:12:11'),
+(10, 'petani', 'd180e8e96956e056f23a05fadda0e2bd', 'Petani', 'petani@gmail.com', NULL, 4, 'Bandung', '2018-03-16', 'Antamulya No 2', NULL, '09878', '2018-03-22 03:44:57', '2018-03-22 03:44:57'),
+(11, 'dinas', '097dad4a551e3cb88ed7afc7a6c0de40', 'Dinas Perdagangan', 'dinas@fazan.my.id', NULL, 2, 'Jakarta', '0000-00-00', 'dsfsfsf', NULL, '324234', '2018-04-08 23:59:48', '2018-04-08 23:59:48'),
+(12, 'bank', 'bd5af1f610a12434c9128e4a399cef8a', 'Bank', 'bank@fazan.my.id', NULL, 3, 'Jakarta', '2007-05-06', 'sjabdjksdvbsakvsdasdsa', 'Kedungjati', '189879', '2018-04-09 00:46:39', '2018-04-15 07:21:08'),
+(14, 'halooo', 'b37d149d7ac13a281bc524e684c73b61', 'haloo', 'halo@gmail.com', NULL, 4, 'haloo', '2017-09-03', 'dssdfsfdsfdsf', 'Kedungjati', '0812315456', '2018-04-15 07:10:51', '2018-04-15 07:23:41');
 
 --
 -- Indexes for dumped tables
@@ -491,21 +437,6 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- Indexes for table `usersion`
---
-ALTER TABLE `usersion`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users_groups`
---
-ALTER TABLE `users_groups`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `uc_users_groups` (`user_id`,`group_id`),
-  ADD KEY `fk_users_groups_users1_idx` (`user_id`),
-  ADD KEY `fk_users_groups_groups1_idx` (`group_id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -513,7 +444,7 @@ ALTER TABLE `users_groups`
 -- AUTO_INCREMENT for table `artikel`
 --
 ALTER TABLE `artikel`
-  MODIFY `id_artikel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_artikel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `barang`
 --
@@ -568,17 +499,7 @@ ALTER TABLE `resi`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
---
--- AUTO_INCREMENT for table `usersion`
---
-ALTER TABLE `usersion`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `users_groups`
---
-ALTER TABLE `users_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- Constraints for dumped tables
 --
@@ -642,13 +563,6 @@ ALTER TABLE `pengujian`
 --
 ALTER TABLE `resi`
   ADD CONSTRAINT `resi_penguian_FK` FOREIGN KEY (`id_pengujian`) REFERENCES `pengujian` (`id_pengujian`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `users_groups`
---
-ALTER TABLE `users_groups`
-  ADD CONSTRAINT `fk_users_groups_groups1` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_users_groups_users1` FOREIGN KEY (`user_id`) REFERENCES `usersion` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

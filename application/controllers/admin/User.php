@@ -60,13 +60,12 @@ class User extends CI_Controller {
             $this->form_validation->set_rules('password_confirm', 'Password Confirmation', 'required|matches[password]');
             $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');
             $this->form_validation->set_rules('email', 'E-Mail', 'required|valid_email|is_unique[users.email]');
-            // $this->form_validation->set_rules('jabatan', 'Jabatan', 'required');
+            $this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required');
             $this->form_validation->set_rules('role', 'Role User', 'required');
             $this->form_validation->set_rules('tmpt_lahir', 'Tempat Lahir', 'required');
             $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required');
             $this->form_validation->set_rules('alamat', 'Alamat', 'required');
             $this->form_validation->set_rules('no_tlp', 'No Telepon / No HP', 'required');
-
 
             if ($this->form_validation->run() == FALSE) {
                 dd(validation_errors());
@@ -76,10 +75,10 @@ class User extends CI_Controller {
                     'password'  => md5($this->input->post('password')),
                     'nama'      => $this->input->post('nama'),
                     'email'     => $this->input->post('email'),
-                    // 'jabatan'   => empty($this->input->post('jabatan')) ? NULL : $this->input->post('jabatan'),
+                    'kecamatan' => $this->input->post('kecamatan'),
                     'role'      => $this->input->post('role'),
                     'tmpt_lahir'=> $this->input->post('tmpt_lahir'),
-                    'tgl_lahir' => $this->input->post('tgl_lahir'),
+                    'tgl_lahir' => date("Y-m-d", strtotime($this->input->post('tgl_lahir'))),
                     'alamat'    => $this->input->post('alamat'),
                     'no_tlp'    => $this->input->post('no_tlp')
                 ]);
@@ -117,7 +116,6 @@ class User extends CI_Controller {
                 $this->load->view('layouts/app', $data);
             }
         }
-
     }
 
     public function update()
@@ -136,13 +134,11 @@ class User extends CI_Controller {
                 $user->nama     = $this->input->post('nama');
                 $user->email    = $this->input->post('email');
                 $user->tmpt_lahir   = empty($this->input->post('tmpt_lahir')) ? NULL : $this->input->post('tmpt_lahir');
-                $user->tgl_lahir    = empty($this->input->post('tgl_lahir')) ? NULL : $this->input->post('tgl_lahir');
-                $user->alamat   = empty($this->input->post('alamat')) ? NULL : $this->input->post('alamat');
+                $user->tgl_lahir    = date("Y-m-d", strtotime($this->input->post('tgl_lahir')));
+				$user->alamat   = empty($this->input->post('alamat')) ? NULL : $this->input->post('alamat');
+                $user->kecamatan   = $this->input->post('kecamatan');
                 $user->no_tlp   = $this->input->post('no_tlp');
-
                 $user->save();
-
-                // dd($user);
 
                 if($user) {
                     $this->session->set_flashdata('sukses', 'User Berhasil Diperbarui');
@@ -164,32 +160,5 @@ class User extends CI_Controller {
             $this->session->set_flashdata('gagal', 'User Tidak Berhasil Dihapus');
         }
         redirect('admin/user');
-    }
-
-
-    // UNTUK TESTING ELOQUENT
-    public function test_insert()
-    {
-        $user = M_User::create([
-            'username'  => 'demo',
-            'password'  => md5('demo'),
-            'nama'      => 'demo',
-            'email'     => 'demo@demo.com',
-            'jabatan'   => NULL,
-            'role'      => 0,
-            'tmpt_lahir'=> 'Jakarta',
-            'tgl_lahir' => '2018-06-06',
-            'alamat'    => 'Pamulang',
-            'no_tlp'    => '08567018044'
-        ]);
-        dd($user);
-    }
-
-    public function test_update($id=6)
-    {
-        $user = M_User::find($id);
-        $user->no_tlp = '08567018044';
-        $user->save();
-        dd($user);
     }
 }

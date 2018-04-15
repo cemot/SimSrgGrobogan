@@ -37,7 +37,7 @@
           <hr>
 
           <!-- Preview Image -->
-          <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
+          <img class="img-fluid rounded" src="<?php echo base_url('assets/img/uploads/').$artikel->gambar; ?>" alt="">
 
           <hr>
 

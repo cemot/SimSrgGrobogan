@@ -6,7 +6,7 @@
             </div>
             <div class="card-content">
                 <h4 class="card-title">Ubah Artikel</h4>
-                <form class="form-horizontal" method="post" action="<?php echo base_url('admin/artikel/update'); ?>">
+                <form class="form-horizontal" method="post" action="<?php echo base_url('admin/artikel/update'); ?>" enctype="multipart/form-data">
                     <input type="hidden" class="form-control" name="id_artikel" value="<?php echo $artikel->id_artikel; ?>" required>
                     <div class="row">
                         <label class="col-md-2 label-on-left">Judul</label>
@@ -27,13 +27,32 @@
                         </div>
                     </div>
                     <div class="row">
+                        <label class="col-md-2 label-on-left">Gambar</label>
+                        <div class="col-md-4 col-sm-4">
+                            <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                <div class="fileinput-new thumbnail">
+                                    <img src="<?php echo base_url('assets/img/uploads/').$artikel->gambar ?>">
+                                </div>
+                                <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                                <div>
+                                    <span class="btn btn-rose btn-round btn-file">
+                                        <span class="fileinput-new">Pilih Gambar</span>
+                                        <span class="fileinput-exists">Ubah</span>
+                                        <input type="file" name="gambar" />
+                                    </span>
+                                    <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <label class="col-md-2 label-on-left">Status</label>
                         <div class="col-md-10">
                             <div class="col-md-4">
                                 <select class="selectpicker" data-style="btn btn-primary btn-round" data-size="4" name="status" required>
                                     <option disabled>Choose Status</option>
-                                    <option value="0" <?php $artikel->status == 0 ? 'selected' : '' ?> >Pending</option>
-                                    <option value="1" <?php $artikel->status == 1 ? 'selected' : '' ?> >Published</option>
+                                    <option value="0" <?php if($artikel->status == 0) { echo 'selected'; } ?> >Pending</option>
+                                    <option value="1" <?php if($artikel->status == 1) { echo 'selected'; } ?> >Published</option>
                                 </select>
                             </div>
                         </div>

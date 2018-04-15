@@ -50,8 +50,13 @@ class AjaxAPI extends CI_Controller {
         echo json_encode($json);
     }
 
-	public function lalala()
+	public function waktu()
 	{
 		dd(date("Y-m-d", strtotime("+". 18 ." months", strtotime(date("Y-m-d")))));
+	}
+
+	public function deleteFile()
+	{
+		unlink('./assets/img/uploads/'.'halo123.jpg');
 	}
 }

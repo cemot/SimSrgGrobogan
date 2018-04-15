@@ -42,7 +42,7 @@
                         <div class="col-md-6">
                             <div class="form-group label-floating <?php (empty($user->tgl_lahir) || ($user->tgl_lahir == NULL))? 'is-empty' : '' ?>">
                                 <label class="control-label">Tanggal Lahir</label>
-                                <input type="date" class="form-control datepicker" name="tgl_lahir" value="<?php echo $user->tgl_lahir; ?>">
+                                <input type="text" class="form-control" id="datepicker" name="tgl_lahir" value="<?php echo date("m/d/Y", strtotime($user->tgl_lahir)); ?>">
                             <span class="material-input"></span></div>
                         </div>
                     </div>
@@ -57,6 +57,29 @@
                             <div class="form-group label-floating <?php (empty($user->alamat) || ($user->alamat == NULL))? 'is-empty' : '' ?>">
                                 <label class="control-label">Alamat</label>
                                 <input type="text" class="form-control" name="alamat" value="<?php echo $user->alamat; ?>">
+                            <span class="material-input"></span></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Kecamatan</label>
+                                <select class="select2 form-control" data-style="select-with-transition" name="kecamatan" required>
+                                    <option disabled>Pilih Kecamatan</option>
+                                    <?php
+                                        $kecamatan = [
+                                            'Kedungjati', 'Karanganyar', 'Toroh', 'Penawangan', 'Geyer',
+                                            'Pulokulon', 'Kradenan', 'Gabus', 'Ngaringan', 'Wirosari',
+                                            'Tawangharjo', 'Grobogan', 'Purwodadi', 'Brati', 'Klambu',
+                                            'Godong', 'Gubug', 'Tegowanu', 'Tanggungharjo'
+                                        ];
+                                        foreach ($kecamatan as $kecamatan) :
+                                        ?>
+                                        <option value="<?php echo $kecamatan ?>" <?php if ($user->kecamatan == $kecamatan) { echo "selected"; }?>>
+                                            <?php echo 'Kecamatan '.$kecamatan ?>
+                                        </option>
+                                        <?php endforeach; ?>
+                                </select>
                             <span class="material-input"></span></div>
                         </div>
                     </div>

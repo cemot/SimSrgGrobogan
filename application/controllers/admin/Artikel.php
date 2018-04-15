@@ -40,19 +40,40 @@ class Artikel extends CI_Controller {
             if ($this->form_validation->run() == FALSE) {
                 redirect('admin/artikel/create');
             } else {
+				if (empty($_FILES['gambar']) || !isset($_FILES['gambar'])) {
+					$config['upload_path']		= './assets/img/uploads/';
+	                $config['allowed_types']	= 'gif|jpg|png';
+					$config['max_size']			= 1024;
+					$config['file_name']		= str_replace(" ", "_", $this->input->post('judul'));
+	                $config['overwrite']		= TRUE;
+
+					$this->load->library('upload', $config);
+
+					if (!$this->upload->do_upload('gambar')) {
+	                    $error = array('error' => $this->upload->display_errors());
+	                    dd($error);
+	                } else {
+	                    $data = array('upload_data' => $this->upload->data());
+	                    // $this->load->view('upload_success', $data);
+	                }
+				}
+
                 $artikel = M_Artikel::create([
                     'judul' => $this->input->post('judul'),
                     'isi' => empty($this->input->post('isi')) ? NULL : $this->input->post('isi'),
+					'gambar' => str_replace(" ", "_", $this->input->post('judul')).$this->upload->data('file_ext'),
                     'tanggal' => date("Y-m-d"),
                     'id_penulis' => $this->session->id,
                     'status' => $this->input->post('status'),
                 ]);
-                // dd($artikel);
 
-                if($artikel) {
-                    $this->session->set_flashdata('sukses', 'Artikel Berhasil Disimpan');
+                if($artikel && $data) {
+					$this->session->set_flashdata('class', 'success');
+                    $this->session->set_flashdata('message', 'Artikel Berhasil Disimpan');
                 } else {
-                    $this->session->set_flashdata('gagal', 'Artikel Tidak Berhasil Disimpan');
+					M_Artikel::destroy($artikel->id);
+					$this->session->set_flashdata('class', 'danger');
+                    $this->session->set_flashdata('message', 'Artikel Tidak Berhasil Disimpan');
                 }
                 redirect('admin/artikel');
             }
@@ -89,11 +110,26 @@ class Artikel extends CI_Controller {
             if ($this->form_validation->run() == FALSE) {
                 redirect('admin/artikel');
             } else {
-                // dd('sampe sini');
-                $artikel = M_Artikel::find($this->input->post('id_artikel'));
+				$artikel = M_Artikel::find($this->input->post('id_artikel'));
+				if (empty($_FILES['gambar']) || !isset($_FILES['gambar'])) {
+					$config['upload_path']		= './assets/img/uploads/';
+	                $config['allowed_types']	= 'gif|jpg|png';
+					$config['max_size']			= 1024;
+					$config['file_name']		= str_replace(" ", "_", $this->input->post('judul'));
+	                $config['overwrite']		= TRUE;
+
+					$this->load->library('upload', $config);
+
+					if (!$this->upload->do_upload('gambar')) {
+	                    $error = array('error' => $this->upload->display_errors());
+	                    dd($error);
+	                } else {
+	                    $data = array('upload_data' => $this->upload->data());
+						$artikel->gambar = str_replace(" ", "_", $this->input->post('judul')).$this->upload->data('file_ext');
+	                }
+				}
                 $artikel->judul = $this->input->post('judul');
                 $artikel->isi = empty($this->input->post('isi')) ? NULL : $this->input->post('isi');
-                // $artikel->id_penulis = empty($this->input->post('id_penulis')) ? NULL : $this->input->post('id_penulis');
                 $artikel->status = $this->input->post('status');
                 $artikel->save();
 
@@ -109,6 +145,10 @@ class Artikel extends CI_Controller {
 
     public function destroy($id)
     {
+		$art = M_Artikel::find($id);
+		if ($art->gambar != 'image_placeholder.jpg') {
+			unlink('./assets/img/uploads/'.$art->gambar);
+		}
         $artikel = M_Artikel::destroy($id);
         if($artikel) {
             $this->session->set_flashdata('sukses', 'Artikel Berhasil Dihapus');
@@ -116,29 +156,5 @@ class Artikel extends CI_Controller {
             $this->session->set_flashdata('gagal', 'Artikel Tidak Berhasil Dihapus');
         }
         redirect('admin/artikel');
-    }
-
-
-    // UNTUK TESTING ELOQUENT
-    public function test_insert()
-    {
-        $artikel = M_Artikel::create([
-            'judul' => 'barang naik2!',
-            'isi' => 'komoditi pada naik cuyiii',
-            'id_penulis' => 1,
-            'status' => 1,
-        ]);
-        dd($artikel);
-    }
-
-    public function test_update($id=1)
-    {
-        $artikel = M_Artikel::find($id);
-        $artikel->judul = 'Test Update1';
-        $artikel->isi = 'ini boy isinyaa';
-        $artikel->id_penulis = 1;
-        $artikel->status = 0;
-        $artikel->save();
-        dd($artikel);
     }
 }

@@ -60,30 +60,53 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <div class="form-group">
                                 <label class="control-label">No Telepon</label>
                                 <input type="text" class="form-control" name="no_tlp" value="<?php echo set_value('no_tlp'); ?>" required>
                             <span class="material-input"></span></div>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-10">
                             <div class="form-group">
                                 <label class="control-label">Alamat</label>
-                                <input type="text" class="form-control" name="alamat" value="<?php echo set_value('alamat'); ?>" required>
+                                <input type="text" class="form-control" name="alamat" required>
                             <span class="material-input"></span></div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-2">Role</div>
                         <div class="col-md-4">
-                            <select class="selectpicker" data-style="btn btn-primary" name="role">
-                                <option selected disabled>Pilih Role</option>
-                                <option value="0">Admin</option>
-                                <option value="1">Pengelola</option>
-                                <option value="2">Dinas</option>
-                                <option value="3">Bank</option>
-                                <option value="4">Petani</option>
-                            </select>
+                            <div class="form-group">
+                                <label class="control-label">Kecamatan</label>
+                                <select class="select2 form-control" data-style="select-with-transition" name="kecamatan" required>
+                                    <option disabled>Pilih Kecamatan</option>
+                                    <?php
+                                        $kecamatan = [
+                                            'Kedungjati', 'Karanganyar', 'Toroh', 'Penawangan', 'Geyer',
+                                            'Pulokulon', 'Kradenan', 'Gabus', 'Ngaringan', 'Wirosari',
+                                            'Tawangharjo', 'Grobogan', 'Purwodadi', 'Brati', 'Klambu',
+                                            'Godong', 'Gubug', 'Tegowanu', 'Tanggungharjo'
+                                        ];
+                                        foreach ($kecamatan as $kecamatan) :
+                                        ?>
+                                        <option value="<?php echo $kecamatan ?>">
+                                            <?php echo 'Kecamatan '.$kecamatan ?>
+                                        </option>
+                                        <?php endforeach; ?>
+                                </select>
+                            <span class="material-input"></span></div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Role</label>
+                                <select class="selectpicker" data-style="btn btn-primary" name="role">
+                                    <option selected disabled>Pilih Role</option>
+                                    <option value="0">Admin</option>
+                                    <option value="1">Pengelola</option>
+                                    <option value="2">Dinas</option>
+                                    <option value="3">Bank</option>
+                                    <option value="4">Petani</option>
+                                </select>
+                            <span class="material-input"></span></div>
                         </div>
                     </div>
                     <div class="clearfix"></div>

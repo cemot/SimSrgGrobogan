@@ -13,7 +13,7 @@ class M_Artikel extends Eloquent
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
-    protected $fillable = ['judul', 'isi', 'tanggal', 'id_penulis', 'status'];
+    protected $fillable = ['judul', 'isi', 'gambar', 'tanggal', 'id_penulis', 'status'];
 
     public function penulis()
     {
