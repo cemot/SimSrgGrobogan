@@ -55,6 +55,8 @@ $route['translate_uri_dashes'] = FALSE;
 
 //LANDING
 $route['artikel/(:any)'] = 'welcome/show/$1';
+$route['page'] = 'welcome/index';
+$route['page/(:any)'] = 'welcome/index';
 
 // AUTH
 $route['auth'] = 'Auth/index';

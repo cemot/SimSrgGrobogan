@@ -64,6 +64,10 @@
           <?php endforeach; ?>
 
           <!-- Pagination -->
+          <?php if (isset($links)) { ?>
+                <?php echo $links ?>
+            <?php } ?>
+
           <ul class="pagination justify-content-center mb-4">
             <li class="page-item">
               <a class="page-link" href="#">&larr; Older</a>
