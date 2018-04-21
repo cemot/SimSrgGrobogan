@@ -72,4 +72,12 @@ class AjaxAPI extends CI_Controller {
 	   $this->pdf->filename = "laporan-petanikode.pdf";
 	   $this->pdf->load_view('print', $data);
 	}
+
+	public function cetak_resi()
+	{
+		$this->load->view('pengelola/resi_cetak');
+		// $this->pdf->setPaper('A4', 'potrait');
+ 	    // $this->pdf->filename = "laporan-resi.pdf";
+ 	    // $this->pdf->load_view('pengelola/resi_cetak');
+	}
 }
