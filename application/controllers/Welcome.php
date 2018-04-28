@@ -40,25 +40,24 @@ class Welcome extends CI_Controller {
         $config['per_page'] = $limit_per_page;
         $config['uri_segment'] = 2;
 
-		$config['full_tag_open'] = "<ul class='justify-content-center mb-4'>";
-	   	$config['full_tag_close'] ="</ul>";
-		$config['num_tag_open'] = "<li class='page-item'><a class='page-link'>";
-        $config['num_tag_close'] = '</a></li>';
-        $config['cur_tag_open'] = "<li class='page-item'><a class='page-link'>";
-        $config['cur_tag_close'] = "</a></li>";
-        $config['next_tag_open'] = "<li class='page-item'><a class='page-link'>";
-        $config['next_tagl_close'] = "</a></li>";
-        $config['prev_tag_open'] = "<li class='page-item'><a class='page-link'>";
-        $config['prev_tagl_close'] = "</a></li>";
-        $config['first_tag_open'] = "<li class='page-item'><a class='page-link'>";
-        $config['first_tagl_close'] = "</a></li>";
-        $config['last_tag_open'] = "<li class='page-item'><a class='page-link'>";
-        $config['last_tagl_close'] = "</a></li>";
-
-        $config['first_link']='< Terbaru';
-        $config['last_link']='Sebelumnya > ';
-        $config['next_link']='> ';
-        $config['prev_link']='< ';
+		$config['first_link']       = 'Pertama';
+        $config['last_link']        = 'Terakhir';
+        $config['next_link']        = 'Selanjutnya';
+        $config['prev_link']        = 'Sebelumnya';
+        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
+        $config['full_tag_close']   = '</ul></nav></div>';
+        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+        $config['num_tag_close']    = '</span></li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
+        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
+        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['prev_tagl_close']  = '</span>Next</li>';
+        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+        $config['first_tagl_close'] = '</span></li>';
+        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['last_tagl_close']  = '</span></li>';
 
 		$this->pagination->initialize($config);
 

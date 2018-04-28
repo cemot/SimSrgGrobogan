@@ -22,6 +22,22 @@ class Resi extends CI_Controller {
         $this->load->view('layouts/app', $data);
 	}
 
+    public function cetak_resi($no_resi)
+    {
+        // dd('sampe sini');
+        $own = M_Pengujian::select('id_pengujian')->where('id_pengelola', $this->session->id)->get();
+        // dd('<pre>'.$own.'</pre>');
+        $data['resi'] = M_Resi::whereIn('id_pengujian', $own)->where('no_resi', $no_resi)->get()->first();
+        if (!$data['resi']) {
+            redirect(base_url('pengelola/resi'));
+        } else {
+            $this->load->view('pengelola/resi_cetak', $data);
+        }
+        // $this->pdf->setPaper('A4', 'potrait');
+        // $this->pdf->filename = "laporan-resi.pdf";
+        // $this->pdf->load_view('pengelola/resi_cetak');
+    }
+
 	public function create()
     {
         //

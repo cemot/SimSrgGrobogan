@@ -114,6 +114,7 @@ $route['pengelola/pengujian/detail/(:any)'] = 'pengelola/pengujian/show/$1';
 $route['pengelola/pengujian/update'] = 'pengelola/pengujian/update';
 $route['pengelola/pengujian/delete/(:any)'] = 'pengelola/pengujian/destroy/$1';
 $route['pengelola/resi'] = 'pengelola/resi/index';
+$route['pengelola/resi/cetak/(:any)'] = 'pengelola/resi/cetak_resi/$1';
 $route['pengelola/komoditi'] = 'pengelola/komoditi/index';
 $route['pengelola/komoditi/create_harga'] = 'pengelola/komoditi/create_harga';
 $route['pengelola/komoditi/store_harga'] = 'pengelola/komoditi/store_harga';

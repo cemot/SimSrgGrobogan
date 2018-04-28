@@ -5,7 +5,8 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/resi.css">
 
 </head>
-<body onload="window.print()">
+<!-- <body onload="window.print()"> -->
+<body>
 	<div class="header">
 		<div class="logo">logo</div>
 		<div class="header2">
@@ -54,14 +55,14 @@
 			Diterbitkan untuk/ <i>Published for</i> :<br>
 			<table class="table">
 				<tr>
-					<td width="150px">Nama/ <i>Name</i></td>
+					<td width="150px">Nama / <i>Name</i></td>
 					<td>:</td>
-					<td>[nama]</td>
+					<td><?php echo $resi->pengujian->barang->petani->nama ?></td>
 				</tr>
 				<tr>
-					<td>Alamat/ <i>Address</i></td>
+					<td>Alamat / <i>Address</i></td>
 					<td>:</td>
-					<td>[alamat]</td>
+					<td><?php echo $resi->pengujian->barang->petani->alamat ?></td>
 				</tr>
 			</table>
 
@@ -72,14 +73,14 @@
 			<p class="head">TELAH DITERIMA SEJUMLAH BARANG SEBAGAIMANA TERSEBUT DI BAWAH INI UNTUK DISIMPAN DALAM GUDANG BERDASARKAN SURAT PERJANJIAN PENGELOLAAN BARANG/ <i>The good received as mentioned below have been stored in the warehouse under Management</i> : <br></p>
 			<table class="table">
 				<tr>
-					<td width="150px">NOMOR/ <i>Number</i></td>
+					<td width="150px">NOMOR / <i>Number</i></td>
 					<td>:</td>
-					<td>[nomor]</td>
+					<td><?php echo $resi->no_resi ?></td>
 				</tr>
 				<tr>
-					<td>Tanggal/ <i>Date</i></td>
+					<td>Tanggal / <i>Date</i></td>
 					<td>:</td>
-					<td>[tanggal]</td>
+					<td><?php echo date("d M Y",strtotime($resi->tgl_penerbitan)) ?></td>
 				</tr>
 			</table>
 		</div>
@@ -88,19 +89,19 @@
 		<div class="f">
 			<table class="table">
 				<tr>
-					<td width="300px">NAMA BARANG/ <i>Name of Commodity</i> *)</td>
+					<td width="300px">NAMA BARANG / <i>Name of Commodity</i> *)</td>
 					<td>:</td>
-					<td>[nama barang]</td>
+					<td><?php echo $resi->pengujian->barang->nama_barang ?></td>
 				</tr>
 				<tr>
 					<td>JENIS BARANG/ <i>Type of Commodity</i></td>
 					<td>:</td>
-					<td>[jenis barang]</td>
+					<td><?php echo $resi->pengujian->barang->jenis->nama_komoditi ?></td>
 				</tr>
 				<tr>
 					<td>MUTU BARANG/ <i>Quality</i></td>
 					<td>:</td>
-					<td>[kualitas barang]</td>
+					<td><?php echo $resi->pengujian->catatan->isi_catatan ?></td>
 				</tr>
 				<tr>
 					<td>KELAS BARANG/ <i>Class of Commodity</i>*)</td>
@@ -117,7 +118,7 @@
 				<tr>
 					<td width="150px">TANGGAL/ <i>Date</i></td>
 					<td>:</td>
-					<td>[tanggal SAMPAI DENGAN/ <i>Up to</i> tanggal]</td>
+					<td><?php echo date("d M Y",strtotime($resi->tgl_penerbitan)) ?> SAMPAI DENGAN / <i>Up to</i> <?php echo date("d M Y",strtotime($resi->jatuh_tempo)) ?></td>
 				</tr>
 			</table>
 			<table class="table">
@@ -144,9 +145,9 @@
 		<div class="h">
 			<table>
 				<tr>
-					<td width="250px">JUMLAH BARANG/ <i>Quantity</i></td>
+					<td width="250px">JUMLAH BARANG / <i>Quantity</i></td>
 					<td>:</td>
-					<td>[jumlah barang / Kg]</td>
+					<td><?php echo $resi->pengujian->barang->berat_barang ?> Kg</td>
 				</tr>
 			</table>
 		</div>
@@ -157,7 +158,7 @@
 				<tr>
 					<td width="320px">BIAYA PENYIMPANAN/ <i>Rate of Storage and Handling Charges</i> </td>
 					<td>:</td>
-					<td>[Rp. ]</td>
+					<td>Rp. </td>
 				</tr>
 			</table>
 		</div>
@@ -166,9 +167,9 @@
 		<div class="j">
 			<table>
 				<tr>
-					<td width="250px">LOKASI GUDANG/ <i>Warehouse Address</i></td>
+					<td width="250px">LOKASI GUDANG / <i>Warehouse Address</i></td>
 					<td>:</td>
-					<td>[lokasi gudang]</td>
+					<td><?php echo $resi->pengujian->gudang->nama ?></td>
 				</tr>
 			</table>
 		</div>
@@ -199,9 +200,9 @@
 		<div class="l">
 			<table>
 				<tr>
-					<td width="250px">JATUH TEMPO SIMPAN BARANG/ <i>Storing time valid up to</i></td>
+					<td width="250px">JATUH TEMPO SIMPAN BARANG / <i>Storing time valid up to</i></td>
 					<td>:</td>
-					<td>[tanggal jatuh tempo]</td>
+					<td><?php echo date("d M Y",strtotime($resi->jatuh_tempo)) ?></td>
 				</tr>
 			</table>
 		</div>
@@ -211,7 +212,7 @@
 			<p class="ttd">
 				PEMILIK BARANG/ <i>Goods Owner</i>,
 				<br><br><br><br><br>
-			<b><u>SUGIYONO</u></b>
+			<b><u><?php echo $resi->pengujian->barang->petani->nama ?></u></b>
 			</p>
 		</div>
 		<div class="n">
