@@ -169,6 +169,52 @@
             var chart = new Chartist.Line('#chartGabah', dataChart, settingChart);
         }
     });
+    $.ajax({
+        url: "<?php echo base_url('ajaxAPI/getDataRekapKecamatan'); ?>",
+        dataType: "json",
+        success: function(data)
+        {
+            var dataChart = {
+              labels: data.labels,
+              series: data.series
+            };
+            var settingChart = {
+                distributeSeries: true
+            };
+            var chart = new Chartist.Bar('#chartKecamatan', dataChart, settingChart);
+        }
+    });
+    $.ajax({
+        url: "<?php echo base_url('ajaxAPI/getDataRekapPengujian'); ?>",
+        dataType: "json",
+        success: function(data)
+        {
+            var dataChart = {
+              labels: data.labels,
+              series: data.series
+            };
+            var settingChart = {
+                labelInterpolationFnc: function(value) {
+                    return value[0]
+                  }
+            };
+            var responsiveOptions = [
+                ['screen and (min-width: 640px)', {
+                    chartPadding: 30,
+                    labelOffset: 100,
+                    labelDirection: 'explode',
+                    labelInterpolationFnc: function(value) {
+                        return value;
+                    }
+                }],
+                ['screen and (min-width: 1024px)', {
+                    labelOffset: 80,
+                    chartPadding: 20
+                }]
+            ];
+            var chart = new Chartist.Pie('#chartPengujian', dataChart, settingChart, responsiveOptions);
+        }
+    });
 </script>
 <script type="text/javascript">
     $(document).ready(function() {

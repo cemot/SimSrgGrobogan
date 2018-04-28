@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+use Illuminate\Database\Capsule\Manager as DB;
 
 class AjaxAPI extends CI_Controller {
 
@@ -46,6 +47,28 @@ class AjaxAPI extends CI_Controller {
 			// ),
 			'labels' => $data->pluck('tanggal'),
 			'series' => $data->pluck('harga'),
+        );
+        echo json_encode($json);
+    }
+
+    public function getDataRekapKecamatan()
+    {
+        $data = M_Pengujian::select('kecamatan', DB::raw('count(*) as jumlah'))->join('barang', 'pengujian.id_barang', 'barang.id_barang')->join('users', 'id', 'id_petani')->where('hsl_pengujian', 'Diterima')->groupBy('kecamatan')->get();
+        // dd('<pre>'.$data.'</pre>');
+        $json = array(
+			'labels' => $data->pluck('kecamatan'),
+			'series' => $data->pluck('jumlah'),
+        );
+        echo json_encode($json);
+    }
+
+    public function getDataRekapPengujian()
+    {
+        $data = M_Pengujian::select('hsl_pengujian', DB::raw('count(*) as jumlah'))->groupBy('hsl_pengujian')->get();
+        // dd('<pre>'.$data.'</pre>');
+        $json = array(
+			'labels' => $data->pluck('hsl_pengujian'),
+			'series' => $data->pluck('jumlah'),
         );
         echo json_encode($json);
     }

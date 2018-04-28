@@ -125,52 +125,10 @@
             </ul>
         </div>
     </li>
-    <!-- <li>
-        <a data-toggle="collapse" href="#laporangd">
-            <i class="material-icons">chrome_reader_mode</i>
-            <p> Laporan Gudang
-                <b class="caret"></b>
-            </p>
+    <li class="<?php if($this->uri->segment(2) == "rekap"){ echo "active"; } ?>">
+        <a href="<?php echo base_url('pengelola/rekap'); ?>">
+            <i class="material-icons">dashboard</i>
+            <p> Rekap Hasil Pengujian </p>
         </a>
-        <div class="collapse" id="laporangd">
-            <ul class="nav">
-                <li>
-                    <a href="#">
-                        <span class="sidebar-mini"> DL </span>
-                        <span class="sidebar-normal"> Daftar Laporan</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="sidebar-mini"> + </span>
-                        <span class="sidebar-normal"> Tambah Laporan </span>
-                    </a>
-                </li>
-            </ul>
-        </div>
     </li>
-    <li>
-        <a data-toggle="collapse" href="#rekapHU">
-            <i class="material-icons">assignment</i>
-            <p> Rekapitulasi Hasil Uji
-                <b class="caret"></b>
-            </p>
-        </a>
-        <div class="collapse" id="rekapHU">
-            <ul class="nav">
-                <li>
-                    <a href="#">
-                        <span class="sidebar-mini"> DR </span>
-                        <span class="sidebar-normal"> Daftar Rekapitulasi</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="sidebar-mini"> + </span>
-                        <span class="sidebar-normal"> Tambah User </span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </li> -->
 </ul>

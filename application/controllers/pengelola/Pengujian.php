@@ -187,4 +187,11 @@ class Pengujian extends CI_Controller {
         }
         redirect('pengelola/pengujian');
     }
+
+    public function rekapitulasi()
+    {
+        $data['sidebar'] = 'pengelola/sidebar';
+        $data['content'] = 'pengelola/rekapitulasi';
+        $this->load->view('layouts/app', $data);
+    }
 }
