@@ -41,6 +41,7 @@ class Gudang extends CI_Controller {
                 $gudang = M_Gudang::create([
                     'nama' => $this->input->post('nama'),
                     'kapasitas' => $this->input->post('kapasitas'),
+                    'alamat' => empty($this->input->post('alamat')) ? NULL : $this->input->post('alamat'),
                     'id_pengelola' => $this->session->id
                 ]);
 
@@ -94,6 +95,7 @@ class Gudang extends CI_Controller {
                 $gudang = M_Gudang::find($this->input->post('id_gudang'));
                 $gudang->nama = $this->input->post('nama');
                 $gudang->kapasitas = $this->input->post('kapasitas');
+                $gudang->alamat = empty($this->input->post('alamat')) ? NULL : $this->input->post('alamat');
                 $gudang->save();
 
                 if($gudang) {

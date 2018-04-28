@@ -169,7 +169,7 @@
 				<tr>
 					<td width="250px">LOKASI GUDANG / <i>Warehouse Address</i></td>
 					<td>:</td>
-					<td><?php echo $resi->pengujian->gudang->nama ?></td>
+					<td><?php echo $resi->pengujian->gudang->alamat ?></td>
 				</tr>
 			</table>
 		</div>

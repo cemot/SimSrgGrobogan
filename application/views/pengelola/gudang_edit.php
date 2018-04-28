@@ -27,6 +27,15 @@
                         </div>
                     </div>
                     <div class="row">
+                        <label class="col-md-2 label-on-left">Alamat Gudang</label>
+                        <div class="col-md-10">
+                            <div class="form-group label-floating is-empty">
+                                <label class="control-label"></label>
+                                <input type="text" class="form-control" name="alamat" value="<?php echo $gudang->alamat; ?>"  required>
+                            <span class="material-input"></span></div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <label class="col-md-2"></label>
                         <div class="col-md-10">
                             <div class="form-group form-button text-center">
