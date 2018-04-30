@@ -41,7 +41,7 @@
 			<p class="a1"><u>Resi Gudang / Warehouse Receipt</u></p>
 			<p class="a2">DOKUMEN BUKTI KEPEMILIKAN / <i>PROOF OF OWNERSHIP DOCUMENT</i></p>
 			<br>
-			<p class="a3">Nomor / Number : [nomor]</p>
+			<p class="a3">Nomor / Number : <?php echo $resi->no_resi ?></p>
 
 		</div>
 	</div>
@@ -158,7 +158,7 @@
 				<tr>
 					<td width="320px">BIAYA PENYIMPANAN/ <i>Rate of Storage and Handling Charges</i> </td>
 					<td>:</td>
-					<td>Rp. </td>
+					<td>Rp. <?php echo $resi->biaya_penyimpanan ?></td>
 				</tr>
 			</table>
 		</div>
@@ -181,17 +181,17 @@
 				<tr>
 					<td width="250px">NOMOR POLIS/ <i>Policy Number</i></td>
 					<td>:</td>
-					<td>[nomor polis]</td>
+					<td><?php echo $resi->no_polis ?></td>
 				</tr>
 				<tr>
 					<td>MASA BERLAKU/ <i>Valid Period</i></td>
 					<td>:</td>
-					<td>[masa berlaku]</td>
+					<td><?php echo date("d M Y",strtotime($resi->polis_start)) ?> - <?php echo date("d M Y",strtotime($resi->polis_end)) ?></td>
 				</tr>
 				<tr>
 					<td>NAMA PERUSAHAAN ASURANSI/ <i>Insurance Company</i></td>
 					<td>:</td>
-					<td>[nama perusahaan]</td>
+					<td><?php echo $resi->polis_asuransi ?></td>
 				</tr>
 			</table>
 		</div>

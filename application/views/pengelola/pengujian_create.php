@@ -60,6 +60,34 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row" id="pilKelasBrg" style="visibility: hidden;">
+                            <label class="col-md-4 label-on-left">Kelas Barang</label>
+                            <div class="col-md-8">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                    <select class="selectpicker" data-style="select-with-transition" id="kelas_barang" name="kelas_barang" required="">
+                                        <option disabled>Pilih Kelas Barang</option>
+                                        <?php
+                                            $kelas_barang = [1,2,3];
+                                            foreach ($kelas_barang as $kelas_barang) :
+                                        ?>
+                                         <option value="<?php echo $kelas_barang ?>">
+                                            <?php echo $kelas_barang; ?>
+                                        </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                <span class="material-input"></span></div>
+                            </div>
+                        </div>
+                        <div class="row" id="biaya_penyimpanan" style="visibility: hidden;">
+                            <label class="col-md-4 label-on-left">Biaya Penyimpanan</label>
+                            <div class="col-md-8">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                    <input class="form-control" type="number" id="biaya_penyimpanan" name="biaya_penyimpanan" placeholder="contoh : 8000">
+                                <span class="material-input"></span></div>
+                            </div>
+                        </div>
                         <div class="row harga" style="visibility: hidden;">
                             <label class="col-md-4 label-on-left"></label>
                             <div class="col-md-8">
@@ -118,6 +146,45 @@
                                         </option>
                                         <?php endforeach; ?>
                                     </select>
+                                <span class="material-input"></span></div>
+                            </div>
+                        </div>
+                        <div class="row polis" style="visibility: hidden;">
+                            <label class="col-md-4 label-on-left"></label>
+                            <div class="col-md-8">
+                                <h3>Polis</h3>
+                            </div>
+                        </div>
+                        <div class="row polis" style="visibility: hidden;">
+                            <label class="col-md-4 label-on-left">No Polis</label>
+                            <div class="col-md-8">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                    <input class="form-control" type="text" id="no_polis" name="no_polis" placeholder="contoh : 407.22.44" required="">
+                                <span class="material-input"></span></div>
+                            </div>
+                        </div>
+                        <div class="row polis" style="visibility: hidden;">
+                            <label class="col-md-4 label-on-left">Perusahaan Asuransi</label>
+                            <div class="col-md-8">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                    <input class="form-control" type="text" id="polis_asuransi" name="polis_asuransi" placeholder="contoh : Asuransi Jasindo" required="">
+                                <span class="material-input"></span></div>
+                            </div>
+                        </div>
+                        <div class="row polis" style="visibility: hidden;">
+                            <label class="col-md-4 label-on-left">Periode Polis</label>
+                            <div class="col-md-4">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                    <input class="form-control datepicker_tgl" type="text" id="polis_start" name="polis_start" placeholder="Mulai Polis" required="">
+                                <span class="material-input"></span></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                    <input class="form-control datepicker_tgl" type="text" id="polis_end" name="polis_end" placeholder="Akhir Polis" required="">
                                 <span class="material-input"></span></div>
                             </div>
                         </div>

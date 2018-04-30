@@ -44,7 +44,6 @@ class Pengujian extends CI_Controller {
 				$this->form_validation->set_rules('harga_barang', 'Harga Barang', 'required');
 				$this->form_validation->set_rules('satuan_barang', 'Satuan Barang', 'required');
 			}
-
             if ($this->form_validation->run() == FALSE) {
                 // dd(validation_errors());
 				$this->session->set_flashdata('class', 'danger');
@@ -76,9 +75,15 @@ class Pengujian extends CI_Controller {
                     $resi = M_Resi::create([
                         'no_resi' => $this->input->post('no_resi'),
                         'id_pengujian' => $pengujian->id_pengujian,
+						'biaya_penyimpanan' => empty($this->input->post('biaya_penyimpanan')) ? NULL : $this->input->post('biaya_penyimpanan'),
+						'kelas_barang' => empty($this->input->post('no_polis')) ? NULL : $this->input->post('kelas_barang'),
                         'tgl_penerbitan' => date("Y-m-d"),
                         'masa_aktif' => $this->input->post('masa_aktif'),
                         'jatuh_tempo' =>  date("Y-m-d", strtotime("+". $this->input->post('masa_aktif') ." months", strtotime(date("Y-m-d")))),
+						'no_polis' => empty($this->input->post('no_polis')) ? NULL : $this->input->post('no_polis'),
+						'polis_asuransi' => empty($this->input->post('polis_asuransi')) ? NULL : $this->input->post('polis_asuransi'),
+						'polis_start' => date("Y-m-d", strtotime($this->input->post('polis_start'))),
+						'polis_end' => date("Y-m-d", strtotime($this->input->post('polis_end'))),
                     ]);
 
                 }
@@ -143,8 +148,14 @@ class Pengujian extends CI_Controller {
                     $resi = M_Resi::find($pengujian->resi->first()->id_resi);
                     // dd($resi);
                     $resi->no_resi = $this->input->post('no_resi');
+					$resi->biaya_penyimpanan = empty($this->input->post('biaya_penyimpanan')) ? NULL : $this->input->post('biaya_penyimpanan');
+					$resi->kelas_barang = empty($this->input->post('no_polis')) ? NULL : $this->input->post('kelas_barang');
                     $resi->masa_aktif = $this->input->post('masa_aktif');
                     $resi->jatuh_tempo = date("Y-m-d", strtotime("+". $this->input->post('masa_aktif') ." months", strtotime($resi->tgl_penerbitan)));
+					$resi->no_polis = empty($this->input->post('no_polis')) ? NULL : $this->input->post('no_polis');
+					$resi->polis_asuransi = empty($this->input->post('polis_asuransi')) ? NULL : $this->input->post('polis_asuransi');
+					$resi->polis_start = date("Y-m-d", strtotime($this->input->post('polis_start')));
+					$resi->polis_end = date("Y-m-d", strtotime($this->input->post('polis_end')));
                     $resi->save();
                 } else {
                     $harga = M_Harga::destroy($pengujian->harga->id_harga);

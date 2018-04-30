@@ -31,7 +31,7 @@ class Resi extends CI_Controller {
         if (!$data['resi']) {
             redirect(base_url('pengelola/resi'));
         } else {
-            $this->load->view('pengelola/resi_cetak', $data);
+            $this->load->view('layouts/resi_cetak', $data);
         }
         // $this->pdf->setPaper('A4', 'potrait');
         // $this->pdf->filename = "laporan-resi.pdf";

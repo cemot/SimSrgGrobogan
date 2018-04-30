@@ -65,22 +65,40 @@
     $("#hsl_pengujian").change(function() {
         if ($("#hsl_pengujian").val() == 'Diterima') {
             $("#id_gudang").prop('required', true);
+            $("#kelas_barang").prop('required', true);
+            $("#biaya_penyimpanan").prop('required', true);
             $("#satuan_barang").prop('required', true);
             $("#harga_barang").prop('required', true);
             $("#no_resi").prop('required', true);
             $("#masa_aktif").prop('required', true);
+            $("#no_polis").prop('required', true);
+            $("#polis_start").prop('required', true);
+            $("#polis_end").prop('required', true);
+            $("#polis_asuransi").prop('required', true);
             $("#pilGudang").css('visibility', 'visible');
+            $("#pilKelasBrg").css('visibility', 'visible');
+            $("#biaya_penyimpanan").css('visibility', 'visible');
             $(".harga").css('visibility', 'visible');
             $(".resi").css('visibility', 'visible');
+            $(".polis").css('visibility', 'visible');
         } else {
             $("#id_gudang").prop('required', false);
+            $("#kelas_barang").prop('required', false);
+            $("#biaya_penyimpanan").prop('required', false);
             $("#satuan_barang").prop('required', false);
             $("#harga_barang").prop('required', false);
             $("#no_resi").prop('required', false);
             $("#masa_aktif").prop('required', false);
+            $("#no_polis").prop('required', false);
+            $("#polis_start").prop('required', false);
+            $("#polis_end").prop('required', false);
+            $("#polis_asuransi").prop('required', false);
             $("#pilGudang").css('visibility', 'hidden');
+            $("#pilKelasBrg").css('visibility', 'hidden');
+            $("#biaya_penyimpanan").css('visibility', 'hidden');
             $(".harga").css('visibility', 'hidden');
             $(".resi").css('visibility', 'hidden');
+            $(".polis").css('visibility', 'hidden');
         }
     });
 </script>
@@ -233,6 +251,23 @@
             locale: 'id',
             minDate: today,
             maxDate: new Date(new Date().setDate(date.getDate() + 14)),
+            icons: {
+                time: "fa fa-clock-o",
+                date: "fa fa-calendar",
+                up: "fa fa-chevron-up",
+                down: "fa fa-chevron-down",
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-clock-o',
+                clear: 'fa fa-trash',
+                close: 'fa fa-remove'
+            }
+        });
+
+        $('.datepicker_tgl').datetimepicker({
+            format: 'MM/DD/YYYY',
+            locale: 'id',
+            maxDate: today,
             icons: {
                 time: "fa fa-clock-o",
                 date: "fa fa-calendar",

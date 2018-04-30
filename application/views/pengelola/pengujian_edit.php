@@ -32,21 +32,25 @@
                                     <label class="control-label"></label>
                                     <select class="selectpicker" data-style="select-with-transition" id="hsl_pengujian" name="hsl_pengujian" required>
                                         <option disabled>Pilih Hasil Pengujian</option>
-                                        <option value="Diterima" <?php if($data->hsl_pengujian == 'Diterima'){ echo "selected";} ?>>Diterima (Lolos)</option>
-                                        <option value="Ditolak" <?php if($data->hsl_pengujian == 'Ditolak'){ echo "selected";} ?>>Ditolak (Tidak Lolos)</option>
+                                        <option value="Diterima" <?php if($data->hsl_pengujian == 'Diterima'){ echo "selected";} ?> disabled>Diterima (Lolos)</option>
+                                        <option value="Ditolak" <?php if($data->hsl_pengujian == 'Ditolak'){ echo "selected";} ?> disabled>Ditolak (Tidak Lolos)</option>
                                     </select>
                                 <span class="material-input"></span></div>
                             </div>
                         </div>
-                        <div class="row" id="pilGudang" style="visibility: <?php if($data->gudang){ echo 'visible';} else { echo 'hidden'; } ?>">
+                        <div class="row" id="pilGudang" style="visibility: <?php if($data->hsl_pengujian == 'Diterima'){ echo 'visible';} else { echo 'hidden'; } ?>">
                             <label class="col-md-4 label-on-left">Gudang</label>
                             <div class="col-md-8">
                                 <div class="form-group label-floating">
                                     <select class="form-control select2" data-style="select-with-transition" id="id_gudang" name="id_gudang" required="">
                                         <option disabled>Pilih Gudang</option>
                                         <?php foreach ($gudang as $gudang): ?>
-                                            <option value="<?php echo $gudang->id_gudang ?>" <?php ($gudang->id_gudang == $data->gudang->id_gudang ? 'selected' : ''); ?>>
-                                                <?php echo $gudang->id_gudang . " | " .$gudang->nama ;?>        
+                                            <option value="<?php echo $gudang->id_gudang ?>"
+                                                <?php if ($data->gudang) : ?>
+                                                    <?php ($gudang->id_gudang == $data->gudang->id_gudang ? 'selected' : ''); ?>
+                                                <?php endif; ?>
+                                                >
+                                                <?php echo $gudang->id_gudang . " | " .$gudang->nama ;?>
                                             </option>
                                         <?php endforeach ;?>
                                     </select>
@@ -54,13 +58,45 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row harga" style="visibility: <?php if($data->harga){ echo 'visible';} else { echo 'hidden'; } ?>;">
+                        <div class="row" id="pilKelasBrg" style="visibility: <?php if($data->hsl_pengujian == 'Diterima'){ echo 'visible';} else { echo 'hidden'; } ?>;">
+                            <label class="col-md-4 label-on-left">Kelas Barang</label>
+                            <div class="col-md-8">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                    <select class="selectpicker" data-style="select-with-transition" id="kelas_barang" name="kelas_barang" required="">
+                                        <option disabled>Pilih Kelas Barang</option>
+                                        <?php
+                                            $kelas_barang = [1,2,3];
+                                            foreach ($kelas_barang as $kelas_barang) :
+                                        ?>
+                                         <option value="<?php echo $kelas_barang ?>"
+                                            <?php if($data->hsl_pengujian == 'Diterima') : ?>
+                                                <?php if($data->resi->first()->kelas_barang == $kelas_barang) { echo 'selected'; } ?>
+                                            <?php endif; ?>
+                                        >
+                                            <?php echo $kelas_barang; ?>
+                                        </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                <span class="material-input"></span></div>
+                            </div>
+                        </div>
+                        <div class="row" id="biaya_penyimpanan" style="visibility: <?php if($data->hsl_pengujian == 'Diterima'){ echo 'visible';} else { echo 'hidden'; } ?>;">
+                            <label class="col-md-4 label-on-left">Biaya Penyimpanan</label>
+                            <div class="col-md-8">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                    <input class="form-control" type="number" id="biaya_penyimpanan" name="biaya_penyimpanan" placeholder="contoh : 8000" value="<?php if($data->hsl_pengujian == 'Diterima'){ echo $data->resi->first()->biaya_penyimpanan;} ?>" required="">
+                                <span class="material-input"></span></div>
+                            </div>
+                        </div>
+                        <div class="row harga" style="visibility: <?php if($data->hsl_pengujian == 'Diterima'){ echo 'visible';} else { echo 'hidden'; } ?>;">
                             <label class="col-md-4 label-on-left"></label>
                             <div class="col-md-8">
                                 <h3>Harga</h3>
                             </div>
                         </div>
-                        <div class="row harga" style="visibility: <?php if($data->harga){ echo 'visible';} else { echo 'hidden'; } ?>;">
+                        <div class="row harga" style="visibility: <?php if($data->hsl_pengujian == 'Diterima'){ echo 'visible';} else { echo 'hidden'; } ?>;">
                             <label class="col-md-4 label-on-left">Satuan Barang</label>
                             <div class="col-md-8">
                                 <div class="form-group label-floating is-empty">
@@ -72,46 +108,89 @@
                                 <span class="material-input"></span></div>
                             </div>
                         </div>
-                        <div class="row harga" style="visibility: <?php if($data->harga){ echo 'visible';} else { echo 'hidden'; } ?>;">
+                        <div class="row harga" style="visibility: <?php if($data->hsl_pengujian == 'Diterima'){ echo 'visible';} else { echo 'hidden'; } ?>;">
                             <label class="col-md-4 label-on-left">Harga Barang (kg)</label>
                             <div class="col-md-8">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <input class="form-control" type="text" id="harga_barang" name="harga_barang" value="<?php echo $data->harga->harga_barang ?>" required="">
+                                    <input class="form-control" type="text" id="harga_barang" name="harga_barang" value="<?php if($data->hsl_pengujian == 'Diterima'){ echo $data->harga->harga_barang;} ?>" required="">
                                 <span class="material-input"></span></div>
                             </div>
                         </div>
-                        <div class="row resi" style="visibility: <?php if($data->resi){ echo 'visible';} else { echo 'hidden'; } ?>;">
+                        <div class="row resi" style="visibility: <?php if($data->hsl_pengujian == 'Diterima'){ echo 'visible';} else { echo 'hidden'; } ?>;">
                             <label class="col-md-4 label-on-left"></label>
                             <div class="col-md-8">
                                 <h3>Resi</h3>
                             </div>
                         </div>
-                        <div class="row resi" style="visibility: <?php if($data->resi){ echo 'visible';} else { echo 'hidden'; } ?>;">
+                        <div class="row resi" style="visibility: <?php if($data->hsl_pengujian == 'Diterima'){ echo 'visible';} else { echo 'hidden'; } ?>;">
                             <label class="col-md-4 label-on-left">No Resi</label>
                             <div class="col-md-8">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <input class="form-control" type="text" id="no_resi" name="no_resi" placeholder="contoh : INV/10/2/3.2018" value="<?php echo $data->resi->first()->no_resi ?>" required="">
+                                    <input class="form-control" type="text" id="no_resi" name="no_resi" placeholder="contoh : INV/10/2/3.2018" value="<?php if($data->hsl_pengujian == 'Diterima'){ echo $data->resi->first()->no_resi;} ?>" required="">
                                 <span class="material-input"></span></div>
                             </div>
                         </div>
-                        <div class="row resi" style="visibility: <?php if($data->resi){ echo 'visible';} else { echo 'hidden'; } ?>;">
+                        <div class="row resi" style="visibility: <?php if($data->hsl_pengujian == 'Diterima'){ echo 'visible';} else { echo 'hidden'; } ?>;">
                             <label class="col-md-4 label-on-left">Masa Aktif</label>
                             <div class="col-md-8">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
                                     <select class="selectpicker" data-style="select-with-transition" id="masa_aktif" name="masa_aktif" required="">
                                         <option disabled>Pilih Satuan</option>
-                                        <?php 
+                                        <?php
                                             $masa_aktif = [3,6,9,12,15,18];
                                             foreach ($masa_aktif as $masa_aktif) :
                                         ?>
-                                            <option value="<?php echo $masa_aktif ?>" <?php if($data->resi->first()->masa_aktif == $masa_aktif) { echo 'selected'; } ?>>
-                                                <?php echo $masa_aktif.' Bulan' ;?>        
+                                            <option value="<?php echo $masa_aktif ?>"
+                                                <?php if($data->hsl_pengujian == 'Diterima') : ?>
+                                                    <?php if($data->resi->first()->masa_aktif == $masa_aktif) { echo 'selected'; } ?>
+                                                <?php endif; ?>
+                                            >
+                                                <?php echo $masa_aktif.' Bulan' ;?>
                                             </option>
                                         <?php endforeach; ?>
                                     </select>
+                                <span class="material-input"></span></div>
+                            </div>
+                        </div>
+                        <div class="row polis" style="visibility: <?php if($data->hsl_pengujian == 'Diterima'){ echo 'visible';} else { echo 'hidden'; } ?>;">
+                            <label class="col-md-4 label-on-left"></label>
+                            <div class="col-md-8">
+                                <h3>Polis</h3>
+                            </div>
+                        </div>
+                        <div class="row polis" style="visibility: <?php if($data->hsl_pengujian == 'Diterima'){ echo 'visible';} else { echo 'hidden'; } ?>;">
+                            <label class="col-md-4 label-on-left">No Polis</label>
+                            <div class="col-md-8">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                    <input class="form-control" type="text" id="no_polis" name="no_polis" placeholder="contoh : 407.22.44" value="<?php if($data->hsl_pengujian == 'Diterima'){ echo $data->resi->first()->no_polis;} ?>" required="">
+                                <span class="material-input"></span></div>
+                            </div>
+                        </div>
+                        <div class="row polis" style="visibility: <?php if($data->hsl_pengujian == 'Diterima'){ echo 'visible';} else { echo 'hidden'; } ?>;">
+                            <label class="col-md-4 label-on-left">Perusahaan Asuransi</label>
+                            <div class="col-md-8">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                    <input class="form-control" type="text" id="polis_asuransi" name="polis_asuransi" placeholder="contoh : Asuransi Jasindo" value="<?php if($data->hsl_pengujian == 'Diterima'){ echo $data->resi->first()->polis_asuransi;} ?>" required="">
+                                <span class="material-input"></span></div>
+                            </div>
+                        </div>
+                        <div class="row polis" style="visibility: <?php if($data->hsl_pengujian == 'Diterima'){ echo 'visible';} else { echo 'hidden'; } ?>;">
+                            <label class="col-md-4 label-on-left">Periode Polis</label>
+                            <div class="col-md-4">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                    <input class="form-control datepicker_tgl" type="text" id="polis_start" name="polis_start" placeholder="Mulai Polis" value="<?php if($data->hsl_pengujian == 'Diterima'){ echo $data->resi->first()->polis_start;} ?>" required="">
+                                <span class="material-input"></span></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                    <input class="form-control datepicker_tgl" type="text" id="polis_end" name="polis_end" placeholder="Akhir Polis" value="<?php if($data->hsl_pengujian == 'Diterima'){ echo $data->resi->first()->polis_end;} ?>" required="">
                                 <span class="material-input"></span></div>
                             </div>
                         </div>
