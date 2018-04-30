@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2018 at 09:24 AM
--- Server version: 10.1.25-MariaDB
--- PHP Version: 7.1.7
+-- Generation Time: Apr 30, 2018 at 02:01 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -139,6 +139,7 @@ CREATE TABLE `gudang` (
   `id_gudang` int(11) NOT NULL,
   `nama` varchar(191) NOT NULL,
   `kapasitas` int(11) NOT NULL DEFAULT '1500',
+  `alamat` text,
   `id_pengelola` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -146,13 +147,14 @@ CREATE TABLE `gudang` (
 -- Dumping data for table `gudang`
 --
 
-INSERT INTO `gudang` (`id_gudang`, `nama`, `kapasitas`, `id_pengelola`) VALUES
-(1, 'Update Gudang test Enjoy', 156, 7),
-(2, 'Gudang coba 2', 123, 3),
-(3, 'Halooow', 1, 7),
-(4, 'Gudang Sukabirus', 170, 7),
-(25, 'sasasa', 89, 7),
-(26, 'Gudang 1', 1500, 9);
+INSERT INTO `gudang` (`id_gudang`, `nama`, `kapasitas`, `alamat`, `id_pengelola`) VALUES
+(1, 'Update Gudang test Enjoy', 156, 'sidhasldhashdaskdsakld', 7),
+(2, 'Gudang coba 2', 123, NULL, 3),
+(3, 'Halooow', 1, NULL, 7),
+(4, 'Gudang Sukabirus', 170, NULL, 7),
+(25, 'sasasa', 89, NULL, 7),
+(26, 'Gudang 1', 1500, 'ovo', 9),
+(27, 'Gudang Baru yang ada ', 1500, 'Jl. Haji Saleh Komplek XX', 9);
 
 -- --------------------------------------------------------
 
@@ -271,7 +273,7 @@ CREATE TABLE `pengujian` (
 --
 
 INSERT INTO `pengujian` (`id_pengujian`, `id_pengelola`, `id_barang`, `id_gudang`, `tgl_pengujian`, `hsl_pengujian`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, NULL, '2018-03-16', 'Mantab Bro Edit', 1, NULL, NULL, NULL),
+(1, 1, 2, NULL, '2018-03-16', 'Ditolak', 1, NULL, NULL, NULL),
 (19, 9, 3, 26, '2018-03-27', 'Diterima', 9, 9, '2018-03-27 09:34:48', '2018-03-27 09:57:02'),
 (20, 9, 4, 26, '2018-03-27', 'Diterima', 9, 9, '2018-03-27 12:57:58', '2018-04-14 17:43:47'),
 (23, 9, 6, NULL, '2018-04-15', 'Ditolak', 9, NULL, '2018-04-14 17:31:32', '2018-04-14 17:31:32'),
@@ -299,7 +301,7 @@ CREATE TABLE `resi` (
 --
 
 INSERT INTO `resi` (`id_resi`, `no_resi`, `id_pengujian`, `tgl_penerbitan`, `masa_aktif`, `jatuh_tempo`, `created_at`, `updated_at`) VALUES
-(2, 'INV/20/1111', 19, '2018-03-27', 9, '2018-12-27', '2018-03-27 09:34:49', '2018-04-14 17:46:54'),
+(2, 'INV009', 19, '2018-03-27', 9, '2018-12-27', '2018-03-27 09:34:49', '2018-04-14 17:46:54'),
 (3, 'INV/20/1092', 20, '2018-03-27', 12, '2019-03-27', '2018-03-27 12:57:58', '2018-04-14 17:45:49'),
 (4, 'INV/20/10998', 24, '2018-04-15', 3, '2018-07-15', '2018-04-14 17:37:47', '2018-04-14 17:47:11');
 
@@ -338,7 +340,7 @@ INSERT INTO `users` (`id`, `username`, `password`, `nama`, `email`, `jabatan`, `
 (7, 'demo1', '5f4dcc3b5aa765d61d8327deb882cf99', 'Demo Pengelola', 'demo1@m.c', NULL, 1, 'Jakarta', '2018-03-08', 'Gudang', NULL, '09878', '2018-03-19 09:03:50', '2018-03-19 09:03:50'),
 (8, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', 'admin@fazan.my.id', NULL, 0, 'Jakarta', '2018-03-20', 'Antamulya No 2', NULL, '08567018044', '2018-03-20 02:10:59', '2018-03-20 02:10:59'),
 (9, 'pengelola', '3c7913bc17671596a43dcb4581992bdf', 'Pengelola', 'pengelola@fazan.my.id', NULL, 1, 'Jakarta', '2018-03-20', 'Antamulya No 2', NULL, '08567018045', '2018-03-20 02:12:11', '2018-03-20 02:12:11'),
-(10, 'petani', 'd180e8e96956e056f23a05fadda0e2bd', 'Petani', 'petani@gmail.com', NULL, 4, 'Bandung', '2018-03-16', 'Antamulya No 2', NULL, '09878', '2018-03-22 03:44:57', '2018-03-22 03:44:57'),
+(10, 'petani', 'd180e8e96956e056f23a05fadda0e2bd', 'Petani', 'petani@gmail.com', NULL, 4, 'Bandung', '2018-03-16', 'Antamulya No 2', 'Kedungjati', '09878', '2018-03-22 03:44:57', '2018-03-22 03:44:57'),
 (11, 'dinas', '097dad4a551e3cb88ed7afc7a6c0de40', 'Dinas Perdagangan', 'dinas@fazan.my.id', NULL, 2, 'Jakarta', '0000-00-00', 'dsfsfsf', NULL, '324234', '2018-04-08 23:59:48', '2018-04-08 23:59:48'),
 (12, 'bank', 'bd5af1f610a12434c9128e4a399cef8a', 'Bank', 'bank@fazan.my.id', NULL, 3, 'Jakarta', '2007-05-06', 'sjabdjksdvbsakvsdasdsa', 'Kedungjati', '189879', '2018-04-09 00:46:39', '2018-04-15 07:21:08'),
 (14, 'halooo', 'b37d149d7ac13a281bc524e684c73b61', 'haloo', 'halo@gmail.com', NULL, 4, 'haloo', '2017-09-03', 'dssdfsfdsfdsf', 'Kedungjati', '0812315456', '2018-04-15 07:10:51', '2018-04-15 07:23:41');
@@ -445,61 +447,73 @@ ALTER TABLE `users`
 --
 ALTER TABLE `artikel`
   MODIFY `id_artikel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
 --
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
   MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT for table `catatan`
 --
 ALTER TABLE `catatan`
   MODIFY `id_catatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
   MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `gudang`
 --
 ALTER TABLE `gudang`
-  MODIFY `id_gudang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_gudang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
 --
 -- AUTO_INCREMENT for table `harga`
 --
 ALTER TABLE `harga`
   MODIFY `id_harga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
 -- AUTO_INCREMENT for table `komoditi_harga`
 --
 ALTER TABLE `komoditi_harga`
   MODIFY `id_komoditi_harga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `komoditi_jenis`
 --
 ALTER TABLE `komoditi_jenis`
   MODIFY `id_komoditi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `pengujian`
 --
 ALTER TABLE `pengujian`
   MODIFY `id_pengujian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
 --
 -- AUTO_INCREMENT for table `resi`
 --
 ALTER TABLE `resi`
   MODIFY `id_resi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
 --
 -- Constraints for dumped tables
 --

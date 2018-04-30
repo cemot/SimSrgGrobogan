@@ -20,6 +20,19 @@ class Resi extends CI_Controller {
         $this->load->view('layouts/app', $data);
 	}
 
+    public function cetak_resi($no_resi)
+    {
+        $own = M_Pengujian::select('id_pengujian')->whereIn('id_barang', M_Barang::select('id_barang')->where('id_petani', $this->session->id))->get();
+        $data['resi'] = M_Resi::whereIn('id_pengujian', $own)->where('no_resi', $no_resi)->get()->first();
+        // dd($data['data']);
+        if (!$data['resi']) {
+            dd('sampe sini');
+            redirect(base_url('petani/resi'));
+        } else {
+            $this->load->view('layouts/resi_cetak', $data);
+        }
+    }
+
 	public function create()
     {
         //

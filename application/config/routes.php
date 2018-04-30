@@ -143,6 +143,7 @@ $route['bank/profile'] = 'akun/profile';
 $route['bank/profile/update'] = 'akun/update_profile';
 $route['bank/artikel'] = 'bank/artikel/index';
 $route['bank/artikel/(:any)'] = 'bank/artikel/show/$1';
+$route['bank/resi/cetak/(:any)'] = 'bank/resi/cetak_resi/$1';
 
 //PETANI
 $route['petani'] = 'akun/dashboard';
@@ -153,3 +154,4 @@ $route['petani/artikel'] = 'petani/artikel/index';
 $route['petani/artikel/(:any)'] = 'petani/artikel/show/$1';
 $route['petani/pengujian'] = 'petani/pengujian/index';
 $route['petani/pengujian/detail/(:any)'] = 'petani/pengujian/show/$1';
+$route['petani/resi/cetak/(:any)'] = 'petani/resi/cetak_resi/$1';
