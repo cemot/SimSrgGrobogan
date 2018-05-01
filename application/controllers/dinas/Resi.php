@@ -19,6 +19,16 @@ class Resi extends CI_Controller {
         $this->load->view('layouts/app', $data);
 	}
 
+	public function cetak_resi($id_resi)
+    {
+        $data['resi'] = M_Resi::where('id_resi', $id_resi)->get()->first();
+        if (!$data['resi']) {
+            redirect(base_url('dinas/resi'));
+        } else {
+            $this->load->view('layouts/resi_cetak', $data);
+        }
+    }
+
 	public function create()
     {
         //

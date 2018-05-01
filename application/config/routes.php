@@ -117,6 +117,9 @@ $route['pengelola/pengujian/rekap'] = 'pengelola/pengujian/rekapitulasi';
 $route['pengelola/rekap'] = 'pengelola/pengujian/rekapitulasi';
 $route['pengelola/resi'] = 'pengelola/resi/index';
 $route['pengelola/resi/cetak/(:any)'] = 'pengelola/resi/cetak_resi/$1';
+$route['pengelola/resi/perpanjang/(:any)/tolak'] = 'pengelola/resi/tolak_perpanjangan/$1';
+$route['pengelola/resi/perpanjang/(:any)/terima'] = 'pengelola/resi/terima_perpanjangan/$1';
+$route['pengelola/resi/perpanjang/store'] = 'pengelola/resi/store_perpanjangan';
 $route['pengelola/komoditi'] = 'pengelola/komoditi/index';
 $route['pengelola/komoditi/create_harga'] = 'pengelola/komoditi/create_harga';
 $route['pengelola/komoditi/store_harga'] = 'pengelola/komoditi/store_harga';
@@ -135,6 +138,7 @@ $route['dinas/artikel'] = 'dinas/artikel/index';
 $route['dinas/artikel/(:any)'] = 'dinas/artikel/show/$1';
 $route['dinas/gudang'] = 'dinas/gudang/index';
 $route['dinas/gudang/detail/(:any)'] = 'dinas/gudang/show/$1';
+$route['dinas/resi/cetak/(:any)'] = 'dinas/resi/cetak_resi/$1';
 
 //BANK
 $route['bank'] = 'akun/dashboard';
@@ -144,6 +148,8 @@ $route['bank/profile/update'] = 'akun/update_profile';
 $route['bank/artikel'] = 'bank/artikel/index';
 $route['bank/artikel/(:any)'] = 'bank/artikel/show/$1';
 $route['bank/resi/cetak/(:any)'] = 'bank/resi/cetak_resi/$1';
+$route['bank/resi/gadai/(:any)/tolak'] = 'bank/resi/tolak_gadai/$1';
+$route['bank/resi/gadai/(:any)/terima'] = 'bank/resi/terima_gadai/$1';
 
 //PETANI
 $route['petani'] = 'akun/dashboard';
@@ -155,3 +161,5 @@ $route['petani/artikel/(:any)'] = 'petani/artikel/show/$1';
 $route['petani/pengujian'] = 'petani/pengujian/index';
 $route['petani/pengujian/detail/(:any)'] = 'petani/pengujian/show/$1';
 $route['petani/resi/cetak/(:any)'] = 'petani/resi/cetak_resi/$1';
+$route['petani/resi/gadai/(:any)'] = 'petani/resi/gadai_resi/$1';
+$route['petani/resi/perpanjang/(:any)'] = 'petani/resi/perpanjang_resi/$1';

@@ -34,5 +34,4 @@ class M_Barang extends Eloquent
     {
         return $this->hasOne('M_Komoditi', 'id_komoditi', 'id_komoditi');
     }
-
 }

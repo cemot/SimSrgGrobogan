@@ -44,4 +44,14 @@ class M_User extends Eloquent
         return $this->hasMany('M_Komoditi', 'updated_by', 'id');
     }
 
+    public function gadai()
+    {
+        return $this->hasMany('M_Gadai', 'id_pegawai', 'id');
+    }
+
+    public function perpanjangan()
+    {
+        return $this->hasMany('M_PerpanjanganResi', 'id_pengelola', 'id');
+    }
+
 }

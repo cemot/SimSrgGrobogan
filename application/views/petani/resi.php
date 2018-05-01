@@ -19,7 +19,8 @@
                                 <th>Gudang</th>
                                 <th>Masa Aktif</th>
                                 <th>Status</th>
-                                <th class="disabled-sorting text-right">Aksi</th>
+                                <th class="disabled-sorting text-center">Resi</th>
+                                <th class="disabled-sorting text-center">Aksi Gadai</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,9 +44,28 @@
                                                 ?>
                                             </span>
                                         </td>
+                                        <td class="td-actions text-center">
+                                            <a class="btn btn-info" href="<?php echo base_url('petani/resi/cetak/'.$resi->id_resi); ?>"><i class="material-icons">assignment</i> Cetak Resi</a>
+                                            <?php if(!$resi->perpanjangan) : ?>
+                                                <a class="btn btn-default" href="<?php echo base_url('petani/resi/perpanjang/'.$resi->id_resi); ?>"><i class="material-icons">assignment</i> Perpanjang Resi</a>
+                                            <?php elseif($resi->perpanjangan->status == 0) : ?>
+                                                <button class="btn btn-warning"><i class="material-icons">warning</i> Perpanjangan : Pending</button>
+                                            <?php elseif($resi->perpanjangan->status == 1) : ?>
+                                                <button class="btn btn-danger"><i class="material-icons">clear</i> Perpanjangan : Ditolak</button>
+                                            <?php else : ?>
+                                                <button class="btn btn-success"><i class="material-icons">check</i> Perpanjangan : Diterima</button>
+                                            <?php endif; ?>
+                                        </td>
                                         <td class="td-actions text-right">
-                                            <a class="btn btn-info" href="<?php echo base_url('petani/resi/cetak/'.$resi->no_resi); ?>"><i class="material-icons">assignment</i> Cetak Resi</a>
-                                            <a class="btn btn-danger" href="<?php echo base_url('pengelola/resi/gadai/'.$resi->no_resi); ?>"><i class="material-icons">money</i> Gadaikan</a>
+                                            <?php if(!$resi->gadai) : ?>
+                                                <a class="btn btn-default" href="<?php echo base_url('petani/resi/gadai/'.$resi->id_resi); ?>"><i class="material-icons">money</i> Gadai Resi</a>
+                                            <?php elseif($resi->gadai->status == 0) : ?>
+                                                <button class="btn btn-warning"><i class="material-icons">warning</i> Gadai : Pending</button>
+                                            <?php elseif($resi->gadai->status == 1) : ?>
+                                                <button class="btn btn-danger"><i class="material-icons">clear</i> Gadai : Ditolak</button>
+                                            <?php else : ?>
+                                                <button class="btn btn-success"><i class="material-icons">check</i> Gadai : Diterima</button>
+                                            <?php endif; ?>
                                         </td>
                                     </tr>
                             <?php endforeach ;?>

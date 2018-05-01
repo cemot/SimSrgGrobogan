@@ -19,7 +19,8 @@
                                 <th>Gudang</th>
                                 <th>Masa Aktif</th>
                                 <th>Status</th>
-                                <th class="disabled-sorting text-right">Aksi</th>
+                                <th class="disabled-sorting text-right">Resi</th>
+                                <th class="disabled-sorting text-right">Aksi Perpanjangan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -34,20 +35,29 @@
                                         <td><?php echo date("d F Y", strtotime($resi->tgl_penerbitan)). ' - '.date("d F Y", strtotime($resi->jatuh_tempo)) ?></td>
                                         <td>
                                             <span class="label label-<?php if($resi->jatuh_tempo >= date("Y-m-d")){ echo 'success';} else { echo 'danger';} ?>">
-                                                <?php 
-                                                    if($resi->jatuh_tempo >= date("Y-m-d")){ 
+                                                <?php
+                                                    if($resi->jatuh_tempo >= date("Y-m-d")){
                                                         echo 'Aktif';
-                                                    } else { 
+                                                    } else {
                                                         echo 'Tidak Aktif';
                                                     }
                                                 ?>
                                             </span>
                                         </td>
                                         <td class="td-actions text-right">
-                                            <!-- <button class="btn btn-info" onclick="belumAda()"><i class="material-icons">assignment</i> Cetak Resi</button> -->
-                                            <a class="btn btn-info" href="<?php echo base_url('pengelola/resi/cetak/'.$resi->no_resi); ?>"><i class="material-icons">assignment</i> Cetak Resi</a>
-                                            <!-- <a class="btn btn-success" href="<?php echo base_url('pengelola/pengujian/edit/'.$resi->no_resi); ?>"><i class="material-icons">mode_edit</i> Ubah</a> -->
-                                            <!-- <a class="btn btn-danger" href="<?php echo base_url('pengelola/pengujian/delete/'.$resi->id_resi); ?>"><i class="material-icons">close</i> Hapus</a> -->
+                                            <a class="btn btn-info" href="<?php echo base_url('pengelola/resi/cetak/'.$resi->id_resi); ?>"><i class="material-icons">assignment</i> Cetak Resi</a>
+                                        </td>
+                                        <td class="td-actions text-right">
+                                            <?php if(!$resi->perpanjangan) : ?>
+                                                <button class="btn btn-default"><i class="material-icons">warning</i> Perpanjangan : Belum ada</button>
+                                            <?php elseif($resi->perpanjangan->status == 0) : ?>
+                                                <a class="btn btn-danger" href="<?php echo base_url('pengelola/resi/perpanjang/'.$resi->perpanjangan->id_perpanjangan.'/tolak'); ?>"><i class="material-icons">money</i> Tolak</a>
+                                                <a class="btn btn-success" href="<?php echo base_url('pengelola/resi/perpanjang/'.$resi->perpanjangan->id_perpanjangan.'/terima'); ?>"><i class="material-icons">money</i> Terima</a>
+                                            <?php elseif($resi->perpanjangan->status == 1) : ?>
+                                                <button class="btn btn-danger"><i class="material-icons">clear</i> Perpanjangan : Ditolak</button>
+                                            <?php else : ?>
+                                                <button class="btn btn-success"><i class="material-icons">check</i> Perpanjangan : Diterima</button>
+                                            <?php endif; ?>
                                         </td>
                                     </tr>
                             <?php endforeach ;?>

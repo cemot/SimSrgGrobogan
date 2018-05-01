@@ -92,7 +92,7 @@
         </a>
         <div class="collapse <?php if($this->uri->segment(2) == "resi"){ echo "in"; } ?>" id="resigd">
             <ul class="nav">
-                <li class="<?php if($this->uri->segment(2) == "resi" && (empty($this->uri->segment(3)) || $this->uri->segment(3) == "edit")){ echo "active"; } ?>">
+                <li class="<?php if($this->uri->segment(2) == "resi" && (empty($this->uri->segment(3)) || $this->uri->segment(3) == "perpanjang")){ echo "active"; } ?>">
                     <a href="<?php echo base_url('pengelola/resi'); ?>">
                         <span class="sidebar-mini"> DR </span>
                         <span class="sidebar-normal"> Daftar Resi</span>

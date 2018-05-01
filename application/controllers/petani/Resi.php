@@ -20,10 +20,10 @@ class Resi extends CI_Controller {
         $this->load->view('layouts/app', $data);
 	}
 
-    public function cetak_resi($no_resi)
+    public function cetak_resi($id_resi)
     {
         $own = M_Pengujian::select('id_pengujian')->whereIn('id_barang', M_Barang::select('id_barang')->where('id_petani', $this->session->id))->get();
-        $data['resi'] = M_Resi::whereIn('id_pengujian', $own)->where('no_resi', $no_resi)->get()->first();
+        $data['resi'] = M_Resi::whereIn('id_pengujian', $own)->where('id_resi', $id_resi)->get()->first();
         // dd($data['data']);
         if (!$data['resi']) {
             dd('sampe sini');
@@ -32,6 +32,60 @@ class Resi extends CI_Controller {
             $this->load->view('layouts/resi_cetak', $data);
         }
     }
+
+	public function gadai_resi($id_resi)
+	{
+		$exist = M_Gadai::where('id_resi', $id_resi)->get()->first();
+		if ($exist) {
+			$this->session->set_flashdata('class', 'danger');
+			$this->session->set_flashdata('message', 'Gadai Resi Sudah Ada!');
+            redirect('petani/resi');
+        } else {
+			$gadai = M_Gadai::create([
+				'id_resi' => $id_resi,
+				'tgl_pengajuan' =>  date("Y-m-d"),
+				'status' => 0,
+				'id_pegawai' => NULL,
+				'tgl_penerimaan' => NULL
+			]);
+
+			if($gadai) {
+				$this->session->set_flashdata('class', 'success');
+				$this->session->set_flashdata('message', 'Gadai Resi Berhasil Disimpan');
+			} else {
+				$this->session->set_flashdata('class', 'danger');
+				$this->session->set_flashdata('message', 'Gadai Resi Tidak Berhasil Disimpan');
+			}
+			redirect('petani/resi');
+        }
+	}
+
+	public function perpanjang_resi($id_resi)
+	{
+		$exist = M_PerpanjanganResi::where('id_resi', $id_resi)->get()->first();
+		if ($exist) {
+			$this->session->set_flashdata('class', 'danger');
+			$this->session->set_flashdata('message', 'Perpanjang Resi Sudah Ada!');
+            redirect('petani/resi');
+        } else {
+			$perpanjang = M_PerpanjanganResi::create([
+				'id_resi' => $id_resi,
+				'tgl_pengajuan' =>  date("Y-m-d"),
+				'status' => 0,
+				'id_pengelola' => NULL,
+				'tgl_penerimaan' => NULL
+			]);
+
+			if($perpanjang) {
+				$this->session->set_flashdata('class', 'success');
+				$this->session->set_flashdata('message', 'Perpanjang Resi  Berhasil Disimpan');
+			} else {
+				$this->session->set_flashdata('class', 'danger');
+				$this->session->set_flashdata('message', 'Perpanjang Resi Tidak Berhasil Disimpan');
+			}
+			redirect('petani/resi');
+        }
+	}
 
 	public function create()
     {

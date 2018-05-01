@@ -142,5 +142,7 @@ $autoload['model'] = array(
 	'M_Harga',
 	'M_Komoditi',
 	'M_Komoditi_Harga',
-	'M_Resi'
+	'M_Resi',
+	'M_Gadai',
+	'M_PerpanjanganResi'
 );

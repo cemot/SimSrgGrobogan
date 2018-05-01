@@ -44,7 +44,8 @@
                                             </span>
                                         </td>
                                         <td class="td-actions text-right">
-                                            <button class="btn btn-info" onclick="belumAda()"><i class="material-icons">assignment</i> Cetak Resi</button>
+                                            <a class="btn btn-info" href="<?php echo base_url('dinas/resi/cetak/'.$resi->id_resi); ?>"><i class="material-icons">assignment</i> Cetak Resi</a>
+                                            <!-- <button class="btn btn-info" onclick="belumAda()"><i class="material-icons">assignment</i> Cetak Resi</button> -->
                                             <!-- <a class="btn btn-info" href="<?php echo base_url('pengelola/resi/print/'.$resi->no_resi); ?>"><i class="material-icons">assignment</i> Cetak Resi</a> -->
                                             <!-- <a class="btn btn-success" href="<?php echo base_url('pengelola/pengujian/edit/'.$resi->no_resi); ?>"><i class="material-icons">mode_edit</i> Ubah</a> -->
                                             <!-- <a class="btn btn-danger" href="<?php echo base_url('pengelola/pengujian/delete/'.$resi->id_resi); ?>"><i class="material-icons">close</i> Hapus</a> -->

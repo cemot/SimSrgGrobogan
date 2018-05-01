@@ -22,4 +22,14 @@ class M_Resi extends Eloquent
     {
         return $this->belongsTo('M_Pengujian', 'id_pengujian', 'id_pengujian');
     }
+
+    public function gadai()
+    {
+        return $this->hasOne('M_Gadai', 'id_resi', 'id_resi');
+    }
+
+    public function perpanjangan()
+    {
+        return $this->hasOne('M_PerpanjanganResi', 'id_resi', 'id_resi');
+    }
 }
