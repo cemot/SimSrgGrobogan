@@ -106,7 +106,7 @@
 				<tr>
 					<td>KELAS BARANG/ <i>Class of Commodity</i>*)</td>
 					<td>:</td>
-					<td>[kelas barang]</td>
+					<td><?php echo $resi->kelas_barang ?></td>
 				</tr>
 			</table>
 		</div>

@@ -5,12 +5,11 @@
                 <i class="material-icons">description</i>
             </div>
             <div class="card-content">
-                <h4 class="card-title">Ubah Pengujian</h4>
+                <h4 class="card-title">Perpanjang Resi</h4>
                 <div class="row">
-                    <form class="form-horizontal" method="post" action="<?php echo base_url('pengelola/pengujian/update'); ?>">
+                    <form class="form-horizontal" method="post" action="<?php echo base_url('pengelola/resi/perpanjang/store'); ?>">
                     <div class="col-md-5 col-sm-12">
                         <div class="row">
-                            <input type="text" class="form-control" name="id_pengujian" value="<?php echo $data->id_pengujian; ?>" required readonly>
                             <label class="col-md-4 label-on-left"></label>
                             <div class="col-md-8">
                                 <h3>Data Pengujian</h3>
@@ -32,8 +31,8 @@
                                     <label class="control-label"></label>
                                     <select class="selectpicker" data-style="select-with-transition" id="hsl_pengujian" name="hsl_pengujian" required>
                                         <option disabled>Pilih Hasil Pengujian</option>
-                                        <option value="Diterima" <?php if($data->hsl_pengujian == 'Diterima'){ echo "selected";} ?> disabled>Diterima (Lolos)</option>
-                                        <option value="Ditolak" <?php if($data->hsl_pengujian == 'Ditolak'){ echo "selected";} ?> disabled>Ditolak (Tidak Lolos)</option>
+                                        <option value="Diterima" <?php if($data->hsl_pengujian == 'Diterima'){ echo "selected";} else { echo 'disabled'; } ?>>Diterima (Lolos)</option>
+                                        <option value="Ditolak" <?php if($data->hsl_pengujian == 'Ditolak'){ echo "selected";} else { echo 'disabled'; } ?> >Ditolak (Tidak Lolos)</option>
                                     </select>
                                 <span class="material-input"></span></div>
                             </div>
@@ -71,7 +70,7 @@
                                         ?>
                                          <option value="<?php echo $kelas_barang ?>"
                                             <?php if($data->hsl_pengujian == 'Diterima') : ?>
-                                                <?php if($data->resi->first()->kelas_barang == $kelas_barang) { echo 'selected'; } ?>
+                                                <?php if($data->resi->last()->kelas_barang == $kelas_barang) { echo 'selected'; } else { echo 'disabled'; }?>
                                             <?php endif; ?>
                                         >
                                             <?php echo $kelas_barang; ?>
@@ -86,7 +85,7 @@
                             <div class="col-md-8">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <input class="form-control" type="number" id="biaya_penyimpanan" name="biaya_penyimpanan" placeholder="contoh : 8000" value="<?php if($data->hsl_pengujian == 'Diterima'){ echo $data->resi->last()->biaya_penyimpanan;} ?>" required="">
+                                    <input class="form-control" type="number" id="biaya_penyimpanan" name="biaya_penyimpanan" placeholder="contoh : 8000" value="<?php if($data->hsl_pengujian == 'Diterima'){ echo $data->resi->last()->biaya_penyimpanan;} ?>" required="" readonly>
                                 <span class="material-input"></span></div>
                             </div>
                         </div>
@@ -113,7 +112,7 @@
                             <div class="col-md-8">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <input class="form-control" type="text" id="harga_barang" name="harga_barang" value="<?php if($data->hsl_pengujian == 'Diterima'){ echo $data->harga->harga_barang;} ?>" required="">
+                                    <input class="form-control" type="text" id="harga_barang" name="harga_barang" value="<?php if($data->hsl_pengujian == 'Diterima'){ echo $data->harga->harga_barang;} ?>" required="" readonly>
                                 <span class="material-input"></span></div>
                             </div>
                         </div>
@@ -128,7 +127,7 @@
                             <div class="col-md-8">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <input class="form-control" type="text" id="no_resi" name="no_resi" placeholder="contoh : INV/10/2/3.2018" value="<?php if($data->hsl_pengujian == 'Diterima'){ echo $data->resi->first()->no_resi;} ?>" required="">
+                                    <input class="form-control" type="text" id="no_resi" name="no_resi" placeholder="contoh : INV/10/2/3.2018" value="<?php if($data->hsl_pengujian == 'Diterima'){ echo $data->resi->last()->no_resi;} ?>" required="" readonly>
                                 <span class="material-input"></span></div>
                             </div>
                         </div>
@@ -145,7 +144,7 @@
                                         ?>
                                             <option value="<?php echo $masa_aktif ?>"
                                                 <?php if($data->hsl_pengujian == 'Diterima') : ?>
-                                                    <?php if($data->resi->first()->masa_aktif == $masa_aktif) { echo 'selected'; } ?>
+                                                    <?php if($data->resi->last()->masa_aktif == $masa_aktif) { echo 'selected'; } ?>
                                                 <?php endif; ?>
                                             >
                                                 <?php echo $masa_aktif.' Bulan' ;?>
@@ -166,7 +165,7 @@
                             <div class="col-md-8">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <input class="form-control" type="text" id="no_polis" name="no_polis" placeholder="contoh : 407.22.44" value="<?php if($data->hsl_pengujian == 'Diterima'){ echo $data->resi->first()->no_polis;} ?>" required="">
+                                    <input class="form-control" type="text" id="no_polis" name="no_polis" placeholder="contoh : 407.22.44" value="<?php if($data->hsl_pengujian == 'Diterima'){ echo $data->resi->last()->no_polis;} ?>" required="" readonly>
                                 <span class="material-input"></span></div>
                             </div>
                         </div>
@@ -175,7 +174,7 @@
                             <div class="col-md-8">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <input class="form-control" type="text" id="polis_asuransi" name="polis_asuransi" placeholder="contoh : Asuransi Jasindo" value="<?php if($data->hsl_pengujian == 'Diterima'){ echo $data->resi->first()->polis_asuransi;} ?>" required="">
+                                    <input class="form-control" type="text" id="polis_asuransi" name="polis_asuransi" placeholder="contoh : Asuransi Jasindo" value="<?php if($data->hsl_pengujian == 'Diterima'){ echo $data->resi->last()->polis_asuransi;} ?>" required="" readonly>
                                 <span class="material-input"></span></div>
                             </div>
                         </div>
@@ -184,13 +183,13 @@
                             <div class="col-md-4">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <input class="form-control datepicker_tgl" type="text" id="polis_start" name="polis_start" placeholder="Mulai Polis" value="<?php if($data->hsl_pengujian == 'Diterima'){ echo $data->resi->first()->polis_start;} ?>" required="">
+                                    <input class="form-control datepicker_tgl" type="text" id="polis_start" name="polis_start" placeholder="Mulai Polis" value="<?php if($data->hsl_pengujian == 'Diterima'){ echo $data->resi->last()->polis_start;} ?>" required="" readonly>
                                 <span class="material-input"></span></div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <input class="form-control datepicker_tgl" type="text" id="polis_end" name="polis_end" placeholder="Akhir Polis" value="<?php if($data->hsl_pengujian == 'Diterima'){ echo $data->resi->first()->polis_end;} ?>" required="">
+                                    <input class="form-control datepicker_tgl" type="text" id="polis_end" name="polis_end" placeholder="Akhir Polis" value="<?php if($data->hsl_pengujian == 'Diterima'){ echo $data->resi->last()->polis_end;} ?>" required="" readonly>
                                 <span class="material-input"></span></div>
                             </div>
                         </div>
@@ -223,6 +222,13 @@
                                     </select>
                                 <span class="material-input"></span></div>
                             </div>
+                        </div>
+                        <div class="row">
+                            <!-- <input type="text" class="form-control" name="id_resi" value="<?php echo $resi->id_resi; ?>" required readonly> -->
+                            <!-- <input type="text" class="form-control" name="no_resi" value="<?php echo $resi->no_resi; ?>" required readonly> -->
+                            <!-- <input type="text" class="form-control" name="id_pengujian" value="<?php echo $data->id_pengujian; ?>" required readonly> -->
+                            <input type="hidden" class="form-control" name="id_perpanjangan" value="<?php echo $id_perpanjangan; ?>" required readonly>
+                            <input type="hidden" class="form-control" name="id_barang" value="<?php echo $data->barang->id_barang; ?>" required readonly>
                         </div>
                     </div>
                 </div>

@@ -31,6 +31,7 @@ class Resi extends CI_Controller {
 			// dd($perpanjangan);
 			$resi = M_Resi::find($perpanjangan->id_resi);
 			// $data['data'] = M_Resi::find($perpanjangan->id_resi);
+			$data['resi'] = $resi;
 			$data['data'] = $resi->pengujian;
 			$data['gudang'] = M_Gudang::where('id_pengelola', $this->session->id)->get();
 	        $data['id_perpanjangan'] = $id_perpanjangan;
@@ -46,28 +47,66 @@ class Resi extends CI_Controller {
         if (!$this->input->post()) {
             redirect('/pengelola/resi');
         } else {
-			$resi = M_Resi::find($this->input->post('id_resi'));
-
-			$resi_baru = M_Resi::create([
-				'no_resi' => $this->input->post('no_resi'),
-				'id_pengujian' => $resi->id_pengujian,
-				'biaya_penyimpanan' => $resi->biaya_penyimpanan,
-				'kelas_barang' => $resi->kelas_barang,
-				'tgl_penerbitan' => date("Y-m-d"),
-				'masa_aktif' => $this->input->post('masa_aktif'),
-				'jatuh_tempo' =>  date("Y-m-d", strtotime("+". $this->input->post('masa_aktif') ." months", strtotime(date("Y-m-d")))),
-				'no_polis' => $resi->no_polis,
-				'polis_asuransi' => $resi->polis_asuransi,
-				'polis_start' => $resi->polis_start,
-				'polis_end' => $resi->polis_end,
+			$pengujian = M_Pengujian::create([
+				'id_pengelola' => $this->session->id,
+				'id_barang' => $this->input->post('id_barang'),
+				'id_gudang' => ($this->input->post('hsl_pengujian') == 'Ditolak') ? NULL : $this->input->post('id_gudang'),
+				'tgl_pengujian' => date("Y-m-d"),
+				'hsl_pengujian' => $this->input->post('hsl_pengujian'),
+				'created_by' => $this->session->id,
 			]);
+
+			$catatan = M_Catatan::create([
+				'id_pengujian' => $pengujian->id_pengujian,
+				'isi_catatan' => empty($this->input->post('isi_catatan')) ? NULL : $this->input->post('isi_catatan'),
+				'status' => $this->input->post('status'),
+			]);
+
+			if ($this->input->post('hsl_pengujian') == 'Diterima') {
+				$harga = M_Harga::create([
+					'id_pengujian' => $pengujian->id_pengujian,
+					'satuan_barang' => $this->input->post('satuan_barang'),
+					'harga_barang' => $this->input->post('harga_barang'),
+				]);
+
+				$resi = M_Resi::create([
+					'no_resi' => $this->input->post('no_resi'),
+					'id_pengujian' => $pengujian->id_pengujian,
+					'biaya_penyimpanan' => empty($this->input->post('biaya_penyimpanan')) ? NULL : $this->input->post('biaya_penyimpanan'),
+					'kelas_barang' => empty($this->input->post('no_polis')) ? NULL : $this->input->post('kelas_barang'),
+					'tgl_penerbitan' => date("Y-m-d"),
+					'masa_aktif' => $this->input->post('masa_aktif'),
+					'jatuh_tempo' =>  date("Y-m-d", strtotime("+". $this->input->post('masa_aktif') ." months", strtotime(date("Y-m-d")))),
+					'no_polis' => empty($this->input->post('no_polis')) ? NULL : $this->input->post('no_polis'),
+					'polis_asuransi' => empty($this->input->post('polis_asuransi')) ? NULL : $this->input->post('polis_asuransi'),
+					'polis_start' => date("Y-m-d", strtotime($this->input->post('polis_start'))),
+					'polis_end' => date("Y-m-d", strtotime($this->input->post('polis_end'))),
+				]);
+
+			}
+
+			// $resi = M_Resi::find($this->input->post('id_resi'));
+			//
+			// $resi_baru = M_Resi::create([
+			// 	'no_resi' => $this->input->post('no_resi'),
+			// 	'id_pengujian' => $resi->id_pengujian,
+			// 	'biaya_penyimpanan' => $resi->biaya_penyimpanan,
+			// 	'kelas_barang' => $resi->kelas_barang,
+			// 	'tgl_penerbitan' => date("Y-m-d"),
+			// 	'masa_aktif' => $this->input->post('masa_aktif'),
+			// 	'jatuh_tempo' =>  date("Y-m-d", strtotime("+". $this->input->post('masa_aktif') ." months", strtotime(date("Y-m-d")))),
+			// 	'no_polis' => $resi->no_polis,
+			// 	'polis_asuransi' => $resi->polis_asuransi,
+			// 	'polis_start' => $resi->polis_start,
+			// 	'polis_end' => $resi->polis_end,
+			// ]);
 
 			$perpanjangan = M_PerpanjanganResi::find($this->input->post('id_perpanjangan'));
 			$perpanjangan->status = 2;
 			$perpanjangan->tgl_penerimaan = date("Y-m-d");
 			$perpanjangan->id_pengelola = $this->session->id;
 
-			if($resi_baru && $perpanjangan->save()) {
+			if($pengujian && $catatan && $resi && $perpanjangan->save()) {
 				$this->session->set_flashdata('class', 'success');
 				$this->session->set_flashdata('message', 'Perpanjangan Resi Berhasil Disimpan');
 			} else {
