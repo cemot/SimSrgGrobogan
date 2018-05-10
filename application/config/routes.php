@@ -57,6 +57,8 @@ $route['translate_uri_dashes'] = FALSE;
 $route['artikel/(:any)'] = 'welcome/show/$1';
 $route['page'] = 'welcome/index';
 $route['page/(:any)'] = 'welcome/index';
+$route['daftar'] = 'welcome/daftar';
+$route['register'] = 'welcome/register';
 
 // AUTH
 $route['auth'] = 'Auth/index';

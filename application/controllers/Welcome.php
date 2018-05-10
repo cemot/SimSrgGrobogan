@@ -83,4 +83,58 @@ class Welcome extends CI_Controller {
 		}
         $this->load->view('landing/view', $data);
     }
+
+	public function daftar(){
+		$data['beras'] = M_Komoditi_Harga::where('id_komoditi', 1)->orderBy('tanggal', 'desc')->limit(2)->get()->reverse();
+		$data['jagung'] = M_Komoditi_Harga::where('id_komoditi', 2)->orderBy('tanggal', 'desc')->limit(2)->get()->reverse();
+		$data['gabah'] = M_Komoditi_Harga::where('id_komoditi', 3)->orderBy('tanggal', 'desc')->limit(2)->get()->reverse();
+		$this->load->view('landing/daftar', $data);
+	}
+
+	public function register()
+    {
+        if (!$this->input->post()) {
+            redirect(base_url());
+        } else {
+            $this->form_validation->set_rules('username', 'Username', 'required');
+            $this->form_validation->set_rules('password', 'Password', 'required');
+            $this->form_validation->set_rules('password_confirm', 'Password Confirmation', 'required|matches[password]');
+            $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');
+            $this->form_validation->set_rules('email', 'E-Mail', 'required|valid_email|is_unique[users.email]');
+            $this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required');
+            $this->form_validation->set_rules('role', 'Role User', 'required');
+            $this->form_validation->set_rules('tmpt_lahir', 'Tempat Lahir', 'required');
+            $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required');
+            $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+            $this->form_validation->set_rules('no_tlp', 'No Telepon / No HP', 'required');
+
+            if ($this->form_validation->run() == FALSE) {
+				$data['beras'] = M_Komoditi_Harga::where('id_komoditi', 1)->orderBy('tanggal', 'desc')->limit(2)->get()->reverse();
+				$data['jagung'] = M_Komoditi_Harga::where('id_komoditi', 2)->orderBy('tanggal', 'desc')->limit(2)->get()->reverse();
+				$data['gabah'] = M_Komoditi_Harga::where('id_komoditi', 3)->orderBy('tanggal', 'desc')->limit(2)->get()->reverse();
+                $this->load->view('landing/daftar', $data);
+            } else {
+                $user = M_User::create([
+                    'username'  => $this->input->post('username'),
+                    'password'  => md5($this->input->post('password')),
+                    'nama'      => $this->input->post('nama'),
+                    'email'     => $this->input->post('email'),
+                    'kecamatan' => $this->input->post('kecamatan'),
+                    'role'      => $this->input->post('role'),
+                    'tmpt_lahir'=> $this->input->post('tmpt_lahir'),
+                    'tgl_lahir' => date("Y-m-d", strtotime($this->input->post('tgl_lahir'))),
+                    'alamat'    => $this->input->post('alamat'),
+                    'no_tlp'    => $this->input->post('no_tlp')
+                ]);
+                // dd($user);
+
+                if($artikel) {
+                    $this->session->set_flashdata('sukses', 'User Berhasil Disimpan');
+                } else {
+                    $this->session->set_flashdata('gagal', 'User Tidak Berhasil Disimpan');
+                }
+                redirect(base_url());
+            }
+        }
+    }
 }

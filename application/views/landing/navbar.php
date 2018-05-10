@@ -11,6 +11,9 @@
         </a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('daftar'); ?>">Daftar</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('auth'); ?>">Login</a>
       </li>
     </ul>

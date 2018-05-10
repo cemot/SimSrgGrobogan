@@ -29,11 +29,14 @@ class Resi extends CI_Controller {
             redirect('/pengelola/resi');
         } else {
 			// dd($perpanjangan);
-			$data['data'] = M_Resi::find($perpanjangan->id_resi);
+			$resi = M_Resi::find($perpanjangan->id_resi);
+			// $data['data'] = M_Resi::find($perpanjangan->id_resi);
+			$data['data'] = $resi->pengujian;
 			$data['gudang'] = M_Gudang::where('id_pengelola', $this->session->id)->get();
 	        $data['id_perpanjangan'] = $id_perpanjangan;
 	        $data['sidebar'] = 'pengelola/sidebar';
-	        $data['content'] = 'pengelola/resi_perpanjang';
+			$data['content'] = 'pengelola/resi_perpanjang';
+			// $data['content'] = 'pengelola/resi_perpanjang_old';
 	        $this->load->view('layouts/app', $data);
 		}
     }
