@@ -49,14 +49,14 @@
                                         </td>
                                         <td class="td-actions text-right">
                                             <?php if(!$resi->gadai) : ?>
-                                                <button class="btn btn-default"><i class="material-icons">warning</i> Gadai : Belum ada</button>
+                                                <button class="btn btn-default"><i class="material-icons">warning</i> Peminjaman : Belum ada</button>
                                             <?php elseif($resi->gadai->status == 0) : ?>
                                                 <a class="btn btn-danger" href="<?php echo base_url('bank/resi/gadai/'.$resi->gadai->id_gadai.'/tolak'); ?>"><i class="material-icons">money</i> Tolak</a>
                                                 <a class="btn btn-success" href="<?php echo base_url('bank/resi/gadai/'.$resi->gadai->id_gadai.'/terima'); ?>"><i class="material-icons">money</i> Terima</a>
                                             <?php elseif($resi->gadai->status == 1) : ?>
-                                                <button class="btn btn-danger"><i class="material-icons">clear</i> Gadai : Ditolak</button>
+                                                <button class="btn btn-danger"><i class="material-icons">clear</i> Peminjaman : Ditolak</button>
                                             <?php else : ?>
-                                                <button class="btn btn-success"><i class="material-icons">check</i> Gadai : Diterima</button>
+                                                <button class="btn btn-success"><i class="material-icons">check</i> Peminjaman : Diterima</button>
                                             <?php endif; ?>
                                         </td>
                                     </tr>

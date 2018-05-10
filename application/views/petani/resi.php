@@ -20,7 +20,7 @@
                                 <th>Masa Aktif</th>
                                 <th>Status</th>
                                 <th class="disabled-sorting text-center">Resi</th>
-                                <th class="disabled-sorting text-center">Aksi Gadai</th>
+                                <th class="disabled-sorting text-center">Aksi Peminjaman</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,13 +58,13 @@
                                         </td>
                                         <td class="td-actions text-right">
                                             <?php if(!$resi->gadai) : ?>
-                                                <a class="btn btn-default" href="<?php echo base_url('petani/resi/gadai/'.$resi->id_resi); ?>"><i class="material-icons">money</i> Gadai Resi</a>
+                                                <a class="btn btn-default" href="<?php echo base_url('petani/resi/gadai/'.$resi->id_resi); ?>"><i class="material-icons">money</i> Ajukan Peminjaman</a>
                                             <?php elseif($resi->gadai->status == 0) : ?>
-                                                <button class="btn btn-warning"><i class="material-icons">warning</i> Gadai : Pending</button>
+                                                <button class="btn btn-warning"><i class="material-icons">warning</i> Peminjaman : Pending</button>
                                             <?php elseif($resi->gadai->status == 1) : ?>
-                                                <button class="btn btn-danger"><i class="material-icons">clear</i> Gadai : Ditolak</button>
+                                                <button class="btn btn-danger"><i class="material-icons">clear</i> Peminjaman : Ditolak</button>
                                             <?php else : ?>
-                                                <button class="btn btn-success"><i class="material-icons">check</i> Gadai : Diterima</button>
+                                                <button class="btn btn-success"><i class="material-icons">check</i> Peminjaman : Diterima</button>
                                             <?php endif; ?>
                                         </td>
                                     </tr>

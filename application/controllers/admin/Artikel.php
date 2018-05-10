@@ -40,7 +40,7 @@ class Artikel extends CI_Controller {
             if ($this->form_validation->run() == FALSE) {
                 redirect('admin/artikel/create');
             } else {
-				if (empty($_FILES['gambar']) || !isset($_FILES['gambar'])) {
+				if (!empty($_FILES['gambar']) || isset($_FILES['gambar'])) {
 					$config['upload_path']		= './assets/img/uploads/';
 	                $config['allowed_types']	= 'gif|jpg|png';
 					$config['max_size']			= 1024;
