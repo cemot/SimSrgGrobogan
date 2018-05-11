@@ -6,7 +6,7 @@
             </div>
             <div class="card-content">
                 <h4 class="card-title">Tambah Pengajuan Barang</h4>
-                <form class="form-horizontal" method="post" action="<?php echo base_url('pengelola/barang/store'); ?>">
+                <form class="form-horizontal" method="post" action="<?php echo base_url('petani/barang/store'); ?>">
                     <div class="row">
                         <label class="col-md-2 label-on-left">Nama Barang</label>
                         <div class="col-md-6">
@@ -109,22 +109,6 @@
                                 <label class="control-label"></label>
                                 <input type="text" class="form-control datepicker" name="tgl_rencana" required>
                             <span class="material-input"></span></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-md-2 label-on-left">Pemilik Barang (Petani)</label>
-                        <div class="col-md-6">
-                            <div class="form-group label-floating">
-                                <select class="form-control select2" data-style="select-with-transition" name="id_petani" required>
-                                    <option disabled selected>Pilih Petani</option>
-                                    <?php foreach ($data as $petani): ?>
-                                        <option value="<?php echo $petani->id ?>">
-                                            <?php echo $petani->id . " | " . $petani->nama ?>
-                                        </option>
-                                    <?php endforeach ;?>
-                                </select>
-                                <span class="material-input"></span>
-                            </div>
                         </div>
                     </div>
                     <div class="row">

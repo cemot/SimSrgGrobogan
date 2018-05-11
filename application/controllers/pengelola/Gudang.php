@@ -6,7 +6,7 @@ class Gudang extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
-		if (!$this->session->logged_in || !$this->session->role == 1){
+		if ($this->session->role != 1){
 			redirect('login');
 		}
     }

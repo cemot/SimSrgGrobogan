@@ -236,6 +236,22 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function() {
+        $('#plh_gudang').change(function() {
+            var id = $('#plh_gudang option:selected').val();
+            $.ajax({
+                url: "<?php echo base_url('ajaxAPI/getAlamatGudang'); ?>",
+                data: {id: id},
+                dataType: "json",
+                success: function(data)
+                {
+                    $('#alamat_gudang').val(data);
+                }
+            });
+        }).trigger('change');
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
         $('.select2').select2({
             theme: "bootstrap"
         });
@@ -297,6 +313,18 @@
                 clear: 'fa fa-trash',
                 close: 'fa fa-remove'
             }
+        });
+
+        $(".datepicker_month").datetimepicker({
+            format: 'MM',
+            locale: 'id',
+            viewMode: 'months'
+        });
+
+        $(".datepicker_year").datetimepicker({
+            format: 'YYYY',
+            locale: 'id',
+            viewMode: 'years',
         });
     });
 </script>

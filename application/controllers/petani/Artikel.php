@@ -6,7 +6,7 @@ class Artikel extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
-		if (!$this->session->logged_in || !$this->session->role == 4){
+		if ($this->session->role != 4){
 			redirect('login');
 		}
     }

@@ -73,6 +73,17 @@ class AjaxAPI extends CI_Controller {
         echo json_encode($json);
     }
 
+	public function getAlamatGudang()
+    {
+		$id = $this->input->get('id', TRUE);
+		$gudang = M_Gudang::find($id);
+        // $json = array(
+		// 	'labels' => $data->pluck('hsl_pengujian'),
+		// 	'series' => $data->pluck('jumlah'),
+        // );
+        echo json_encode($gudang->alamat);
+    }
+
 	public function waktu()
 	{
 		dd(date("Y-m-d", strtotime("+". 18 ." months", strtotime(date("Y-m-d")))));

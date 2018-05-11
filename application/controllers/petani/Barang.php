@@ -6,43 +6,36 @@ class Barang extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
-		if ($this->session->role != 1){
+		if ($this->session->role != 4){
 			redirect('login');
 		}
     }
 
 	public function index()
 	{
-		$data['data_saya'] = M_Barang::where('id_pengelola', $this->session->id)->get();
-        $data['data'] = M_Barang::where('id_pengelola', '!=', $this->session->id)->orWhere('id_pengelola', NULL)->get();
-        $data['sidebar'] = 'pengelola/sidebar';
-        $data['content'] = 'pengelola/barang';
+		$data['data'] = M_Barang::where('id_petani', $this->session->id)->get();
+        $data['sidebar'] = 'petani/sidebar';
+        $data['content'] = 'petani/barang';
         $this->load->view('layouts/app', $data);
 	}
 
 	public function create()
     {
-        // $teruji = M_Pengujian::get(['id_barang']);
-        // dd("<pre> $teruji </pre>");
-        // $data['data'] = M_Barang::whereNotIn('id_barang', M_Pengujian::get(['id_barang']))->get();
-        $data['data'] = M_User::where('role', 4)->get();
 		$data['komoditi'] = M_Komoditi::all();
-        $data['gudang'] = M_Gudang::where('id_pengelola', $this->session->id)->get();
-        // dd("<pre>". $data['data'] ."</pre>");
-        $data['sidebar'] = 'pengelola/sidebar';
-        $data['content'] = 'pengelola/barang_create';
+        $data['gudang'] = M_Gudang::all();
+        $data['sidebar'] = 'petani/sidebar';
+        $data['content'] = 'petani/barang_create';
         $this->load->view('layouts/app', $data);
     }
 
     public function store()
     {
         if (!$this->input->post()) {
-            redirect('/pengelola/barang');
+            redirect('/petani/pengajuan');
         } else {
             $this->form_validation->set_rules('nama_barang', 'Nama Barang', 'required');
             $this->form_validation->set_rules('berat_barang', 'Berat Barang', 'required|integer');
             $this->form_validation->set_rules('id_komoditi', 'Jenis Komoditi Barang', 'required');
-            $this->form_validation->set_rules('id_petani', 'Pemilik Barang (Petani)', 'required');
 
             if ($this->form_validation->run() == FALSE) {
                 dd(validation_errors());
@@ -51,8 +44,8 @@ class Barang extends CI_Controller {
                     'nama_barang' => $this->input->post('nama_barang'),
                     'berat_barang' => $this->input->post('berat_barang'),
                     'id_komoditi' => $this->input->post('id_komoditi'),
-                    'id_petani' => $this->input->post('id_petani'),
-                    'id_pengelola' => $this->session->id,
+                    'id_petani' => $this->session->id,
+                    'id_pengelola' => NULL,
 					'id_gudang' => $this->input->post('id_gudang'),
 					'bulan_panen' => $this->input->post('bulan_panen'),
 					'tahun_panen' => $this->input->post('tahun_panen'),
@@ -69,7 +62,7 @@ class Barang extends CI_Controller {
                     $this->session->set_flashdata('class', 'danger');
                     $this->session->set_flashdata('message', 'Barang Gagal Disimpan');
                 }
-                redirect('pengelola/pengajuan');
+                redirect('petani/pengajuan');
             }
         }
     }
@@ -77,7 +70,6 @@ class Barang extends CI_Controller {
     public function show($id)
     {
         $data['data'] = M_barang::find($id);
-        // dd($data['data']);
         $data['content'] = 'petani/show_barang';
         $this->load->view('layout_petani/master', $data);
     }
@@ -86,23 +78,20 @@ class Barang extends CI_Controller {
     {
         $data['barang'] = M_Barang::find($id);
         $data['komoditi'] = M_Komoditi::all();
-        $data['petani'] = M_User::where('role', 4)->get();
-		$data['gudang'] = M_Gudang::where('id_pengelola', $this->session->id)->get();
-        // dd($data['petani']);
-        $data['sidebar'] = 'pengelola/sidebar';
-        $data['content'] = 'pengelola/barang_edit';
+		$data['gudang'] = M_Gudang::all();
+        $data['sidebar'] = 'petani/sidebar';
+        $data['content'] = 'petani/barang_edit';
         $this->load->view('layouts/app', $data);
     }
 
     public function update()
     {
         if (!$this->input->post()) {
-            redirect('/petani/barang');
+            redirect('/petani/pengajuan');
         } else {
             $this->form_validation->set_rules('nama_barang', 'Nama Barang', 'required');
             $this->form_validation->set_rules('berat_barang', 'Berat Barang', 'required|integer');
             $this->form_validation->set_rules('id_komoditi', 'Jenis Komoditi Barang', 'required');
-            $this->form_validation->set_rules('id_petani', 'Pemilik Barang (Petani)', 'required');
 
             if ($this->form_validation->run() == FALSE) {
                 dd(validation_errors());
@@ -111,8 +100,8 @@ class Barang extends CI_Controller {
                 $barang->nama_barang = $this->input->post('nama_barang');
                 $barang->berat_barang = $this->input->post('berat_barang');
                 $barang->id_komoditi = $this->input->post('id_komoditi');
-                $barang->id_petani = $this->input->post('id_petani');
-				$barang->id_pengelola = $this->session->id;
+                $barang->id_petani = $this->session->id;
+				// $barang->id_pengelola = $this->session->id;
 				$barang->id_gudang = $this->input->post('id_gudang');
 				$barang->bulan_panen = $this->input->post('bulan_panen');
 				$barang->tahun_panen = $this->input->post('tahun_panen');
@@ -128,7 +117,7 @@ class Barang extends CI_Controller {
                     $this->session->set_flashdata('class', 'danger');
                     $this->session->set_flashdata('message', 'Barang Gagal Diperbarui');
                 }
-                redirect('pengelola/pengajuan');
+                redirect('petani/pengajuan');
             }
         }
     }
@@ -136,7 +125,7 @@ class Barang extends CI_Controller {
     public function destroy($id)
     {
         $barang = M_Barang::find($id);
-        if ($barang->pengelola->id != $this->session->id) {
+        if ($barang->petani->id != $this->session->id) {
             $this->session->set_flashdata('class', 'danger');
             $this->session->set_flashdata('message', 'Barang Tidak Berhasil Dihapus');
         } else {
@@ -149,6 +138,6 @@ class Barang extends CI_Controller {
                 $this->session->set_flashdata('message', 'Barang Tidak Berhasil Dihapus');
             }
         }
-        redirect('pengelola/pengajuan');
+        redirect('petani/pengajuan');
     }
 }

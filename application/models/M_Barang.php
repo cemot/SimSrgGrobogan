@@ -13,7 +13,9 @@ class M_Barang extends Eloquent
     // const CREATED_AT = 'created_at';
     // const UPDATED_AT = 'updated_at';
 
-    protected $fillable = ['nama_barang', 'berat_barang', 'id_komoditi', 'id_petani', 'id_pengelola', 'tgl_pengajuan'];
+    protected $fillable = ['nama_barang', 'berat_barang', 'id_komoditi', 'id_petani', 'id_pengelola', 
+    'id_gudang', 'bulan_panen', 'tahun_panen', 'kemasan', 'pengangkut',
+    'tgl_rencana', 'tgl_pengajuan'];
 
     public function petani()
     {
