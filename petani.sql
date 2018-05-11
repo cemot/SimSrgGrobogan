@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2018 at 07:20 AM
+-- Generation Time: May 11, 2018 at 06:17 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -51,7 +51,9 @@ INSERT INTO `artikel` (`id_artikel`, `judul`, `isi`, `gambar`, `tanggal`, `id_pe
 (4, 'sadasdd', 'sadasdsad', 'image_placeholder.jpg', '2018-03-21 00:00:00', 1, 1, '2018-03-18 16:08:05', '2018-03-18 16:08:05'),
 (6, 'sadasds', 'sadas', 'image_placeholder.jpg', '2018-03-15 00:00:00', 1, NULL, '2018-03-19 02:23:57', '2018-03-19 02:23:57'),
 (10, 'malam minggu cuy', '<p>kuyy malmingan</p>', 'image_placeholder.jpg', '2018-04-15 00:00:00', 8, 1, '2018-04-14 17:52:29', '2018-04-14 17:52:29'),
-(20, 'cobaa edit ya', '<p>kepo aja lau</p>', 'cobaa_edit_ya.jpg', '2018-04-15 00:00:00', 8, 1, '2018-04-15 06:37:36', '2018-04-15 06:49:02');
+(20, 'cobaa edit ya', '<p>kepo aja lau</p>', 'cobaa_edit_ya.jpg', '2018-04-15 00:00:00', 8, 1, '2018-04-15 06:37:36', '2018-04-15 06:49:02'),
+(21, 'sadsdsad', '<p>sadsadsadsad</p>', 'sadsdsad.PNG', '2018-05-10 00:00:00', 8, 1, '2018-05-10 16:14:37', '2018-05-10 16:14:37'),
+(22, 'baruuuu euy', '<p>sasadsad</p>', 'baruuuu_euy.PNG', '2018-05-10 00:00:00', 8, 1, '2018-05-10 16:15:34', '2018-05-10 16:15:34');
 
 -- --------------------------------------------------------
 
@@ -65,7 +67,13 @@ CREATE TABLE `barang` (
   `berat_barang` int(11) NOT NULL,
   `id_komoditi` int(11) NOT NULL,
   `id_petani` int(11) NOT NULL,
-  `id_pengelola` int(11) NOT NULL,
+  `id_pengelola` int(11) DEFAULT NULL,
+  `id_gudang` int(11) DEFAULT NULL,
+  `bulan_panen` varchar(10) DEFAULT NULL,
+  `tahun_panen` varchar(4) DEFAULT NULL,
+  `kemasan` varchar(50) DEFAULT NULL,
+  `pengangkut` varchar(50) DEFAULT NULL,
+  `tgl_rencana` date DEFAULT NULL,
   `tgl_pengajuan` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -73,14 +81,15 @@ CREATE TABLE `barang` (
 -- Dumping data for table `barang`
 --
 
-INSERT INTO `barang` (`id_barang`, `nama_barang`, `berat_barang`, `id_komoditi`, `id_petani`, `id_pengelola`, `tgl_pengajuan`) VALUES
-(1, 'Update Barang test', 3, 1, 1, 7, '2018-03-15'),
-(2, 'Padi Karawitan 2', 4, 1, 1, 7, '2018-03-15'),
-(3, 'Padi Karawitan 2 Lalalalalalala', 80, 2, 10, 9, '2018-03-15'),
-(4, 'Gabah Bersih cuyyyy', 69, 1, 10, 9, '2018-03-22'),
-(5, 'jagung bakar', 15, 1, 10, 9, '2018-03-22'),
-(6, 'barang yuk', 1400, 2, 10, 9, '2018-03-23'),
-(7, 'Beras Rojolele', 500, 1, 10, 9, '2018-03-26');
+INSERT INTO `barang` (`id_barang`, `nama_barang`, `berat_barang`, `id_komoditi`, `id_petani`, `id_pengelola`, `id_gudang`, `bulan_panen`, `tahun_panen`, `kemasan`, `pengangkut`, `tgl_rencana`, `tgl_pengajuan`) VALUES
+(1, 'Update Barang test', 3, 1, 1, 7, NULL, NULL, NULL, NULL, NULL, NULL, '2018-03-15'),
+(2, 'Padi Karawitan 2', 4, 1, 1, 7, NULL, NULL, NULL, NULL, NULL, NULL, '2018-03-15'),
+(3, 'Padi Karawitan 2 Lalalalalalala', 80, 2, 10, 9, NULL, NULL, NULL, NULL, NULL, NULL, '2018-03-15'),
+(4, 'Gabah Bersih cuyyyy', 69, 1, 10, 9, NULL, NULL, NULL, NULL, NULL, NULL, '2018-03-22'),
+(5, 'jagung bakar', 15, 1, 10, 9, NULL, NULL, NULL, NULL, NULL, NULL, '2018-03-22'),
+(6, 'barang yuk', 1400, 2, 10, 9, NULL, NULL, NULL, NULL, NULL, NULL, '2018-03-23'),
+(7, 'Beras Rojolele', 500, 1, 10, 9, NULL, NULL, NULL, NULL, NULL, NULL, '2018-03-26'),
+(8, 'elelelelelelele', 15000, 1, 10, 9, 27, '09', '2020', 'Karung', 'Pick Up', '2018-05-12', '2018-05-11');
 
 -- --------------------------------------------------------
 
@@ -106,7 +115,8 @@ INSERT INTO `catatan` (`id_catatan`, `id_pengujian`, `isi_catatan`, `status`, `c
 (18, 19, '<p>dsadsdasd</p>', 1, '2018-03-27 09:34:49', '2018-03-27 09:34:49'),
 (19, 20, '<p>sadaadad</p>', 1, '2018-03-27 12:57:58', '2018-03-27 12:57:58'),
 (22, 23, '<p>kurang baik</p>', 1, '2018-04-14 17:31:32', '2018-04-14 17:31:32'),
-(23, 24, '<p>mantap jiwa</p>', 1, '2018-04-14 17:37:46', '2018-04-14 17:37:46');
+(23, 24, '<p>mantap jiwa</p>', 1, '2018-04-14 17:37:46', '2018-04-14 17:37:46'),
+(24, 25, '<p>kadar air 35%</p>', 1, '2018-05-10 15:47:56', '2018-05-10 15:47:56');
 
 -- --------------------------------------------------------
 
@@ -155,7 +165,8 @@ CREATE TABLE `harga` (
 INSERT INTO `harga` (`id_harga`, `id_pengujian`, `satuan_barang`, `harga_barang`) VALUES
 (11, 19, 'kg', 8000),
 (12, 20, 'kg', 9000),
-(13, 24, 'kg', 9000);
+(13, 24, 'kg', 9000),
+(14, 25, 'kg', 9000);
 
 -- --------------------------------------------------------
 
@@ -243,7 +254,8 @@ INSERT INTO `pengujian` (`id_pengujian`, `id_pengelola`, `id_barang`, `id_gudang
 (19, 9, 3, 26, '2018-03-27', 'Diterima', 9, 9, '2018-03-27 09:34:48', '2018-03-27 09:57:02'),
 (20, 9, 4, 26, '2018-03-27', 'Diterima', 9, 9, '2018-03-27 12:57:58', '2018-04-14 17:43:47'),
 (23, 9, 6, NULL, '2018-04-15', 'Ditolak', 9, NULL, '2018-04-14 17:31:32', '2018-04-14 17:31:32'),
-(24, 9, 5, 26, '2018-04-15', 'Diterima', 9, 9, '2018-04-14 17:37:46', '2018-04-14 17:43:27');
+(24, 9, 5, 26, '2018-04-15', 'Diterima', 9, 9, '2018-04-14 17:37:46', '2018-04-14 17:43:27'),
+(25, 9, 5, 26, '2018-05-10', 'Diterima', 9, NULL, '2018-05-10 15:47:55', '2018-05-10 15:47:55');
 
 -- --------------------------------------------------------
 
@@ -277,7 +289,8 @@ INSERT INTO `resi` (`id_resi`, `no_resi`, `id_pengujian`, `kelas_barang`, `tgl_p
 (3, 'INV/20/1092', 20, NULL, '2018-03-27', 12, '2019-03-27', NULL, NULL, NULL, NULL, NULL, '2018-03-27 12:57:58', '2018-04-14 17:45:49'),
 (4, 'INV/20/10998', 24, NULL, '2018-04-15', 3, '2018-07-15', NULL, NULL, NULL, NULL, NULL, '2018-04-14 17:37:47', '2018-04-14 17:47:11'),
 (7, 'INV009', 19, NULL, '2018-05-01', 12, '2019-05-01', NULL, NULL, NULL, NULL, NULL, '2018-05-01 05:09:42', '2018-05-01 05:09:42'),
-(8, 'INV/20/10998', 24, NULL, '2018-05-01', 3, '2018-08-01', NULL, NULL, NULL, NULL, NULL, '2018-05-01 05:16:19', '2018-05-01 05:16:19');
+(8, 'INV/20/10998', 24, '1', '2018-05-01', 3, '2018-08-01', NULL, NULL, NULL, NULL, NULL, '2018-05-01 05:16:19', '2018-05-01 05:16:19'),
+(9, 'INV/20/10998', 25, NULL, '2018-05-10', 12, '2019-05-10', NULL, '1970-01-01', '1970-01-01', NULL, NULL, '2018-05-10 15:47:56', '2018-05-10 15:47:56');
 
 -- --------------------------------------------------------
 
@@ -325,7 +338,8 @@ INSERT INTO `resi_perpanjangan` (`id_perpanjangan`, `id_resi`, `tgl_pengajuan`, 
 (1, 2, '2018-05-01', 2, 9, '2018-05-01'),
 (2, 3, '2018-05-01', 2, 9, '2018-05-01'),
 (3, 7, '2018-05-01', 1, 9, '2018-05-01'),
-(4, 4, '2018-05-01', 2, 9, '2018-05-01');
+(4, 4, '2018-05-01', 2, 9, '2018-05-01'),
+(5, 8, '2018-05-10', 2, 9, '2018-05-10');
 
 -- --------------------------------------------------------
 
@@ -339,6 +353,7 @@ CREATE TABLE `users` (
   `password` varchar(250) NOT NULL,
   `nama` varchar(191) NOT NULL,
   `email` varchar(191) NOT NULL,
+  `no_ktp` varchar(16) DEFAULT NULL,
   `jabatan` varchar(50) DEFAULT NULL,
   `role` tinyint(4) NOT NULL COMMENT '0 = admin, 1 = pengelola, 2 = pegawai dinas, 3 = Bank, 4 = petani',
   `tmpt_lahir` varchar(191) DEFAULT NULL,
@@ -354,18 +369,19 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `nama`, `email`, `jabatan`, `role`, `tmpt_lahir`, `tgl_lahir`, `alamat`, `kecamatan`, `no_tlp`, `created_at`, `updated_at`) VALUES
-(1, 'fakhrifauzan', '5f4dcc3b5aa765d61d8327deb882cf99', 'Fakhri Fauzan', 'fazan697@gmail.com', '', 0, 'Jakarta', '2018-03-01', 'BPI F16/3', NULL, '08567018044', NULL, '2018-03-17 16:58:19'),
-(2, 'Fauzan', '', 'Fakhri', 'dexterhack@gmail.com', '', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, 'Nurliah', '', 'Nurliah Awaliah', 'nurliaha@gmail.com', '', 0, NULL, NULL, NULL, NULL, '085670180442', NULL, '2018-03-19 01:38:14'),
-(6, 'demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 'demo', 'demo@demo.com', NULL, 0, 'Jakarta', '2018-06-06', 'Pamulang', NULL, '08567018044', '2018-03-16 15:08:23', '2018-03-16 15:12:19'),
-(7, 'demo1', '5f4dcc3b5aa765d61d8327deb882cf99', 'Demo Pengelola', 'demo1@m.c', NULL, 1, 'Jakarta', '2018-03-08', 'Gudang', NULL, '09878', '2018-03-19 09:03:50', '2018-03-19 09:03:50'),
-(8, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', 'admin@fazan.my.id', NULL, 0, 'Jakarta', '2018-03-20', 'Antamulya No 2', NULL, '08567018044', '2018-03-20 02:10:59', '2018-03-20 02:10:59'),
-(9, 'pengelola', '3c7913bc17671596a43dcb4581992bdf', 'Pengelola', 'pengelola@fazan.my.id', NULL, 1, 'Jakarta', '2018-03-20', 'Antamulya No 2', NULL, '08567018045', '2018-03-20 02:12:11', '2018-03-20 02:12:11'),
-(10, 'petani', 'd180e8e96956e056f23a05fadda0e2bd', 'Petani', 'petani@gmail.com', NULL, 4, 'Bandung', '2018-03-16', 'Antamulya No 2', 'Kedungjati', '09878', '2018-03-22 03:44:57', '2018-03-22 03:44:57'),
-(11, 'dinas', '097dad4a551e3cb88ed7afc7a6c0de40', 'Dinas Perdagangan', 'dinas@fazan.my.id', NULL, 2, 'Jakarta', '0000-00-00', 'dsfsfsf', NULL, '324234', '2018-04-08 23:59:48', '2018-04-08 23:59:48'),
-(12, 'bank', 'bd5af1f610a12434c9128e4a399cef8a', 'Bank', 'bank@fazan.my.id', NULL, 3, 'Jakarta', '2007-05-06', 'sjabdjksdvbsakvsdasdsa', 'Kedungjati', '189879', '2018-04-09 00:46:39', '2018-04-15 07:21:08'),
-(14, 'halooo', 'b37d149d7ac13a281bc524e684c73b61', 'haloo', 'halo@gmail.com', NULL, 4, 'haloo', '2017-09-03', 'dssdfsfdsfdsf', 'Kedungjati', '0812315456', '2018-04-15 07:10:51', '2018-04-15 07:23:41');
+INSERT INTO `users` (`id`, `username`, `password`, `nama`, `email`, `no_ktp`, `jabatan`, `role`, `tmpt_lahir`, `tgl_lahir`, `alamat`, `kecamatan`, `no_tlp`, `created_at`, `updated_at`) VALUES
+(1, 'fakhrifauzan', '5f4dcc3b5aa765d61d8327deb882cf99', 'Fakhri Fauzan', 'fazan697@gmail.com', NULL, '', 0, 'Jakarta', '2018-03-01', 'BPI F16/3', NULL, '08567018044', NULL, '2018-03-17 16:58:19'),
+(2, 'Fauzan', '', 'Fakhri', 'dexterhack@gmail.com', NULL, '', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 'Nurliah', '', 'Nurliah Awaliah', 'nurliaha@gmail.com', NULL, '', 0, NULL, NULL, NULL, NULL, '085670180442', NULL, '2018-03-19 01:38:14'),
+(6, 'demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 'demo', 'demo@demo.com', NULL, NULL, 0, 'Jakarta', '2018-06-06', 'Pamulang', NULL, '08567018044', '2018-03-16 15:08:23', '2018-03-16 15:12:19'),
+(7, 'demo1', '5f4dcc3b5aa765d61d8327deb882cf99', 'Demo Pengelola', 'demo1@m.c', NULL, NULL, 1, 'Jakarta', '2018-03-08', 'Gudang', NULL, '09878', '2018-03-19 09:03:50', '2018-03-19 09:03:50'),
+(8, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', 'admin@fazan.my.id', NULL, NULL, 0, 'Jakarta', '2018-03-20', 'Antamulya No 2', NULL, '08567018044', '2018-03-20 02:10:59', '2018-03-20 02:10:59'),
+(9, 'pengelola', '3c7913bc17671596a43dcb4581992bdf', 'Pengelola', 'pengelola@fazan.my.id', NULL, NULL, 1, 'Jakarta', '2018-03-20', 'Antamulya No 2', NULL, '08567018045', '2018-03-20 02:12:11', '2018-03-20 02:12:11'),
+(10, 'petani', 'd180e8e96956e056f23a05fadda0e2bd', 'Petani', 'petani@gmail.com', NULL, NULL, 4, 'Bandung', '2018-03-16', 'Antamulya No 2', 'Kedungjati', '09878', '2018-03-22 03:44:57', '2018-03-22 03:44:57'),
+(11, 'dinas', '097dad4a551e3cb88ed7afc7a6c0de40', 'Dinas Perdagangan', 'dinas@fazan.my.id', NULL, NULL, 2, 'Jakarta', '0000-00-00', 'dsfsfsf', NULL, '324234', '2018-04-08 23:59:48', '2018-04-08 23:59:48'),
+(12, 'bank', 'bd5af1f610a12434c9128e4a399cef8a', 'Bank', 'bank@fazan.my.id', NULL, NULL, 3, 'Jakarta', '2007-05-06', 'sjabdjksdvbsakvsdasdsa', 'Kedungjati', '189879', '2018-04-09 00:46:39', '2018-04-15 07:21:08'),
+(14, 'halooo', 'b37d149d7ac13a281bc524e684c73b61', 'haloo', 'halo@gmail.com', NULL, NULL, 4, 'haloo', '2017-09-03', 'dssdfsfdsfdsf', 'Kedungjati', '0812315456', '2018-04-15 07:10:51', '2018-04-15 07:23:41'),
+(15, 'coba', 'c3ec0f7b054e729c5a716c8125839829', 'coba', 'coba@gmail.com', NULL, NULL, 4, 'asdksakldj', '2018-05-10', 'sdfdsfdsad', 'Tegowanu', '68456489456', '2018-05-10 04:31:28', '2018-05-10 04:31:28');
 
 --
 -- Indexes for dumped tables
@@ -461,7 +477,8 @@ ALTER TABLE `resi_perpanjangan`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`);
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `no_ktp` (`no_ktp`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -471,17 +488,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `artikel`
 --
 ALTER TABLE `artikel`
-  MODIFY `id_artikel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_artikel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `catatan`
 --
 ALTER TABLE `catatan`
-  MODIFY `id_catatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_catatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `gudang`
 --
@@ -491,7 +508,7 @@ ALTER TABLE `gudang`
 -- AUTO_INCREMENT for table `harga`
 --
 ALTER TABLE `harga`
-  MODIFY `id_harga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_harga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `komoditi_harga`
 --
@@ -506,12 +523,12 @@ ALTER TABLE `komoditi_jenis`
 -- AUTO_INCREMENT for table `pengujian`
 --
 ALTER TABLE `pengujian`
-  MODIFY `id_pengujian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_pengujian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `resi`
 --
 ALTER TABLE `resi`
-  MODIFY `id_resi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_resi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `resi_gadai`
 --
@@ -521,12 +538,12 @@ ALTER TABLE `resi_gadai`
 -- AUTO_INCREMENT for table `resi_perpanjangan`
 --
 ALTER TABLE `resi_perpanjangan`
-  MODIFY `id_perpanjangan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_perpanjangan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- Constraints for dumped tables
 --
