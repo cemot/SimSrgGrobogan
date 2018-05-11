@@ -6,7 +6,7 @@ class Komoditi extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
-		if ($this->session->role != 3){
+		if ($this->session->role != 2){
 			redirect('login');
 		}
     }
