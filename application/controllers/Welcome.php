@@ -118,7 +118,8 @@ class Welcome extends CI_Controller {
                     'username'  => $this->input->post('username'),
                     'password'  => md5($this->input->post('password')),
                     'nama'      => $this->input->post('nama'),
-                    'email'     => $this->input->post('email'),
+					'email'     => $this->input->post('email'),
+                    'no_ktp'    => $this->input->post('no_ktp'),
                     'kecamatan' => $this->input->post('kecamatan'),
                     'role'      => $this->input->post('role'),
                     'tmpt_lahir'=> $this->input->post('tmpt_lahir'),
@@ -126,12 +127,13 @@ class Welcome extends CI_Controller {
                     'alamat'    => $this->input->post('alamat'),
                     'no_tlp'    => $this->input->post('no_tlp')
                 ]);
-                // dd($user);
 
-                if($artikel) {
-                    $this->session->set_flashdata('sukses', 'User Berhasil Disimpan');
+				if($user) {
+                    $this->session->set_flashdata('class', 'success');
+                    $this->session->set_flashdata('message', 'User Berhasil Disimpan');
                 } else {
-                    $this->session->set_flashdata('gagal', 'User Tidak Berhasil Disimpan');
+                    $this->session->set_flashdata('class', 'danger');
+                    $this->session->set_flashdata('message', 'User Tidak Berhasil Disimpan');
                 }
                 redirect(base_url());
             }

@@ -41,16 +41,22 @@
                   </div>
               </div>
               <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                       <div class="form-group">
                           <label class="control-label">Password</label>
                           <input type="password" class="form-control" name="password" required>
                       <span class="material-input"></span></div>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                       <div class="form-group">
                           <label class="control-label">Konfirmasi Password</label>
                           <input type="password" class="form-control" name="password_confirm" required>
+                      <span class="material-input"></span></div>
+                  </div>
+                  <div class="col-md-4">
+                      <div class="form-group">
+                          <label class="control-label">No KTP</label>
+                          <input type="number" class="form-control" name="no_ktp" value="<?php echo set_value('no_ktp'); ?>" required>
                       <span class="material-input"></span></div>
                   </div>
               </div>

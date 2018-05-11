@@ -16,13 +16,20 @@
     <div class="container">
 
       <div class="row">
-
         <!-- Blog Entries Column -->
         <div class="col-md-8">
-
-          <h1 class="my-4">Berita
-            <!-- <small>Sitem Resi Gudang Kab. Grobogan</small> -->
-          </h1>
+            <?php if($this->session->flashdata('class') && $this->session->flashdata('message')) : ?>
+                <div class="alert alert-<?php echo $this->session->flashdata('class');?> alert-dismissible fade show" role="alert">
+                    <strong><?php echo $this->session->flashdata('message');?></strong> Silakan Login.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php endif; ?>
+            <h1 class="my-4">
+                Berita
+                <!-- <small>Sitem Resi Gudang Kab. Grobogan</small> -->
+            </h1>
 
           <!-- Blog Post -->
           <?php foreach($data as $artikel):?>

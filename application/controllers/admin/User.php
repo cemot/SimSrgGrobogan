@@ -19,30 +19,6 @@ class User extends CI_Controller {
         $this->load->view('layouts/app', $data);
 	}
 
-    public function all()
-    {
-        $user = M_User::all();
-        $i = 1;
-        $data = new stdClass();
-        foreach ($user as $user) {
-            $data->data->no = $i;
-            $data->data->role = $user->role;
-            $data->data->username = $user->username;
-            $data->data->nama = $user->nama;
-            $data->data->no_tlp = $user->no_tlp;
-            $data->data->no_tlp = $user->no_tlp;
-        }
-        echo json_encode($data);
-        // foreach ($user as $user) {
-
-        // }
-        // echo '<pre>' . $user . '</pre>';
-
-        // $data['sidebar'] = 'admin/sidebar';
-        // $data['content'] = 'admin/user';
-        // $this->load->view('layouts/app', $data);
-    }
-
 	public function create()
     {
         $data['sidebar'] = 'admin/sidebar';
@@ -75,6 +51,7 @@ class User extends CI_Controller {
                     'password'  => md5($this->input->post('password')),
                     'nama'      => $this->input->post('nama'),
                     'email'     => $this->input->post('email'),
+					'no_ktp'    => $this->input->post('no_ktp'),
                     'kecamatan' => $this->input->post('kecamatan'),
                     'role'      => $this->input->post('role'),
                     'tmpt_lahir'=> $this->input->post('tmpt_lahir'),
@@ -132,8 +109,9 @@ class User extends CI_Controller {
             } else {
                 $user = M_User::find($this->input->post('id'));
                 $user->nama     = $this->input->post('nama');
-                $user->email    = $this->input->post('email');
-                $user->tmpt_lahir   = empty($this->input->post('tmpt_lahir')) ? NULL : $this->input->post('tmpt_lahir');
+				$user->email    = $this->input->post('email');
+				$user->tmpt_lahir   = empty($this->input->post('tmpt_lahir')) ? NULL : $this->input->post('tmpt_lahir');
+                $user->no_ktp   = empty($this->input->post('no_ktp')) ? NULL : $this->input->post('no_ktp');
                 $user->tgl_lahir    = date("Y-m-d", strtotime($this->input->post('tgl_lahir')));
 				$user->alamat   = empty($this->input->post('alamat')) ? NULL : $this->input->post('alamat');
                 $user->kecamatan   = $this->input->post('kecamatan');
@@ -145,7 +123,6 @@ class User extends CI_Controller {
                 } else {
                     $this->session->set_flashdata('gagal', 'User Tidak Berhasil Diperbarui');
                 }
-                // $this->load->view('myform');
                 redirect('admin/user');
             }
         }

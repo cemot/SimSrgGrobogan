@@ -25,10 +25,16 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="form-group label-floating <?php (empty($user->nama) || ($user->nama == NULL))? 'is-empty' : '' ?>">
                                 <label class="control-label">Nama</label>
                                 <input type="text" class="form-control" name="nama" value="<?php echo $user->nama; ?>">
+                            <span class="material-input"></span></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group label-floating <?php (empty($user->no_ktp) || ($user->no_ktp == NULL))? 'is-empty' : '' ?>">
+                                <label class="control-label">No KTP</label>
+                                <input type="text" class="form-control" name="no_ktp" value="<?php echo $user->no_ktp; ?>">
                             <span class="material-input"></span></div>
                         </div>
                     </div>
