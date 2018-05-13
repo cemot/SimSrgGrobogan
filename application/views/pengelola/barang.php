@@ -34,8 +34,7 @@
                                         <td><?php echo $barang->petani->nama ?></td>
                                         <td><?php echo $barang->tgl_pengajuan ?></td>
                                         <td class="td-actions text-right">
-                                            <!-- <a class="btn btn-info" href="<?php echo base_url('pengelola/pengajuan/show/'.$barang->id_gudang); ?>"><i class="material-icons">assignment</i> Detail</a> -->
-                                            <button class="btn btn-info" onclick="belumAda()"><i class="material-icons">assignment</i> Cetak</button>
+                                            <a class="btn btn-info" href="<?php echo base_url('pengelola/pengajuan/cetak/'.$barang->id_barang); ?>"><i class="material-icons">assignment</i> Cetak Pengajuan</a>
                                             <a class="btn btn-success" href="<?php echo base_url('pengelola/pengajuan/edit/'.$barang->id_barang); ?>"><i class="material-icons">mode_edit</i> Ubah</a>
                                             <a class="btn btn-danger" href="<?php echo base_url('pengelola/pengajuan/delete/'.$barang->id_barang); ?>"><i class="material-icons">close</i> Hapus</a>
                                         </td>

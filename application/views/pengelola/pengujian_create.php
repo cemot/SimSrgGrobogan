@@ -211,9 +211,9 @@
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
                                     <select class="selectpicker" data-style="select-with-transition" name="status" required>
-                                        <option selected disabled>Pilih Status</option>
+                                        <option disabled>Pilih Status</option>
                                         <option value="0">Pending </option>
-                                        <option value="1">Published</option>
+                                        <option value="1" selected>Published</option>
                                     </select>
                                 <span class="material-input"></span></div>
                             </div>

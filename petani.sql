@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 13, 2018 at 05:00 AM
+-- Generation Time: May 13, 2018 at 03:11 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -89,7 +89,8 @@ INSERT INTO `barang` (`id_barang`, `nama_barang`, `berat_barang`, `id_komoditi`,
 (5, 'jagung bakar', 15, 1, 10, 9, NULL, NULL, NULL, NULL, NULL, NULL, '2018-03-22'),
 (6, 'barang yuk', 1400, 2, 10, 9, NULL, NULL, NULL, NULL, NULL, NULL, '2018-03-23'),
 (7, 'Beras Rojolele', 500, 1, 10, 9, NULL, NULL, NULL, NULL, NULL, NULL, '2018-03-26'),
-(8, 'elelelelelelele', 15000, 1, 10, 9, 27, '09', '2020', 'Karung', 'Pick Up', '2018-05-12', '2018-05-11');
+(8, 'elelelelelelele', 15000, 1, 10, 9, 27, '09', '2020', 'Karung', 'Pick Up', '2018-05-12', '2018-05-11'),
+(9, 'Halo123', 15000, 1, 10, NULL, 27, '05', '2018', 'Goood', 'sakdlsadlk', '2018-05-20', '2018-05-13');
 
 -- --------------------------------------------------------
 
@@ -255,7 +256,7 @@ INSERT INTO `pengujian` (`id_pengujian`, `id_pengelola`, `id_barang`, `id_gudang
 (20, 9, 4, 26, '2018-03-27', 'Diterima', 9, 9, '2018-03-27 12:57:58', '2018-04-14 17:43:47'),
 (23, 9, 6, NULL, '2018-04-15', 'Ditolak', 9, NULL, '2018-04-14 17:31:32', '2018-04-14 17:31:32'),
 (24, 9, 5, 26, '2018-04-15', 'Diterima', 9, 9, '2018-04-14 17:37:46', '2018-04-14 17:43:27'),
-(25, 9, 5, 26, '2018-05-10', 'Diterima', 9, NULL, '2018-05-10 15:47:55', '2018-05-10 15:47:55');
+(25, 9, 5, 27, '2018-05-10', 'Diterima', 9, NULL, '2018-05-10 15:47:55', '2018-05-10 15:47:55');
 
 -- --------------------------------------------------------
 
@@ -493,7 +494,7 @@ ALTER TABLE `artikel`
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `catatan`
 --

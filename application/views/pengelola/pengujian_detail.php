@@ -78,7 +78,7 @@
                                     <tr>
                                         <td class="text-right">Nomor Resi</td>
                                         <td class="text-center">:</td>
-                                        <td class="text-left"><?php if($pengujian->resi){ echo $pengujian->resi->first()->no_resi; } ?></td>
+                                        <td class="text-left"><?php if($pengujian->resi){ echo $pengujian->resi->last()->no_resi; } ?></td>
                                     </tr>
                             </tbody>
                         </table>

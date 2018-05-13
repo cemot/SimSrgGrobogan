@@ -151,4 +151,14 @@ class Barang extends CI_Controller {
         }
         redirect('pengelola/pengajuan');
     }
+
+	public function cetak_pengajuan($id)
+    {
+        $data['barang'] = M_Barang::where('id_barang', $id)->first();
+        if (!$data['barang']) {
+            redirect(base_url('pengelola/pengajuan'));
+        } else {
+            $this->load->view('layouts/simpan_barang', $data);
+        }
+    }
 }

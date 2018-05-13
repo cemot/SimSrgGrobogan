@@ -94,7 +94,6 @@ class AjaxAPI extends CI_Controller {
                 ->groupBy('gudang.id_gudang')
                 ->get();
 		echo json_encode($sisa);
-
 	}
 
 	public function waktu()
@@ -123,6 +122,15 @@ class AjaxAPI extends CI_Controller {
 	public function cetak_resi()
 	{
 		$this->load->view('pengelola/resi_cetak');
+		// $this->pdf->setPaper('A4', 'potrait');
+ 	    // $this->pdf->filename = "laporan-resi.pdf";
+ 	    // $this->pdf->load_view('pengelola/resi_cetak');
+	}
+
+	public function cetak_permohonan($id)
+	{
+		$data['barang'] = M_Barang::find($id);
+		$this->load->view('layouts/simpan_barang');
 		// $this->pdf->setPaper('A4', 'potrait');
  	    // $this->pdf->filename = "laporan-resi.pdf";
  	    // $this->pdf->load_view('pengelola/resi_cetak');

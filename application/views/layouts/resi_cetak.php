@@ -5,10 +5,10 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/resi.css">
 
 </head>
-<!-- <body onload="window.print()"> -->
-<body>
+<body onload="window.print()">
+<!-- <body> -->
 	<div class="header">
-		<div class="logo">logo</div>
+		<div class="logo"></div>
 		<div class="header2">
 			<p class="head"><b>KSU SARANA HIDUP SEJAHTERA</b> <br>
 			Jl. Raya Sulursari Ds. Sulusari Gabus Grobogan Gedengan Wonosari Grobogan Jawa Tengah 58182 <br>
@@ -19,18 +19,18 @@
 		<div class="a">
 			<table>
 				<tr>
-					<td>No.seri/<i>Serial No</i></td>
+					<td>No.seri /<i> Serial No</i></td>
 					<td>:</td>
-					<td>[NO. SERI]</td>
+					<td><?php echo $resi->no_resi ?></td>
 				</tr>
 			</table>
 		</div>
 		<div class="b">
 			<table>
 				<tr>
-					<td>Kode Pengaman/<i>Security Code</i></td>
+					<td>Kode Pengaman /<i> Security Code</i></td>
 					<td>:</td>
-					<td>[kode pengaman]</td>
+					<td>___________</td>
 				</tr>
 			</table>
 
@@ -47,7 +47,7 @@
 	</div>
 	<div class="section">
 		<div class="c1">
-			<p class="head">JENIS RESI GUDANG/ <i>Type of receipt warehouse</i> : <b>ATAS NAMA/ On Behalf</b><br></p>
+			<p class="head">JENIS RESI GUDANG / <i>Type of receipt warehouse</i> : <b>ATAS NAMA/ On Behalf</b><br></p>
 		</div>
 	</div>
 	<div class="section">
@@ -94,17 +94,17 @@
 					<td><?php echo $resi->pengujian->barang->nama_barang ?></td>
 				</tr>
 				<tr>
-					<td>JENIS BARANG/ <i>Type of Commodity</i></td>
+					<td>JENIS BARANG / <i>Type of Commodity</i></td>
 					<td>:</td>
 					<td><?php echo $resi->pengujian->barang->jenis->nama_komoditi ?></td>
 				</tr>
 				<tr>
-					<td>MUTU BARANG/ <i>Quality</i></td>
+					<td>MUTU BARANG / <i>Quality</i></td>
 					<td>:</td>
 					<td><?php echo $resi->pengujian->catatan->isi_catatan ?></td>
 				</tr>
 				<tr>
-					<td>KELAS BARANG/ <i>Class of Commodity</i>*)</td>
+					<td>KELAS BARANG / <i>Class of Commodity</i>*)</td>
 					<td>:</td>
 					<td><?php echo $resi->kelas_barang ?></td>
 				</tr>
@@ -124,19 +124,19 @@
 			<table class="table">
 				DENGAN SERTIFIKAT UNTUK BARANG/ <i>Under Confornity Agency Certificate </i>:
 				<tr>
-					<td width="150px">Nomor/ <i>Number</i></td>
+					<td width="150px">Nomor / <i>Number</i></td>
 					<td>:</td>
-					<td>[no.]</td>
+					<td><?php echo $resi->no_resi ?></td>
 				</tr>
 				<tr>
-					<td>TANGGAL/ <i>Date</i></td>
+					<td>TANGGAL / <i>Date</i></td>
 					<td>:</td>
-					<td>[tanggal]</td>
+					<td><?php echo date("d M Y",strtotime($resi->tgl_penerbitan)) ?></td>
 				</tr>
 				<tr>
-					<td>OLEH/ <i>By</i></td>
+					<td>OLEH / <i>By</i></td>
 					<td>:</td>
-					<td>[ujastasma Bulog Subdivre Semarang]</td>
+					<td><?php echo $resi->pengujian->pengelola->nama ?></td>
 				</tr>
 			</table>
 		</div>
@@ -211,16 +211,16 @@
 		<div class="m">
 			<p class="ttd">
 				PEMILIK BARANG/ <i>Goods Owner</i>,
-				<br><br><br><br><br>
+				<br><br><br><br><br><br><br>
 			<b><u><?php echo $resi->pengujian->barang->petani->nama ?></u></b>
 			</p>
 		</div>
 		<div class="n">
 			<p class="ttd">
-				Grobogan, Kamis, 12 April 2018
+				Grobogan, <?php echo date("D, d M Y",strtotime($resi->tgl_penerbitan)) ?>
 				<br>
 				KSU SARANA HIDUP SEJAHTERA
-				<br><br><br><br>
+				<br><br><br><br><br><br>
 			<b><u>ARIEF HANURYANTO</u></b>
 			</p>
 		</div>

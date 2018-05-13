@@ -140,4 +140,15 @@ class Barang extends CI_Controller {
         }
         redirect('petani/pengajuan');
     }
+
+	public function cetak_pengajuan($id)
+    {
+		$own = M_Barang::select('id_barang')->where('id_petani', $this->session->id)->get();
+		$data['barang'] = M_Barang::whereIn('id_barang', $own)->where('id_barang', $id)->first();
+        if (!$data['barang']) {
+            redirect(base_url('pengelola/pengajuan'));
+        } else {
+            $this->load->view('layouts/simpan_barang', $data);
+        }
+    }
 }
