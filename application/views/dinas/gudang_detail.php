@@ -47,7 +47,7 @@
                                             if (isset($isi_sisa)) :
                                                 echo $isi_sisa->sisa;
                                             else :
-                                                echo "0";
+                                                echo $gudang->kapasitas;
                                             endif;
                                         ?>
                                         Kg
