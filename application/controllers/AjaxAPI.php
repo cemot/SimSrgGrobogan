@@ -84,6 +84,19 @@ class AjaxAPI extends CI_Controller {
         echo json_encode($gudang->alamat);
     }
 
+	public function cek()
+	{
+		$sisa = DB::table('gudang')
+				->leftjoin('pengujian', 'gudang.id_gudang', '=', 'pengujian.id_gudang')
+				->leftjoin('barang', 'barang.id_barang', '=', 'pengujian.id_barang')
+                ->select(DB::raw('gudang.id_gudang, sum(barang.berat_barang) as isi, gudang.kapasitas - sum(barang.berat_barang) as sisa'))
+                ->where('pengujian.hsl_pengujian', '=', 'Diterima')
+                ->groupBy('gudang.id_gudang')
+                ->get();
+		echo json_encode($sisa);
+
+	}
+
 	public function waktu()
 	{
 		dd(date("Y-m-d", strtotime("+". 18 ." months", strtotime(date("Y-m-d")))));

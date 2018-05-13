@@ -169,7 +169,7 @@
                             <div class="col-md-8">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <input class="form-control" type="text" id="polis_asuransi" name="polis_asuransi" placeholder="contoh : Asuransi Jasindo" required="">
+                                    <input class="form-control" type="text" id="polis_asuransi" name="polis_asuransi" placeholder="contoh : Asuransi Jasindo" value="Asuransi Jasindo" required="" readonly>
                                 <span class="material-input"></span></div>
                             </div>
                         </div>
@@ -184,7 +184,7 @@
                             <div class="col-md-4">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <input class="form-control datepicker_tgl" type="text" id="polis_end" name="polis_end" placeholder="Akhir Polis" required="">
+                                    <input class="form-control datepicker_all" type="text" id="polis_end" name="polis_end" placeholder="Akhir Polis" required="">
                                 <span class="material-input"></span></div>
                             </div>
                         </div>

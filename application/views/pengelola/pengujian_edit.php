@@ -175,7 +175,7 @@
                             <div class="col-md-8">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <input class="form-control" type="text" id="polis_asuransi" name="polis_asuransi" placeholder="contoh : Asuransi Jasindo" value="<?php if($data->hsl_pengujian == 'Diterima'){ echo $data->resi->first()->polis_asuransi;} ?>" required="">
+                                    <input class="form-control" type="text" id="polis_asuransi" name="polis_asuransi" placeholder="contoh : Asuransi Jasindo" value="<?php if($data->hsl_pengujian == 'Diterima'){ echo $data->resi->first()->polis_asuransi;} ?>" required="" readonly>
                                 <span class="material-input"></span></div>
                             </div>
                         </div>
@@ -190,7 +190,7 @@
                             <div class="col-md-4">
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <input class="form-control datepicker_tgl" type="text" id="polis_end" name="polis_end" placeholder="Akhir Polis" value="<?php if($data->hsl_pengujian == 'Diterima'){ echo $data->resi->first()->polis_end;} ?>" required="">
+                                    <input class="form-control datepicker_all" type="text" id="polis_end" name="polis_end" placeholder="Akhir Polis" value="<?php if($data->hsl_pengujian == 'Diterima'){ echo $data->resi->first()->polis_end;} ?>" required="">
                                 <span class="material-input"></span></div>
                             </div>
                         </div>

@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+use Illuminate\Database\Capsule\Manager as DB;
 
 class Gudang extends CI_Controller {
 
@@ -13,7 +14,7 @@ class Gudang extends CI_Controller {
 
 	public function index()
 	{
-        $data['data_saya'] = M_Gudang::where('id_pengelola', $this->session->id)->get();
+		$data['data_saya'] = M_Gudang::where('id_pengelola', $this->session->id)->get();
 		$data['data'] = M_Gudang::where('id_pengelola', '!=', $this->session->id)->get();
         $data['sidebar'] = 'pengelola/sidebar';
         $data['content'] = 'pengelola/gudang';
@@ -63,6 +64,14 @@ class Gudang extends CI_Controller {
         if (!$data['gudang']) {
             redirect('pengelola/gudang');
         } else {
+			$data['isi_sisa'] = DB::table('gudang')
+								->join('pengujian', 'gudang.id_gudang', '=', 'pengujian.id_gudang')
+								->join('barang', 'barang.id_barang', '=', 'pengujian.id_barang')
+					            ->select(DB::raw('gudang.id_gudang, sum(barang.berat_barang) as isi, gudang.kapasitas - sum(barang.berat_barang) as sisa'))
+					            ->where('pengujian.hsl_pengujian', '=', 'Diterima')
+								->where('gudang.id_gudang', $id)
+					            ->groupBy('gudang.id_gudang')
+					            ->first();
             $data['sidebar'] = 'pengelola/sidebar';
             $data['content'] = 'pengelola/gudang_detail';
             $this->load->view('layouts/app', $data);

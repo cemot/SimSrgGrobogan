@@ -28,19 +28,45 @@
                                 <tr>
                                     <td class="text-right">Kapasitas isi</td>
                                     <td class="text-center">:</td>
-                                    <td class="text-left">[yang tidak terisi]</td>
+                                    <td class="text-left">
+                                        <?php
+                                            if (isset($isi_sisa)) :
+                                                echo $isi_sisa->isi;
+                                            else :
+                                                echo "0";
+                                            endif;
+                                        ?>
+                                        Kg
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td class="text-right">Kapasitas sisa</td>
                                     <td class="text-center">:</td>
-                                    <td class="text-left">[kapasitas sisa]</td>
+                                    <td class="text-left">
+                                        <?php
+                                            if (isset($isi_sisa)) :
+                                                echo $isi_sisa->sisa;
+                                            else :
+                                                echo "0";
+                                            endif;
+                                        ?>
+                                        Kg
+                                    </td>
                                 </tr>
-                                 <tr>
+                                <tr>
                                     <td class="text-right"> Status</td>
                                     <td class="text-center">:</td>
                                     <td class="text-left">
-                                        <span class="label label-info">[tersisa]</span>
-                                        <span class="label label-danger">[penuh]</span>
+                                        <?php
+                                            if (isset($isi_sisa)) :
+                                                if ($isi_sisa->sisa <= 0) : ?>
+                                                    <span class="label label-danger">Penuh</span>
+                                                <?php else : ?>
+                                                    <span class="label label-info">Tersisa</span>
+                                                <?php endif; ?>
+                                        <?php else : ?>
+                                                <span class="label label-info">Tersisa</span>
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                             </tbody>
@@ -85,8 +111,8 @@
                                             <td><?php echo $pengujian->barang->berat_barang ?></td>
                                             <td><?php echo $pengujian->barang->petani->nama ?></td>
                                             <td><?php echo $pengujian->tgl_pengujian ?></td>
-                                            <td><?php echo $pengujian->resi->first()->no_resi ?></td>
-                                            <td><?php echo $pengujian->resi->first()->jatuh_tempo ?></td>
+                                            <td><?php echo $pengujian->resi->last()->no_resi ?></td>
+                                            <td><?php echo $pengujian->resi->last()->jatuh_tempo ?></td>
                                         </tr>
                                 <?php endforeach ;?>
                             </tbody>

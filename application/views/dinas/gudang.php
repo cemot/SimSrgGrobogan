@@ -17,8 +17,8 @@
                                 <th>Nama Gudang</th>
                                 <th>Pengelola</th>
                                 <th>Kapasitas Total (kg)</th>
-                                <th>Kapasitas Isi (kg)</th>
-                                <th>Kapasitas Sisa (kg)</th>
+                                <!-- <th>Kapasitas Isi (kg)</th> -->
+                                <!-- <th>Kapasitas Sisa (kg)</th> -->
                                 <th class="disabled-sorting text-right">Aksi</th>
                             </tr>
                         </thead>
@@ -31,13 +31,20 @@
                                         <td><?php echo $gudang->nama ?></td>
                                         <td><?php echo $gudang->pengelola->nama ?></td>
                                         <td><?php echo $gudang->kapasitas ?></td>
-                                        <td><?php echo $gudang->kapasitas ?></td>
-                                        <td><?php echo $gudang->kapasitas ?></td>
+                                        <?php
+                                            // foreach ($isi_sisa as $isi_sisa):
+                                            //     if ($gudang->id_gudang == $isi_sisa->id_gudang) {
+                                            //         echo '<td>'.$isi_sisa->isi.'</td>';
+                                            //         echo '<td>'.$isi_sisa->sisa.'</td>';
+                                            //         break;
+                                            //     }
+                                            // endforeach;
+                                        ?>
                                         <td class="td-actions text-right">
                                             <a class="btn btn-info" href="<?php echo base_url('dinas/gudang/detail/'.$gudang->id_gudang); ?>"><i class="material-icons">assignment</i> Detail Gudang</a>
                                         </td>
                                     </tr>
-                            <?php endforeach ;?>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>

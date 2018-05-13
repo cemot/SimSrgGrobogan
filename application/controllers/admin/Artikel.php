@@ -111,7 +111,7 @@ class Artikel extends CI_Controller {
                 redirect('admin/artikel');
             } else {
 				$artikel = M_Artikel::find($this->input->post('id_artikel'));
-				if (empty($_FILES['gambar']) || !isset($_FILES['gambar'])) {
+				if (!empty($_FILES['gambar']) || isset($_FILES['gambar'])) {
 					$config['upload_path']		= './assets/img/uploads/';
 	                $config['allowed_types']	= 'gif|jpg|png';
 					$config['max_size']			= 1024;

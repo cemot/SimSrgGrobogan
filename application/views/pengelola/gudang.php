@@ -16,28 +16,36 @@
                                 <th>No</th>
                                 <th>Nama Gudang</th>
                                 <th>Kapasitas Total (kg)</th>
-                                <th>Kapasitas Isi (kg)</th>
-                                <th>Kapasitas Sisa (kg)</th>
+                                <!-- <th>Kapasitas Isi (kg)</th> -->
+                                <!-- <th>Kapasitas Sisa (kg)</th> -->
                                 <th class="disabled-sorting text-right">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                                 $no = 1;
+                                $i = 0;
                                 foreach ($data_saya as $gudang): ?>
                                     <tr>
                                         <td><?php echo $no++ ?></td>
                                         <td><?php echo $gudang->nama ?></td>
                                         <td><?php echo $gudang->kapasitas ?></td>
-                                        <td><?php echo $gudang->kapasitas ?></td>
-                                        <td><?php echo $gudang->kapasitas ?></td>
+                                        <?php
+                                            // if ($gudang->id_gudang == $isi_sisa[$i]->id_gudang) {
+                                            //     echo '<td>'.$isi_sisa[$i]->isi.'</td>';
+                                            //     echo '<td>'.$isi_sisa[$i]->sisa.'</td>';
+                                            // } else {
+                                            //     echo '<td>0</td>';
+                                            //     echo '<td>'.$gudang->kapasitas.'</td>';
+                                            // }
+                                        ?>
                                         <td class="td-actions text-right">
                                             <a class="btn btn-info" href="<?php echo base_url('pengelola/gudang/detail/'.$gudang->id_gudang); ?>"><i class="material-icons">assignment</i> Detail Gudang</a>
                                             <a class="btn btn-success" href="<?php echo base_url('pengelola/gudang/edit/'.$gudang->id_gudang); ?>"><i class="material-icons">mode_edit</i> Ubah</a>
                                             <a class="btn btn-danger" href="<?php echo base_url('pengelola/gudang/delete/'.$gudang->id_gudang); ?>"><i class="material-icons">close</i> Hapus</a>
                                         </td>
                                     </tr>
-                            <?php endforeach ;?>
+                            <?php $i++; endforeach ;?>
                         </tbody>
                     </table>
                 </div>

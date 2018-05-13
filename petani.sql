@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2018 at 06:17 AM
+-- Generation Time: May 13, 2018 at 05:00 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -274,7 +274,7 @@ CREATE TABLE `resi` (
   `no_polis` varchar(50) DEFAULT NULL,
   `polis_start` date DEFAULT NULL,
   `polis_end` date DEFAULT NULL,
-  `polis_asuransi` varchar(100) DEFAULT NULL,
+  `polis_asuransi` varchar(100) DEFAULT 'Asuransi Jasindo',
   `biaya_penyimpanan` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -285,12 +285,12 @@ CREATE TABLE `resi` (
 --
 
 INSERT INTO `resi` (`id_resi`, `no_resi`, `id_pengujian`, `kelas_barang`, `tgl_penerbitan`, `masa_aktif`, `jatuh_tempo`, `no_polis`, `polis_start`, `polis_end`, `polis_asuransi`, `biaya_penyimpanan`, `created_at`, `updated_at`) VALUES
-(2, 'INV009', 19, NULL, '2018-03-27', 9, '2018-12-27', NULL, NULL, NULL, NULL, NULL, '2018-03-27 09:34:49', '2018-04-14 17:46:54'),
-(3, 'INV/20/1092', 20, NULL, '2018-03-27', 12, '2019-03-27', NULL, NULL, NULL, NULL, NULL, '2018-03-27 12:57:58', '2018-04-14 17:45:49'),
-(4, 'INV/20/10998', 24, NULL, '2018-04-15', 3, '2018-07-15', NULL, NULL, NULL, NULL, NULL, '2018-04-14 17:37:47', '2018-04-14 17:47:11'),
-(7, 'INV009', 19, NULL, '2018-05-01', 12, '2019-05-01', NULL, NULL, NULL, NULL, NULL, '2018-05-01 05:09:42', '2018-05-01 05:09:42'),
-(8, 'INV/20/10998', 24, '1', '2018-05-01', 3, '2018-08-01', NULL, NULL, NULL, NULL, NULL, '2018-05-01 05:16:19', '2018-05-01 05:16:19'),
-(9, 'INV/20/10998', 25, NULL, '2018-05-10', 12, '2019-05-10', NULL, '1970-01-01', '1970-01-01', NULL, NULL, '2018-05-10 15:47:56', '2018-05-10 15:47:56');
+(2, 'INV009', 19, NULL, '2018-03-27', 9, '2018-12-27', NULL, NULL, NULL, 'Asuransi Jasindo', NULL, '2018-03-27 09:34:49', '2018-04-14 17:46:54'),
+(3, 'INV/20/1092', 20, NULL, '2018-03-27', 12, '2019-03-27', NULL, NULL, NULL, 'Asuransi Jasindo', NULL, '2018-03-27 12:57:58', '2018-04-14 17:45:49'),
+(4, 'INV/20/10998', 24, NULL, '2018-04-15', 3, '2018-07-15', NULL, NULL, NULL, 'Asuransi Jasindo', NULL, '2018-04-14 17:37:47', '2018-04-14 17:47:11'),
+(7, 'INV009', 19, NULL, '2018-05-01', 12, '2019-05-01', NULL, NULL, NULL, 'Asuransi Jasindo', NULL, '2018-05-01 05:09:42', '2018-05-01 05:09:42'),
+(8, 'INV/20/10998', 24, '1', '2018-05-01', 3, '2018-08-01', NULL, NULL, NULL, 'Asuransi Jasindo', NULL, '2018-05-01 05:16:19', '2018-05-01 05:16:19'),
+(9, 'INV/20/10998', 25, NULL, '2018-05-10', 12, '2019-05-10', NULL, '1970-01-01', '1970-01-01', 'Asuransi Jasindo', NULL, '2018-05-10 15:47:56', '2018-05-10 15:47:56');
 
 -- --------------------------------------------------------
 
@@ -493,7 +493,7 @@ ALTER TABLE `artikel`
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `catatan`
 --
