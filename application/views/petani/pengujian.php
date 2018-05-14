@@ -28,7 +28,7 @@
                                     <tr>
                                         <td><?php echo $no++ ?></td>
                                         <td><?php echo $pengujian->barang->nama_barang ?></td>
-                                        <td><?php echo $pengujian->tgl_pengujian ?></td>
+                                        <td><?php echo date_indo($pengujian->tgl_pengujian) ?></td>
                                         <td><span class="label label-<?php if($pengujian->hsl_pengujian == 'Diterima'){ echo 'success';} else { echo 'danger';} ?>"><?php echo $pengujian->hsl_pengujian ?></span>
                                         </td>
                                         <!-- <td><span class="label label-<?php if($pengujian->catatan->status == 0){ echo 'default';} else { echo 'success';} ?>"><?php if($pengujian->catatan->status == 0){ echo 'Pending';} else { echo 'Published';} ?></span>

@@ -32,7 +32,7 @@
           <hr>
 
           <!-- Date/Time -->
-          <p>Ditulis pada <?php echo date('d F Y h:m A',strtotime($artikel->tanggal)); ?></p>
+          <p>Ditulis pada <?php echo longdate_indo($artikel->tanggal); ?></p>
 
           <hr>
 

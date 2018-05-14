@@ -34,7 +34,7 @@
                                     <tr>
                                         <td class="text-right">Tanggal Pengujian</td>
                                         <td class="text-center">:</td>
-                                        <td class="text-left"><?php echo $pengujian->tgl_pengujian; ?></td>
+                                        <td class="text-left"><?php echo longdate_indo($pengujian->tgl_pengujian); ?></td>
                                     </tr>
                                      <tr>
                                         <td class="text-right">Hasil Pengujian</td>
@@ -118,11 +118,11 @@
                         </table>
                     </div>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-12 text-center">
                         <button class="btn btn-primary btn-round" onclick="belumAda()">Cetak Laporan</button>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

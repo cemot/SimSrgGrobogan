@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 13, 2018 at 03:11 PM
+-- Generation Time: May 14, 2018 at 06:46 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -33,7 +33,7 @@ CREATE TABLE `artikel` (
   `judul` varchar(191) NOT NULL,
   `isi` text NOT NULL,
   `gambar` varchar(200) NOT NULL DEFAULT 'image_placeholder.jpg',
-  `tanggal` datetime DEFAULT NULL,
+  `tanggal` date DEFAULT NULL,
   `id_penulis` int(11) NOT NULL,
   `status` tinyint(4) DEFAULT '0' COMMENT '0 = pending, 1 = published',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -45,15 +45,15 @@ CREATE TABLE `artikel` (
 --
 
 INSERT INTO `artikel` (`id_artikel`, `judul`, `isi`, `gambar`, `tanggal`, `id_penulis`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Test Update1', 'ini boy isinyaa', 'image_placeholder.jpg', '2018-03-17 00:00:00', 1, 0, '2018-03-14 16:17:43', '2018-03-15 00:38:46'),
-(2, 'Ubah judul bosq', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'image_placeholder.jpg', '2018-03-08 00:00:00', 1, 1, '2018-03-14 16:20:11', '2018-03-18 16:54:53'),
-(3, 'asd', 'asdas', 'image_placeholder.jpg', '2018-03-20 00:00:00', 1, NULL, '2018-03-18 16:07:27', '2018-03-18 16:07:27'),
-(4, 'sadasdd', 'sadasdsad', 'image_placeholder.jpg', '2018-03-21 00:00:00', 1, 1, '2018-03-18 16:08:05', '2018-03-18 16:08:05'),
-(6, 'sadasds', 'sadas', 'image_placeholder.jpg', '2018-03-15 00:00:00', 1, NULL, '2018-03-19 02:23:57', '2018-03-19 02:23:57'),
-(10, 'malam minggu cuy', '<p>kuyy malmingan</p>', 'image_placeholder.jpg', '2018-04-15 00:00:00', 8, 1, '2018-04-14 17:52:29', '2018-04-14 17:52:29'),
-(20, 'cobaa edit ya', '<p>kepo aja lau</p>', 'cobaa_edit_ya.jpg', '2018-04-15 00:00:00', 8, 1, '2018-04-15 06:37:36', '2018-04-15 06:49:02'),
-(21, 'sadsdsad', '<p>sadsadsadsad</p>', 'sadsdsad.PNG', '2018-05-10 00:00:00', 8, 1, '2018-05-10 16:14:37', '2018-05-10 16:14:37'),
-(22, 'baruuuu euy', '<p>sasadsad</p>', 'baruuuu_euy.PNG', '2018-05-10 00:00:00', 8, 1, '2018-05-10 16:15:34', '2018-05-10 16:15:34');
+(1, 'Test Update1', 'ini boy isinyaa', 'image_placeholder.jpg', '2018-03-17', 1, 0, '2018-03-14 16:17:43', '2018-03-15 00:38:46'),
+(2, 'Ubah judul bosq', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'image_placeholder.jpg', '2018-03-08', 1, 1, '2018-03-14 16:20:11', '2018-03-18 16:54:53'),
+(3, 'asd', 'asdas', 'image_placeholder.jpg', '2018-03-20', 1, NULL, '2018-03-18 16:07:27', '2018-03-18 16:07:27'),
+(4, 'sadasdd', 'sadasdsad', 'image_placeholder.jpg', '2018-03-21', 1, 1, '2018-03-18 16:08:05', '2018-03-18 16:08:05'),
+(6, 'sadasds', 'sadas', 'image_placeholder.jpg', '2018-03-15', 1, NULL, '2018-03-19 02:23:57', '2018-03-19 02:23:57'),
+(10, 'malam minggu cuy', '<p>kuyy malmingan</p>', 'image_placeholder.jpg', '2018-04-15', 8, 1, '2018-04-14 17:52:29', '2018-04-14 17:52:29'),
+(20, 'cobaa edit ya', '<p>kepo aja lau</p>', 'cobaa_edit_ya.jpg', '2018-04-15', 8, 1, '2018-04-15 06:37:36', '2018-04-15 06:49:02'),
+(21, 'sadsdsad', '<p>sadsadsadsad</p>', 'sadsdsad.PNG', '2018-05-10', 8, 1, '2018-05-10 16:14:37', '2018-05-10 16:14:37'),
+(22, 'baruuuu euy', '<p>sasadsad</p>', 'baruuuu_euy.PNG', '2018-05-10', 8, 1, '2018-05-10 16:15:34', '2018-05-10 16:15:34');
 
 -- --------------------------------------------------------
 
@@ -286,11 +286,11 @@ CREATE TABLE `resi` (
 --
 
 INSERT INTO `resi` (`id_resi`, `no_resi`, `id_pengujian`, `kelas_barang`, `tgl_penerbitan`, `masa_aktif`, `jatuh_tempo`, `no_polis`, `polis_start`, `polis_end`, `polis_asuransi`, `biaya_penyimpanan`, `created_at`, `updated_at`) VALUES
-(2, 'INV009', 19, NULL, '2018-03-27', 9, '2018-12-27', NULL, NULL, NULL, 'Asuransi Jasindo', NULL, '2018-03-27 09:34:49', '2018-04-14 17:46:54'),
-(3, 'INV/20/1092', 20, NULL, '2018-03-27', 12, '2019-03-27', NULL, NULL, NULL, 'Asuransi Jasindo', NULL, '2018-03-27 12:57:58', '2018-04-14 17:45:49'),
-(4, 'INV/20/10998', 24, NULL, '2018-04-15', 3, '2018-07-15', NULL, NULL, NULL, 'Asuransi Jasindo', NULL, '2018-04-14 17:37:47', '2018-04-14 17:47:11'),
-(7, 'INV009', 19, NULL, '2018-05-01', 12, '2019-05-01', NULL, NULL, NULL, 'Asuransi Jasindo', NULL, '2018-05-01 05:09:42', '2018-05-01 05:09:42'),
-(8, 'INV/20/10998', 24, '1', '2018-05-01', 3, '2018-08-01', NULL, NULL, NULL, 'Asuransi Jasindo', NULL, '2018-05-01 05:16:19', '2018-05-01 05:16:19'),
+(2, 'INV009', 19, NULL, '2018-03-27', 9, '2018-12-27', NULL, '1970-01-01', '1970-01-01', 'Asuransi Jasindo', NULL, '2018-03-27 09:34:49', '2018-04-14 17:46:54'),
+(3, 'INV/20/1092', 20, NULL, '2018-03-27', 12, '2019-03-27', NULL, '1970-01-01', '1970-01-01', 'Asuransi Jasindo', NULL, '2018-03-27 12:57:58', '2018-04-14 17:45:49'),
+(4, 'INV/20/10998', 24, NULL, '2018-04-15', 3, '2018-07-15', NULL, '1970-01-01', '1970-01-01', 'Asuransi Jasindo', NULL, '2018-04-14 17:37:47', '2018-04-14 17:47:11'),
+(7, 'INV009', 19, NULL, '2018-05-01', 12, '2019-05-01', NULL, '1970-01-01', '1970-01-01', 'Asuransi Jasindo', NULL, '2018-05-01 05:09:42', '2018-05-01 05:09:42'),
+(8, 'INV/20/10998', 24, '1', '2018-05-01', 3, '2018-08-01', NULL, '1970-01-01', '1970-01-01', 'Asuransi Jasindo', NULL, '2018-05-01 05:16:19', '2018-05-01 05:16:19'),
 (9, 'INV/20/10998', 25, NULL, '2018-05-10', 12, '2019-05-10', NULL, '1970-01-01', '1970-01-01', 'Asuransi Jasindo', NULL, '2018-05-10 15:47:56', '2018-05-10 15:47:56');
 
 -- --------------------------------------------------------

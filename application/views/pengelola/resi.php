@@ -32,7 +32,7 @@
                                         <td><?php echo $resi->no_resi ?></td>
                                         <td><?php echo $resi->pengujian->barang->nama_barang ?></td>
                                         <td><?php echo $resi->pengujian->gudang->nama ?></td>
-                                        <td><?php echo date("d F Y", strtotime($resi->tgl_penerbitan)). ' - '.date("d F Y", strtotime($resi->jatuh_tempo)) ?></td>
+                                        <td><?php echo date_indo($resi->tgl_penerbitan). ' - '.date_indo($resi->jatuh_tempo) ?></td>
                                         <td>
                                             <span class="label label-<?php if($resi->jatuh_tempo >= date("Y-m-d")){ echo 'success';} else { echo 'danger';} ?>">
                                                 <?php
@@ -45,7 +45,7 @@
                                             </span>
                                         </td>
                                         <td class="td-actions text-right">
-                                            <a class="btn btn-info" href="<?php echo base_url('pengelola/resi/cetak/'.$resi->id_resi); ?>"><i class="material-icons">assignment</i> Cetak Resi</a>
+                                            <a class="btn btn-info" target="_blank" href="<?php echo base_url('pengelola/resi/cetak/'.$resi->id_resi); ?>"><i class="material-icons">assignment</i> Cetak Resi</a>
                                         </td>
                                         <td class="td-actions text-right">
                                             <?php if(!$resi->perpanjangan) : ?>

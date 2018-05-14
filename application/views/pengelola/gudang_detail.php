@@ -110,7 +110,7 @@
                                             <td><?php echo $pengujian->barang->nama_barang ?></td>
                                             <td><?php echo $pengujian->barang->berat_barang ?></td>
                                             <td><?php echo $pengujian->barang->petani->nama ?></td>
-                                            <td><?php echo $pengujian->tgl_pengujian ?></td>
+                                            <td><?php echo date_indo($pengujian->tgl_pengujian) ?></td>
                                             <td><?php echo $pengujian->resi->last()->no_resi ?></td>
                                             <td><?php echo $pengujian->resi->last()->jatuh_tempo ?></td>
                                         </tr>

@@ -37,12 +37,12 @@
             </div>
             <div class="card-footer" style="vertical-align: middle;">
                 <div class="stats pull-left">
-                    <p class="category"><?php echo date('d F Y',strtotime($artikel->tanggal)); ?> oleh <b><?php echo $artikel->penulis->nama; ?></b></p>
+                    <p class="category"><?php echo longdate_indo($artikel->tanggal); ?> oleh <b><?php echo $artikel->penulis->nama; ?></b></p>
                 </div>
                 <div class="stats pull-right">
                     <?php if ($endPoint) : ?>
                     <p class="category">
-                        <a class="btn btn-sm btn-rose btn-fill" href="<?php echo base_url('dinas/artikel/'.$artikel->id_artikel); ?>">Read More</a>
+                        <a class="btn btn-sm btn-rose btn-fill" href="<?php echo base_url('dinas/artikel/'.$artikel->id_artikel); ?>">Selanjutnya</a>
                     </p>
                     <?php endif; ?>
                 </div>

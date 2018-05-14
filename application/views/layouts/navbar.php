@@ -50,7 +50,7 @@
         <li class="text-center">
             <a href="#">
                <i class="material-icons">schedule</i>
-               <?php echo date('d M Y h:i:s a', time()); ?>
+               <?php echo longdate_indo(date('Y-m-d', time())).' '.date('h:i:s a', time()); ?>
             </a>
         </li>
         <li class="text-center">

@@ -1,7 +1,7 @@
 <div class="header text-center">
     <h3 class="title"><?php echo $artikel->judul; ?></h3>
     <h7>
-        <p class="category"><?php echo date('d F Y',strtotime($artikel->tanggal)); ?> oleh <b><?php echo $artikel->penulis->nama; ?></b></p>
+        <p class="category"><?php echo longdate_indo($artikel->tanggal); ?> oleh <b><?php echo $artikel->penulis->nama; ?></b></p>
     </h7>
 </div>
 <div class="row">

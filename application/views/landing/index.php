@@ -58,13 +58,13 @@
               </p>
               <?php if ($endPoint) : ?>
               <p class="category">
-                  <a href="<?php echo base_url('artikel/'.$artikel->id_artikel); ?>" class="btn btn-primary">Read More &rarr;</a>
+                  <a href="<?php echo base_url('artikel/'.$artikel->id_artikel); ?>" class="btn btn-primary">Selanjutnya &rarr;</a>
               </p>
               <?php endif; ?>
 
             </div>
             <div class="card-footer text-muted">
-              Ditulis pada <?php echo date('d F Y',strtotime($artikel->tanggal)); ?>
+              Ditulis pada <?php echo longdate_indo($artikel->tanggal); ?>
               oleh <strong><?php echo $artikel->penulis->nama; ?></strong>
             </div>
           </div>

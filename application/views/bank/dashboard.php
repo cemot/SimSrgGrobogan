@@ -34,7 +34,7 @@
                                 <tr>
                                     <?php $harga = []; foreach ($beras as $beras):
                                         $harga[] = $beras->harga; ?>
-                                        <td><?php echo '<small>'.$beras->tanggal.'</small> : <strong>'.$beras->harga.'</strong>'; ?></td>
+                                        <td><?php echo '<small>'.shortdate_indo($beras->tanggal).'</small> : <strong>'.$beras->harga.'</strong>'; ?></td>
                                     <?php endforeach;?>
                                     <td>
                                     <?php
@@ -77,7 +77,7 @@
                                     <tr>
                                         <?php $harga = []; foreach ($jagung as $jagung):
                                             $harga[] = $jagung->harga; ?>
-                                            <td><?php echo '<small>'.$jagung->tanggal.'</small> : <strong>'.$jagung->harga.'</strong>'; ?></td>
+                                            <td><?php echo '<small>'.shortdate_indo($jagung->tanggal).'</small> : <strong>'.$jagung->harga.'</strong>'; ?></td>
                                         <?php endforeach;?>
                                         <td>
                                         <?php
@@ -122,7 +122,7 @@
                                     <tr>
                                         <?php $harga = []; foreach ($gabah as $gabah):
                                             $harga[] = $gabah->harga; ?>
-                                            <td><?php echo '<small>'.$gabah->tanggal.'</small> : <strong>'.$gabah->harga.'</strong>'; ?></td>
+                                            <td><?php echo '<small>'.shortdate_indo($gabah->tanggal).'</small> : <strong>'.$gabah->harga.'</strong>'; ?></td>
                                         <?php endforeach;?>
                                         <td>
                                         <?php

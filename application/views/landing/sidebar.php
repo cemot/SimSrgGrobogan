@@ -18,7 +18,7 @@
                       <?php $harga = []; $i=1; foreach ($beras as $beras):
                           $harga[] = $beras->harga; ?>
                           <td>
-                            <?php echo '<small>'.$beras->tanggal.'</small> : <strong>'.$beras->harga.'</strong>'; ?>
+                            <?php echo '<small>'.shortdate_indo($beras->tanggal).'</small> : <strong>'.$beras->harga.'</strong>'; ?>
                             <?php
                             if ($i==2) {
                                 if($harga[1] > $harga[0]) {
@@ -40,7 +40,7 @@
                         <?php $harga = []; $i=1; foreach ($jagung as $jagung):
                             $harga[] = $jagung->harga; ?>
                             <td>
-                                <?php echo '<small>'.$jagung->tanggal.'</small> : <strong>'.$jagung->harga.'</strong>'; ?>
+                                <?php echo '<small>'.shortdate_indo($jagung->tanggal).'</small> : <strong>'.$jagung->harga.'</strong>'; ?>
                                 <?php
                                 if ($i==2) {
                                     if($harga[1] > $harga[0]) {
@@ -61,7 +61,7 @@
                         <?php $harga = []; $i =1; foreach ($gabah as $gabah):
                             $harga[] = $gabah->harga; ?>
                             <td>
-                                <?php echo '<small>'.$gabah->tanggal.'</small> : <strong>'.$gabah->harga.'</strong>'; ?>
+                                <?php echo '<small>'.shortdate_indo($gabah->tanggal).'</small> : <strong>'.$gabah->harga.'</strong>'; ?>
                                 <?php
                                 if ($i==2) {
                                     if($harga[1] > $harga[0]) {

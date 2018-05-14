@@ -70,7 +70,7 @@
                                     <tr>
                                         <td><?php echo $no++ ?></td>
                                         <td><?php echo $harga->komoditi->nama_komoditi ?></td>
-                                        <td><?php echo date('d F Y', strtotime($harga->tanggal)) ?></td>
+                                        <td><?php echo longdate_indo($harga->tanggal) ?></td>
                                         <td><?php echo $harga->harga ?></td>
                                     </tr>
                             <?php endforeach ;?>

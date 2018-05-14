@@ -3,9 +3,8 @@
 <head>
 	<title>Resi Gudang</title>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/resi.css">
-
 </head>
-<body onload="window.print()">
+<body onload="window.print()" onmouseover="window.close();">
 <!-- <body> -->
 	<div class="header">
 		<div class="logo"></div>
@@ -80,7 +79,7 @@
 				<tr>
 					<td>Tanggal / <i>Date</i></td>
 					<td>:</td>
-					<td><?php echo date("d M Y",strtotime($resi->tgl_penerbitan)) ?></td>
+					<td><?php echo date_indo($resi->tgl_penerbitan) ?></td>
 				</tr>
 			</table>
 		</div>
@@ -118,7 +117,7 @@
 				<tr>
 					<td width="150px">TANGGAL/ <i>Date</i></td>
 					<td>:</td>
-					<td><?php echo date("d M Y",strtotime($resi->tgl_penerbitan)) ?> SAMPAI DENGAN / <i>Up to</i> <?php echo date("d M Y",strtotime($resi->jatuh_tempo)) ?></td>
+					<td><?php echo date_indo($resi->tgl_penerbitan) ?> SAMPAI DENGAN / <i>Up to</i> <?php echo date_indo($resi->jatuh_tempo) ?></td>
 				</tr>
 			</table>
 			<table class="table">
@@ -131,7 +130,7 @@
 				<tr>
 					<td>TANGGAL / <i>Date</i></td>
 					<td>:</td>
-					<td><?php echo date("d M Y",strtotime($resi->tgl_penerbitan)) ?></td>
+					<td><?php echo date_indo($resi->tgl_penerbitan) ?></td>
 				</tr>
 				<tr>
 					<td>OLEH / <i>By</i></td>
@@ -186,7 +185,7 @@
 				<tr>
 					<td>MASA BERLAKU/ <i>Valid Period</i></td>
 					<td>:</td>
-					<td><?php echo date("d M Y",strtotime($resi->polis_start)) ?> - <?php echo date("d M Y",strtotime($resi->polis_end)) ?></td>
+					<td><?php echo date_indo($resi->polis_start) ?> - <?php echo date_indo($resi->polis_end) ?></td>
 				</tr>
 				<tr>
 					<td>NAMA PERUSAHAAN ASURANSI/ <i>Insurance Company</i></td>
@@ -202,7 +201,7 @@
 				<tr>
 					<td width="250px">JATUH TEMPO SIMPAN BARANG / <i>Storing time valid up to</i></td>
 					<td>:</td>
-					<td><?php echo date("d M Y",strtotime($resi->jatuh_tempo)) ?></td>
+					<td><?php echo date_indo($resi->jatuh_tempo) ?></td>
 				</tr>
 			</table>
 		</div>
@@ -217,7 +216,7 @@
 		</div>
 		<div class="n">
 			<p class="ttd">
-				Grobogan, <?php echo date("D, d M Y",strtotime($resi->tgl_penerbitan)) ?>
+				Grobogan, <?php echo longdate_indo($resi->tgl_penerbitan) ?>
 				<br>
 				KSU SARANA HIDUP SEJAHTERA
 				<br><br><br><br><br><br>

@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Resi Gudang</title>
+	<title>Pengajuan Barang</title>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/pengajuan.css">
-
 </head>
-<!-- <body onload="window.print()"> -->
+<!-- <body onload="window.print();" onmouseover="window.close();"> -->
 <body>
 	<div class="header">
 		<div class="logo"></div>
@@ -38,7 +37,7 @@
 		<div class="b">
 			<table>
 				<tr>
-					<td><?php echo date("D, d M Y",strtotime($barang->tgl_pengajuan)) ?></td>
+					<td><?php echo longdate_indo($barang->tgl_pengajuan) ?></td>
 				</tr>
 				<tr>
 					<td>
@@ -166,7 +165,7 @@
 						<td style="width:5%">a.</td>
 						<td style="width:30%">Tanggal</td>
 						<td style="width:5%">:</td>
-						<td style="width:60%"><?php echo date("d M Y",strtotime($barang->tgl_pengajuan)) ?></td>
+						<td style="width:60%"><?php echo date_indo($barang->tgl_pengajuan) ?></td>
 					</tr>
 				</table>
 			</p>
@@ -177,7 +176,7 @@
 	<div class="section1">
 		<div class="n" style="float:right;">
 			<p class="ttd">
-				Grobogan, <?php echo date("D, d M Y",strtotime($barang->tgl_pengajuan)) ?>
+				Grobogan, <?php echo longdate_indo($barang->tgl_pengajuan) ?>
 				<br>
 				Pemohon
 				<br><br><br><br><br><br>
