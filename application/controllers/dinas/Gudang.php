@@ -64,4 +64,22 @@ class Gudang extends CI_Controller {
     {
 		//
     }
+
+	public function cetak_gudang($id)
+    {
+		$data['gudang'] = M_Gudang::where('id_gudang', $id)->first();
+        if (!$data['gudang']) {
+            redirect('dinas/gudang');
+        } else {
+			$data['isi_sisa'] = DB::table('gudang')
+								->join('pengujian', 'gudang.id_gudang', '=', 'pengujian.id_gudang')
+								->join('barang', 'barang.id_barang', '=', 'pengujian.id_barang')
+					            ->select(DB::raw('gudang.id_gudang, sum(barang.berat_barang) as isi, gudang.kapasitas - sum(barang.berat_barang) as sisa'))
+					            ->where('pengujian.hsl_pengujian', '=', 'Diterima')
+								->where('gudang.id_gudang', $id)
+					            ->groupBy('gudang.id_gudang')
+					            ->first();
+            $this->load->view('layouts/gudang_cetak', $data);
+        }
+    }
 }

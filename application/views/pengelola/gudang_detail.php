@@ -62,10 +62,10 @@
                                                 if ($isi_sisa->sisa <= 0) : ?>
                                                     <span class="label label-danger">Penuh</span>
                                                 <?php else : ?>
-                                                    <span class="label label-info">Tersisa</span>
+                                                    <span class="label label-info">Masih Tersedia</span>
                                                 <?php endif; ?>
                                         <?php else : ?>
-                                                <span class="label label-info">Tersisa</span>
+                                                <span class="label label-info">Masih Tersedia</span>
                                         <?php endif; ?>
                                     </td>
                                 </tr>
@@ -120,7 +120,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <button class="btn btn-primary btn-round" onclick="belumAda()">Cetak Laporan</button>
+                            <a class="btn btn-primary btn-round" href="<?php echo base_url('pengelola/gudang/cetak/'.$gudang->id_gudang); ?>">Cetak Laporan</a>
                         </div>
                     </div>
             </div>

@@ -102,6 +102,7 @@ $route['pengelola/gudang/edit/(:any)'] = 'pengelola/gudang/edit/$1';
 $route['pengelola/gudang/detail/(:any)'] = 'pengelola/gudang/show/$1';
 $route['pengelola/gudang/update'] = 'pengelola/gudang/update';
 $route['pengelola/gudang/delete/(:any)'] = 'pengelola/gudang/destroy/$1';
+$route['pengelola/gudang/cetak/(:any)'] = 'pengelola/gudang/cetak_gudang/$1';
 $route['pengelola/pengajuan'] = 'pengelola/barang/index';
 $route['pengelola/pengajuan/create'] = 'pengelola/barang/create';
 $route['pengelola/pengajuan/store'] = 'pengelola/barang/store';
@@ -141,6 +142,7 @@ $route['dinas/artikel'] = 'dinas/artikel/index';
 $route['dinas/artikel/(:any)'] = 'dinas/artikel/show/$1';
 $route['dinas/gudang'] = 'dinas/gudang/index';
 $route['dinas/gudang/detail/(:any)'] = 'dinas/gudang/show/$1';
+$route['dinas/gudang/cetak/(:any)'] = 'dinas/gudang/cetak_gudang/$1';
 $route['dinas/resi/cetak/(:any)'] = 'dinas/resi/cetak_resi/$1';
 
 //BANK
