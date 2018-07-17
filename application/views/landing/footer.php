@@ -1,4 +1,4 @@
-<footer class="py-5 bg-dark">
+<footer class="py-5 bg-success">
   <div class="container">
     <p class="m-0 text-center text-white">Copyright &copy; Sistem Resi Gudang Kab. Grobogan 2018</p>
   </div>

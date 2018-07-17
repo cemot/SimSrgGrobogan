@@ -24,9 +24,7 @@ class Resi extends CI_Controller {
     {
         $own = M_Pengujian::select('id_pengujian')->whereIn('id_barang', M_Barang::select('id_barang')->where('id_petani', $this->session->id))->get();
         $data['resi'] = M_Resi::whereIn('id_pengujian', $own)->where('id_resi', $id_resi)->get()->first();
-        // dd($data['data']);
         if (!$data['resi']) {
-            dd('sampe sini');
             redirect(base_url('petani/resi'));
         } else {
             $this->load->view('layouts/resi_cetak', $data);

@@ -30,12 +30,12 @@
     <nav class="navbar navbar-primary navbar-transparent navbar-absolute">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Sistem Informasi Manajemen Resi Gudang Kab. Grobogan</a>
+                <h1 class="navbar-brand" href="#">Sistem Informasi Manajemen Resi Gudang Kab. Grobogan</h1>
             </div>
         </div>
     </nav>
     <div class="wrapper wrapper-full-page">
-        <div class="full-page login-page" filter-color="black" data-image="<?php echo base_url(); ?>assets/img/login.jpg">
+        <div class="full-page login-page" filter-color="black" data-image="<?php echo base_url(); ?>assets/img/background_login.jpeg">
             <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
             <div class="content">
                 <div class="container">
@@ -43,7 +43,7 @@
                         <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
                             <form method="post" action="<?php echo base_url('auth/login'); ?>">
                                 <div class="card card-login card-hidden">
-                                    <div class="card-header text-center" data-background-color="rose">
+                                    <div class="card-header text-center" data-background-color="green">
                                         <h4 class="card-title">Login</h4>
                                     </div>
                                     <p class="category text-center">
@@ -70,7 +70,7 @@
                                         </div>
                                     </div>
                                     <div class="footer text-center">
-                                        <button type="submit" class="btn btn-rose btn-wd btn-lg">Login</button>
+                                        <button type="submit" class="btn btn-success btn-wd btn-lg">Login</button>
                                         <a href="<?php echo base_url(); ?>" class="btn btn-default btn-simple btn-sm">.:: Kembali Ke Halaman Utama ::.</a>
                                     </div>
                                 </div>
@@ -86,7 +86,8 @@
                         <script>
                             document.write(new Date().getFullYear())
                         </script>
-                        <a href="#"> DexTeam </a>, made with <i class="fa fa-heart" aria-hidden="true"></i>
+                        <!-- <a href="#"> DexTeam </a>, made with <i class="fa fa-heart" aria-hidden="true"></i> -->
+                        Sistem Resi Gudang Kab. Grobogan
                     </p>
                 </div>
             </footer>

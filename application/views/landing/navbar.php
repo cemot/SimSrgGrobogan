@@ -1,5 +1,6 @@
 <div class="container">
-  <a class="navbar-brand" href="#">Sistem Resi Gudang Kab. Grobogan</a>
+  <a class="navbar-brand" href="#">Sistem Resi Gudang Kabupaten Grobogan <br><small>
+Jalan Raya Wirosari – Ngaringan, Desa Dapurno RT 02 RW 18 Kecamatan Wirosari Kabupaten Grobogan</small></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

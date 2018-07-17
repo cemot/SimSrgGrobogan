@@ -7,7 +7,7 @@
 
 <body>
     <div class="wrapper">
-        <div class="sidebar" data-active-color="rose" data-background-color="black" data-image="<?php echo base_url(); ?>assets/img/sidebar-1.jpg">
+        <div class="sidebar" data-active-color="green" data-background-color="black" data-image="<?php echo base_url(); ?>assets/img/sidebar.jpeg">
         <!--
             Tip 1: You can change the color of active element of the sidebar using: data-active-color="purple | blue | green | orange | red | rose"
             Tip 2: you can also add an image using data-image tag
@@ -24,7 +24,7 @@
             <div class="sidebar-wrapper">
                 <div class="user">
                     <div class="photo">
-                        <img src="<?php echo base_url(); ?>assets/img/faces/avatar.jpg" />
+                        <img src="<?php echo base_url(); ?>assets/img/avatar.jpg" />
                     </div>
                     <div class="info">
                         <a data-toggle="collapse" href="#collapseExample" class="collapsed">
@@ -50,12 +50,12 @@
                                             <span class="sidebar-normal"> Profil saya </span>
                                     </a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="#">
                                         <span class="sidebar-mini"> UP </span>
                                         <span class="sidebar-normal"> Ubah Password </span>
                                     </a>
-                                </li>
+                                </li> -->
                                 <li>
                                     <a href="<?php echo base_url('logout'); ?>">
                                         <span class="sidebar-mini"> KL </span>

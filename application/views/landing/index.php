@@ -8,13 +8,15 @@
   <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top">
         <?php $this->load->view('landing/navbar'); ?>
     </nav>
 
     <!-- Page Content -->
     <div class="container">
-
+        <div class="row">
+            <br>
+        </div>
       <div class="row">
         <!-- Blog Entries Column -->
         <div class="col-md-8">
