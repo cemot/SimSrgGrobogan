@@ -23,11 +23,12 @@
                         </thead>
                         <tbody>
                             <?php
+                                $level = ['Administrator', 'Pengelola', 'Dinas', 'Bank', 'Petani'];
                                 $no = 1;
                                 foreach ($data as $user):?>
                                     <tr>
                                         <td><?php echo $no++ ?></td>
-                                        <td><?php echo $user->role ?></td>
+                                        <td><?php echo $level[$user->role] ?></td>
                                         <td><?php echo $user->username ?></td>
                                         <td><?php echo $user->nama ?></td>
                                         <td><?php echo $user->no_tlp ?></td>
