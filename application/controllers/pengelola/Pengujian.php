@@ -43,11 +43,17 @@ class Pengujian extends CI_Controller {
 			if ($this->input->post('hsl_pengujian') == 'Diterima') {
 				$this->form_validation->set_rules('harga_barang', 'Harga Barang', 'required');
 				$this->form_validation->set_rules('satuan_barang', 'Satuan Barang', 'required');
+				$this->form_validation->set_rules('no_resi', 'No Resi', 'required|is_unique[resi.no_resi]');
+				$this->form_validation->set_rules('no_polis', 'No Poli ', 'required|is_unique[resi.no_polis]');
 			}
             if ($this->form_validation->run() == FALSE) {
                 // dd(validation_errors());
 				$this->session->set_flashdata('class', 'danger');
-				$this->session->set_flashdata('message', 'Data Pengujian Tidak Lengkap. Pengujian Barang Gagal Disimpan');
+				if ($this->form_validation->run('no_resi') == FALSE || $this->form_validation->run('no_polis') == FALSE) {
+					$this->session->set_flashdata('message', 'Nomor resi atau polis yang anda masukkan sudah terdaftar');
+				} else {
+					$this->session->set_flashdata('message', 'Data Pengujian Tidak Sesuai. Pengujian Barang Gagal Disimpan');
+				}
 				redirect(base_url('pengelola/pengujian'));
             } else {
                 $pengujian = M_Pengujian::create([
